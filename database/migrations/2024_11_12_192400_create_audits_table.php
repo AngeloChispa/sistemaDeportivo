@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('trainers', function (Blueprint $table) {
-            $table->id('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->string('description', 255)->nullable();
-            $table->string('birthplace', 30);
-            $table->string('nationality', 30);
+        Schema::create('audits', function (Blueprint $table) {
+            $table->id('id');
+            $table->bigInteger('user_id');
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->string('action',20);
+            $table->timestamp('date_hour');
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('trainers');
+        Schema::dropIfExists('audits');
     }
 };
