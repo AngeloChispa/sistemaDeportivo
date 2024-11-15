@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::view('/','index')->name('index');
 Route::view('/rols','rols.rols_view')->name('rols.index');
 Route::view('/users','users.users_view')->name('users.index');
+
+/*Danna*/
+Route::view('/landing','layouts.landing')->name('landing');
+Route::view('/landing2','layouts.landing2')->name('landing2');
+Route::view('/login','users.login')->name('login');
+Route::view('/register','users.register')->name('register');
