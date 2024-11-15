@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('referees', function (Blueprint $table) {
             $table->id('user_id');
-            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('description', 255)->nullable();
         });
     }

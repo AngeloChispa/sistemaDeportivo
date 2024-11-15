@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name',30);
             $table->string('state',30);
             $table->string('city',30);
-            $table->bigInteger('sport_id');
-            $table->foreignId('sport_id')->references('id')->on('sports');
+            $table->unsignedBigInteger('sport_id');
+            $table->foreign('sport_id')->references('id')->on('sports');
             //Guarda el path
             $table->string('shield');
         });

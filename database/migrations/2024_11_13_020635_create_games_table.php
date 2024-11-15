@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id('id');
-            $table->bigInteger('tournament_id')->nullable();
-            $table->foreignId('tournament_id')->references('id')->on('tournaments');
-            $table->bigInteger('local_team_id');
-            $table->foreignId('local_team_id')->references('id')->on('teams');
-            $table->bigInteger('away_team_id');
-            $table->foreignId('away_team_id')->references('id')->on('teams');
-            $table->bigInteger('referee_id');
-            $table->foreignId('referee_id')->references('user_id')->on('referees');
+            $table->unsignedBigInteger('tournament_id')->nullable();
+            $table->foreign('tournament_id')->references('id')->on('tournaments');
+            $table->unsignedBigInteger('local_team_id');
+            $table->foreign('local_team_id')->references('id')->on('teams');
+            $table->unsignedBigInteger('away_team_id');
+            $table->foreign('away_team_id')->references('id')->on('teams');
+            $table->unsignedBigInteger('referee_id');
+            $table->foreign('referee_id')->references('user_id')->on('referees');
         });
     }
 

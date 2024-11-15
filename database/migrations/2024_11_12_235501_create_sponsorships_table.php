@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('sponsorships', function (Blueprint $table) {
             $table->id('id');
-            $table->bigInteger('transaction_id')->nullable();
-            $table->foreignId('transaction_id')->references('id')->on('finances');
-            $table->bigInteger('tournament_id')->nullable(); 
-            $table->foreignId('tournament_id')->references('id')->on('tournaments');
-            $table->bigInteger('team_id')->nullable();
-            $table->foreignId('team_id')->references('id')->on('teams');
-            $table->bigInteger('player_id')->nullable();
-            $table->foreignId('player_id')->references('user_id')->on('players');
+            $table->unsignedBigInteger('transaction_id')->nullable();
+            $table->foreign('transaction_id')->references('id')->on('finances');
+            $table->unsignedBigInteger('tournament_id')->nullable(); 
+            $table->foreign('tournament_id')->references('id')->on('tournaments');
+            $table->unsignedBigInteger('team_id')->nullable();
+            $table->foreign('team_id')->references('id')->on('teams');
+            $table->unsignedBigInteger('player_id')->nullable();
+            $table->foreign('player_id')->references('user_id')->on('players');
             $table->string('description', 255)->nullable();
         });
     }

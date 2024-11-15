@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('finances', function (Blueprint $table) {
             $table->id('id');
-            $table->bigInteger('sponsor_id');
-            $table->foreignId('sponsor_id')->references('id')->on('sponsors');
-            $table->bigInteger('user_id')->nullable();
-            $table->foreignId('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('sponsor_id');
+            $table->foreign('sponsor_id')->references('id')->on('sponsors');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->float('mount');
             $table->timestamp('date_hour');
             $table->string('concept',100);

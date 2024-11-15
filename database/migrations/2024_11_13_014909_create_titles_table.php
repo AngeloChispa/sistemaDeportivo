@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('titles', function (Blueprint $table) {
             $table->id('id');
-            $table->bigInteger('assignment_id')->nullable();
-            $table->foreignId('assignment_id')->references('id')->on('player_team_assignments');
-            $table->bigInteger('trainer_team_id')->nullable();
-            $table->foreignId('trainer_team_id')->references('id')->on('coach_team_assignments');
+            $table->unsignedBigInteger('assignment_id')->nullable();
+            $table->foreign('assignment_id')->references('id')->on('player_team_assignments');
+            $table->unsignedBigInteger('trainer_team_id')->nullable();
+            $table->foreign('trainer_team_id')->references('id')->on('coach_team_assignments');
             $table->string('name',60);
             //Guarda un path a una imagen
             $table->string('title',60);

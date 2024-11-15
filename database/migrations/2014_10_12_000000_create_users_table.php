@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('lastname', 30);
             $table->date('date_birth');
             $table->string('phone', 15)->unique();
-            $table->bigInteger('rol_id');
-            $table->foreignId('rol_id')->references('id')->on('rols');
+            $table->unsignedBigInteger('rol_id');
+            $table->foreign('rol_id')->references('id')->on('rols');
             $table->string('email', 30)->unique();
             $table->string('password', 30);
             $table->date('up_date');
