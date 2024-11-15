@@ -36,7 +36,7 @@
 <body class="text-white font-sans">
     @include('layouts._partials.navbar')
     <div class="flex">
-        @include('layouts._partials.sidebarAdmin')
+        @include('layouts._partials.sidebar')
         {{-- Content --}}
         <div class="flex-1 p-10">
             <h1 class="font-bold text-center text-4xl">@yield('name')</h1>

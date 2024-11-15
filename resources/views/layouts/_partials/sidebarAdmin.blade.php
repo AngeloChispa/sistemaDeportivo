@@ -8,6 +8,18 @@
 
     @component('_components.boxSidebar ')
         @slot('icon', '')
+        @slot('reference', 'index')
+        @slot('name', 'Seguridad & Auditoría')
+    @endcomponent
+
+    @component('_components.boxSidebar ')
+        @slot('icon', '')
+        @slot('reference', 'rols.index')
+        @slot('name', 'Roles')
+    @endcomponent
+
+    @component('_components.boxSidebar ')
+        @slot('icon', '')
         @slot('reference', 'users.index')
         @slot('name', 'Usuarios')
     @endcomponent
@@ -64,4 +76,10 @@
         @slot('icon', '')
         @slot('reference', 'index')
         @slot('name', 'Patrocinadores')
+    @endcomponent
+
+    @component('_components.boxSidebar ')
+        @slot('icon', '')
+        @slot('reference', 'index')
+        @slot('name', 'Finanzas')
     @endcomponent

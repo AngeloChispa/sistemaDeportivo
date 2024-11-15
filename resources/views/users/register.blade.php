@@ -1,3 +1,5 @@
+{{-- Esta venta de registro de usuarios es únicamente para Aficionados --}}
+{{-- El registro de jugadores, entrenadores y árbitros se hará en sus respectivas vistas --}}
 @extends('layouts.landing2', ['headers'=>[]])
 
 @section('title', 'Registro')
