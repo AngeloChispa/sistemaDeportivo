@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->float('mount');
-            $table->timestamp('date_hour');
+            $table->datetime('date_hour');
             $table->string('concept',100);
             $table->string('type',20);
         });

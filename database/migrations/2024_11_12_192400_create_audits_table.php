@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('action',20);
-            $table->timestamp('date_hour');
+            $table->datetime('date_hour');
         });
     }
 
