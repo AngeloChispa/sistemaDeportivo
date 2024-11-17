@@ -17,8 +17,8 @@ Route::view('/','index')->name('index');
 
 //Julissa
 Route::view('/rols/admin','rols.rols_view')->name('rols.index');
-Route::view('/rols/user','rols.rols_view')->name('rolsUser.index');
-Route::view('/users','users.users_view')->name('users.index');
+Route::view('/users/admin','users.users_view')->name('users.index');
+Route::view('/players/admin','players.players_view')->name('players.index');
 
 /*Danna*/
 Route::view('/landing','layouts.landing')->name('landing');
