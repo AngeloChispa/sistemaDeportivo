@@ -13,6 +13,12 @@
     }
 
     </style>
+
+     <!-- contenedor gris -->
+     <div class="">
+        <div class="relative bg-stone-900 text-white p-4 pb-20">
+    </div>
+    
     <!-- Contenidor general-->
     <div class="">
 
