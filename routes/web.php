@@ -33,6 +33,8 @@ Route::view('/players/admin','players.players_view')->name('players.index');
 Route::view('/users/show','users.show')->name('users.show'); */
 Route::view('/rols/create','rols.create')->name('rols.create');
 Route::view('/users/create','users.create')->name('users.create');
+Route::view('/users/edit','users.edit')->name('users.edit');
+Route::view('/rols/edit','rols.edit')->name('rols.edit');
 
 /*Danna*/
 Route::view('/landing','layouts.landing')->name('landing');
