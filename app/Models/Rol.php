@@ -13,4 +13,5 @@ class Rol extends Model
         'name',
         'description'
     ];
+    public $timestamps = false;
 }
