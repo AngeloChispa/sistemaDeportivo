@@ -29,6 +29,10 @@ Route::view('/','index')->name('index');
 Route::view('/rols/admin','rols.rols_view')->name('rols.index');
 Route::view('/users/admin','users.users_view')->name('users.index');
 Route::view('/players/admin','players.players_view')->name('players.index');
+/* Route::view('/rols/show','rols.show')->name('rols.show');
+Route::view('/users/show','users.show')->name('users.show'); */
+Route::view('/rols/create','rols.create')->name('rols.create');
+Route::view('/users/create','users.create')->name('users.create');
 
 /*Danna*/
 Route::view('/landing','layouts.landing')->name('landing');

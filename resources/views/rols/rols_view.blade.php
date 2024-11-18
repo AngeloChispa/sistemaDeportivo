@@ -1,7 +1,6 @@
 @extends('layouts.admin_view')
 
 @section('title', 'Rols table')
-@section('name', 'Rols Table')
 
 @section('content')
     @component('_components.table')
@@ -11,7 +10,7 @@
         @slot('p_content')
             Tabla que muestra los roles que se pueden aplicar a los usuarios.
         @endslot
-        @slot('reference','players.index')
+        @slot('reference','index')
         @slot('create_something','+ Crear Rol')
 
         @slot('content_head')
