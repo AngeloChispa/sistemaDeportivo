@@ -32,7 +32,7 @@
 
     @component('_components.boxSidebar ')
         @slot('icon', '')
-        @slot('reference', 'index')
+        @slot('reference', 'players.index')
         @slot('name', 'Jugadores')
     @endcomponent
 
