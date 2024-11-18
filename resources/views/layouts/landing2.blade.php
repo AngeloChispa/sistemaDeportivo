@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="@yield('styles')">
   <title>
     @yield('title')
   </title>
@@ -11,12 +12,9 @@
 <!-- fondo negro -->
 <body class="bg-black font-sans">
 
-    <!-- contenedor gris -->
-    <div class="">
-        <div class="relative bg-stone-900 text-white p-4 pb-20">
-    </div>
-
      @yield('content')
 
+
+     @yield('scripts')
     </body>
 </html>
