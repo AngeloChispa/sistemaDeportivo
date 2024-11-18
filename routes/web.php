@@ -11,5 +11,27 @@ Route::put('/user/update/{user}', [UsersController::class,'update'])->name('user
 Route::delete('/user/delete/{user}', [UsersController::class, 'delete'])->name('user.delete');
 
 //Borrar esta linea
-Route::view('/', 'welcome');
 Route::view('/swal/', 'chuchoLab.pruebaSwal');
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+Route::view('/','index')->name('index');
+
+//Julissa
+Route::view('/rols/admin','rols.rols_view')->name('rols.index');
+Route::view('/users/admin','users.users_view')->name('users.index');
+Route::view('/players/admin','players.players_view')->name('players.index');
+
+/*Danna*/
+Route::view('/landing','layouts.landing')->name('landing');
+Route::view('/landing2','layouts.landing2')->name('landing2');
+Route::view('/login','users.login')->name('login');
+Route::view('/register','users.register')->name('register');
