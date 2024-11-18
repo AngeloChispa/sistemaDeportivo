@@ -12,3 +12,4 @@ Route::delete('/user/delete/{user}', [UsersController::class, 'delete'])->name('
 
 //Borrar esta linea
 Route::view('/', 'welcome');
+Route::view('/swal/', 'chuchoLab.pruebaSwal');
