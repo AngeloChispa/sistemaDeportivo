@@ -1,5 +1,4 @@
 @extends('layouts.admin_view')
-@extends('layouts.admin_view')
 
 @section('title', 'Users table')
 @section('name', 'Users Table')
