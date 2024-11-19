@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Rol;
 use Illuminate\Http\Request;
 
-class UsersCotroller extends Controller
+class RolsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $users = User::all();
-        return view('users.users_view', compact('users'));
+        $rols = Rol::all();
+        return view('rols.rols_view', compact('rols'));
     }
 
     /**
@@ -21,7 +21,7 @@ class UsersCotroller extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('rols.create');
     }
 
     /**
@@ -29,8 +29,8 @@ class UsersCotroller extends Controller
      */
     public function store(Request $request)
     {
-        User::create($request->all());
-        return redirect()->route('user.index');
+        Rol::create($request->all());
+        return redirect()->route('rols.index');
     }
 
     /**
@@ -44,26 +44,26 @@ class UsersCotroller extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit(Rol $rol)
     {
-        return view('users.edit',compact('user'));
+        return view('rols.edit', compact('rol'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Rol $rol)
     {
-        $user->update($request->all());
-        return redirect()->route('user.index');
+        $rol->update($request->all());
+        return redirect()->route('rols.index');   
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy(Rol $rol)
     {
-        $user->delete();
-        return redirect()->route('user.index');
+        $rol->delete();
+        return redirect()->route('rol.index');
     }
 }

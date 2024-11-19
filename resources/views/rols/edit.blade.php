@@ -5,22 +5,22 @@
 @section('content')
     <h1
         class="text-4xl text-center">
-        Crear Rol
+        Editar Rol
     </h1>
 
     <div class="flex items-center justify-center">
-        <form method="POST" action="{{route('rols.store')}}"
+        <form method="POST" action="{{route('rols.update', $rol->id)}}"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md mt-6">
+            @method('PUT')
             @csrf
-
             <div>
                 <label for="name" class="block text-sm font-semibold text-stone-200">Nombre:</label>
-                <input type="text" name="name" id="name"
+                <input type="text" name="name" id="name" value= "{{$rol->name}}"
                     class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
             </div>
             <div>
                 <label for="description" class="block text-sm font-semibold text-stone-200">Descripcion:</label>
-                <input type="text" name="description" id="description"
+                <input type="text" name="description" id="description" value="{{$rol->description}}"
                     class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
             </div>
 

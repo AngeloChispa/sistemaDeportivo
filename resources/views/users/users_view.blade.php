@@ -10,7 +10,7 @@
         @slot('p_content')
             Tabla que muestra los usuarios registrados hasta el momento.
         @endslot
-        @slot('reference','index')
+        @slot('reference','user.create')
         @slot('create_something','+ Registrar Usuario')
 
         @slot('content_head')
@@ -38,7 +38,7 @@
                 <td>{{$user->password}}</td>
                 <td class="text-center">{{$user->up_date}}</td>
                 <td>
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
+                    <a href="{{route('user.edit', $user->id)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
                 </td>
                 <td>
                     <a href="#" class="font-medium text-red-500 hover:underline">Borrar</a>

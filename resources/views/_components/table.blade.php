@@ -10,8 +10,8 @@
             {{ $title }}
             <div class="flex">
                 <p class="mt-1 text-sm font-normal text-zinc-400 flex-auto">{{ $p_content }}</p>
-                <button href='{{ route($reference) }}'
-                    class="flex-none text-sm font-medium text-zinc-200 bg-rose-500 sm:rounded-lg p-2 hover:bg-red-700">{{ $create_something }}</button>
+                <a href='{{ route($reference) }}'
+                    class="flex-none text-sm font-medium text-zinc-200 bg-rose-500 sm:rounded-lg p-2 hover:bg-red-700">{{ $create_something }}</a>
             </div>
         </caption>
         <thead class="text-center text-xs text-zinc-100 bg-rose-500 uppercase h-10">

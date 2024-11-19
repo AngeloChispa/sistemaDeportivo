@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('away_team_id');
             $table->foreign('away_team_id')->references('id')->on('teams');
             $table->unsignedBigInteger('referee_id');
-            $table->foreign('referee_id')->references('user_id')->on('referees');
+            $table->foreign('referee_id')->references('id')->on('referees');
         });
     }
 

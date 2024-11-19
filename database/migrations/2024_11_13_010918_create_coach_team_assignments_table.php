@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('coach_team_assignments', function (Blueprint $table) {
             $table->id('id');
             $table->unsignedBigInteger('trainer_id');
-            $table->foreign('trainer_id')->references('user_id')->on('trainers');
+            $table->foreign('trainer_id')->references('id')->on('trainers');
             $table->date('assignment_date');
         });
     }
