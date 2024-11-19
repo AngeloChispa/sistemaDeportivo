@@ -20,7 +20,7 @@
 
     @component('_components.boxSidebar ')
         @slot('icon', '')
-        @slot('reference', 'users.index')
+        @slot('reference', 'user.index')
         @slot('name', 'Usuarios')
     @endcomponent
 

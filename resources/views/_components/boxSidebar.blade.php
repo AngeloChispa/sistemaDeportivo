@@ -2,5 +2,5 @@
     <div class="icon-container">
         <div class="icon">{{$icon}}</div>
     </div>
-    <div class="appbar-text"><a href='{{ route($reference)}}'>{{$name}}</a></div>
+    <div class="appbar-text"><a href='{{route($reference)}}'>{{$name}}</a></div>
 </div>
