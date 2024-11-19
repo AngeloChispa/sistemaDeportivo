@@ -3,24 +3,6 @@
     body{
         background-color: #0e0e0e;
     }
-
-    .w-64,.p-12,.p-4{
-        background-color: #161616;
-    }
-
-    .text-red-500{
-        color: #EA454C;
-        background-color: #161616
-    }
-    
-    .bg-gray-700{
-        background-color: #161616;
-    }
-    
-    .rows td{
-        padding: 10px;
-        text-align: center;
-    }
 </style>
 <html lang="es">
 
@@ -39,7 +21,6 @@
         @include('layouts._partials.sidebar')
         {{-- Content --}}
         <div class="flex-1 p-10">
-            <h1 class="font-bold text-center text-4xl">@yield('name')</h1>
             @yield('content')
         </div>
     </div>

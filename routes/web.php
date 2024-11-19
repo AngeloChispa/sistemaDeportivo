@@ -54,6 +54,12 @@ Route::view('/','index')->name('index');
 //Julissa
 Route::view('/rols/admin','rols.rols_view')->name('rols.index');
 Route::view('/players/admin','players.players_view')->name('players.index');
+/* Route::view('/rols/show','rols.show')->name('rols.show');
+Route::view('/users/show','users.show')->name('users.show'); */
+Route::view('/rols/create','rols.create')->name('rols.create');
+Route::view('/users/create','users.create')->name('users.create');
+Route::view('/users/edit','users.edit')->name('users.edit');
+Route::view('/rols/edit','rols.edit')->name('rols.edit');
 
 /*Danna*/
 Route::view('/landing','layouts.landing')->name('landing');

@@ -27,7 +27,7 @@
         
             <!-- Encabezado -->
             <div class="flex flex-col justify-center items-center text-white">
-                <h1 class="text-4xl mb-6 mt-20">BIENVENIDO! 👋</h1>
+                <h1 class="text-4xl mb-6 mt-4">BIENVENIDO! 👋</h1>
                 <p class="mb-3 text-sm">Ingresa tu información para acceder</p>
             </div>
             
