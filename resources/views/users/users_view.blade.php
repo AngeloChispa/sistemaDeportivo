@@ -12,7 +12,7 @@
         @slot('p_content')
             Tabla que muestra los usuarios registrados hasta el momento.
         @endslot
-        @slot('reference','players.index')
+        @slot('reference','users.create')
         @slot('create_something','+ Registrar Usuario')
 
         @slot('content_head')
