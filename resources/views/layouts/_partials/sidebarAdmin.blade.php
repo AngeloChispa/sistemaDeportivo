@@ -26,7 +26,7 @@
 
     @component('_components.boxSidebar ')
         @slot('icon', '')
-        @slot('reference', 'index')
+        @slot('reference', 'tournaments.index')
         @slot('name', 'Torneos')
     @endcomponent
 
