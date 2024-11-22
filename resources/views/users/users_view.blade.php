@@ -42,6 +42,7 @@
                     <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
                 </td>
                 <td>
+                    <a href="#" class="font-medium text-zinc-300 bg-red-500 sm:rounded-lg p-2 hover:bg-red-600 formulario-eliminar">Borrar</a>
                     <a href="#" class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900">Borrar</a>
                 </td>
                 <td>
@@ -61,6 +62,7 @@
                     <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
                 </td>
                 <td>
+                    <a href="#" class="font-medium text-zinc-300 bg-red-500 sm:rounded-lg p-2 hover:bg-red-600 formulario-eliminar">Borrar</a>
                     <a href="#" class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900">Borrar</a>
                 </td>
                 <td>
@@ -80,6 +82,7 @@
                     <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
                 </td>
                 <td>
+                    <a href="#" class="font-medium text-zinc-300 bg-red-500 sm:rounded-lg p-2 hover:bg-red-600   formulario-eliminar">Borrar</a>
                     <a href="#" class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900">Borrar</a>
                 </td>
                 <td>
@@ -89,3 +92,40 @@
         @endslot
     @endcomponent
 @endsection
+
+
+@section('scripts')
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    document.querySelectorAll('.formulario-eliminar').forEach(function(eliminarBtn) {
+        eliminarBtn.addEventListener('click', function(event) {
+            
+            event.preventDefault();
+
+            // SweetAlert2
+            Swal.fire({
+            title: "¿Estás seguro?",
+            text: "¡No podrás revertir esta acción!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "¡Si, eliminalo!"
+            }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                title: "¡Eliminado!",
+                text: "El jugador ha sido eliminado.",
+                icon: "success"
+                });
+            }
+            });
+        });
+    });
+</script>
+
+@endsection
+
+
