@@ -27,13 +27,13 @@
                 <td>Jugador</td>
                 <td>Aquel que juega partidos</td>
                 <td>
-                    <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                    <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
                 </td>
                 <td>
-                    <a href="#" class="font-medium text-zinc-300 bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</a>
+                    <a href="#" class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900">Borrar</a>
                 </td>
                 <td>
-                    <a href="#" class="font-medium bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ver</a>
+                    <a href="#" class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
                 </td>
             </tr>
             <tr class="border-b border-stone-700 h-16">
@@ -41,13 +41,13 @@
                 <td>Entrenador</td>
                 <td>Aquel que dirige equipos</td>
                 <td>
-                    <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                    <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
                 </td>
                 <td>
-                    <a href="#" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</a>
+                    <a href="#" class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900">Borrar</a>
                 </td>
                 <td>
-                    <a href="#" class="font-medium bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ver</a>
+                    <a href="#" class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
                 </td>
             </tr>
             <tr class="border-b border-stone-700 h-16">
@@ -55,13 +55,13 @@
                 <td>Arbitro</td>
                 <td>Aquel que establece el orden en partidos</td>
                 <td>
-                    <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                    <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
                 </td>
                 <td>
-                    <a href="#" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</a>
+                    <a href="#" class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900">Borrar</a>
                 </td>
                 <td>
-                    <a href="#" class="font-medium bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ver</a>
+                    <a href="#" class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
                 </td>
             </tr>
             <tr class="border-b border-stone-700 h-16">
@@ -69,13 +69,13 @@
                 <td>Aficionado</td>
                 <td>Aquella persona que no está involucrada en los juegos</td>
                 <td>
-                    <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                    <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
                 </td>
                 <td>
-                    <a href="#" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</a>
+                    <a href="#" class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-rose-900">Borrar</a>
                 </td>
                 <td>
-                    <a href="#" class="font-medium bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ver</a>
+                    <a href="#" class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
                 </td>
             </tr>
         @endslot
