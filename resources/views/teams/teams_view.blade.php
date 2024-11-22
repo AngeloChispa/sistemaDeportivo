@@ -22,33 +22,23 @@
          --}}
         @slot('content_head')
             <tr>
-                <th>Song</th>
-                <th>Song</th>
-                <th>Song</th>
-                <th>Song</th>
-                <th>Artist</th>
-                <th>Artist</th>
-                <th>AAAAAAAa</th>
-                <th>Sonaaaa</th>
-                <th>Sonaaaa</th>
-                <th>Artiasdasdt</th>
-                <th>Yeaeyewuir</th>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Ciudad</th>
+                <th>Estado</th>
+                <th>Deporte</th>
+                <th>Escudo</th>
                 <th colspan="3">Acción</th>
             </tr>
         @endslot
         @slot('content_body')
             <tr class="border-b border-stone-700 h-16">
-                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                <td>Malcolm Lockyer</td>
-                <td>Malcolm Lockyer</td>
-                <td class="text-center">1961</td>
-                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                <td>Malcolm Lockyer</td>
-                <td>Malcolm Lockyer</td>
-                <td class="text-center">1961</td>
+                <td>1</td>
+                <td>Los jaguares agresivos de tangamandapio</td>
+                <td>Victoria</td>
+                <td>Tamaulipas</td>
+                <td>Basquetball</td>
+                <td></td>
                 <td>
                     <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                 </td>
@@ -60,17 +50,12 @@
                 </td>
             </tr>
             <tr class="border-b border-stone-700 h-16">
-                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                <td>Malcolm Lockyer</td>
-                <td>Malcolm Lockyer</td>
-                <td class="text-center">1961</td>
-                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                <td>Malcolm Lockyer</td>
-                <td>Malcolm Lockyer</td>
-                <td class="text-center">1961</td>
+                <td>2</td>
+                <td>Los jaguares agresivos de tangamandapio</td>
+                <td>Victoria</td>
+                <td>Tamaulipas</td>
+                <td>Futbol</td>
+                <td></td>
                 <td>
                     <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                 </td>
@@ -82,17 +67,12 @@
                 </td>
             </tr>
             <tr class="border-b border-stone-700 h-16">
-                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                <td>Malcolm Lockyer</td>
-                <td>Malcolm Lockyer</td>
-                <td class="text-center">1961</td>
-                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                <td>Malcolm Lockyer</td>
-                <td>Malcolm Lockyer</td>
-                <td class="text-center">1961</td>
+                <td>3</td>
+                <td>Los jaguares agresivos de tangamandapio</td>
+                <td>Victoria</td>
+                <td>Tamaulipas</td>
+                <td>Natación</td>
+                <td></td>
                 <td>
                     <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                 </td>

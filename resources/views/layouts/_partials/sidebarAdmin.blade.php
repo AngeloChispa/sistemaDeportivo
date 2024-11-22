@@ -38,7 +38,7 @@
 
     @component('_components.boxSidebar ')
         @slot('icon', '')
-        @slot('reference', 'index')
+        @slot('reference', 'teams.index')
         @slot('name', 'Equipos')
     @endcomponent
 
