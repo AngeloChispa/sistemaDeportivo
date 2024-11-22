@@ -23,7 +23,10 @@
         <div class="flex-1 p-10">
             @yield('content')
         </div>
+
     </div>
+   
+     
     @yield('scripts')
 </body>
 </html>
