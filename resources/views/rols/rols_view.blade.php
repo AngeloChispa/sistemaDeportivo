@@ -11,7 +11,7 @@
             Tabla que muestra los roles que se pueden aplicar a los usuarios.
         @endslot
         @slot('reference', 'rols.create')
-        @slot('create_something', '+ Crear Rol')
+        @slot('create_something', 'Crear Rol')
 
         @slot('content_head')
             <tr>

@@ -12,7 +12,7 @@
             Tabla que muestra aquellos usuarios que se les ha asignado el rol de jugador.
         @endslot
         @slot('reference','players.index')
-        @slot('create_something','+ Crear Jugador')
+        @slot('create_something','Crear Jugador')
 
         {{-- @forelse ($players as $player)
             

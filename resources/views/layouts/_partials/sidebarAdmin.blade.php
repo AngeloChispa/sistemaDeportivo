@@ -91,7 +91,7 @@
             <li>
                 @component('_components.boxSidebar ')
                     @slot('icon', '')
-                    @slot('reference', 'index')
+                    @slot('reference', 'sponsors.index')
                     @slot('name', 'Patrocinadores')
                 @endcomponent
             </li>

@@ -26,14 +26,20 @@ Route::view('/swal/', 'chuchoLab.pruebaSwal');
 Route::view('/','index')->name('index');
 
 //Julissa
+/* Vistas */
 Route::view('/rols/admin','rols.rols_view')->name('rols.index');
 Route::view('/users/admin','users.users_view')->name('users.index');
 Route::view('/players/admin','players.players_view')->name('players.index');
+Route::view('/sponsors/admin','sponsors.sponsors_view')->name('sponsors.index');
+Route::view('/instalations/admin','instalations.instalations_view')->name('instalations.index');
+/* Mostrar */
 Route::view('/rols/show','rols.show')->name('rols.show');
 Route::view('/users/show','users.show')->name('users.show');
 Route::view('/players/show','players.show')->name('players.show');
+/* Crear */
 Route::view('/rols/create','rols.create')->name('rols.create');
 Route::view('/users/create','users.create')->name('users.create');
+/* Editar */
 Route::view('/users/edit','users.edit')->name('users.edit');
 Route::view('/rols/edit','rols.edit')->name('rols.edit');
 
@@ -42,9 +48,12 @@ Route::view('/landing','layouts.landing')->name('landing');
 Route::view('/landing2','layouts.landing2')->name('landing2');
 Route::view('/login','users.login')->name('login');
 Route::view('/register','users.register')->name('register');
+/* Vistas */
 Route::view('/teams/admin','teams.teams_view')->name('teams.index');
-Route::view('/teams/create','teams.create')->name('teams.create');
-Route::view('/teams/show','teams.show')->name('teams.show');
 Route::view('/tournaments/admin','tournaments.tournaments_view')->name('tournaments.index');
+/* Crear */
+Route::view('/teams/create','teams.create')->name('teams.create');
 Route::view('/tournaments/create','tournaments.create')->name('tournaments.create');
+/* Mostrar */
+Route::view('/teams/show','teams.show')->name('teams.show');
 Route::view('/tournaments/show','tournaments.show')->name('tournaments.show');
