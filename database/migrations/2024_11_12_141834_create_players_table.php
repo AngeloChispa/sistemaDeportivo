@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('players', function (Blueprint $table) {
-            $table->id('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->id();
             $table->string('status',20);
             $table->float('height');
             $table->float('weight');

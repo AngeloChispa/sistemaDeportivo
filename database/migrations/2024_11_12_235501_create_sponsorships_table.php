@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('team_id')->nullable();
             $table->foreign('team_id')->references('id')->on('teams');
             $table->unsignedBigInteger('player_id')->nullable();
-            $table->foreign('player_id')->references('user_id')->on('players');
+            $table->foreign('player_id')->references('id')->on('players');
             $table->string('description', 255)->nullable();
         });
     }

@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rol extends Model
 {
+
+    public $timestamps = false; 
+
     use HasFactory;
 
     protected $fillable = [
