@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('name', 30);
             $table->string('lastname', 30);
             $table->date('birthdate');
-            $table->string('birthplace',50);
-            $table->unsignedBigInteger('nationality_id');
+            $table->string('birthplace',50)->nullable();
+            $table->unsignedBigInteger('nationality_id')->nullable();
             $table->foreign('nationality_id')->references('id')->on('nationalities');
-            $table->string('avatar',30);
+            $table->string('avatar',30)->nullable();
         });
     }
 

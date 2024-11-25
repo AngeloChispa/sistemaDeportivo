@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\People;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,8 @@ class UsersCotroller extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {   
+        $peoples  = People::all();
         $users = User::all();
         return view('users.users_view', compact('users'));
     }
@@ -29,7 +31,17 @@ class UsersCotroller extends Controller
      */
     public function store(Request $request)
     {
-        User::create($request->all());
+        People::create([
+            'name' => $request->name,
+            'lastname' => $request->lastname,
+            'birthdate' => $request->date_birth,
+        ]);
+        User::create([
+            'username' => $request->username,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'password' => $request->password       
+        ]);
         return redirect()->route('user.index');
     }
 
@@ -54,7 +66,7 @@ class UsersCotroller extends Controller
      */
     public function update(Request $request, User $user)
     {
-        
+        $user->update($request->all());
         return redirect()->route('user.index');
     }
 
