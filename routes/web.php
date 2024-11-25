@@ -1,11 +1,11 @@
 <?php
 
-/* use App\Http\Controllers\RolsController;
-use App\Http\Controllers\UsersCotroller; */
+use App\Http\Controllers\RolsController;
+use App\Http\Controllers\UsersCotroller;
 use Illuminate\Support\Facades\Route;
-/* 
+
 Route::resource('/user', UsersCotroller::class);
-Route::resource('/rols', RolsController::class); */
+Route::resource('/rols', RolsController::class);
 
 //Borrar esta linea
 /* Route::view('/swal/', 'chuchoLab.pruebaSwal'); */
@@ -46,16 +46,13 @@ class UsersController extends Controller
         $user->delete();
         return redirect()->route('user.show');
     }
-}
-
-*/
+}*/
 
 Route::view('/','index')->name('index');
 
 //Julissa
 
 /* Vistas */
-Route::view('/rols/admin','rols.rols_view')->name('rols.index');
 Route::view('/users/admin','users.users_view')->name('users.index');
 Route::view('/players/admin','players.players_view')->name('players.index');
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('sponsors.index');
@@ -65,11 +62,9 @@ Route::view('/rols/show','rols.show')->name('rols.show');
 Route::view('/users/show','users.show')->name('users.show');
 Route::view('/players/show','players.show')->name('players.show');
 /* Crear */
-Route::view('/rols/create','rols.create')->name('rols.create');
 Route::view('/users/create','users.create')->name('users.create');
 /* Editar */
 Route::view('/users/edit','users.edit')->name('users.edit');
-Route::view('/rols/edit','rols.edit')->name('rols.edit');
 /* Exportar */
 Route::view('/players/export','reports.players')->name('players.export');
 Route::view('/teams/export','reports.teams')->name('teams.export');
