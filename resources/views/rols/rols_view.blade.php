@@ -31,7 +31,7 @@
                         <a href="{{route('rols.edit', $rol->id)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
                     </td>
                     <td>
-                        <a href="#" class="font-medium text-red-500 hover:underline">Borrar</a>
+                        <a href="{{route('rols.destroy', $rol->id)}}" class="font-medium text-red-500 hover:underline">Borrar</a>
                     </td>
                 </tr>
             @empty

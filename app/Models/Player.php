@@ -9,11 +9,9 @@ class Player extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'people_id',
         'status',
         'height',
-        'weight',
-        'dominant_side',
-        'birthplace',
-        'nationality'
+        'bestSide'
     ];
 }

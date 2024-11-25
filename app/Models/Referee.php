@@ -10,6 +10,7 @@ class Referee extends Model
     use HasFactory;
 
     protected $fillable = [
+        'people_id',
         'description'
     ];
 }
