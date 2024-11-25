@@ -55,7 +55,7 @@ class RolsController extends Controller
     public function update(Request $request, Rol $rol)
     {
         $rol->update($request->all());
-        return redirect()->route('rols.index');   
+        return redirect()->route('rols.index');
     }
 
     /**
