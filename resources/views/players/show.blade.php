@@ -6,7 +6,7 @@
     <div class="flex flex-1">
         <div class="container flex flex-col lg:flex-row w-full px-6 py-6 gap-6">
             <div class="profile-card bg-stone-800 rounded-lg shadow-md p-6 text-center w-full lg:w-1/3">
-                <img src="img/fotoPerfil.webp" alt="Foto de Juan Pérez" class="w-24 h-24 rounded-full mx-auto mb-4">
+                <img src="{{asset('assets/img/usuario_icon_default.png')}}" alt="Foto de Juan Pérez" class="w-30 h-30 rounded-full mx-auto mb-4">
                 <p class="nombreUsuario text-xl text-red-500 font-bold uppercase mb-2">Juan Pérez</p>
                 <p class="text-sm text-stone-400 mb-4">juanPerez777@hotmail.com</p>
                 <div class="profile-info">

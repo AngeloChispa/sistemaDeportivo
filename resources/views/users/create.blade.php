@@ -11,41 +11,61 @@
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
             @csrf
 
-            <div>
-                <label for="name" class="block text-sm font-semibold text-stone-200">Nombre:</label>
-                <input type="text" name="name" id="name"
-                    class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
-            </div>
+            @component('_components.boxInputCreate')
+                @slot('for','name')
+                @slot('content','Nombre: ')
+                @slot('type','text')
+                @slot('name','name')
+                @slot('id','name')
+            @endcomponent
 
-            <div>
-                <label for="lastname" class="block text-sm font-semibold text-stone-200">Apellidos:</label>
-                <input type="text" name="lastname" id="lastname"
-                    class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
-            </div>
+            @component('_components.boxInputCreate')
+                @slot('for','lastname')
+                @slot('content','Apellidos: ')
+                @slot('type','text')
+                @slot('name','lastname')
+                @slot('id','lastname')
+            @endcomponent
 
-            <div>
-                <label for="date_birth" class="block text-sm font-semibold text-stone-200">Fecha de nacimiento:</label>
-                <input type="date" name="date_birth" id="date_birth"
-                    class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
-            </div>
+            @component('_components.boxInputCreate')
+                @slot('for','date_birth')
+                @slot('content','Fecha de nacimiento: ')
+                @slot('type','date')
+                @slot('name','date_birth')
+                @slot('id','date_birth')
+            @endcomponent
 
-            <div>
-                <label for="phone" class="block text-sm font-semibold text-stone-200">Teléfono:</label>
-                <input type="number" name="phone" id="phone"
-                    class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
-            </div>
+            @component('_components.boxInputCreate')
+                @slot('for','phone')
+                @slot('content','Teléfono: ')
+                @slot('type','number')
+                @slot('name','phone')
+                @slot('id','phone')
+            @endcomponent
 
-            <div>
-                <label for="email" class="block text-sm font-semibold text-stone-200">Correo:</label>
-                <input type="email" name="email" id="email"
-                    class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
-            </div>
+            @component('_components.boxInputCreate')
+                @slot('for','email')
+                @slot('content','Correo: ')
+                @slot('type','email')
+                @slot('name','email')
+                @slot('id','email')
+            @endcomponent
 
-            <div>
-                <label for="password" class="block text-sm font-semibold text-stone-200">Contraseña:</label>
-                <input type="password" name="password" id="password"
-                    class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
-            </div>
+            @component('_components.boxInputCreate')
+                @slot('for','password')
+                @slot('content','Contraseña: ')
+                @slot('type','password')
+                @slot('name','password')
+                @slot('id','password')
+            @endcomponent
+
+            @component('_components.boxInputCreate')
+                @slot('for','confirmPassword')
+                @slot('content','Confirmar contraseña: ')
+                @slot('type','password')
+                @slot('name','confirmPassword')
+                @slot('id','confirmPassword')
+            @endcomponent
 
             <div class="flex">
                 <input type="submit" value="Crear"
