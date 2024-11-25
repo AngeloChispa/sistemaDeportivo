@@ -30,6 +30,7 @@
                 <th colspan="3">Acción</th>
             </tr>
         @endslot
+        @slot('content_body')
             <tr class="border-b border-stone-700 h-16">
                 <td>1</td>
                 <td>XxJuanitoMasterxX</td>
