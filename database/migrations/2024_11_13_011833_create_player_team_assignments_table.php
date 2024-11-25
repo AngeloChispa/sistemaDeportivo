@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('team_id');
             $table->foreign('team_id')->references('id')->on('teams');
             $table->unsignedBigInteger('player_id');
-            $table->foreign('player_id')->references('user_id')->on('players');
+            $table->foreign('player_id')->references('id')->on('players');
             $table->string('position',15);
             $table->integer('dorsal');
             $table->date('assignment_date');
