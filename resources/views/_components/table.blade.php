@@ -10,8 +10,12 @@
             {{ $title }}
             <div class="flex">
                 <p class="mt-1 text-sm font-normal text-zinc-400 flex-auto">{{ $p_content }}</p>
-                <a href='{{ route($reference) }}'
-                    class="flex-none text-sm font-medium text-zinc-200 bg-rose-500 sm:rounded-lg p-2 hover:bg-red-700">{{ $create_something }}</a>
+                <div class="flex flex-col">
+                    <a href='{{ route($reference) }}'
+                        class="flex text-sm font-medium text-zinc-200 bg-rose-500 sm:rounded-lg p-2 hover:bg-red-700">{{ $create_something }}
+                        <img  src="{{ asset('assets/img/add_img.png') }}" alt="" class="w-2.5 h-2.5">
+                    </a>
+                </div>
             </div>
         </caption>
         <thead class="text-center text-xs text-zinc-100 bg-rose-500 uppercase h-10">

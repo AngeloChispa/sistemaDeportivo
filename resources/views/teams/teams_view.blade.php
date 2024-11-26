@@ -12,7 +12,7 @@
         Tabla que muestra los equipos registrados hasta el momento.
         @endslot
         @slot('reference','teams.index')
-        @slot('create_something','+ Crear Equipo')
+        @slot('create_something','Crear Equipo')
 
         {{-- @forelse ($players as $player)
             
