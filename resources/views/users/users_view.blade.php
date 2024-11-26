@@ -13,10 +13,11 @@
             Tabla que muestra los usuarios registrados hasta el momento.
         @endslot
         @slot('reference', 'users.create')
-        @slot('create_something', '+ Registrar Usuario')
+        @slot('create_something', 'Registrar Usuario')
 
         @slot('content_head')
             <tr>
+                <th>ID</th>
                 <th>Usuario</th>
                 <th>Nombre</th>
                 <th>Apellidos</th>
@@ -31,6 +32,7 @@
         @endslot
         @slot('content_body')
             <tr class="border-b border-stone-700 h-16">
+                <td>1</td>
                 <td>XxJuanitoMasterxX</td>
                 <td>Juan</td>
                 <td>Perez Castillo</td>
@@ -52,27 +54,7 @@
                 </td>
             </tr>
             <tr class="border-b border-stone-700 h-16">
-                <td>XxJuanitoMasterxX</td>
-                <td>Juan</td>
-                <td>Perez Castillo</td>
-                <td>10-04-1999</td>
-                <td>México</td>
-                <td>Mexicano</td>
-                <td>834277111</td>
-                <td>correo@ejemplo.com.mx</td>
-                <td>21-11-2024 10:20:15s</td>
-                <td>
-                    <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
-                </td>
-                <td>
-                    <a href="#"
-                        class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900 formulario-eliminar">Borrar</a>
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
-                </td>
-            </tr>
-            <tr class="border-b border-stone-700 h-16">
+                <td>2</td>
                 <td>XxJuanitoMasterxX</td>
                 <td>Juan</td>
                 <td>Perez Castillo</td>

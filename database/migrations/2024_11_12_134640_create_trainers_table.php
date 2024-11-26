@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('trainers', function (Blueprint $table) {
-            $table->id('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->id();
             $table->string('description', 255)->nullable();
             $table->string('birthplace', 30);
             $table->string('nationality', 30);

@@ -1,18 +1,18 @@
 @extends('layouts.admin_view')
 
-@section('title', 'Tournaments table')
+@section('title', 'Sponsors table')
 
 @section('content')
     {{-- Tabla de ejemplo, con estilos --}}
     @component('_components.table')
         @slot('title')
-            Torneos
+            patrocinadores
         @endslot
         @slot('p_content')
-        Tabla que muestra los torneos registrados hasta el momento.
+        Tabla que muestra los patrocinadores registrados hasta el momento.
         @endslot
-        @slot('reference','tournaments.index')
-        @slot('create_something','Crear Torneo')
+        @slot('reference','teams.index')
+        @slot('create_something','Crear patrocinador')
 
         {{-- @forelse ($players as $player)
             
@@ -24,23 +24,21 @@
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
-                <th>Logo</th>
-                <th>tipo</th>
-                <th>fecha de inicio</th>
-                <th>fecha de finalización</th>
-                <th>descripción</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+                <th>Localización</th>
+                <th>Tipo de patrocinio</th>
                 <th colspan="3">Acción</th>
             </tr>
         @endslot
         @slot('content_body')
             <tr class="border-b border-stone-700 h-16">
                 <td>1</td>
-                <td>Super torneo de amigos jaguares</td>
-                <td></td>
-                <td>Liguilla</td>
-                <td>10-12-2024</td>
-                <td>24-12-2024</td>
-                <td>Un torneo para celebrar el comienzo navideño</td>
+                <td>Adidas</td>
+                <td>834 191 1999</td>
+                <td>patrocinador@ejemplo.com.mx</td>
+                <td>Calle las palmas Av.Caballero Cd.Victoria</td>
+                <td>Por equipo</td>
                 <td>
                     <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                 </td>
@@ -53,12 +51,11 @@
             </tr>
             <tr class="border-b border-stone-700 h-16">
                 <td>2</td>
-                <td>Super torneo de amigos jaguares</td>
-                <td></td>
-                <td>Liguilla</td>
-                <td>10-12-2024</td>
-                <td>24-12-2024</td>
-                <td>Un torneo para celebrar el comienzo navideño</td>
+                <td>Adidas</td>
+                <td>834 191 1999</td>
+                <td>patrocinador@ejemplo.com.mx</td>
+                <td>Calle las palmas Av.Caballero Cd.Victoria</td>
+                <td>Por equipo</td>
                 <td>
                     <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                 </td>
@@ -71,12 +68,11 @@
             </tr>
             <tr class="border-b border-stone-700 h-16">
                 <td>3</td>
-                <td>Super torneo de amigos jaguares</td>
-                <td></td>
-                <td>Liguilla</td>
-                <td>10-12-2024</td>
-                <td>24-12-2024</td>
-                <td>Un torneo para celebrar el comienzo navideño</td>
+                <td>Adidas</td>
+                <td>834 191 1999</td>
+                <td>patrocinador@ejemplo.com.mx</td>
+                <td>Calle las palmas Av.Caballero Cd.Victoria</td>
+                <td>Por equipo</td>
                 <td>
                     <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                 </td>
@@ -109,7 +105,7 @@
                 if (result.isConfirmed) {
                     Swal.fire({
                     title: "¡Eliminado!",
-                    text: "El torneo ha sido eliminado.",
+                    text: "El patrocinador ha sido eliminado.",
                     icon: "success"
                     });
                 }
