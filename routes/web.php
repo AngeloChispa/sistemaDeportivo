@@ -17,6 +17,7 @@ Route::resource('/rols', RolsController::class);
 
 
 
+// RUTAS VELEZ PRUEBA--------------------------------------------------------
 //TORNEOS
 Route::resource("tournaments", TournamentController::class);
 //PLAYER
@@ -31,9 +32,6 @@ Route::get("/report/search", function () {
 Route::get("/report/player", [ReportController::class, "playerReport"])->name("report.player");
 Route::get("/report/tournament", [ReportController::class, "tournamentReport"])->name("report.tournament");
 
-
-
-
 //ROLES ---BORRAR----
 Route::get("/roles", [RolController::class,"index"])->name("roles.index");
 Route::get("/roles/create",[RolController::class,"create" ])->name("roles.create");
@@ -41,6 +39,7 @@ Route::post("/roles/store",[RolController::class,"store"])->name("roles.store");
 Route::put("/roles/{id}",[RolController::class,"update"])->name("roles.update");
 Route::get("/roles/{id}/edit", [RolController::class, 'edit'])->name('roles.edit');
 Route::delete("/roles/{id}", [RolController::class, 'destroy'])->name('roles.destroy');
+// RUTAS VELEZ PRUEBA--------------------------------------------------------
 
 
 
