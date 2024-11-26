@@ -15,12 +15,12 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id('id');
             $table->unsignedBigInteger('people_id');
-            $table->foreign('people_id')->references('id')->on('peoples');
+            $table->foreign('people_id')->references('id')->on('people');
             $table->string('username', 30);
             $table->string('phone',20)->unique();
-            $table->unsignedBigInteger('rol_id');
+            $table->unsignedBigInteger('rol_id')->default(2);
             $table->string('email',30)->unique();
-            $table->string('password',50);
+            $table->string('password',255);
             $table->datetime('up_date')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }

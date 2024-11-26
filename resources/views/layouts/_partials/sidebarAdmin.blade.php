@@ -1,90 +1,4 @@
-{{-- Sidebar --}}
-<<<<<<< HEAD
-<div class="fixed top-0 left-0 h-full w-52 bg-stone-900 text-white p-4 flex flex-col space-y-4">
-    @component('_components.boxSidebar ')
-        @slot('icon', '')
-        @slot('reference', 'index')
-        @slot('name', 'Index')
-    @endcomponent
-
-    @component('_components.boxSidebar ')
-        @slot('icon', '')
-        @slot('reference', 'index')
-        @slot('name', 'Seguridad & Auditoría')
-    @endcomponent
-
-    @component('_components.boxSidebar ')
-        @slot('icon', '')
-        @slot('reference', 'rols.index')
-        @slot('name', 'Roles')
-    @endcomponent
-
-    @component('_components.boxSidebar ')
-        @slot('icon', '')
-        @slot('reference', 'user.index')
-        @slot('name', 'Usuarios')
-    @endcomponent
-
-    @component('_components.boxSidebar ')
-        @slot('icon', '')
-        @slot('reference', 'index')
-        @slot('name', 'Torneos')
-    @endcomponent
-
-    @component('_components.boxSidebar ')
-        @slot('icon', '')
-        @slot('reference', 'players.index')
-        @slot('name', 'Jugadores')
-    @endcomponent
-
-    @component('_components.boxSidebar ')
-        @slot('icon', '')
-        @slot('reference', 'index')
-        @slot('name', 'Equipos')
-    @endcomponent
-
-    @component('_components.boxSidebar ')
-        @slot('icon', '')
-        @slot('reference', 'index')
-        @slot('name', 'Partidos')
-    @endcomponent
-
-    @component('_components.boxSidebar ')
-        @slot('icon', '')
-        @slot('reference', 'index')
-        @slot('name', 'Estadísticas & Reportes')
-    @endcomponent
-
-    @component('_components.boxSidebar ')
-        @slot('icon', '')
-        @slot('reference', 'index')
-        @slot('name', 'Clasificación')
-    @endcomponent
-
-    @component('_components.boxSidebar ')
-        @slot('icon', '')
-        @slot('reference', 'index')
-        @slot('name', 'Comunicación')
-    @endcomponent
-
-    @component('_components.boxSidebar ')
-        @slot('icon', '')
-        @slot('reference', 'index')
-        @slot('name', 'Instalaciones')
-    @endcomponent
-
-    @component('_components.boxSidebar ')
-        @slot('icon', '')
-        @slot('reference', 'index')
-        @slot('name', 'Patrocinadores')
-    @endcomponent
-
-    @component('_components.boxSidebar ')
-        @slot('icon', '')
-        @slot('reference', 'index')
-        @slot('name', 'Finanzas')
-    @endcomponent
-=======
+{{-- Sidebar --}}   
 <aside id="logo-sidebar"
     class="fixed top-0 left-0 z-40 w-64 h-screen pt-16 transition-transform -translate-x-full sm:translate-x-0"
     aria-label="Sidebar">
@@ -114,7 +28,7 @@
             <li>
                 @component('_components.boxSidebar ')
                     @slot('icon', '')
-                    @slot('reference', 'users.index')
+                    @slot('reference', 'user.index')
                     @slot('name', 'Usuarios')
                 @endcomponent
             </li>
@@ -191,4 +105,3 @@
         </ul>
     </div>
 </aside>
->>>>>>> origin/Julissa

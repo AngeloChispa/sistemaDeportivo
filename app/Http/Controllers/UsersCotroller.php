@@ -13,9 +13,8 @@ class UsersCotroller extends Controller
      */
     public function index()
     {   
-        $peoples  = People::all();
-        $users = User::all();
-        return view('users.users_view', compact('users'));
+        $people = People::all();
+        return view('users.users_view', compact('people'));
     }
 
     /**
@@ -31,17 +30,20 @@ class UsersCotroller extends Controller
      */
     public function store(Request $request)
     {
-        People::create([
-            'name' => $request->name,
-            'lastname' => $request->lastname,
-            'birthdate' => $request->date_birth,
-        ]);
-        User::create([
-            'username' => $request->username,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'password' => $request->password       
-        ]);
+        $people = new People();
+        $people->name = $request->name;
+        $people->lastname = $request->lastname;
+        $people->birthdate = $request->birthdate;
+        $people->save();
+
+        $user = new User();
+        $user->people_id = $people->id;
+        $user->username = $request->username;
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->save();
+        
         return redirect()->route('user.index');
     }
 
@@ -56,9 +58,10 @@ class UsersCotroller extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        return view('users.edit',compact('user'));
+        $person = People::with('user')->findOrFail($id);
+        return view('users.edit', compact('person'));
     }
 
     /**
@@ -66,7 +69,17 @@ class UsersCotroller extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->update($request->all());
+       $person = $user->people;
+       $person->name = $request->name;
+       $person->lastname = $request->lastname;
+       $person->birthdate = $request->date_birth;
+       $person->save();
+
+       $user->username = $request->username;
+       $user->phone = $request->phone;
+       $user->email = $request->email;
+       $user->password = $request->password;
+       $user->save();
         return redirect()->route('user.index');
     }
 
@@ -75,7 +88,9 @@ class UsersCotroller extends Controller
      */
     public function destroy(User $user)
     {
+        $person = $user->people;
         $user->delete();
+        $person->delete();
         return redirect()->route('user.index');
     }
 }
