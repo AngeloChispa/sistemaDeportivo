@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <style>
-    body{
+    body {
         background-color: #0e0e0e;
     }
 </style>
@@ -17,13 +17,15 @@
 
 <body class="text-white font-sans">
     @include('layouts._partials.navbar')
-    <div class="flex">
-        @include('layouts._partials.sidebarAdmin')
-        {{-- Content --}}
-        <div class="flex-1 p-10">
-            @yield('content')
-        </div>
+    @include('layouts._partials.sidebarAdmin')
+
+    {{-- Content --}}
+    <div class="pt-16 sm:ml-64">
+        @yield('content')
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @yield('scripts')
 </body>
+
 </html>

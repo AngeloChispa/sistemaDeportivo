@@ -1,0 +1,121 @@
+@extends('layouts.admin_view')
+
+@section('title', 'Instalations table')
+
+@section('content')
+    {{-- Tabla de ejemplo, con estilos --}}
+    @component('_components.table')
+        @slot('title')
+            Instalaciones
+        @endslot
+        @slot('p_content')
+            Tabla que muestra las instalaciones registradas hasta el momento.
+        @endslot
+        @slot('reference', 'teams.index')
+        @slot('create_something', 'Crear instalación')
+
+        {{-- @forelse ($players as $player)
+            
+        @empty
+            
+        @endforelse
+         --}}
+        @slot('content_head')
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>País</th>
+                <th>Estado</th>
+                <th>Ciudad</th>
+                <th>Localización</th>
+                <th>Capacidad</th>
+                <th colspan="3">Acción</th>
+            </tr>
+        @endslot
+        @slot('content_body')
+            <tr class="border-b border-stone-700 h-16">
+                <td>1</td>
+                <td>Los guayaberos</td>
+                <td>México</td>
+                <td>Tamaulipas</td>
+                <td>Victoria</td>
+                <td>Calle las palmas Av.Caballero</td>
+                <td>
+                    <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                </td>
+                <td>
+                    <a href="#"
+                        class="font-medium text-zinc-300 bg-red-500 sm:rounded-lg p-2 hover:bg-red-600 formulario-eliminar">Borrar</a>
+                </td>
+                <td>
+                    <a href="#" class="font-medium bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ver</a>
+                </td>
+            </tr>
+            <tr class="border-b border-stone-700 h-16">
+                <td>2</td>
+                <td>Los guayaberos</td>
+                <td>México</td>
+                <td>Tamaulipas</td>
+                <td>Victoria</td>
+                <td>Calle las palmas Av.Caballero</td>
+                <td>
+                    <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                </td>
+                <td>
+                    <a href="#"
+                        class="font-medium text-zinc-300 bg-red-500 sm:rounded-lg p-2 hover:bg-red-600 formulario-eliminar">Borrar</a>
+                </td>
+                <td>
+                    <a href="#" class="font-medium bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ver</a>
+                </td>
+            </tr>
+            <tr class="border-b border-stone-700 h-16">
+                <td>3</td>
+                <td>Los guayaberos</td>
+                <td>México</td>
+                <td>Tamaulipas</td>
+                <td>Victoria</td>
+                <td>Calle las palmas Av.Caballero</td>
+                <td>
+                    <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                </td>
+                <td>
+                    <a href="#"
+                        class="font-medium text-zinc-300 bg-red-500 sm:rounded-lg p-2 hover:bg-red-600 formulario-eliminar">Borrar</a>
+                </td>
+                <td>
+                    <a href="#" class="font-medium bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ver</a>
+                </td>
+            </tr>
+        @endslot
+    @endcomponent
+
+    <script>
+        document.querySelectorAll('.formulario-eliminar').forEach(function(eliminarBtn) {
+            eliminarBtn.addEventListener('click', function(event) {
+
+                event.preventDefault();
+
+                // SweetAlert2
+                Swal.fire({
+                    title: "¿Estás seguro?",
+                    text: "¡No podrás revertir esta acción!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "¡Si, eliminala!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: "¡Eliminada!",
+                            text: "La instalación ha sido eliminada.",
+                            icon: "success"
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+@endsection

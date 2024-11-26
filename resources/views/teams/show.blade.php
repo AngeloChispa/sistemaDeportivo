@@ -1,11 +1,10 @@
-
 @extends('layouts.show')
 
 @section('title', 'Admin')
 
-@section('h2', 'Torneo NombreRolConSignoPeso')
+@section('h2', 'Equipo NombreRolConSignoPeso')
 
-@section('href', 'tournaments.index')
+@section('href', 'teams.index')
 
 @section('data')
     @component('_components.dataContent')
@@ -27,9 +26,8 @@
 @endsection
 
 @section('link')
-    <a href="{{ route('tournaments.index') }}"
+    <a href="{{ route('teams.index') }}"
         class="block mt-4 text-center bg-rose-500 text-white py-2 rounded-lg hover:bg-rose-600">
         Volver a la Lista
     </a>
 @endsection
-

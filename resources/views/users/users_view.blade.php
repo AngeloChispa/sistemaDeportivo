@@ -2,6 +2,8 @@
 
 @section('title', 'Users table')
 
+{{-- TODO: Poner bonito el no data found --}}
+
 @section('content')
     @component('_components.table')
         @slot('title')
@@ -10,43 +12,88 @@
         @slot('p_content')
             Tabla que muestra los usuarios registrados hasta el momento.
         @endslot
-        @slot('reference','user.create')
-        @slot('create_something','+ Registrar Usuario')
+        @slot('reference', 'user.create')
+        @slot('create_something', '+ Registrar Usuario')
 
         @slot('content_head')
             <tr>
-                <th>ID</th>
+                <th>Usuario</th>
                 <th>Nombre</th>
                 <th>Apellidos</th>
+                <th>Usuario</th>
                 <th>Fecha de Nacimiento</th>
-                <th>Telefono</th>
+                <th>Lugar de nacimiento</th>
+                <th>Nacionalidad</th>
+                <th>Teléfono</th>
                 <th>Correo</th>
-                <th>Contraseña</th>
-                <th>Fecha de Registro</th>
-                <th colspan="2">Acción</th>
+                <th>Fecha de registro</th>
+                <th colspan="3">Acción</th>
             </tr>
         @endslot
         @slot('content_body')
-            @forelse ($users as $user)
-            <tr class="border-b border-stone-700 h-16">
-                <td>{{$user->id}}</td>
-                <td>{{$user->name}}</td>
-                <td>{{$user->lastname}}</td>
-                <td class="text-center">{{$user->date_birth}}</td>
-                <td>{{$user->phone}}</td>
-                <td>{{$user->email}}</td>
-                <td>{{$user->password}}</td>
-                <td class="text-center">{{$user->up_date}}</td>
-                <td>
-                    <a href="{{route('user.edit', $user->id)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-red-500 hover:underline">Borrar</a>
-                </td>
-            </tr> 
+            @forelse ($people as $person)
+                @if ($person->user)
+                <tr class="border-b border-stone-700 h-16">
+                    <td>{{ $person->user->id }}</td>
+                    <td>{{ $person->name }}</td>
+                    <td>{{ $person->lastname }}</td>
+                    <td>{{ $person->user->username }}</td>
+                    <td>{{ $person->birthdate }}</td>
+                    <td>{{ $person->birthplace }}</td>
+                    <td></td>
+                    <td>{{ $person->user->phone }}</td>
+                    <td>{{ $person->user->email }}</td>
+                    <td>{{ $person->user->up_date }}</td>
+                    <td>
+                        <a href="{{ route('user.edit', $person->id) }}"
+                            class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
+                    </td>
+                    <td>
+                        <form action="{{ route('user.destroy', $person->user->id) }}" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"
+                                class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900 formulario-eliminar">
+                                Borrar
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                @endif
             @empty
                 <h1>No data found</h1>
             @endforelse
         @endslot
     @endcomponent
+@endsection
+
+
+@section('scripts')
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        document.querySelectorAll('.formulario-eliminar').forEach(function(eliminarBtn) {
+            eliminarBtn.addEventListener('click', function(event) {
+                event.preventDefault();
+
+                const form = this.closest('form');
+
+                Swal.fire({
+                    title: "¿Estás seguro?",
+                    text: "¡No podrás revertir esta acción!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "¡Sí, elimínalo!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit(); // Enviar el formulario si se confirma
+                    }
+                });
+            });
+        });
+    </script>
+
 @endsection
