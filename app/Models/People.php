@@ -26,4 +26,9 @@ class People extends Model
     {
         return $this->hasOne(User::class);
     }
+
+    public function player():HasOne
+    {
+        return $this->hasOne(Player::class);
+    }
 }

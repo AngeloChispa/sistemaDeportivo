@@ -9,6 +9,7 @@ Route::resource('/rols', RolsController::class);
 
 //Borrar esta linea
 Route::view('/swal/', 'chuchoLab.pruebaSwal');
+Route::view('/prueba/livewire/', 'chuchoLab.pruebaLivewire');
 /*
 <?php
 

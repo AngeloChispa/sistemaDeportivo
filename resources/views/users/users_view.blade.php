@@ -32,6 +32,7 @@
         @endslot
         @slot('content_body')
             @forelse ($people as $person)
+                @if ($person->user)
                 <tr class="border-b border-stone-700 h-16">
                     <td>{{ $person->user->id }}</td>
                     <td>{{ $person->name }}</td>
@@ -58,6 +59,7 @@
                         </form>
                     </td>
                 </tr>
+                @endif
             @empty
                 <h1>No data found</h1>
             @endforelse
