@@ -38,7 +38,7 @@ Route::view('/register','users.register')->name('register');
 Route::view('/teams/admin','teams.teams_view')->name('teams.index');
 Route::view('/tournaments/admin','tournaments.tournaments_view')->name('tournaments.index');
 /* Crear */
-Route::view('/teams/create','teams.create')->name('teams.create');
+Route::view('/teams/create','teams.create')->name('equipos.create');
 Route::view('/tournaments/create','tournaments.create')->name('tournaments.create');
 /* Mostrar */
 Route::view('/teams/show','teams.show')->name('teams.show');
