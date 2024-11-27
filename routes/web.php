@@ -3,9 +3,11 @@
 use App\Http\Controllers\RolsController;
 use App\Http\Controllers\UsersCotroller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TournamentsController;
 
 Route::resource('/user', UsersCotroller::class);
 Route::resource('/rols', RolsController::class);
+Route::resource('/tournaments', TournamentsController::class);
 
 //Borrar esta linea
 Route::view('/swal/', 'chuchoLab.pruebaSwal');
@@ -74,7 +76,6 @@ Route::view('/login','users.login')->name('login');
 Route::view('/register','users.register')->name('register');
 /* Vistas */
 Route::view('/teams/admin','teams.teams_view')->name('teams.index');
-Route::view('/tournaments/admin','tournaments.tournaments_view')->name('tournaments.index');
 /* Crear */
 Route::view('/teams/create','teams.create')->name('teams.create');
 Route::view('/tournaments/create','tournaments.create')->name('tournaments.create');

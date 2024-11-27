@@ -12,7 +12,7 @@ class UsersCotroller extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {   
+    {
         $people = People::all();
         return view('users.users_view', compact('people'));
     }
@@ -43,7 +43,7 @@ class UsersCotroller extends Controller
         $user->email = $request->email;
         $user->password = $request->password;
         $user->save();
-        
+
         return redirect()->route('user.index');
     }
 
@@ -91,6 +91,6 @@ class UsersCotroller extends Controller
         $person = $user->people;
         $user->delete();
         $person->delete();
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('success', 'Torneo eliminado correctamente.');
     }
 }
