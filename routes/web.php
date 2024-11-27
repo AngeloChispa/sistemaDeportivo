@@ -1,11 +1,57 @@
 <?php
 
+use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\RolsController;
+use App\Http\Controllers\TournamentsController;
 use App\Http\Controllers\UsersCotroller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RolController;
+use App\Http\Controllers\TournamentController;
+use App\Http\Controllers\ReportController;
+
+
+
 
 Route::resource('/user', UsersCotroller::class);
 Route::resource('/rols', RolsController::class);
+
+
+
+//TORNEOS
+Route::resource("tournaments", TournamentController::class);
+//PLAYER
+Route::resource("playerss", PlayerController::class);
+
+//GENERAR REPORTES
+
+Route::get("/report/search", function () {
+    return view("reports.search");
+})->name("report.search");
+
+Route::get("/report/player", [ReportController::class, "playerReport"])->name("report.player");
+Route::get("/report/tournament", [ReportController::class, "tournamentReport"])->name("report.tournament");
+
+
+
+
+//ROLES ---BORRAR----
+Route::get("/roles", [RolController::class,"index"])->name("roles.index");
+Route::get("/roles/create",[RolController::class,"create" ])->name("roles.create");
+Route::post("/roles/store",[RolController::class,"store"])->name("roles.store");
+Route::put("/roles/{id}",[RolController::class,"update"])->name("roles.update");
+Route::get("/roles/{id}/edit", [RolController::class, 'edit'])->name('roles.edit');
+Route::delete("/roles/{id}", [RolController::class, 'destroy'])->name('roles.destroy');
+
+
+
+
+
+
+
+
+
+
+
 
 //Borrar esta linea
 /* Route::view('/swal/', 'chuchoLab.pruebaSwal'); */

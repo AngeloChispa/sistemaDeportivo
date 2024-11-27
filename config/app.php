@@ -2,8 +2,12 @@
 
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
+use Barryvdh\DomPDF\Facade as PDF;
+
 
 return [
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -163,12 +167,17 @@ return [
         /*
          * Application Service Providers...
          */
+
+         //PDF
+         Barryvdh\DomPDF\ServiceProvider::class,
+
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
     ])->toArray(),
+
 
     /*
     |--------------------------------------------------------------------------
@@ -181,8 +190,19 @@ return [
     |
     */
 
+
+
     'aliases' => Facade::defaultAliases()->merge([
+
+        'PDF' => PDF::class,
+
         // 'Example' => App\Facades\Example::class,
+
     ])->toArray(),
 
+
+
+
+
 ];
+
