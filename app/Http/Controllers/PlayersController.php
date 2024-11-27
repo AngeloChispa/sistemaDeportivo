@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Nationality;
 use App\Models\People;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,8 @@ class PlayersController extends Controller
      */
     public function create()
     {
-        //
+        $nationalities = Nationality::all();
+        return view('players.create', compact('nationalities'));
     }
 
     /**

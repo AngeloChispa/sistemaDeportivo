@@ -10,6 +10,7 @@
 
     @slot('content_head')
         <tr>
+            {{-- TODO:Aplicar esta misma lógica en todas las tablas --}}
             @empty($filteredPeople)
                 <th>Tabla vacía</th>
             @else

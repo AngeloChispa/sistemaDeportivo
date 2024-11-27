@@ -41,16 +41,11 @@
                 @slot('name', 'nationality')
                 @slot('id', 'nationality')
                 @slot('more_options')
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    {{-- @forelse ($nationalities as $nationality)
+                    @forelse ($nationalities as $nationality)
                         <option value="{{ $nationality['id'] }}">{{ $nationality['country'] }}</option>
                     @empty
                         <option value="">No disponibles</option>                     
-                    @endforelse --}}
+                    @endforelse
                 @endslot
             @endcomponent
 

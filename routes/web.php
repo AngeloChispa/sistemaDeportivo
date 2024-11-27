@@ -19,15 +19,12 @@ Route::view('/','index')->name('index');
 /* Vistas */
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('sponsors.index');
 Route::view('/filtro/admin','reports.filter')->name('reports.index');
-Route::view('/players/admin','players.players_view')->name('players.index');
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('patrocinadores.index');
 Route::view('/instalations/admin','instalations.instalations_view')->name('instalations.index');
 /* Mostrar */
 Route::view('/users/show','users.show')->name('users.show');
-Route::view('/players/show','players.show')->name('players.show');
 /* Crear */
 Route::view('/rols/create','rols.create')->name('rols.create');
-Route::view('/players/create','players.create')->name('jugadores.create');
 Route::view('/sponsors/create','sponsors.create')->name('patrocinadores.create');
 /* Editar */
 Route::view('/rols/edit','rols.edit')->name('rols.edit');
