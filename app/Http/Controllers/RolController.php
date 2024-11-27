@@ -10,7 +10,7 @@ class RolController extends Controller
     public function index(){
         $roles = Rol::all();
         return view("roles.index", compact(var_name: "roles"));
-
+        
     }
 
     public function create(){

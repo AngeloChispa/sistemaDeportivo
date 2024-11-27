@@ -22,7 +22,7 @@
          --}}
         @slot('content_head')
             <tr>
-                <th>Nombre</th>
+                {{-- <th>Nombre</th>
                 <th>Apellidos</th>
                 <th>Fecha de Nacimiento</th>
                 <th>Lugar de nacimiento</th>
@@ -31,99 +31,142 @@
                 <th>Altura</th>
                 <th>Lado dominante</th>
                 <th>Fecha de registro</th>
+                <th colspan="3">Acción</th> --}}
+                <th>Estatus</th>
+                <th>Altura</th>
+                <th>Peso</th>
+                <th>Lado dominante</th>
+                <th>Lugar de Nacimiento</th>
+                <th>Nacionalidad</th>
                 <th colspan="3">Acción</th>
             </tr>
         @endslot
         @slot('content_body')
-            <tr class="border-b border-stone-700 h-16">
-                <td>Alan</td>
-                <td>Garcia Pérez</td>
-                <td>15-01-1998</td>
-                <td>México</td>
-                <td>Frances</td>
-                <td>Lesionado</td>
-                <td>1.67</td>
-                <td>Zurdo</td>
-                <td>22-11-2024 06:22:30s</td>
-                <td>
-                    <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900 formulario-eliminar">Borrar</a>
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
-                </td>
-            </tr>
-            <tr class="border-b border-stone-700 h-16">
-                <td>Alan</td>
-                <td>Garcia Pérez</td>
-                <td>15-01-1998</td>
-                <td>México</td>
-                <td>Frances</td>
-                <td>Lesionado</td>
-                <td>1.67</td>
-                <td>Zurdo</td>
-                <td>22-11-2024 06:22:30s</td>
-                <td>
-                    <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900 formulario-eliminar">Borrar</a>
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
-                </td>
-            </tr>
-            <tr class="border-b border-stone-700 h-16">
-                <td>Alan</td>
-                <td>Garcia Pérez</td>
-                <td>15-01-1998</td>
-                <td>México</td>
-                <td>Frances</td>
-                <td>Lesionado</td>
-                <td>1.67</td>
-                <td>Zurdo</td>
-                <td>22-11-2024 06:22:30s</td>
-                <td>
-                    <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900 formulario-eliminar">Borrar</a>
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
-                </td>
-            </tr>
+
+            @forelse ($players as $player)
+                <tr class="border-b border-stone-700 h-16">
+                    <td>{{ $player->status }}</td>
+                    <td>{{ $player->height }}</td>
+                    <td>{{ $player->weight }}</td>
+                    <td>{{ $player->dominant_side }}</td>
+                    <td>{{ $player->birthplace }}</td>
+                    <td>{{ $player->nationality }}</td>
+                    <td>
+                        <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
+                    </td>
+                    <td>
+                        <a href="#" class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900 formulario-eliminar">Borrar</a>
+                    </td>
+                    <td>
+                        <a href="#" class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="12" class="text-center">No hay jugadores disponibles.</td>
+                </tr>
+            @endforelse
+            
+            
         @endslot
     @endcomponent
 
     <script>
         document.querySelectorAll('.formulario-eliminar').forEach(function(eliminarBtn) {
+            
             eliminarBtn.addEventListener('click', function(event) {
                 
                 event.preventDefault();
     
                 // SweetAlert2
-                Swal.fire({
-                title: "¿Estás seguro?",
-                text: "¡No podrás revertir esta acción!",
+                const swalWithBootstrapButtons = Swal.mixin({
+                    customClass: {
+                        confirmButton: "bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700",
+                        cancelButton: "bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+                },
+                buttonsStyling: false
+                });
+                swalWithBootstrapButtons.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
                 icon: "warning",
                 showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "¡Si, eliminalo!"
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "No, cancel!",
+                reverseButtons: true
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    Swal.fire({
+                    swalWithBootstrapButtons.fire({
                     title: "¡Eliminado!",
                     text: "El jugador ha sido eliminado.",
                     icon: "success"
+                    });
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire({
+                    title: "Cancelled",
+                    text: "Your imaginary file is safe :)",
+                    icon: "error"
                     });
                 }
                 });
             });
         });
-    </script>
+    </script>@section('scripts')
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    document.querySelectorAll('.formulario-eliminar').forEach(function(eliminarBtn) {
+        
+        eliminarBtn.addEventListener('click', function(event) {
+            
+            event.preventDefault();
+
+            // SweetAlert2
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: "bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 mr-5",
+                    cancelButton: "bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+            },
+            buttonsStyling: true
+            });
+            swalWithBootstrapButtons.fire({
+            title: "¿Estás seguro?",
+            text: "¡No podrás ser capaz de revertir esto!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "¡Si, eliminalo!",
+            cancelButtonText: "¡No, cancelalo!",
+            reverseButtons: false,
+            background: '#38322e',
+            color: '#d4d4d8'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire({
+                title: "¡Eliminado!",
+                text: "El jugador ha sido eliminado.",
+                icon: "success",
+                background: '#38322e',
+                color: '#d4d4d8'
+                });
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire({
+                title: "Cancelado",
+                text: "Proceso cancelado :)",
+                icon: "error",
+                background: '#38322e',
+                color: '#d4d4d8'
+                });
+            }
+            });
+        });
+    });
+</script>
     
 @endsection
