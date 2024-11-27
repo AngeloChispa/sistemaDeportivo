@@ -2,8 +2,6 @@
 
 @section('title', 'Users table')
 
-{{-- TODO: Poner bonito el no data found --}}
-
 @section('content')
     @component('_components.table')
         @slot('title')

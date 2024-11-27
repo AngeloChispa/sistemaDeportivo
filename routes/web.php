@@ -62,6 +62,7 @@ Route::view('/users/show','users.show')->name('users.show');
 Route::view('/players/show','players.show')->name('players.show');
 /* Crear */
 Route::view('/rols/create','rols.create')->name('rols.create');
+Route::view('/players/create','players.create')->name('jugadores.create');
 /* Editar */
 
 /*Danna*/
