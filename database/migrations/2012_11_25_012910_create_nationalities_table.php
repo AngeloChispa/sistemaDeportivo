@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('nationalities', function (Blueprint $table) {
             $table->id('id');
-            $table->string('country',30);
+            $table->string('country',100);
         });
     }
 

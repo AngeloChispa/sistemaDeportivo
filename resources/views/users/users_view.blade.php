@@ -80,7 +80,10 @@
     <script>
         document.querySelectorAll('.formulario-eliminar').forEach(function(eliminarBtn) {
             eliminarBtn.addEventListener('click', function(event) {
+            eliminarBtn.addEventListener('click', function(event) {
                 event.preventDefault();
+
+                const form = this.closest('form');
 
                 const form = this.closest('form');
 
@@ -92,8 +95,10 @@
                     confirmButtonColor: "#3085d6",
                     cancelButtonColor: "#d33",
                     confirmButtonText: "¡Sí, elimínalo!"
+                    confirmButtonText: "¡Sí, elimínalo!"
                 }).then((result) => {
                     if (result.isConfirmed) {
+                        form.submit(); // Enviar el formulario si se confirma
                         form.submit(); // Enviar el formulario si se confirma
                     }
                 });
