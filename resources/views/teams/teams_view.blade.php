@@ -88,25 +88,42 @@
 
     <script>
         document.querySelectorAll('.formulario-eliminar').forEach(function(eliminarBtn) {
+            
             eliminarBtn.addEventListener('click', function(event) {
                 
                 event.preventDefault();
     
                 // SweetAlert2
-                Swal.fire({
-                title: "¿Estás seguro?",
-                text: "¡No podrás revertir esta acción!",
+                const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: "btn btn-success",
+                    cancelButton: "btn btn-danger"
+                },
+                buttonsStyling: false
+                });
+                swalWithBootstrapButtons.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
                 icon: "warning",
                 showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "¡Si, eliminalo!"
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "No, cancel!",
+                reverseButtons: true
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    Swal.fire({
-                    title: "¡Eliminado!",
-                    text: "El equipo ha sido eliminado.",
+                    swalWithBootstrapButtons.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
                     icon: "success"
+                    });
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire({
+                    title: "Cancelled",
+                    text: "Your imaginary file is safe :)",
+                    icon: "error"
                     });
                 }
                 });
