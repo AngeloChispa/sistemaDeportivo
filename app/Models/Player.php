@@ -4,16 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Player extends Model
 {
+
+    public $timestamps = false; 
+
     use HasFactory;
     protected $fillable = [
+        'people_id',
         'status',
         'height',
-        'weight',
-        'dominant_side',
-        'birthplace',
-        'nationality'
+        'bestSide'
     ];
+
+    public function people ():BelongsTo
+    {
+        return $this->belongsTo(Player::class);
+    }
 }

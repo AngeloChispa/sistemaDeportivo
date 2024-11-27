@@ -64,6 +64,6 @@ class RolsController extends Controller
     public function destroy(Rol $rol)
     {
         $rol->delete();
-        return redirect()->route('rol.index');
+        return redirect()->route('rols.index');
     }
 }

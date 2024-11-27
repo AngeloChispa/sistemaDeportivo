@@ -9,6 +9,7 @@ Route::resource('/rols', RolsController::class);
 
 //Borrar esta linea
 /* Route::view('/swal/', 'chuchoLab.pruebaSwal'); */
+Route::view('/prueba/livewire/', 'chuchoLab.pruebaLivewire');
 /*
 <?php
 
@@ -51,23 +52,17 @@ class UsersController extends Controller
 Route::view('/','index')->name('index');
 
 //Julissa
-
 /* Vistas */
-Route::view('/users/admin','users.users_view')->name('users.index');
+Route::view('/filtro/admin','reports.filter')->name('reports.index');
 Route::view('/players/admin','players.players_view')->name('players.index');
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('sponsors.index');
 Route::view('/instalations/admin','instalations.instalations_view')->name('instalations.index');
 /* Mostrar */
-Route::view('/rols/show','rols.show')->name('rols.show');
 Route::view('/users/show','users.show')->name('users.show');
 Route::view('/players/show','players.show')->name('players.show');
 /* Crear */
-Route::view('/users/create','users.create')->name('users.create');
+Route::view('/rols/create','rols.create')->name('rols.create');
 /* Editar */
-Route::view('/users/edit','users.edit')->name('users.edit');
-/* Exportar */
-Route::view('/players/export','reports.players')->name('players.export');
-Route::view('/teams/export','reports.teams')->name('teams.export');
 
 /*Danna*/
 Route::view('/landing','layouts.landing')->name('landing');

@@ -10,8 +10,7 @@ class Trainer extends Model
     use HasFactory;
 
     protected $fillable = [
-        'description',
-        'birthplace',
-        'nationality'
+        'people_id',
+        'description'
     ];
 }

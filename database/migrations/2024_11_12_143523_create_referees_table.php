@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('referees', function (Blueprint $table) {
             $table->id('id');
+            $table->unsignedBigInteger('people_id');
+            $table->foreign('people_id')->references('id')->on('people');
             $table->string('description', 255)->nullable();
         });
     }

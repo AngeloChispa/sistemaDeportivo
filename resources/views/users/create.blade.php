@@ -28,10 +28,18 @@
             @endcomponent
 
             @component('_components.boxInputCreate')
+                @slot('for','username')
+                @slot('content','Usuario: ')
+                @slot('type','text')
+                @slot('name','username')
+                @slot('id','username')
+            @endcomponent
+
+            @component('_components.boxInputCreate')
                 @slot('for','date_birth')
                 @slot('content','Fecha de nacimiento: ')
                 @slot('type','date')
-                @slot('name','date_birth')
+                @slot('name','birthdate')
                 @slot('id','date_birth')
             @endcomponent
 

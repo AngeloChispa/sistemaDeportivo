@@ -14,19 +14,14 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id('id');
-            $table->string('name', 30);
-            $table->string('lastname', 30);
-            $table->date('date_birth');
-            $table->string('phone', 15)->unique();
-            $table->unsignedBigInteger('rol_id')->nullable();
-            $table->foreign('rol_id')->references('id')->on('rols');
-            $table->string('email', 30)->unique();
-            $table->string('password', 255);
+            $table->unsignedBigInteger('people_id');
+            $table->foreign('people_id')->references('id')->on('people');
+            $table->string('username', 30);
+            $table->string('phone',20)->unique();
+            $table->unsignedBigInteger('rol_id')->default(2);
+            $table->string('email',30)->unique();
+            $table->string('password',255);
             $table->datetime('up_date')->default(DB::raw('CURRENT_TIMESTAMP'));
-            //Se va a guardar la ruta del path
-            $table->string('avatar',255)->nullable()->default(null);
-            /* $table->rememberToken();
-            $table->datetimes(); */
         });
     }
 
