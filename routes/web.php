@@ -4,10 +4,13 @@ use App\Http\Controllers\RolsController;
 use App\Http\Controllers\UsersCotroller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TournamentsController;
+use App\Http\Controllers\InstalationsController;
 
 Route::resource('/user', UsersCotroller::class);
 Route::resource('/rols', RolsController::class);
 Route::resource('/tournaments', TournamentsController::class);
+Route::resource("/instalations",InstalationsController::class);
+
 
 //Borrar esta linea
 Route::view('/swal/', 'chuchoLab.pruebaSwal');
@@ -59,7 +62,6 @@ Route::view('/','index')->name('index');
 /* Vistas */
 Route::view('/players/admin','players.players_view')->name('players.index');
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('sponsors.index');
-Route::view('/instalations/admin','instalations.instalations_view')->name('instalations.index');
 /* Mostrar */
 Route::view('/rols/show','rols.show')->name('rols.show');
 Route::view('/users/show','users.show')->name('users.show');

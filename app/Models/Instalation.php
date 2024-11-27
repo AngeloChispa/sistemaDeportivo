@@ -9,6 +9,8 @@ class Instalation extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'name',
         'country',
