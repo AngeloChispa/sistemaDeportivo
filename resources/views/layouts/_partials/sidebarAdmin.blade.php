@@ -37,7 +37,7 @@
                     @slot('icon')
                         <ion-icon name="people" class="h-5 w-5"></ion-icon>
                     @endslot
-                    @slot('reference', 'users.index')
+                    @slot('reference', 'user.index')
                     @slot('name', 'Usuarios')
                 @endcomponent
             </li>
