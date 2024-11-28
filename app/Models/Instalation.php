@@ -18,4 +18,6 @@ class Instalation extends Model
         'city',
         'capacity'
     ];
+
+    
 }
