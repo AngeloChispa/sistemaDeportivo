@@ -31,4 +31,20 @@ class People extends Model
     {
         return $this->hasOne(Player::class);
     }
+
+    public function referee():HasOne
+    {
+        return $this->hasOne(Referee::class);
+    }
+
+    public function trainer():HasOne
+    {
+        return $this->hasOne(Trainer::class);
+    }
+
+    public function nationality():BelongsTo
+    {
+        return $this->belongsTo(Nationality::class);
+    }
+
 }

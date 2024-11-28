@@ -20,7 +20,7 @@ class TournamentsController extends Controller
 
     public function store(Request $request){
 
-        $iconPath = null;
+
         if ($request->hasFile("icon")){
             $iconPath = $request->file("icon")->store('icons', 'public');
         }
@@ -48,12 +48,12 @@ class TournamentsController extends Controller
 
     public function update(Request $request,Tournament $tournament ){
 
-        $iconPath = null;
         if ($request->hasFile("icon")) {
             $iconPath = $request->file("icon")->store('icons', 'public');
+            $tournament->icon = $iconPath;
         }
+
         $tournament->name = $request->name;
-        $tournament->icon = $iconPath;
         $tournament->type = $request->type;
         $tournament->start_date = $request->start_date;
         $tournament->end_date = $request->end_date;

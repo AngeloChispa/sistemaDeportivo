@@ -7,8 +7,9 @@
         Editar Torneo
     </h1>
     <div class="flex items-center justify-center">
-        <form method="POST" action="{{ route('tournaments.update', $tournament->id) }}"
-            class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md mt-6" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('tournaments.update', $tournament->id) }}"  enctype="multipart/form-data"
+
+            class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md mt-6">
             @method('PUT')
             @csrf
 
@@ -48,7 +49,7 @@
 
             <div>
                 <label for="desc" class="block text-sm font-semibold text-stone-200">Descripción:</label>
-                <input type="text" name="desc" id="description" value="{{ old('desc', $tournament->description) }}"
+                <input type="text" name="description" id="description" value="{{ old('description', $tournament->description) }}"
                     class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
             </div>
 

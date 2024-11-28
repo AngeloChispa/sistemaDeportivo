@@ -19,7 +19,7 @@
         Crear Torneo
     </h1>
     <div class="flex items-center justify-center">
-        <form method="POST" action="{{ route("tournaments.store")}}"
+        <form method="POST" action="{{ route("tournaments.store")}} " enctype="multipart/form-data"
 
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md mt-6">
             @csrf
@@ -31,8 +31,8 @@
             </div>
 
             <div>
-                <label for="logo" class="block text-sm font-semibold text-stone-200">Logo:</label>
-                <input type="file" name="logo" id="logo"
+                <label for="icon" class="block text-sm font-semibold text-stone-200">Logo:</label>
+                <input type="file" name="icon" id="icon"
                     class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
             </div>
 
@@ -56,7 +56,7 @@
 
             <div>
                 <label for="desc" class="block text-sm font-semibold text-stone-200">Descripción:</label>
-                <input type="text" name="desc" id="desc"
+                <input type="text" name="description" id="description"
                     class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
             </div>
 

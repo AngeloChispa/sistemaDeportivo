@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Nationality;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,7 +14,8 @@ class DatabaseSeeder extends Seeder
        $this->call([
             RolSeeder::class,
             PeopleSeeder::class,
-            PlayerSeeder::class
+            PlayerSeeder::class,
+            NationalitySeeder::class
        ]);
     }
 }

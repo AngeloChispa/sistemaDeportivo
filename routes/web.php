@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PlayersController;
 use App\Http\Controllers\RolsController;
 use App\Http\Controllers\UsersCotroller;
 use Illuminate\Support\Facades\Route;
@@ -10,57 +11,19 @@ Route::resource('/user', UsersCotroller::class);
 Route::resource('/rols', RolsController::class);
 Route::resource('/tournaments', TournamentsController::class);
 Route::resource("/instalations",InstalationsController::class);
+Route::resource('/players', PlayersController::class);
+
+
 
 
 //Borrar esta linea
 Route::view('/swal/', 'chuchoLab.pruebaSwal');
 Route::view('/prueba/livewire/', 'chuchoLab.pruebaLivewire');
-/*
-<?php
-
-namespace App\Http\Controllers;
-
-use App\Models\User;
-use Illuminate\Http\Request;
-
-class UsersController extends Controller
-{
-    public function show(){
-        $users = User::all();
-        return view('chuchoLab.registerUser', compact('users'));
-    }
-
-    public function create(){
-        return view('chuchoLab.createUser');
-    }
-
-    public function store(Request $request) {
-        User::create($request->all());
-        return redirect()->route('user.show');
-    }
-
-    public function edit(User $user){
-        return view('chuchoLab.editUser',compact('user'));
-    }
-
-    public function update(Request $request, User $user){
-        $user->update($request->all());
-        return redirect()->route('user.show');
-    }
-
-    public function delete(User $user){
-        $user->delete();
-        return redirect()->route('user.show');
-    }
-}
-
-*/
 
 Route::view('/','index')->name('index');
 
 //Julissa
 /* Vistas */
-Route::view('/players/admin','players.players_view')->name('players.index');
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('sponsors.index');
 /* Mostrar */
 Route::view('/rols/show','rols.show')->name('rols.show');

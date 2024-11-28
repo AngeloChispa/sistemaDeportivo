@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('sponsorships', function (Blueprint $table) {
             $table->id('id');
             $table->unsignedBigInteger('transaction_id')->nullable();
-            $table->foreign('transaction_id')->references('id')->on('finances');
+            $table->foreign('transaction_id')->references('id')->on('sponsor_user');
             $table->unsignedBigInteger('tournament_id')->nullable(); 
             $table->foreign('tournament_id')->references('id')->on('tournaments');
             $table->unsignedBigInteger('team_id')->nullable();
