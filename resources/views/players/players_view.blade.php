@@ -61,13 +61,9 @@
                         Sin altura aun
                         @endif
                     </td>
-                    <!--Verificar que no haya null -->
                     <td>
-                        @if ($person->player)
                         {{$person->player->bestSide}}
-                        @else
-                        SIN DATOS
-                        @endif
+
                     </td>
                     <td>
                         <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
