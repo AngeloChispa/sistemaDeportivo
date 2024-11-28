@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Title extends Model
 {
@@ -16,4 +17,8 @@ class Title extends Model
         'description'
     ];
 
+    public function assignment():BelongsTo
+    {
+        return $this->belongsTo(CoachTeamAssignment::class);
+    }
 }

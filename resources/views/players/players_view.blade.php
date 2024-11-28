@@ -39,29 +39,32 @@
         @slot('content_body')
             @forelse ($people as $person)
 
-            @if ($person->player)
-            <tr class="border-b border-stone-700 h-16">
-                <td>{{$person->id}}</td>
-                <td>{{$person->player->id}}</td>
-                <td>{{$person->name}}</td>
-                <td>{{$person->lastname}}</td>
-                <td>{{$person->birthdate}}</td>
-                <td>{{$person->birthplace}}</td>
-                <td>{{$person->birthplace}}</td>
-                <td>{{$person->player->height}}</td>
-                <td>{{$person->player->bestSide}}</td>
-                <td>
-                    <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
-                </td>
-                <td>
-                    <a href="#"
-                        class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900 formulario-eliminar">Borrar</a>
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
-                </td>
-            </tr>
-            @endif
+                @if ($person->player)
+                <tr class="border-b border-stone-700 h-16">
+                    <td>{{$person->id}}</td>
+                    <td>{{$person->player->id}}</td>
+                    <td>{{$person->name}}</td>
+                    <td>{{$person->lastname}}</td>
+                    <td>{{$person->birthdate}}</td>
+                    <td>{{$person->birthplace}}</td>
+                    <td>{{$person->birthplace}}</td>
+                    <td>{{$person->player->height}}</td>
+                    <td>
+                        {{$person->player->bestSide}}
+                    </td>
+                    <td>
+                        <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
+                    </td>
+                    <td>
+                        <a href="#"
+                            class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900 formulario-eliminar">Borrar</a>
+                    </td>
+                    <td>
+                        <a href="#" class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
+                    </td>
+                </tr>
+                @endif
+>>>>>>> origin/chucho
             @empty
             @endforelse
         @endslot
