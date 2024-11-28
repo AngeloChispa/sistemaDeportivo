@@ -15,9 +15,9 @@
         @slot('create_something', 'Crear Jugador')
 
         {{-- @forelse ($players as $player)
-            
+
         @empty
-            
+
         @endforelse
          --}}
         @slot('content_head')
@@ -40,14 +40,35 @@
             @forelse ($people as $person)
                 <tr class="border-b border-stone-700 h-16">
                     <td>{{$person->id}}</td>
-                    <td>{{$person->player->id}}</td>
+                    <!--Verificar que no haya null -->
+                    <td>
+                        @if ($person->player)
+                        {{$person->player->id}}
+                        @else
+                        Sin jugador aun
+                        @endif
+                        </td>
                     <td>{{$person->name}}</td>
                     <td>{{$person->lastname}}</td>
                     <td>{{$person->birthdate}}</td>
                     <td>{{$person->birthplace}}</td>
                     <td>{{$person->birthplace}}</td>
-                    <td>{{$person->player->height}}</td>
-                    <td>{{$person->player->bestSide}}</td>
+                    <!--Verificar que no haya null -->
+                    <td>
+                        @if ($person->player)
+                        {{$person->player->height}}
+                        @else
+                        Sin altura aun
+                        @endif
+                    </td>
+                    <!--Verificar que no haya null -->
+                    <td>
+                        @if ($person->player)
+                        {{$person->player->bestSide}}
+                        @else
+                        SIN DATOS
+                        @endif
+                    </td>
                     <td>
                         <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
                     </td>

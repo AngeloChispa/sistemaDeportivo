@@ -10,11 +10,12 @@ class InstalationsController extends Controller
 
     public function index(){
         $instalations = Instalation::all();
-        return view("instalations.instalations_view");
+        return view("instalations.instalations_view", compact("instalations"));
+
     }
 
     public function create(){
-        
+
     }
 
 

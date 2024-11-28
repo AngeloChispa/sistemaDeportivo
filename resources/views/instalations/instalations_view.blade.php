@@ -11,7 +11,7 @@
         @slot('p_content')
             Tabla que muestra las instalaciones registradas hasta el momento.
         @endslot
-        @slot('reference', 'instalations.index')
+        @slot('reference', 'instalations.create')
         @slot('create_something', 'Crear instalación')
 
         {{-- @forelse ($players as $player)

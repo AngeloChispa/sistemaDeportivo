@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TournamentsController;
 use App\Http\Controllers\InstalationsController;
 
-Route::resource('/user', UsersCotroller::class);
+Route::resource('/user', controller: UsersCotroller::class);
 Route::resource('/rols', RolsController::class);
 Route::resource('/tournaments', TournamentsController::class);
 Route::resource("/instalations",InstalationsController::class);
@@ -28,7 +28,6 @@ Route::view('/sponsors/admin','sponsors.sponsors_view')->name('sponsors.index');
 /* Mostrar */
 Route::view('/rols/show','rols.show')->name('rols.show');
 Route::view('/users/show','users.show')->name('users.show');
-Route::view('/players/show','players.show')->name('players.show');
 /* Crear */
 Route::view('/rols/create','rols.create')->name('rols.create');
 /* Editar */
