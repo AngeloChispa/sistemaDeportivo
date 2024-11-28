@@ -33,7 +33,7 @@
                 <th>Altura</th>
                 <th>Lado dominante</th>
                 <th>Fecha de registro</th>
-                <th colspan="3">Acción</th> --}}
+                <th colspan="3">Acción</th> 
                 <th>Estatus</th>
                 <th>Altura</th>
                 <th>Peso</th>
@@ -71,33 +71,8 @@
         @endslot
     @endcomponent
 
-    <script>
-        document.querySelectorAll('.formulario-eliminar').forEach(function(eliminarBtn) {
-            
-            eliminarBtn.addEventListener('click', function(event) {
-
-                event.preventDefault();
-
-                // SweetAlert2
-                Swal.fire({
-                    title: "¿Estás seguro?",
-                    text: "¡No podrás revertir esta acción!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "¡Si, eliminalo!"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            title: "¡Eliminado!",
-                            text: "El jugador ha sido eliminado.",
-                            icon: "success"
-                        });
-                    }
-                });
-            });
-        });
-    </script>
+    @section('scripts')
+    @component('_components.swal')
+    @endcomponent
 
 @endsection

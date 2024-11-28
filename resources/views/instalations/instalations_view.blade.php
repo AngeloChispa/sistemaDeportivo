@@ -11,7 +11,7 @@
         @slot('p_content')
             Tabla que muestra las instalaciones registradas hasta el momento.
         @endslot
-        @slot('reference', 'teams.index')
+        @slot('reference', 'instalations.create')
         @slot('create_something', 'Crear instalación')
 
         {{-- @forelse ($players as $player)
@@ -90,32 +90,8 @@
         @endslot
     @endcomponent
 
-    <script>
-        document.querySelectorAll('.formulario-eliminar').forEach(function(eliminarBtn) {
-            eliminarBtn.addEventListener('click', function(event) {
-
-                event.preventDefault();
-
-                // SweetAlert2
-                Swal.fire({
-                    title: "¿Estás seguro?",
-                    text: "¡No podrás revertir esta acción!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "¡Si, eliminala!"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            title: "¡Eliminada!",
-                            text: "La instalación ha sido eliminada.",
-                            icon: "success"
-                        });
-                    }
-                });
-            });
-        });
-    </script>
+    @section('scripts')
+    @component('_components.swal')
+    @endcomponent
 
 @endsection
