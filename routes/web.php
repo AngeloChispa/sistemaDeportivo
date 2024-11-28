@@ -25,11 +25,17 @@ Route::view('/','index')->name('index');
 //Julissa
 /* Vistas */
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('sponsors.index');
+<<<<<<< HEAD
+=======
+Route::view('/filtro/admin','reports.filter')->name('reports.index');
+Route::view('/sponsors/admin','sponsors.sponsors_view')->name('patrocinadores.index');
+Route::view('/instalations/admin','instalations.instalations_view')->name('instalations.index');
+>>>>>>> origin/Julissa
 /* Mostrar */
-Route::view('/rols/show','rols.show')->name('rols.show');
 Route::view('/users/show','users.show')->name('users.show');
 /* Crear */
 Route::view('/rols/create','rols.create')->name('rols.create');
+Route::view('/sponsors/create','sponsors.create')->name('patrocinadores.create');
 /* Editar */
 Route::view('/rols/edit','rols.edit')->name('rols.edit');
 
@@ -41,7 +47,7 @@ Route::view('/register','users.register')->name('register');
 /* Vistas */
 Route::view('/teams/admin','teams.teams_view')->name('teams.index');
 /* Crear */
-Route::view('/teams/create','teams.create')->name('teams.create');
+Route::view('/teams/create','teams.create')->name('equipos.create');
 Route::view('/tournaments/create','tournaments.create')->name('tournaments.create');
 /* Mostrar */
 Route::view('/teams/show','teams.show')->name('teams.show');

@@ -1,64 +1,70 @@
 @extends('layouts.admin_view')
 
-@section('title', 'Crear equipo')
-
-<!-- Torneos {
-	id_torneo integer pk increments unique
-	nombre varchar(30)
-	logo blob null
-	tipo varchar(15)
-	fecha_inicio date
-	fecha_fin date
-	descripcion text null
-}
- -->
+@section('title', 'Registrar Torneo')
 
 @section('content')
-    <h1
-        class="text-4xl text-center">
-        Crear Torneo
+    <h1 class="text-4xl text-center">
+        Registrar Torneo
     </h1>
     <div class="flex items-center justify-center">
-        <form method="POST" action="{{ route("tournaments.store")}} " enctype="multipart/form-data"
 
-            class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md mt-6">
+        <form method="POST" action="{{ route("tournaments.store")}} " enctype="multipart/form-data"
+            class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
             @csrf
 
-            <div>
-                <label for="name" class="block text-sm font-semibold text-stone-200">Nombre:</label>
-                <input type="text" name="name" id="name"
-                    class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
-            </div>
+            @component('_components.boxInputCreate')
+                @slot('for', 'name')
+                @slot('content', 'Nombre: ')
+                @slot('type', 'text')
+                @slot('name', 'name')
+                @slot('id', 'name')
+            @endcomponent
 
-            <div>
-                <label for="icon" class="block text-sm font-semibold text-stone-200">Logo:</label>
-                <input type="file" name="icon" id="icon"
-                    class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
-            </div>
 
-            <div>
-                <label for="type" class="block text-sm font-semibold text-stone-200">Tipo:</label>
-                <input type="text" name="type" id="type"
-                    class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
-            </div>
+            @component('_components.boxInputCreate')
+                @slot('for', 'icon')
+                @slot('content', 'Logo: ')
+                @slot('type', 'file')
+                @slot('name', 'icon')
+                @slot('id', 'icon')
+            @endcomponent
 
-            <div>
-                <label for="start_date" class="block text-sm font-semibold text-stone-200">Fecha de inicio:</label>
-                <input type="date" name="start_date" id="start_date"
-                    class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
-            </div>
+            @component('_components.boxSelectInput')
+                @slot('for', 'type')
+                @slot('content', 'Tipo de torneo: ')
+                @slot('name', 'type')
+                @slot('id', 'type')
+                @slot('more_options')
+                    <option value="1">Liga</option>
+                    <option value="2">Eliminatoria</option>
+                    <option value="3">Liga y Eliminatoria</option>
+                @endslot
+            @endcomponent
 
-            <div>
-                <label for="end_date" class="block text-sm font-semibold text-stone-200">Fecha de fin:</label>
-                <input type="date" name="end_date" id="end_date"
-                    class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
-            </div>
 
-            <div>
-                <label for="desc" class="block text-sm font-semibold text-stone-200">Descripción:</label>
-                <input type="text" name="description" id="description"
-                    class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
-            </div>
+            @component('_components.boxInputCreate')
+                @slot('for', 'start_date')
+                @slot('content', 'Fecha de inicio: ')
+                @slot('type', 'date')
+                @slot('name', 'start_date')
+                @slot('id', 'start_date')
+            @endcomponent
+
+            @component('_components.boxInputCreate')
+                @slot('for', 'end_date')
+                @slot('content', 'Fecha de finalización: ')
+                @slot('type', 'date')
+                @slot('name', 'end_date')
+                @slot('id', 'end_date')
+            @endcomponent
+
+            @component('_components.boxInputCreate')
+                @slot('for', 'description')
+                @slot('content', 'Descripción: ')
+                @slot('type', 'text')
+                @slot('name', 'description')
+                @slot('id', 'description step=0.01 min=0')
+            @endcomponent
 
             <div class="flex">
                 <input type="submit" value="Crear"
@@ -69,3 +75,4 @@
         </form>
     </div>
 @endsection
+
