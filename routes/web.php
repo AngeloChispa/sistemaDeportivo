@@ -41,10 +41,7 @@ Route::view('/landing2','layouts.landing2')->name('landing2');
 Route::view('/login','users.login')->name('login');
 Route::view('/register','users.register')->name('register');
 /* Vistas */
-Route::view('/teams/admin','teams.teams_view')->name('teams.index');
 /* Crear */
-Route::view('/teams/create','teams.create')->name('equipos.create');
 Route::view('/tournaments/create','tournaments.create')->name('tournaments.create');
 /* Mostrar */
-Route::view('/teams/show','teams.show')->name('teams.show');
 Route::view('/tournaments/show','tournaments.show')->name('tournaments.show');
