@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\PlayerController;
+use App\Http\Controllers\PlayersController;
 use App\Http\Controllers\RolsController;
 use App\Http\Controllers\TournamentsController;
 use App\Http\Controllers\UsersCotroller;
@@ -14,106 +14,27 @@ use App\Http\Controllers\ReportController;
 
 Route::resource('/user', UsersCotroller::class);
 Route::resource('/rols', RolsController::class);
-
-
-
-//TORNEOS
-Route::resource("tournaments", TournamentController::class);
-//PLAYER
-Route::resource("playerss", PlayerController::class);
-
-//GENERAR REPORTES
-
-Route::get("/report/search", function () {
-    return view("reports.search");
-})->name("report.search");
-
-Route::get("/report/player", [ReportController::class, "playerReport"])->name("report.player");
-Route::get("/report/tournament", [ReportController::class, "tournamentReport"])->name("report.tournament");
-
-
-
-
-//ROLES ---BORRAR----
-Route::get("/roles", [RolController::class,"index"])->name("roles.index");
-Route::get("/roles/create",[RolController::class,"create" ])->name("roles.create");
-Route::post("/roles/store",[RolController::class,"store"])->name("roles.store");
-Route::put("/roles/{id}",[RolController::class,"update"])->name("roles.update");
-Route::get("/roles/{id}/edit", [RolController::class, 'edit'])->name('roles.edit');
-Route::delete("/roles/{id}", [RolController::class, 'destroy'])->name('roles.destroy');
-
-
-
-
-
-
-
-
-
-
-
+Route::resource('/players', PlayersController::class);
 
 //Borrar esta linea
-/* Route::view('/swal/', 'chuchoLab.pruebaSwal'); */
-/*
-<?php
-
-namespace App\Http\Controllers;
-
-use App\Models\User;
-use Illuminate\Http\Request;
-
-class UsersController extends Controller
-{
-    public function show(){
-        $users = User::all();
-        return view('chuchoLab.registerUser', compact('users'));
-    }
-
-    public function create(){
-        return view('chuchoLab.createUser');
-    }
-
-    public function store(Request $request) {
-        User::create($request->all());
-        return redirect()->route('user.show');
-    }
-
-    public function edit(User $user){
-        return view('chuchoLab.editUser',compact('user'));
-    }
-
-    public function update(Request $request, User $user){
-        $user->update($request->all());
-        return redirect()->route('user.show');
-    }
-
-    public function delete(User $user){
-        $user->delete();
-        return redirect()->route('user.show');
-    }
-}*/
+Route::view('/swal/', 'chuchoLab.pruebaSwal');
+Route::view('/prueba/livewire/', 'chuchoLab.pruebaLivewire');
 
 Route::view('/','index')->name('index');
 
 //Julissa
-
 /* Vistas */
-Route::view('/users/admin','users.users_view')->name('users.index');
-Route::view('/players/admin','players.players_view')->name('players.index');
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('sponsors.index');
+Route::view('/filtro/admin','reports.filter')->name('reports.index');
+Route::view('/sponsors/admin','sponsors.sponsors_view')->name('patrocinadores.index');
 Route::view('/instalations/admin','instalations.instalations_view')->name('instalations.index');
 /* Mostrar */
-Route::view('/rols/show','rols.show')->name('rols.show');
 Route::view('/users/show','users.show')->name('users.show');
-Route::view('/players/show','players.show')->name('players.show');
 /* Crear */
-Route::view('/users/create','users.create')->name('users.create');
+Route::view('/rols/create','rols.create')->name('rols.create');
+Route::view('/sponsors/create','sponsors.create')->name('patrocinadores.create');
 /* Editar */
-Route::view('/users/edit','users.edit')->name('users.edit');
-/* Exportar */
-Route::view('/players/export','reports.players')->name('players.export');
-Route::view('/teams/export','reports.teams')->name('teams.export');
+Route::view('/rols/edit','rols.edit')->name('rols.edit');
 
 /*Danna*/
 Route::view('/landing','layouts.landing')->name('landing');
@@ -124,7 +45,7 @@ Route::view('/register','users.register')->name('register');
 Route::view('/teams/admin','teams.teams_view')->name('teams.index');
 Route::view('/tournaments/admin','tournaments.tournaments_view')->name('tournaments.index');
 /* Crear */
-Route::view('/teams/create','teams.create')->name('teams.create');
+Route::view('/teams/create','teams.create')->name('equipos.create');
 Route::view('/tournaments/create','tournaments.create')->name('tournaments.create');
 /* Mostrar */
 Route::view('/teams/show','teams.show')->name('teams.show');

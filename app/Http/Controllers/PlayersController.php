@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Rol;
+use App\Models\Nationality;
+use App\Models\People;
 use Illuminate\Http\Request;
 
-class RolsController extends Controller
+class PlayersController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $rols = Rol::all();
-        return view('rols.rols_view', compact('rols'));
+        $people = People::all();
+        return view('players.players_view', compact('people'));
     }
 
     /**
@@ -21,7 +22,8 @@ class RolsController extends Controller
      */
     public function create()
     {
-        return view('rols.create');
+        $nationalities = Nationality::all();
+        return view('players.create', compact('nationalities'));
     }
 
     /**
@@ -29,8 +31,7 @@ class RolsController extends Controller
      */
     public function store(Request $request)
     {
-        Rol::create($request->all());
-        return redirect()->route('rols.index');
+        //
     }
 
     /**
@@ -44,26 +45,24 @@ class RolsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Rol $rol)
+    public function edit(string $id)
     {
-        return view('rols.edit', compact('rol'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Rol $rol)
+    public function update(Request $request, string $id)
     {
-        $rol->update($request->all());
-        return redirect()->route('rols.index');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Rol $rol)
+    public function destroy(string $id)
     {
-        $rol->delete();
-        return redirect()->route('rols.index');
+        //
     }
 }

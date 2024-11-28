@@ -11,7 +11,7 @@
         @slot('p_content')
         Tabla que muestra los torneos registrados hasta el momento.
         @endslot
-        @slot('reference','tournaments.index')
+        @slot('reference','tournaments.create')
         @slot('create_something','Crear Torneo')
 
         {{-- @forelse ($players as $player)

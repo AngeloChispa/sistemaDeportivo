@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('referees', function (Blueprint $table) {
+        Schema::create('nationalities', function (Blueprint $table) {
             $table->id('id');
-            $table->unsignedBigInteger('people_id');
-            $table->foreign('people_id')->references('id')->on('people');
-            $table->string('description', 255)->nullable();
+            $table->string('country',100);
         });
     }
 
@@ -24,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('referees');
+        Schema::dropIfExists('nationalities');
     }
 };

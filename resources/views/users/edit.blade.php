@@ -7,44 +7,50 @@
         Registrar Usuario
     </h1>
     <div class="flex items-center justify-center">
-        <form method="POST" action="{{route('user.update', $user->id)}}"
+        <form method="POST" action="{{route('user.update', $person->user->id)}}"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
             @method('PUT')
             @csrf
 
             <div>
                 <label for="name" class="block text-sm font-semibold text-stone-200">Nombre:</label>
-                <input type="text" name="name" id="name"  value="{{$user->name}}"
+                <input type="text" name="name" id="name"  value="{{$person->name}}"
                     class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
             </div>
 
             <div>
                 <label for="lastname" class="block text-sm font-semibold text-stone-200">Apellidos:</label>
-                <input type="text" name="lastname" id="lastname" value="{{$user->lastname}}"
+                <input type="text" name="lastname" id="lastname" value="{{$person->lastname}}"
+                    class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
+            </div>
+
+            <div>
+                <label for="username" class="block text-sm font-semibold text-stone-200">Usuario:</label>
+                <input type="text" name="username" id="username" value="{{$person->user->username}}"
                     class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
             </div>
 
             <div>
                 <label for="date_birth" class="block text-sm font-semibold text-stone-200">Fecha de nacimiento:</label>
-                <input type="date" name="date_birth" id="date_birth" value="{{$user->date_birth}}"
+                <input type="date" name="date_birth" id="date_birth" value="{{$person->birthdate}}"
                     class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
             </div>
 
             <div>
                 <label for="phone" class="block text-sm font-semibold text-stone-200">Teléfono:</label>
-                <input type="number" name="phone" id="phone"  value="{{$user->phone}}"
+                <input type="number" name="phone" id="phone"  value="{{$person->user->phone}}"
                     class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
             </div>
 
             <div>
                 <label for="email" class="block text-sm font-semibold text-stone-200">Correo:</label>
-                <input type="email" name="email" id="email" value="{{$user->email}}"
+                <input type="email" name="email" id="email" value="{{$person->user->email}}"
                     class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
             </div>
 
             <div>
                 <label for="password" class="block text-sm font-semibold text-stone-200">Contraseña:</label>
-                <input type="password" name="password" id="password" value="{{$user->password}}"
+                <input type="password" name="password" id="password" value="{{$person->user->password}}"
                     class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
             </div>
 

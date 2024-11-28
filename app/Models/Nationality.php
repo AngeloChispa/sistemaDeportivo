@@ -4,21 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Referee extends Model
+class Nationality extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
 
     protected $fillable = [
-        'people_id',
-        'description'
+        'country'
     ];
 
-    public function people():BelongsTo
+    public function people():HasMany
     {
-        return $this->belongsTo(People::class);
+        return $this->hasMany(People::class);
     }
 }

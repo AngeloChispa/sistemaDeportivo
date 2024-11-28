@@ -17,12 +17,10 @@ class PlayerFactory extends Factory
     public function definition(): array
     {
         return [
-            'status' => $this->faker->randomElement(['Activo', 'Lesionado', 'Retirado']),
-            'height' => $this->faker->randomFloat(2, 1.50, 2.20),
-            'weight' => $this->faker->randomFloat(2, 50, 120),
-            'dominant_side' => $this->faker->randomElement(['Izquierda', 'Derecha']),
-            'birthplace' => $this->faker->city(),
-            'nationality' => $this->faker->countryCode(), 
+            'people_id' => fake()->unique()->numberBetween(1,50),
+            'status' => fake()->randomElement(['Lesionado','Activo', 'Retirado']),
+            'height' => fake()->randomFloat(2, 1.50, 3.00),
+            'bestSide' => fake()->randomElement(['Izquierdo','Derecho']),
         ];
     }
 }

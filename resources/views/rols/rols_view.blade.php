@@ -22,13 +22,11 @@
             </tr>
         @endslot
         @slot('content_body')
-
-        @forelse ($roles as $rol)
+            @forelse ($rols as $rol)
             <tr class="border-b border-stone-700 h-16">
-                <td>{{ $rol->id }}</td>
-                <td>{{ $rol->name }}</td>
-                <td>{{ $rol->description }}</td>
-        
+                <td>{{$rol->id}}</td>
+                <td>{{$rol->name}}</td>
+                <td>{{$rol->description}}</td>
                 <td>
                     <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
                 </td>
@@ -39,12 +37,9 @@
                     <a href="#" class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
                 </td>
             </tr>
-        @empty
-            <tr>
-                <td colspan="12" class="text-center">No hay roles disponibles.</td>
-            </tr>
-        @endforelse
-            
+            @empty
+                
+            @endforelse
         @endslot
     @endcomponent
 
