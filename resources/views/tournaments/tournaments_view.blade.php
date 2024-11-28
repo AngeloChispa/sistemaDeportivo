@@ -39,7 +39,23 @@
                             Sin logo
                         @endif
                     </td>
-                    <td>{{ $tournament->type }}</td>
+                    <td>
+                        @switch($tournament->type)
+                          @case(1)
+                            <p class="text-sm text-stone-400">Liga</p>
+                            @break
+
+                         @case(2)
+                            <p class="text-sm text-stone-400">Eliminatoria</p>
+                            @break
+
+                        @case(3)
+                            <p class="text-sm text-stone-400">Liga y Eliminación</p>
+                            @break
+                                @default
+                         <p class="text-sm text-stone-400">CHUCHO</p>
+                            @endswitch
+                    </td>
                     <td>{{ $tournament->start_date }}</td>
                     <td>{{ $tournament->end_date }}</td>
                     <td>{{ $tournament->description }}</td>

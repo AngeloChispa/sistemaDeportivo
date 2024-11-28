@@ -37,7 +37,10 @@ class TournamentsController extends Controller
         return redirect()->route("tournaments.index");
     }
 
-    public function show($id){}
+    public function show($id){
+        $tournament = Tournament::findOrFail($id);
+        return view("tournaments.show",compact("tournaments"));
+    }
 
     public function edit($id){
             $tournament = Tournament::findOrFail($id);

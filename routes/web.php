@@ -25,12 +25,10 @@ Route::view('/','index')->name('index');
 //Julissa
 /* Vistas */
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('sponsors.index');
-<<<<<<< HEAD
-=======
+
 Route::view('/filtro/admin','reports.filter')->name('reports.index');
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('patrocinadores.index');
 Route::view('/instalations/admin','instalations.instalations_view')->name('instalations.index');
->>>>>>> origin/Julissa
 /* Mostrar */
 Route::view('/users/show','users.show')->name('users.show');
 /* Crear */

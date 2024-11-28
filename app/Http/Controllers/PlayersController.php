@@ -22,8 +22,7 @@ class PlayersController extends Controller
      */
     public function create()
     {
-        $nationalities = Nationality::all();
-        return view('players.create', compact('nationalities'));
+        return view('players.create');
     }
 
     /**
