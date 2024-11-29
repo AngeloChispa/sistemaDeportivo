@@ -26,6 +26,8 @@ Route::view('/users/show','users.show')->name('users.show');
 /* Crear */
 Route::view('/rols/create','rols.create')->name('rols.create');
 Route::view('/sponsors/create','sponsors.create')->name('patrocinadores.create');
+Route::view('/sports/create','sports.create')->name('sport.create');
+Route::view('/instalations/create','instalations.create')->name('instalation.create');
 /* Editar */
 Route::view('/rols/edit','rols.edit')->name('rols.edit');
 
