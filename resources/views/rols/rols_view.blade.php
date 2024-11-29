@@ -35,9 +35,6 @@
                     <a href="#"
                         class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900 formulario-eliminar">Borrar</a>
                 </td>
-                <td>
-                    <a href="#" class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
-                </td>
             </tr>
             @empty
                 
