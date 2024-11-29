@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class CoachTeamAssignment extends Model
@@ -17,5 +18,10 @@ class CoachTeamAssignment extends Model
     public function title():HasOne
     {
         return $this->hasOne(Title::class, 'trainer_team_id');
+    }
+
+    public function trainer():BelongsTo
+    {
+        return $this->belongsTo(Trainer::class);
     }
 }

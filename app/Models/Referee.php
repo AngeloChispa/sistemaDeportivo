@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Referee extends Model
 {
@@ -21,4 +22,9 @@ class Referee extends Model
     {
         return $this->belongsTo(People::class);
     }
+
+    public function games():HasMany
+    {
+        return $this->hasMany(Game::class);
+    }    
 }

@@ -19,7 +19,6 @@ Route::resource("/teams",TeamsController::class);
 
 
 //Borrar esta linea
-Route::view('/swal/', 'chuchoLab.pruebaSwal');
 Route::view('/prueba/livewire/', 'chuchoLab.pruebaLivewire');
 
 Route::view('/','index')->name('index');
@@ -30,12 +29,14 @@ Route::view('/sponsors/admin','sponsors.sponsors_view')->name('sponsors.index');
 
 Route::view('/filtro/admin','reports.filter')->name('reports.index');
 Route::view('/instalations/admin','instalations.instalations_view')->name('instalations.index');
+Route::view('/sponsors/admin','sponsors.sponsors_view')->name('patrocinadores.index');
 /* Mostrar */
 Route::view('/users/show','users.show')->name('users.show');
+Route::view('/games/show','games.show')->name('games.show');
 /* Crear */
-Route::view('/rols/create','rols.create')->name('rols.create');
+Route::view('/sponsors/create','sponsors.create')->name('patrocinadores.create');
+Route::view('/sports/create','sports.create')->name('sport.create');
 /* Editar */
-Route::view('/rols/edit','rols.edit')->name('rols.edit');
 
 /*Danna*/
 Route::view('/landing','layouts.landing')->name('landing');
