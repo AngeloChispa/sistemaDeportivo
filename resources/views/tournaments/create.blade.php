@@ -7,7 +7,8 @@
         Registrar Torneo
     </h1>
     <div class="flex items-center justify-center">
-        <form method="POST" action="#"
+
+        <form method="POST" action="{{ route("tournaments.store")}} " enctype="multipart/form-data"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
             @csrf
 
@@ -18,6 +19,7 @@
                 @slot('name', 'name')
                 @slot('id', 'name')
             @endcomponent
+
 
             @component('_components.boxInputCreate')
                 @slot('for', 'icon')
@@ -38,6 +40,7 @@
                     <option value="3">Liga y Eliminatoria</option>
                 @endslot
             @endcomponent
+
 
             @component('_components.boxInputCreate')
                 @slot('for', 'start_date')

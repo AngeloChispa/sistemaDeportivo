@@ -15,9 +15,9 @@
         @slot('create_something', 'Crear Jugador')
 
         {{-- @forelse ($players as $player)
-            
+
         @empty
-            
+
         @endforelse
          --}}
         @slot('content_head')
@@ -38,6 +38,7 @@
         @endslot
         @slot('content_body')
             @forelse ($people as $person)
+                @if ($person->player)
                 <tr class="border-b border-stone-700 h-16">
                     <td>{{$person->id}}</td>
                     <td>{{$person->player->id}}</td>
@@ -47,7 +48,9 @@
                     <td>{{$person->birthplace}}</td>
                     <td>{{$person->birthplace}}</td>
                     <td>{{$person->player->height}}</td>
-                    <td>{{$person->player->bestSide}}</td>
+                    <td>
+                        {{$person->player->bestSide}}
+                    </td>
                     <td>
                         <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
                     </td>
@@ -59,6 +62,7 @@
                         <a href="#" class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
                     </td>
                 </tr>
+                @endif
             @empty
             @endforelse
         @endslot

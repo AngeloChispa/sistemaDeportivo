@@ -11,13 +11,13 @@
         @slot('p_content')
             Tabla que muestra las instalaciones registradas hasta el momento.
         @endslot
-        @slot('reference', 'teams.index')
+        @slot('reference', 'instalations.create')
         @slot('create_something', 'Crear instalación')
 
         {{-- @forelse ($players as $player)
-            
+
         @empty
-            
+
         @endforelse
          --}}
         @slot('content_head')

@@ -4,10 +4,17 @@ use App\Http\Controllers\PlayersController;
 use App\Http\Controllers\RolsController;
 use App\Http\Controllers\UsersCotroller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TournamentsController;
+use App\Http\Controllers\InstalationsController;
 
-Route::resource('/user', UsersCotroller::class);
+Route::resource('/user', controller: UsersCotroller::class);
 Route::resource('/rols', RolsController::class);
+Route::resource('/tournaments', TournamentsController::class);
+Route::resource("/instalations",InstalationsController::class);
 Route::resource('/players', PlayersController::class);
+
+
+
 
 //Borrar esta linea
 Route::view('/swal/', 'chuchoLab.pruebaSwal');
@@ -18,6 +25,7 @@ Route::view('/','index')->name('index');
 //Julissa
 /* Vistas */
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('sponsors.index');
+
 Route::view('/filtro/admin','reports.filter')->name('reports.index');
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('patrocinadores.index');
 Route::view('/instalations/admin','instalations.instalations_view')->name('instalations.index');
@@ -38,7 +46,6 @@ Route::view('/login','users.login')->name('login');
 Route::view('/register','users.register')->name('register');
 /* Vistas */
 Route::view('/teams/admin','teams.teams_view')->name('teams.index');
-Route::view('/tournaments/admin','tournaments.tournaments_view')->name('tournaments.index');
 /* Crear */
 Route::view('/teams/create','teams.create')->name('equipos.create');
 Route::view('/tournaments/create','tournaments.create')->name('tournaments.create');
