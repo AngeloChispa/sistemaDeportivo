@@ -3,15 +3,16 @@
 @section('title', 'Sponsors table')
 
 @section('content')
+
     {{-- Tabla de ejemplo, con estilos --}}
     @component('_components.table')
         @slot('title')
-            patrocinadores
+            Patrocinadores
         @endslot
         @slot('p_content')
-        Tabla que muestra los patrocinadores registrados hasta el momento.
+            Tabla que muestra los patrocinadores registrados hasta el momento.
         @endslot
-        @slot('reference','patrocinadores.create')
+        @slot('reference','sponsors.create')
         @slot('create_something','Crear patrocinador')
 
         {{-- @forelse ($players as $player)

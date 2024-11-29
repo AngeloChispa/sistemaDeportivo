@@ -32,7 +32,7 @@ Route::view('/instalations/admin','instalations.instalations_view')->name('insta
 Route::view('/users/show','users.show')->name('users.show');
 /* Crear */
 Route::view('/rols/create','rols.create')->name('rols.create');
-Route::view('/sponsors/create','sponsors.create')->name('patrocinadores.create');
+Route::view('/sponsors/create','sponsors.create')->name('sponsors.create');
 /* Editar */
 Route::view('/rols/edit','rols.edit')->name('rols.edit');
 
@@ -45,6 +45,7 @@ Route::view('/register','users.register')->name('register');
 Route::view('/teams/admin','teams.teams_view')->name('teams.index');
 Route::view('/tournaments/admin','tournaments.tournaments_view')->name('tournaments.index');
 Route::view('/finances/admin','finances.finances_view')->name('finances.index');
+Route::view('/matches/admin','matches.matches_view')->name('matches.in');
 /* Crear */
 Route::view('/teams/create','teams.create')->name('equipos.create');
 Route::view('/tournaments/create','tournaments.create')->name('tournaments.create');
@@ -54,3 +55,4 @@ Route::view('/finances/create','finances.create')->name('finances.create');
 /* Mostrar */
 Route::view('/teams/show','teams.show')->name('teams.show');
 Route::view('/tournaments/show','tournaments.show')->name('tournaments.show');
+
