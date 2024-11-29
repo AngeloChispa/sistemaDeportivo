@@ -28,15 +28,32 @@ class TeamsController extends Controller
         $team->state = $request->state;
         $team->city = $request->city;
         $team->shield = $shieldPath;
-
         $team->save();
 
-
-
-
+        return redirect() ->route("teams.index");
 
     }
 
+    public function show($id){
+
+    }
+
+
+    public function edit($id){
+        $team = Team::findOrFail($id);
+        return view("teams.edit");
+
+    }
+
+
+    public function update(Request $request, $id){
+
+    }
+
+
+    public function destroy($id){
+
+    }
 
 
 
