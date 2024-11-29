@@ -17,7 +17,6 @@ Route::resource('/players', PlayersController::class);
 
 
 //Borrar esta linea
-Route::view('/swal/', 'chuchoLab.pruebaSwal');
 Route::view('/prueba/livewire/', 'chuchoLab.pruebaLivewire');
 
 Route::view('/','index')->name('index');
