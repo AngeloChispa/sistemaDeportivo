@@ -6,12 +6,14 @@ use App\Http\Controllers\UsersCotroller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TournamentsController;
 use App\Http\Controllers\InstalationsController;
+use App\Http\Controllers\TeamsController;
 
 Route::resource('/user', controller: UsersCotroller::class);
 Route::resource('/rols', RolsController::class);
 Route::resource('/tournaments', TournamentsController::class);
-Route::resource("/instalations",InstalationsController::class);
-Route::resource('/players', PlayersController::class);
+Route::resource("/instalations",InstalationsController::class);//FALTA TERMINAR CONTROLADOR
+Route::resource('/players', PlayersController::class);//FALTA TERMINAR CONTROLADOR
+Route::resource("/teams",TeamsController::class);
 
 
 

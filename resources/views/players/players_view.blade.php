@@ -64,7 +64,6 @@
                     </td>
                 </tr>
                 @endif
->>>>>>> origin/chucho
             @empty
             @endforelse
         @endslot
