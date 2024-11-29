@@ -1,18 +1,57 @@
 <?php
 
+use App\Http\Controllers\PlayersController;
+use App\Http\Controllers\RolsController;
+use App\Http\Controllers\UsersCotroller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TournamentsController;
+use App\Http\Controllers\InstalationsController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+Route::resource('/user', controller: UsersCotroller::class);
+Route::resource('/rols', RolsController::class);
+Route::resource('/tournaments', TournamentsController::class);
+Route::resource("/instalations",InstalationsController::class);
+Route::resource('/players', PlayersController::class);
+
+
+
+
+//Borrar esta linea
+Route::view('/swal/', 'chuchoLab.pruebaSwal');
+Route::view('/prueba/livewire/', 'chuchoLab.pruebaLivewire');
 
 Route::view('/','index')->name('index');
-Route::view('/rols','rols.rols_view')->name('rols.index');
-Route::view('/users','users.users_view')->name('users.index');
+
+//Julissa
+/* Vistas */
+Route::view('/sponsors/admin','sponsors.sponsors_view')->name('sponsors.index');
+
+Route::view('/filtro/admin','reports.filter')->name('reports.index');
+Route::view('/sponsors/admin','sponsors.sponsors_view')->name('patrocinadores.index');
+
+/* Mostrar */
+Route::view('/users/show','users.show')->name('users.show');
+/* Crear */
+Route::view('/rols/create','rols.create')->name('rols.create');
+Route::view('/sponsors/create','sponsors.create')->name('patrocinadores.create');
+Route::view('/sports/create','sports.create')->name('sport.create');
+
+/* Editar */
+Route::view('/rols/edit','rols.edit')->name('rols.edit');
+
+/*Danna*/
+Route::view('/landing','layouts.landing')->name('landing');
+Route::view('/landing2','layouts.landing2')->name('landing2');
+Route::view('/login','users.login')->name('login');
+Route::view('/register','users.register')->name('register');
+/* Vistas */
+Route::view('/teams/admin','teams.teams_view')->name('teams.index');
+Route::view('/finances/admin','finances.finances_view')->name('finances.index');
+/* Crear */
+Route::view('/teams/create','teams.create')->name('equipos.create');
+Route::view('/tournaments/create','tournaments.create')->name('tournaments.create');
+Route::view('/finances/create','finances.create')->name('finances.create');
+Route::view('/instalations/create','instalations.create')->name('instalations.create');
+/* Mostrar */
+Route::view('/teams/show','teams.show')->name('teams.show');
+Route::view('/tournaments/show','tournaments.show')->name('tournaments.show');

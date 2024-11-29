@@ -1,17 +1,67 @@
 {{-- Sidebar --}}
-<aside class="w-64 text-gray-400">
-    <ul class="p-4 space-y-3.5">
-        <li><a href="#" class="block py-2 px-4 hover:bg-gray-700">Inicio</a></li>
-        <li><a href="{{route('rols.index')}}" class="block py-2 px-4 hover:bg-gray-700">Rols</a></li>
-        <li><a href="{{route('users.index')}}" class="block py-2 px-4 hover:bg-gray-700">Users</a></li>
-        <li><a href="#" class="block py-2 px-4 hover:bg-gray-700">Tournaments</a></li>
-        <li><a href="#" class="block py-2 px-4 hover:bg-gray-700">Teams & Players</a></li>
-        <li><a href="#" class="block py-2 px-4 hover:bg-gray-700">Partidos</a></li>
-        <li><a href="#" class="block py-2 px-4 hover:bg-gray-700">Estadísticas y Reportes</a></li>
-        <li><a href="#" class="block py-2 px-4 hover:bg-gray-700">Clasificación</a></li>
-        <li><a href="#" class="block py-2 px-4 hover:bg-gray-700">Comunicación</a></li>
-        <li><a href="#" class="block py-2 px-4 hover:bg-gray-700">Instalaciones</a></li>
-        <li><a href="#" class="block py-2 px-4 hover:bg-gray-700">Seguridad y Auditoría</a></li>
-        <li><a href="#" class="block py-2 px-4 hover:bg-gray-700">Patrocinadores y Finanzas</a></li>
-    </ul>
-</aside>
+<div class="fixed top-0 left-0 h-full w-52 bg-stone-900 text-white p-4 flex flex-col space-y-4">
+    @component('_components.boxSidebar ')
+        @slot('icon', '')
+        @slot('reference', 'index')
+        @slot('name', 'Index')
+    @endcomponent
+
+    @component('_components.boxSidebar ')
+        @slot('icon', '')
+        @slot('reference', 'users.index')
+        @slot('name', 'Usuarios')
+    @endcomponent
+
+    @component('_components.boxSidebar ')
+        @slot('icon', '')
+        @slot('reference', 'index')
+        @slot('name', 'Torneos')
+    @endcomponent
+
+    @component('_components.boxSidebar ')
+        @slot('icon', '')
+        @slot('reference', 'index')
+        @slot('name', 'Jugadores')
+    @endcomponent
+
+    @component('_components.boxSidebar ')
+        @slot('icon', '')
+        @slot('reference', 'index')
+        @slot('name', 'Equipos')
+    @endcomponent
+
+    @component('_components.boxSidebar ')
+        @slot('icon', '')
+        @slot('reference', 'index')
+        @slot('name', 'Partidos')
+    @endcomponent
+
+    @component('_components.boxSidebar ')
+        @slot('icon', '')
+        @slot('reference', 'index')
+        @slot('name', 'Estadísticas & Reportes')
+    @endcomponent
+
+    @component('_components.boxSidebar ')
+        @slot('icon', '')
+        @slot('reference', 'index')
+        @slot('name', 'Clasificación')
+    @endcomponent
+
+    @component('_components.boxSidebar ')
+        @slot('icon', '')
+        @slot('reference', 'index')
+        @slot('name', 'Comunicación')
+    @endcomponent
+
+    @component('_components.boxSidebar ')
+        @slot('icon', '')
+        @slot('reference', 'index')
+        @slot('name', 'Instalaciones')
+    @endcomponent
+
+    @component('_components.boxSidebar ')
+        @slot('icon', '')
+        @slot('reference', 'index')
+        @slot('name', 'Patrocinadores')
+    @endcomponent

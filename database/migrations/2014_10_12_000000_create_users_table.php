@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -13,19 +14,14 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id('id');
-            $table->string('name', 30);
-            $table->string('lastname', 30);
-            $table->date('date_birth');
-            $table->string('phone', 15)->unique();
-            //Esta es una clave foranea
-            $table->bigInteger('rol_id');
-            $table->string('email', 30)->unique();
-            $table->string('password', 30);
-            $table->date('up_date');
-            //Se va a guardar la ruta del path
-            $table->string('avatar',255)->nullable();
-            /* $table->rememberToken();
-            $table->timestamps(); */
+            $table->unsignedBigInteger('people_id');
+            $table->foreign('people_id')->references('id')->on('people');
+            $table->string('username', 30);
+            $table->string('phone',20)->unique();
+            $table->unsignedBigInteger('rol_id')->default(2);
+            $table->string('email',30)->unique();
+            $table->string('password',255);
+            $table->datetime('up_date')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 

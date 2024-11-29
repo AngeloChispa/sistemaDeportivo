@@ -12,14 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('players', function (Blueprint $table) {
-            $table->id('user_id');
-            $table->foreignId('user_id')->references('id')->on('users');
-            $table->string('status',20);
+            $table->id();
+            $table->unsignedBigInteger('people_id')->unique();
+            $table->foreign('people_id')->references('id')->on('people');
+            $table->string('status');
             $table->float('height');
-            $table->float('weight');
-            $table->string('dominant_side',10);
-            $table->string('birthplace',20);
-            $table->string('nationality',20);
+            $table->string('bestSide');
         });
     }
 
