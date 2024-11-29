@@ -4,7 +4,7 @@
     }
 </style>
 
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg m-6">
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-center rtl:text-right text-zinc-300">
         <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-zinc-300 bg-stone-900">
             {{ $title }}
