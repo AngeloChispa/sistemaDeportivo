@@ -11,13 +11,13 @@
         @slot('p_content')
         Tabla que muestra los equipos registrados hasta el momento.
         @endslot
-        @slot('reference','equipos.create')
+        @slot('reference','teams.create')
         @slot('create_something','Crear Equipo')
 
         {{-- @forelse ($players as $player)
-            
+
         @empty
-            
+
         @endforelse
          --}}
         @slot('content_head')
@@ -88,11 +88,11 @@
 
     <script>
         document.querySelectorAll('.formulario-eliminar').forEach(function(eliminarBtn) {
-            
+
             eliminarBtn.addEventListener('click', function(event) {
-                
+
                 event.preventDefault();
-    
+
                 // SweetAlert2
                 const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
@@ -130,5 +130,5 @@
             });
         });
     </script>
-    
+
 @endsection

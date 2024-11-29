@@ -38,6 +38,7 @@
         @endslot
         @slot('content_body')
             @forelse ($people as $person)
+
                 @if ($person->player)
                 <tr class="border-b border-stone-700 h-16">
                     <td>{{$person->id}}</td>
