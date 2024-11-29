@@ -43,6 +43,7 @@ Route::view('/login','users.login')->name('login');
 Route::view('/register','users.register')->name('register');
 /* Vistas */
 Route::view('/teams/admin','teams.teams_view')->name('teams.index');
+Route::view('/teams/edit','teams.edit')->name('teams.edit');
 /* Crear */
 Route::view('/teams/create','teams.create')->name('equipos.create');
 /* Mostrar */
