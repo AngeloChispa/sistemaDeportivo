@@ -5,19 +5,30 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Player extends Model
 {
 
     public $timestamps = false; 
 
+
+    public $timestamps = false; 
+
     use HasFactory;
     protected $fillable = [
+        'people_id',
         'people_id',
         'status',
         'height',
         'bestSide'
+        'bestSide'
     ];
+
+    public function people ():BelongsTo
+    {
+        return $this->belongsTo(Player::class);
+    }
 
     public function people ():BelongsTo
     {

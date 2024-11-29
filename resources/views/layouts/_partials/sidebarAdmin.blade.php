@@ -109,7 +109,7 @@
                     @slot('icon')
                         <ion-icon name="business" class="h-5 w-5"></ion-icon>
                     @endslot
-                    @slot('reference', 'index')
+                    @slot('reference', 'instalations.index')
                     @slot('name', 'Instalaciones')
                 @endcomponent
             </li>
@@ -118,7 +118,7 @@
                     @slot('icon')
                         <ion-icon name="card" class="h-5 w-5"></ion-icon>
                     @endslot
-                    @slot('reference', 'index')
+                    @slot('reference', 'patrocinadores.index')
                     @slot('name', 'Patrocinadores')
                 @endcomponent
             </li>
@@ -127,10 +127,10 @@
                     @slot('icon')
                         <ion-icon name="wallet" class="h-5 w-5"></ion-icon>
                     @endslot
-                    @slot('reference', 'index')
+                    @slot('reference', 'finances.index')
                     @slot('name', 'Finanzas')
                 @endcomponent
             </li>
         </ul>
     </div>
-</aside>
+</aside>,l. 
