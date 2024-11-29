@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Trainer extends Model
 {
@@ -14,6 +15,11 @@ class Trainer extends Model
         'people_id',
         'description'
     ];
+
+    public function assignment():HasMany
+    {
+        return $this->hasMany(CoachTeamAssignment::class);
+    }
 
     public function people():BelongsTo
     {

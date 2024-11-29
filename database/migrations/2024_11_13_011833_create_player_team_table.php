@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('player_team_assignments', function (Blueprint $table) {
+        Schema::create('player_team', function (Blueprint $table) {
             $table->id('id');
             $table->unsignedBigInteger('team_id');
             $table->foreign('team_id')->references('id')->on('teams');
@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('position',15);
             $table->integer('dorsal');
             $table->date('assignment_date');
+            $table->date('departure_date')->nullable();
             $table->boolean('captain')->default(false);
-
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('player_team_assignments');
+        Schema::dropIfExists('player_team');
     }
 };
