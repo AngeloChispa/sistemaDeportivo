@@ -28,16 +28,13 @@ Route::view('/sponsors/admin','sponsors.sponsors_view')->name('sponsors.index');
 
 Route::view('/filtro/admin','reports.filter')->name('reports.index');
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('patrocinadores.index');
-Route::view('/instalations/admin','instalations.instalations_view')->name('instalations.index');
 /* Mostrar */
 Route::view('/users/show','users.show')->name('users.show');
+Route::view('/games/show','games.show')->name('games.show');
 /* Crear */
-Route::view('/rols/create','rols.create')->name('rols.create');
 Route::view('/sponsors/create','sponsors.create')->name('patrocinadores.create');
 Route::view('/sports/create','sports.create')->name('sport.create');
-Route::view('/instalations/create','instalations.create')->name('instalation.create');
 /* Editar */
-Route::view('/rols/edit','rols.edit')->name('rols.edit');
 
 /*Danna*/
 Route::view('/landing','layouts.landing')->name('landing');
@@ -48,7 +45,5 @@ Route::view('/register','users.register')->name('register');
 Route::view('/teams/admin','teams.teams_view')->name('teams.index');
 /* Crear */
 Route::view('/teams/create','teams.create')->name('equipos.create');
-Route::view('/tournaments/create','tournaments.create')->name('tournaments.create');
 /* Mostrar */
 Route::view('/teams/show','teams.show')->name('teams.show');
-Route::view('/tournaments/show','tournaments.show')->name('tournaments.show');
