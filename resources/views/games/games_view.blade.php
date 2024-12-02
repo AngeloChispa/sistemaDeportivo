@@ -1,40 +1,34 @@
 @extends('layouts.admin_view')
 
-@section('title', 'Users table')
+@section('title', 'Games table')
 
 @section('content')
     @component('_components.table')
         @slot('title')
-            Usuarios
+            Partidos
         @endslot
         @slot('p_content')
-            Tabla que muestra los usuarios registrados hasta el momento.
+            Tabla que muestra los partidos registrados hasta el momento.
         @endslot
-        @slot('reference', 'user.create')
-        @slot('create_something', 'Registrar Usuario')
+        @slot('reference', 'games.create')
+        @slot('create_something', 'Registrar Partido')
 
         @slot('content_head')
-            @empty($people)
+            {{-- @empty($people)
                 <th>Tabla vacía</th>
-            @else
+            @else --}}
                 <tr>
-                    <th>ID</th>
-                    <th>Usuario</th>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Usuario</th>
-                    <th>Fecha de Nacimiento</th>
-                    <th>Lugar de nacimiento</th>
-                    <th>Nacionalidad</th>
-                    <th>Teléfono</th>
-                    <th>Correo</th>
-                    <th>Fecha de registro</th>
+                    <th>ID Partido</th>
+                    <th>ID Torneo</th>
+                    <th>ID Equipo Local</th>
+                    <th>ID Equipo Visitante</th>
+                    <th>ID Arbitro</th>
                     <th colspan="3">Acción</th>
                 </tr>
-            @endempty
+           {{--  @endempty --}}
         @endslot
         @slot('content_body')
-            @forelse ($people as $person)
+            {{-- @forelse ($people as $person)
                 @if ($person->user)
                     <tr class="border-b border-stone-700 h-16">
                         <td>{{ $person->user->id }}</td>
@@ -67,13 +61,13 @@
                 <tr>
                     <td>No data found</td>
                 </tr>
-            @endforelse
+            @endforelse --}}
         @endslot
     @endcomponent
+@endsection
 
 @section('scripts')
 @component('_components.swal')
 @endcomponent
 
-    @endsection
 @endsection

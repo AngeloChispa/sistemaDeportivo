@@ -73,7 +73,7 @@
                     @slot('icon')
                         <ion-icon name="football" class="h-5 w-5"></ion-icon>
                     @endslot
-                    @slot('reference', 'index')
+                    @slot('reference', 'games.index')
                     @slot('name', 'Partidos')
                 @endcomponent
             </li>
@@ -91,11 +91,11 @@
                     @slot('icon')
                         <ion-icon name="podium" class="h-5 w-5"></ion-icon>
                     @endslot
-                    @slot('reference', 'index')
+                    @slot('reference', 'classifications.index')
                     @slot('name', 'Clasificación')
                 @endcomponent
             </li>
-            <li>
+            {{-- <li>
                 @component('_components.boxSidebar ')
                     @slot('icon')
                         <ion-icon name="notifications" class="h-5 w-5"></ion-icon>
@@ -103,7 +103,7 @@
                     @slot('reference', 'index')
                     @slot('name', 'Comunicación')
                 @endcomponent
-            </li>
+            </li> --}}
             <li>
                 @component('_components.boxSidebar ')
                     @slot('icon')

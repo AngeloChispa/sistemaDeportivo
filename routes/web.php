@@ -43,10 +43,14 @@ Route::view('/register','users.register')->name('register');
 /* Vistas */
 Route::view('/teams/admin','teams.teams_view')->name('teams.index');
 Route::view('/teams/edit','teams.edit')->name('teams.edit');
+Route::view('/finances/admin','finances.finances_view')->name('finances.index');
+Route::view('/games/admin','games.games_view')->name('games.index');
+Route::view('/classifications/admin','classifications.classifications_view')->name('classifications.index');
 /* Crear */
 Route::view('/teams/create','teams.create')->name('equipos.create');
 Route::view('/tournaments/create','tournaments.create')->name('tournaments.create');
 Route::view('/finances/create','finances.create')->name('finances.create');
 Route::view('/instalations/create','instalations.create')->name('instalations.create');
+Route::view('/games/create','games.create')->name('games.create');
 /* Mostrar */
 Route::view('/teams/show','teams.show')->name('teams.show');

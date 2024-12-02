@@ -41,7 +41,7 @@
             <div class="flex">
                 <input type="submit" value="Crear"
                     class="m-2 w-full mt-4 bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600 transition cursor-pointer" />
-                <a href="{{ route('user.index') }}"
+                <a href="{{ route('finances.index') }}"
                     class="m-2 text-center w-full mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition cursor-pointer">Cancelar</a>
             </div>
         </form>
