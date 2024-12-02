@@ -11,27 +11,24 @@
             Tabla que muestra los usuarios registrados hasta el momento.
         @endslot 
         @slot('reference', 'user.create')
-        @slot('create_something', 'Registrar Usuario')--}}
+        @slot('create_something', 'Registrar Usuario') --}}
 
         @slot('content_head')
-            <livewire:filtro />
-             @section('scripts','@livewireScripts')
             {{-- @empty($people)
                 <th>Tabla vacía</th>
             @else --}}
-                <tr>
-
-                    <th colspan="2" class="w-5 text-left pl-5">Equipo</th>
-                    <th class="w-24">PJ</th>
-                    <th class="w-24 ">G</th>
-                    <th class="w-24 ">E</th>
-                    <th class="w-24 ">P</th>
-                    <th class="w-24 ">GF</th>
-                    <th class="w-24 ">GC</th>
-                    <th class="w-24 ">DG</th>
-                    <th class="w-24 font-bold">Pts</th>
-                    {{-- <th colspan="3">Acción</th> --}}
-                </tr>
+            <tr>
+                <th colspan="2" class="w-5 text-left pl-5">Equipo</th>
+                <th class="w-24">PJ</th>
+                <th class="w-24 ">G</th>
+                <th class="w-24 ">E</th>
+                <th class="w-24 ">P</th>
+                <th class="w-24 ">GF</th>
+                <th class="w-24 ">GC</th>
+                <th class="w-24 ">DG</th>
+                <th class="w-24 font-bold">Pts</th>
+                {{-- <th colspan="3">Acción</th> --}}
+            </tr>
             {{-- @endempty --}}
         @endslot
         @slot('content_body')
@@ -70,7 +67,7 @@
                 </tr>
             @endforelse --}}
             <tr class="border-b border-stone-700 h-12 hover:bg-[#333333] text-base">
-                
+
                 <td style="width: 50px;" class="hover:bg-transparent">1</td>
                 <td class="text-left hover:bg-transparent">Liverpool</td>
                 <td class="">12</td>
@@ -192,7 +189,7 @@
 @endsection
 
 @section('scripts')
-@component('_components.swal')
-@endcomponent
+    @component('_components.swal')
+    @endcomponent
 
 @endsection

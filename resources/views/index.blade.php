@@ -251,13 +251,13 @@
                     @slot('create_something', 'Registrar Usuario')--}}
             
                     @slot('content_head')
-                        <livewire:filtro />
-                         @section('scripts','@livewireScripts')
+                        @section('scripts','@livewireScripts')
                         {{-- @empty($people)
                             <th>Tabla vacía</th>
                         @else --}}
                         <tr>
                             <th colspan="2" class="text-left pl-5 w-2/5">Equipo</th>
+                            <th></th>
                             <th class="w-1/5">J</th>
                             <th class="w-1/5">DG</th>
                             <th class="w-1/5 font-bold">Pts</th>

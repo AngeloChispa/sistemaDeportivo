@@ -6,7 +6,7 @@
                 <a href="{{ route('index') }}" class="flex ms-2 md:me-24">
                     <img src={{ asset('assets/img/logotipo.png') }} class="h-10 me-3" alt="Logo" />
                     <span
-                        class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Elite Champs</span>
+                        class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Jogo Bonito</span>
                 </a>
             </div>
 
