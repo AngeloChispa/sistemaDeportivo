@@ -83,20 +83,20 @@
 
             @slot('content_head')
                 {{--  @empty($clasifications)
-            <tr>
-                <th colspan="2">Equipo</th>
-                <th class="w-24">PJ</th>
-                <th class="w-24">G</th>
-                <th class="w-24">E</th>
-                <th class="w-24">P</th>
-                <th class="w-24">GF</th>
-                <th class="w-24">GC</th>
-                <th>DG</th>
-                <th class="w-24font-bold" >Pts</th>
-            </tr>
-            @else
                 <tr>
                     <th>No data</th>
+                </tr>
+                @else
+                <tr>
+                    <th colspan="2">Equipo</th>
+                    <th class="w-24">PJ</th>
+                    <th class="w-24">G</th>
+                    <th class="w-24">E</th>
+                    <th class="w-24">P</th>
+                    <th class="w-24">GF</th>
+                    <th class="w-24">GC</th>
+                    <th>DG</th>
+                    <th class="w-24font-bold" >Pts</th>
                 </tr>
             @endempty --}}
 

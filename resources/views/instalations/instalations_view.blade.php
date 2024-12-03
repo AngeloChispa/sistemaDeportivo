@@ -17,6 +17,10 @@
         @slot('content_head')
             {{-- @empty($instalations)
                 <tr>
+                    <th>No data</th>
+                </tr>
+            @else
+                <tr>
                     <th>Id</th>
                     <th>Nombre</th>
                     <th>País</th>
@@ -25,10 +29,6 @@
                     <th>Localización</th>
                     <th>Capacidad</th>
                     <th colspan="3">Acción</th>
-                </tr>
-            @else
-                <tr>
-                    <th>No data</th>
                 </tr>
             @endempty --}}
             <tr>

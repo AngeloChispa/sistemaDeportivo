@@ -16,17 +16,22 @@
         @slot('create_something', 'Registrar Torneo')
 
         @slot('content_head')
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Logo</th>
-                <th>Tipo</th>
-                <th>Fecha de inicio</th>
-                <th>Fecha de finalización</th>
-                <th>Descripción</th>
-                <th colspan="3">Acción</th>
-            </tr>
-
+            @empty($tournaments)
+                <tr>
+                    <th>No data</th>
+                </tr>
+            @else
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Logo</th>
+                    <th>Tipo</th>
+                    <th>Fecha de inicio</th>
+                    <th>Fecha de finalización</th>
+                    <th>Descripción</th>
+                    <th colspan="3">Acción</th>
+                </tr>
+            @endempty
         @endslot
         @slot('content_body')
             @forelse ($tournaments as $tournament)

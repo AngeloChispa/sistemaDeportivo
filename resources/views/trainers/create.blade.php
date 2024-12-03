@@ -4,7 +4,7 @@
 
 @section('content')
     <h1 class="text-4xl text-center">
-        Registrar Jugador
+        Registrar Entrenador
     </h1>
     <div class="flex items-center justify-center">
         <form method="POST" action="#"

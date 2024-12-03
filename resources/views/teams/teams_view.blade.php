@@ -14,14 +14,12 @@
         @slot('reference', 'teams.create')
         @slot('create_something', 'Crear Equipo')
 
-        {{-- @forelse ($players as $player)
-
-        @empty
-
-        @endforelse
-         --}}
         @slot('content_head')
             {{-- @empty($tournaments)
+                <tr>
+                    <th>No data</th>
+                </tr>
+            @else
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
@@ -30,10 +28,6 @@
                     <th>Deporte</th>
                     <th>Escudo</th>
                     <th colspan="3">Acción</th>
-                </tr>
-            @else
-                <tr>
-                    <th>No data</th>
                 </tr>
             @endempty --}}
             <tr>
@@ -49,11 +43,11 @@
         @slot('content_body')
             @forelse ($teams as $team)
                 <tr class="border-b border-stone-700 h-16">
-                    <td>{{$team->id}}</td>
-                    <td>{{$team->name}}</td>
-                    <td>{{$team->city}}</td>
-                    <td>{{$team->state}}</td>
-                    <td>{{$team->sport->name}}</td>
+                    <td>{{ $team->id }}</td>
+                    <td>{{ $team->name }}</td>
+                    <td>{{ $team->city }}</td>
+                    <td>{{ $team->state }}</td>
+                    <td>{{ $team->sport->name }}</td>
                     <td></td>
                     <td>
                         <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
@@ -72,6 +66,56 @@
             @empty
                 <h1>No data found</h1>
             @endforelse
+        @endslot
+    @endcomponent
+
+    {{-- Tabla deportes --}}
+    @component('_components.table')
+        @slot('title')
+            Deportes
+        @endslot
+        @slot('p_content')
+            Tabla que muestra los deportes registrados hasta el momento.
+        @endslot
+        @slot('reference', 'sport.create')
+        @slot('create_something', 'Registrar deporte')
+
+        @slot('content_head')
+            @empty($sports)
+                <tr>
+                    <th>No data</th>
+                </tr>
+            @else
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th colspan="2">Acción</th>
+                </tr>
+            @endempty
+        @endslot
+        @slot('content_body')
+            {{-- @forelse ($sports as $sport)
+                <tr class="border-b border-stone-700 h-16">
+                    <td>{{ $sport->id }}</td>
+                    <td>{{ $sport->id }}</td>
+                    <td>{{ $sport->name }}</td>
+                    <td>
+                        <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                    </td>
+                    <td>
+                        <form action="#" method="POST" class="inline formulario-eliminar">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
+                        </form>
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <td>No data found</td>
+                </tr>
+            @endforelse --}}
         @endslot
     @endcomponent
 
@@ -127,5 +171,5 @@
             });
         });
     </script>
-    
+
 @endsection

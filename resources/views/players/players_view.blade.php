@@ -21,24 +21,30 @@
         @endforelse
          --}}
         @slot('content_head')
-            <tr>
-                <th>id</th>
-                <th>ID del Jugador</th>
-                <th>Nombre</th>
-                <th>Apellidos</th>
-                <th>Fecha de Nacimiento</th>
-                <th>Lugar de nacimiento</th>
-                <th>Nacionalidad</th>
-                <th>Estado</th>
-                <th>Altura</th>
-                <th>Lado dominante</th>
-                <th>Fecha de registro</th>
-                <th colspan="3">Acción</th>
-            </tr>
+            @empty($people)
+                <tr>
+                    <th>No data</th>
+                </tr>
+            @else
+                <tr>
+                    <th>id</th>
+                    <th>ID del Jugador</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Lugar de nacimiento</th>
+                    <th>Nacionalidad</th>
+                    <th>Estado</th>
+                    <th>Altura</th>
+                    <th>Lado dominante</th>
+                    <th>Fecha de registro</th>
+                    <th colspan="3">Acción</th>
+                </tr>
+            @endempty
+
         @endslot
         @slot('content_body')
             @forelse ($people as $person)
-
                 @if ($person->player)
                 <tr class="border-b border-stone-700 h-16">
                     <td>{{$person->id}}</td>
