@@ -1,6 +1,8 @@
 @extends('layouts.admin_view')
 
-@section('title', '{{$team->name}}')
+@section('title')
+    {{$team->name}}
+@endsection
 
 @section('content')
     <div class="flex flex-1">
