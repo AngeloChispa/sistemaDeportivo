@@ -49,8 +49,18 @@
                         <td>{{ $person->name }}</td>
                         <td>{{ $person->lastname }}</td>
                         <td>{{ $person->birthdate }}</td>
-                        <td>{{ $person->birthplace }}</td>
-                        <td>{{ $person->birthplace }}</td>
+                        <td>
+                            @foreach ($nationalities as $nationality)
+                            @if ($person->birthplace == $nationality->id)
+                                {{ $nationality->country }}
+                            @endif
+                        @endforeach
+                        </td>
+                        <td> @foreach ($nationalities as $nationality)
+                            @if ($person->birthplace == $nationality->id)
+                                {{ $nationality->country }}
+                            @endif
+                        @endforeach</td>
                         <td>{{ $person->player->height }}</td>
                         <td>
                             {{ $person->player->bestSide }}
