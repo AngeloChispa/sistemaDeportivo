@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GamesController;
 use App\Http\Controllers\PlayersController;
 use App\Http\Controllers\RolsController;
 use App\Http\Controllers\UsersCotroller;
@@ -14,6 +15,7 @@ Route::resource('/tournaments', TournamentsController::class);
 Route::resource("/instalations",InstalationsController::class);//FALTA TERMINAR CONTROLADOR
 Route::resource('/players', PlayersController::class);//FALTA TERMINAR CONTROLADOR
 Route::resource("/teams",TeamsController::class);
+Route::resource("/games", GamesController::class);
 
 
 
@@ -32,7 +34,6 @@ Route::view('/instalations/admin','instalations.instalations_view')->name('insta
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('patrocinadores.index');
 /* Mostrar */
 Route::view('/users/show','users.show')->name('users.show');
-Route::view('/games/show','games.show')->name('games.show');
 /* Crear */
 Route::view('/sponsors/create','sponsors.create')->name('patrocinadores.create');
 Route::view('/sports/create','sports.create')->name('sport.create');
