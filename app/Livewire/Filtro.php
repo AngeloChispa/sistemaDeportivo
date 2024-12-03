@@ -22,6 +22,7 @@ class Filtro extends Component
 
     public function render()
     {
+        $this->search();
         return view('livewire.filtro', [
             'filteredPeople' => $this->filteredPeople, 
         ]);

@@ -33,6 +33,7 @@
         @endslot
         @slot('content_body')
             @forelse ($filteredPeople as $person)
+                @if ($person['player'])
                 <tr class="border-b border-stone-700 h-16">
                     <td>
                         {{ $person['id'] }}
@@ -61,7 +62,8 @@
                     <td>
                         {{ $person['player']['bestSide'] }}
                     </td>
-                </tr>
+                </tr>                    
+                @endif
             @empty
                 <tr class="border-b border-stone-700 h-16">
                     <td>No data found</td>

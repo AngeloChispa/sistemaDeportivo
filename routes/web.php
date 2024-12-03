@@ -47,7 +47,6 @@ Route::view('/login','users.login')->name('login');
 Route::view('/register','users.register')->name('register');
 /* Vistas */
 Route::view('/finances/admin','finances.finances_view')->name('finances.index');
-Route::view('/games/admin','games.games_view')->name('games.index');
 Route::view('/classifications/admin','classifications.classifications_view')->name('classifications.index');
 /* Crear */
 Route::view('/tournaments/create','tournaments.create')->name('tournaments.create');
