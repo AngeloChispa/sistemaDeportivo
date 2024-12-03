@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Player extends Model
 {
 
-    public $timestamps = false; 
+    public $timestamps = false;
 
     use HasFactory;
     protected $fillable = [

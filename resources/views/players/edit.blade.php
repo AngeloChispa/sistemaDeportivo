@@ -7,95 +7,85 @@
         Editar Jugador
     </h1>
     <div class="flex items-center justify-center">
-        <form method="POST" action="#"
+        <form method="POST" action="{{ route('players.update', $player->id) }}" enctype="multipart/form-data"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
             @method("PUT")
             @csrf
 
-            @component('_components.boxInputEdit')
-                @slot('for', 'name')
-                @slot('content', 'Nombre: ')
-                @slot('type', 'text')
-                @slot('name', 'name')
-                @slot('id', 'name')
-                @slot('value','Valor ya definido')
-                @endcomponent
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-semibold text-stone-200">Nombre:</label>
+                <input type="text" id="name" name="name" value="{{ old('name', $player->people->name) }}"
+                    class="mt-2 w-full p-2 bg-stone-800 text-white rounded border border-stone-600 focus:outline-none focus:ring-2 focus:ring-purple-500">
+            </div>
 
-            @component('_components.boxInputEdit')
-                @slot('for', 'lastname')
-                @slot('content', 'Apellidos: ')
-                @slot('type', 'text')
-                @slot('name', 'lastname')
-                @slot('id', 'lastname')
-                @slot('value','Valor ya definido')
-                @endcomponent
+            <div class="mb-4">
+                <label for="lastname" class="block text-sm font-semibold text-stone-200">Nombre:</label>
+                <input type="text" id="lastname" name="lastname" value="{{ old('lastname', $player->people->lastname) }}"
+                    class="mt-2 w-full p-2 bg-stone-800 text-white rounded border border-stone-600 focus:outline-none focus:ring-2 focus:ring-purple-500">
+            </div>
 
-            @component('_components.boxInputEdit')
-                @slot('for', 'date_birth')
-                @slot('content', 'Fecha de nacimiento: ')
-                @slot('type', 'date')
-                @slot('name', 'birthdate')
-                @slot('id', 'date_birth')
-                @slot('value','Valor ya definido')
-                @endcomponent
+            <div class="mb-4">
+                <label for="date_birth" class="block text-sm font-semibold text-stone-200">Fecha de Nacimiento:</label>
+                <input type="date" id="date_birth" name="birthdate" value="{{ old('date_birth', $player->people->birthdate) }}"
+                    class="mt-2 w-full p-2 bg-stone-800 text-white rounded border border-stone-600 focus:outline-none focus:ring-2 focus:ring-purple-500">
+            </div>
 
-            @component('_components.boxSelectInput')
-                @slot('for', 'nationality')
-                @slot('content', 'Nacionalidad: ')
-                @slot('name', 'nationality')
-                @slot('id', 'nationality')
-                @slot('more_options')
-{{--                     @forelse ($nationalities as $nationality)
-                        <option value="{{ $nationality['id'] }}">{{ $nationality['country'] }}</option>
-                    @empty
-                        <option value="">No disponibles</option>                     
-                    @endforelse --}}
-                @endslot
-            @endcomponent
 
-            @component('_components.boxInputEdit')
-                @slot('for', 'avatar')
-                @slot('content', 'Foto: ')
-                @slot('type', 'file')
-                @slot('name', 'avatar')
-                @slot('id', 'avatar')
-                @slot('value','Valor ya definido')
-                @endcomponent
+            <div class="mb-4">
+                <label for="country" class="block text-sm font-semibold text-stone-200">Nacionalidad:</label>
+                <select id="country" name="country"
+                    class="mt-2 w-full p-2 bg-stone-800 text-white rounded border border-stone-600 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    @foreach ($nationalities as $nationality)
+                        <option value="{{ $nationality->id }}"
+                            {{ old('birthplace', $player->people->birthplace) == $nationality->id ? 'selected' : '' }}>
+                            {{ $nationality->country }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
 
-            @component('_components.boxSelectInput')
-                @slot('for', 'status')
-                @slot('content', 'Estado: ')
-                @slot('name', 'status')
-                @slot('id', 'status')
-                @slot('more_options')
-                    <option value="1">Activo</option>
-                    <option value="2">Lesionado</option>
-                    <option value="3">Juvilado</option>
-                @endslot
-            @endcomponent
+            <div class="mb-4">
+                <label for="photo" class="block text-sm font-semibold text-stone-200">Foto:</label>
+                <input type="file" id="photo" name="photo"
+                    class="mt-2 w-full p-2 bg-stone-800 text-white rounded border border-stone-600 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                @if ($player->photo)
+                    <div class="mt-2">
+                        <p class="text-sm text-stone-400">Foto Actual:</p>
+                        <img src="{{ asset('storage/' . $player->photo) }}" alt="Foto del Jugador" class="mt-2 h-16">
+                    </div>
+                @endif
+            </div>
 
-            @component('_components.boxInputEdit')
-                @slot('for', 'height')
-                @slot('content', 'Altura: ')
-                @slot('type', 'number')
-                @slot('name', 'height')
-                @slot('id', 'height step=0.01 min=0')
-                @slot('value','Valor ya definido')
-                @endcomponent
+            <div class="mb-4">
+                <label for="status" class="block text-sm font-semibold text-stone-200">Estado:</label>
+                <select id="status" name="status"
+                    class="mt-2 w-full p-2 bg-stone-800 text-white rounded border border-stone-600 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <option value="1" {{ old('status', $player->status) == 1 ? 'selected' : '' }}>Activo</option>
+                    <option value="2" {{ old('status', $player->status) == 2 ? 'selected' : '' }}>Lesionado</option>
+                    <option value="3" {{ old('status', $player->status) == 3 ? 'selected' : '' }}>Jubilado</option>
+                </select>
+            </div>
 
-            @component('_components.boxSelectInput')
-                @slot('for', 'bestSide')
-                @slot('content', 'Lado dominante: ')
-                @slot('name', 'bestSide')
-                @slot('id', 'bestSide')
-                @slot('more_options')
-                    <option value="1">Izquierdo</option>
-                    <option value="2">Derecho</option>
-                @endslot
-            @endcomponent
+            <div class="mb-4">
+                <label for="height" class="block text-sm font-semibold text-stone-200">Altura:</label>
+                <input type="number" id="height" name="height" value="{{ old('height', $player->height) }}"
+                    class="mt-2 w-full p-2 bg-stone-800 text-white rounded border border-stone-600 focus:outline-none focus:ring-2 focus:ring-purple-500">
+            </div>
+
+            <div class="mb-4">
+                <label for="bestSide" class="block text-sm font-semibold text-stone-200">Estado:</label>
+                <select id="bestSide" name="bestSide"
+                    class="mt-2 w-full p-2 bg-stone-800 text-white rounded border border-stone-600 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <option value="1" {{ old('bestSide', $player->bestSide) == 1 ? 'selected' : '' }}>Izquierdo</option>
+                    <option value="2" {{ old('bestSide', $player->bestSide) == 2 ? 'selected' : '' }}>Derecho</option>
+                </select>
+            </div>
+
+
+
 
             <div class="flex">
-                <input type="submit" value="Crear"
+                <input type="submit" value="Guardar"
                     class="m-2 w-full mt-4 bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600 transition cursor-pointer" />
                 <a href="{{ route('players.index') }}"
                     class="m-2 text-center w-full mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition cursor-pointer">Cancelar</a>
