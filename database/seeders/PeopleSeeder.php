@@ -14,5 +14,14 @@ class PeopleSeeder extends Seeder
     public function run(): void
     {
         People::factory()->count(50)->create();
+        People::create(
+            [
+                'name' => 'Memo',
+                'lastname' => 'Ibarra',
+                'birthdate' => fake()->date(),
+                'birthplace' => 'Uruguay',
+                'nationality_id' => 1, 
+            ]
+        );
     }
 }

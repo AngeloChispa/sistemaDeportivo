@@ -17,8 +17,13 @@ class Title extends Model
         'description'
     ];
 
-    public function assignment():BelongsTo
+    public function trainerTeam():BelongsTo
     {
-        return $this->belongsTo(CoachTeamAssignment::class);
+        return $this->belongsTo(CoachTeamAssignment::class, 'trainer_team_id');
+    }
+
+    public function playerTeam():BelongsTo
+    {
+        return $this->belongsTo(PlayerTeam::class, 'player_team_id');
     }
 }

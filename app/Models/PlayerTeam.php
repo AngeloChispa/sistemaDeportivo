@@ -6,19 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Sport extends Model
+class PlayerTeam extends Model
 {
-
-    public $timestamps = false;
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'description'
-    ];
+    protected $table = 'player_team';
 
-    public function teams():HasMany
+    public $timestamps = false;
+
+    public function titles():HasMany
     {
-        return $this->hasMany(Team::class);
+        return $this->hasMany(Title::class, 'player_team_id');
     }
 }
