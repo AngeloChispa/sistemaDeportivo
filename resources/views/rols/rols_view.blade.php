@@ -31,8 +31,11 @@
                     <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
                 </td>
                 <td>
-                    <a href="#"
-                        class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900 formulario-eliminar">Borrar</a>
+                    <form action="#" method="POST" class="inline formulario-eliminar">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
+                    </form>
                 </td>
             </tr>
             @empty

@@ -49,7 +49,7 @@
                         <td>{{ $person->user->up_date }}</td>
                         <td>
                             <a href="{{ route('user.edit', $person->id) }}"
-                                class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
+                                class="font-medium text-zinc-200 bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                         </td>
                         <td>
                             <form action="{{ route('user.destroy', $person->user->id) }}" method="POST" style="display: inline;">
@@ -60,6 +60,10 @@
                                     Borrar
                                 </button>
                             </form>
+                        </td>
+                        <td>
+                            <a href="{{ route('user.edit', $person->id) }}"
+                                class="font-medium text-zinc-200 bg-green-500 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
                         </td>
                     </tr>
                 @endif

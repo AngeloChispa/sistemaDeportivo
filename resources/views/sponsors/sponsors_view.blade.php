@@ -14,13 +14,22 @@
         @slot('reference','patrocinadores.create')
         @slot('create_something','Registrar Patrocinador')
 
-        {{-- @forelse ($players as $player)
-            
-        @empty
-            
-        @endforelse
-         --}}
         @slot('content_head')
+            {{-- @empty($sponsors)
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Localización</th>
+                    <th>Tipo de patrocinio</th>
+                    <th colspan="3">Acción</th>
+                </tr>
+            @else
+                <tr>
+                    <th>No data</th>
+                </tr>
+            @endempty --}}
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
@@ -32,6 +41,34 @@
             </tr>
         @endslot
         @slot('content_body')
+            {{-- @forelse ($sponsors as $sponsor)
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                    </td>
+                    <td>
+                        <form action="#" method="POST" class="inline formulario-eliminar">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
+                        </form>
+                    </td>
+                    <td>
+                        <a href="#" class="font-medium bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ver</a>
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <td class="text-center">No hay equipos registrados aún.</td>
+                </tr>
+            @endforelse --}}
+                
             <tr class="border-b border-stone-700 h-16">
                 <td>1</td>
                 <td>Adidas</td>
