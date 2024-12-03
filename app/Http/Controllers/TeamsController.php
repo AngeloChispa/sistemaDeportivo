@@ -10,8 +10,9 @@ class TeamsController extends Controller
 {
 
     public function index(){
-        $teams = Team::All();
-        return view("teams.teams_view", compact("teams"));
+
+        $teams = Team::with('sport')->get();
+        return view("teams.teams_view", compact('teams'));
     }
 
     public function create(){
@@ -35,31 +36,11 @@ class TeamsController extends Controller
         $team->shield = $shieldPath;
         $team->save();
 
-        return redirect() ->route("teams.index");
 
     }
 
-    public function show($id){
-
+    public function show(Team $team){
+        return view('teams.show', compact('team'));
     }
-
-
-    public function edit($id){
-        $team = Team::findOrFail($id);
-        return view("teams.edit");
-
-    }
-
-
-    public function update(Request $request, $id){
-
-    }
-
-
-    public function destroy($id){
-
-    }
-
-
 
 }

@@ -27,6 +27,11 @@ class Player extends Model
 
     public function teams():BelongsToMany
     {
-        return $this->belongsToMany(Team::class);
+        return $this->belongsToMany(Team::class)->withPivot('position','dorsal','assignment_date','departure_date','captain');
+    }
+
+    public function game():BelongsToMany
+    {
+        return $this->belongsToMany(Game::class, 'game_events')->withPivot('event', 'minute');
     }
 }

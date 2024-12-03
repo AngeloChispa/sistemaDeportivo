@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -19,7 +20,7 @@ return new class extends Migration
             $table->foreign('player_id')->references('id')->on('players');
             $table->string('position',15);
             $table->integer('dorsal');
-            $table->date('assignment_date');
+            $table->datetime('assignment_date')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->date('departure_date')->nullable();
             $table->boolean('captain')->default(false);
         });

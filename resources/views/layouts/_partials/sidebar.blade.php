@@ -48,11 +48,11 @@
         @slot('name', 'Clasificación')
     @endcomponent
 
-    @component('_components.boxSidebar ')
+    {{-- @component('_components.boxSidebar ')
         @slot('icon', '')
         @slot('reference', 'index')
         @slot('name', 'Comunicación')
-    @endcomponent
+    @endcomponent --}}
 
     @component('_components.boxSidebar ')
         @slot('icon', '')

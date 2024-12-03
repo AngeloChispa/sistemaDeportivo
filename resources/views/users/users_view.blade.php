@@ -49,7 +49,7 @@
                         <td>{{ $person->user->up_date }}</td>
                         <td>
                             <a href="{{ route('user.edit', $person->id) }}"
-                                class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
+                                class="font-medium text-zinc-200 bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                         </td>
                         <td>
                             <form action="{{ route('user.destroy', $person->user->id) }}" method="POST" style="display: inline;">
@@ -61,6 +61,10 @@
                                 </button>
                             </form>
                         </td>
+                        <td>
+                            <a href="{{ route('user.edit', $person->id) }}"
+                                class="font-medium text-zinc-200 bg-green-500 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
+                        </td>
                     </tr>
                 @endif
             @empty
@@ -70,40 +74,10 @@
             @endforelse
         @endslot
     @endcomponent
-@endsection
-
 
 @section('scripts')
+@component('_components.swal')
+@endcomponent
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script>
-        document.querySelectorAll('.formulario-eliminar').forEach(function(eliminarBtn) {
-            eliminarBtn.addEventListener('click', function(event) {
-            eliminarBtn.addEventListener('click', function(event) {
-                event.preventDefault();
-
-                const form = this.closest('form');
-
-                const form = this.closest('form');
-
-                Swal.fire({
-                    title: "¿Estás seguro?",
-                    text: "¡No podrás revertir esta acción!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "¡Sí, elimínalo!"
-                    confirmButtonText: "¡Sí, elimínalo!"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        form.submit(); // Enviar el formulario si se confirma
-                        form.submit(); // Enviar el formulario si se confirma
-                    }
-                });
-            });
-        });
-    </script>
-
+    @endsection
 @endsection
