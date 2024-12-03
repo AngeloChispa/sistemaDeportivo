@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tournament;
+use Intervention\Image\Facades\Image;
+
 
 class TournamentsController extends Controller
 {
@@ -21,8 +23,12 @@ class TournamentsController extends Controller
     public function store(Request $request){
 
 
+        $request->validate([
+            'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2000',
+        ]);
         if ($request->hasFile("icon")){
             $iconPath = $request->file("icon")->store('icons', 'public');
+
         }
 
         $tournament = new Tournament();
@@ -43,6 +49,7 @@ class TournamentsController extends Controller
     }
 
     public function edit($id){
+
             $tournament = Tournament::findOrFail($id);
             return view("tournaments.edit", compact("tournament"));
 
@@ -51,6 +58,9 @@ class TournamentsController extends Controller
 
     public function update(Request $request,Tournament $tournament ){
 
+        $request->validate([
+            'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2000',
+        ]);
         if ($request->hasFile("icon")) {
             $iconPath = $request->file("icon")->store('icons', 'public');
             $tournament->icon = $iconPath;
