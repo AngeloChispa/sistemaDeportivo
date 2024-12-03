@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GamesController;
 use App\Http\Controllers\PlayersController;
 use App\Http\Controllers\RolsController;
 use App\Http\Controllers\UsersCotroller;
@@ -14,6 +15,7 @@ Route::resource('/tournaments', TournamentsController::class);
 Route::resource("/instalations",InstalationsController::class);//FALTA TERMINAR CONTROLADOR
 Route::resource('/players', PlayersController::class);//FALTA TERMINAR CONTROLADOR
 Route::resource("/teams",TeamsController::class);
+Route::resource("/games", GamesController::class);
 
 
 

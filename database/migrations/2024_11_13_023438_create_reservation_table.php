@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('game_instalation', function (Blueprint $table) {
+        Schema::create('reservations', function (Blueprint $table) {
             $table->id('id');
             $table->unsignedBigInteger('instalation_id');
             $table->foreign('instalation_id')->references('id')->on('instalations');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('game_instalation');
+        Schema::dropIfExists('reservations');
     }
 };
