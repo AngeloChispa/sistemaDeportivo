@@ -1,6 +1,6 @@
 @extends('layouts.admin_view')
 
-@section('title', 'Users table')
+@section('title', 'Finance table')
 
 @section('content')
     @component('_components.table')

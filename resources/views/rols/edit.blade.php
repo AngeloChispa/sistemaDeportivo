@@ -1,6 +1,6 @@
 @extends('layouts.admin_view')
 
-@section('title', 'Crear rol')
+@section('title', 'Editar rol')
 
 @section('content')
     <h1

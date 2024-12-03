@@ -58,7 +58,6 @@
                             <div class="flex flex-col">
                                 <div class="flex">
                                     <p class="mt-5 mb-3 text-bold">Todas las Ligas</p>
-                                    <ion-icon name="caret-down-outline" class="pl-3 mt-7"></ion-icon>
                                 </div>
                             </div>
                         </div>
