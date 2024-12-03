@@ -12,7 +12,7 @@ Route::resource('/user', controller: UsersCotroller::class);
 Route::resource('/rols', RolsController::class);
 Route::resource('/tournaments', TournamentsController::class);
 Route::resource("/instalations",InstalationsController::class);//FALTA TERMINAR CONTROLADOR
-Route::resource('/players', PlayersController::class);//FALTA TERMINAR CONTROLADOR
+Route::resource('/players', PlayersController::class);//FALTA CORREGIR RUTA IMAGEN
 Route::resource("/teams",TeamsController::class);
 
 
@@ -28,7 +28,6 @@ Route::view('/','index')->name('index');
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('sponsors.index');
 
 Route::view('/filtro/admin','reports.filter')->name('reports.index');
-Route::view('/instalations/admin','instalations.instalations_view')->name('instalations.index');
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('patrocinadores.index');
 /* Mostrar */
 Route::view('/users/show','users.show')->name('users.show');

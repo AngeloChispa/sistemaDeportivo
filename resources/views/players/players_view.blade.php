@@ -1,9 +1,8 @@
 @extends('layouts.admin_view')
 
-@section('title', 'Rols table')
+@section('title', 'Player table')
 
 @section('content')
-    {{-- Tabla de ejemplo, con estilos --}}
     @component('_components.table')
         @slot('title')
             Jugadores
@@ -46,18 +45,41 @@
                     <td>{{$person->name}}</td>
                     <td>{{$person->lastname}}</td>
                     <td>{{$person->birthdate}}</td>
-                    <td>{{$person->birthplace}}</td>
-                    <td>{{$person->birthplace}}</td>
+                    <td>
+                        @foreach ($nationalities as $nationality)
+                            @if ($person->birthplace == $nationality->id)
+                                {{ $national = $nationality->country }}
+                            @endif
+                        @endforeach
+                    </td>
+                    <td>
+                        @foreach ($nationalities as $nationality)
+                            @if ($person->birthplace == $nationality->id)
+                                {{ $nationality->country }}
+                            @endif
+                        @endforeach
+                    </td>
                     <td>{{$person->player->height}}</td>
                     <td>
-                        {{$person->player->bestSide}}
+                        @switch($person->player->bestSide)
+                            @case(1)
+                                Izquierdo
+                                @break
+                            @case(2)
+                                Derecho
+                                @break
+                            @default No tiene piernas D:
+                        @endswitch
                     </td>
                     <td>
-                        <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
+                        <a href="{{route('players.edit', $person->player->id) }}" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
                     </td>
                     <td>
-                        <a href="#"
-                            class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900 formulario-eliminar">Borrar</a>
+                        <form action="{{ route('players.destroy', $person->player->id) }}" method="POST" class="inline formulario-eliminar">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
+                        </form>
                     </td>
                     <td>
                         <a href="#" class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
@@ -69,13 +91,13 @@
         @endslot
     @endcomponent
 
+
+    {{-- Script de eliminación con SweetAlert2 --}}
     <script>
         document.querySelectorAll('.formulario-eliminar').forEach(function(eliminarBtn) {
             eliminarBtn.addEventListener('click', function(event) {
-
                 event.preventDefault();
-
-                // SweetAlert2
+                const form = this.closest('form');
                 Swal.fire({
                     title: "¿Estás seguro?",
                     text: "¡No podrás revertir esta acción!",
@@ -83,14 +105,10 @@
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",
                     cancelButtonColor: "#d33",
-                    confirmButtonText: "¡Si, eliminalo!"
+                    confirmButtonText: "¡Sí, elimínalo!"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        Swal.fire({
-                            title: "¡Eliminado!",
-                            text: "El jugador ha sido eliminado.",
-                            icon: "success"
-                        });
+                        form.submit();
                     }
                 });
             });

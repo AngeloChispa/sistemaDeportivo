@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Player extends Model
 {
 
-    public $timestamps = false; 
+    public $timestamps = false;
 
     use HasFactory;
     protected $fillable = [
@@ -22,7 +22,7 @@ class Player extends Model
 
     public function people ():BelongsTo
     {
-        return $this->belongsTo(Player::class);
+        return $this->belongsTo(People::class);
     }
 
     public function teams():BelongsToMany

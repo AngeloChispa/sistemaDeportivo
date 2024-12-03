@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Team;
+use App\Models\Nationality;
 
 class TeamsController extends Controller
 {
 
     public function index(){
         $teams = Team::All();
-        return view("teams.teams_view", $teams);
+        return view("teams.teams_view", compact("teams"));
     }
 
     public function create(){
@@ -22,6 +23,10 @@ class TeamsController extends Controller
         if($request->hasFile("shield")){
             $shieldPath = $request->file("shield")->store("shields","public");
         }
+
+        $nationality = new Nationality();
+        $nationality->country = $request->country;
+        $nationality->save();
 
         $team = new Team();
         $team->name = $request->name;

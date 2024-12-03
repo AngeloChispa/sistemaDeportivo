@@ -7,7 +7,7 @@
         Registrar Jugador
     </h1>
     <div class="flex items-center justify-center">
-        <form method="POST" action="#"
+        <form method="POST" action="{{route("players.store")}}"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
             @csrf
 
@@ -36,15 +36,15 @@
             @endcomponent
 
             @component('_components.boxSelectInput')
-                @slot('for', 'nationality')
+                @slot('for', 'country')
                 @slot('content', 'Nacionalidad: ')
-                @slot('name', 'nationality')
-                @slot('id', 'nationality')
+                @slot('name', 'country')
+                @slot('id', 'country')
                 @slot('more_options')
-                    @forelse ($nationalities as $nationality)
-                        <option value="{{ $nationality['id'] }}">{{ $nationality['country'] }}</option>
+                    @forelse ($nationalities as $nationality )
+                        <option value="{{ $nationality->id}}">{{ $nationality->country }}</option>
                     @empty
-                        <option value="">No disponibles</option>                     
+                        <option value="">No disponibles</option>
                     @endforelse
                 @endslot
             @endcomponent
@@ -91,7 +91,7 @@
             <div class="flex">
                 <input type="submit" value="Crear"
                     class="m-2 w-full mt-4 bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600 transition cursor-pointer" />
-                <a href="{{ route('user.index') }}"
+                <a href="{{ route('players.index') }}"
                     class="m-2 text-center w-full mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition cursor-pointer">Cancelar</a>
             </div>
         </form>
