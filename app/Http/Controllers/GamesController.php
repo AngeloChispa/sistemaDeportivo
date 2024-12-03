@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Game;
 use Illuminate\Http\Request;
 
 class GamesController extends Controller
@@ -33,9 +34,10 @@ class GamesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
+    public function show(Game $game)
+    {   
+        
+        return view('games.show', compact('game'));
     }
 
     /**
