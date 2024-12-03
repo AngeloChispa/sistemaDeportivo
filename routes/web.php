@@ -32,10 +32,10 @@ Route::view('/finances/admin','finances.finances_view')->name('finances.index');
 Route::view('/referees/admin','referees.referees_view')->name('referees.index');
 Route::view('/filtro/admin','reports.filter')->name('reports.index');
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('patrocinadores.index');
+Route::view('/trainers/admin','trainers.trainers_view')->name('trainers.index');
 /* Mostrar */
 Route::view('/users/show','users.show')->name('users.show');
 Route::view('/trainers/show','trainers.show')->name('trainers.show');
-Route::view('/games/show','games.show')->name('games.show');
 Route::view('/jugador/show','players.show');
 Route::view('/instalaciones/show','instalations.show');
 /* Crear */
@@ -43,6 +43,7 @@ Route::view('/rols/create','rols.create')->name('rols.create');
 Route::view('/sponsors/create','sponsors.create')->name('patrocinadores.create');
 Route::view('/sports/create','sports.create')->name('sport.create');
 Route::view('/referees/create','referees.create')->name('referees.create');
+Route::view('/trainers/create','trainers.create')->name('trainers.create');
 /* Editar */
 Route::view('/referees/edit','referees.edit')->name('referees.edit');
 
