@@ -3,7 +3,7 @@
 @section('title', 'Teams table')
 
 @section('content')
-    {{-- Tabla de ejemplo, con estilos --}}
+    {{-- Tabla de equipos --}}
     @component('_components.table')
         @slot('title')
             Equipos
@@ -21,6 +21,21 @@
         @endforelse
          --}}
         @slot('content_head')
+            {{-- @empty($tournaments)
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Ciudad</th>
+                    <th>Estado</th>
+                    <th>Deporte</th>
+                    <th>Escudo</th>
+                    <th colspan="3">Acción</th>
+                </tr>
+            @else
+                <tr>
+                    <th>No data</th>
+                </tr>
+            @endempty --}}
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
@@ -44,8 +59,11 @@
                         <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                     </td>
                     <td>
-                        <a href="#"
-                            class="font-medium text-zinc-300 bg-red-500 sm:rounded-lg p-2 hover:bg-red-600 formulario-eliminar">Borrar</a>
+                        <form action="#" method="POST" class="inline formulario-eliminar">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
+                        </form>
                     </td>
                     <td>
                         <a href="#" class="font-medium bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ver</a>
@@ -57,6 +75,8 @@
         @endslot
     @endcomponent
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
         document.querySelectorAll('.formulario-eliminar').forEach(function(eliminarBtn) {
 
@@ -67,39 +87,45 @@
                 // SweetAlert2
                 const swalWithBootstrapButtons = Swal.mixin({
                     customClass: {
-                        confirmButton: "btn btn-success",
-                        cancelButton: "btn btn-danger"
+                        confirmButton: "bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 mr-5",
+                        cancelButton: "bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
                     },
-                    buttonsStyling: false
+                    buttonsStyling: true
                 });
                 swalWithBootstrapButtons.fire({
-                    title: "Are you sure?",
-                    text: "You won't be able to revert this!",
+                    title: "¿Estás seguro?",
+                    text: "¡No podrás ser capaz de revertir esto!",
                     icon: "warning",
                     showCancelButton: true,
-                    confirmButtonText: "Yes, delete it!",
-                    cancelButtonText: "No, cancel!",
-                    reverseButtons: true
+                    confirmButtonText: "¡Si, eliminalo!",
+                    cancelButtonText: "¡No, cancelalo!",
+                    reverseButtons: false,
+                    background: '#38322e',
+                    color: '#d4d4d8'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         swalWithBootstrapButtons.fire({
-                            title: "Deleted!",
-                            text: "Your file has been deleted.",
-                            icon: "success"
+                            title: "¡Eliminado!",
+                            text: "El elemento ha sido eliminado.",
+                            icon: "success",
+                            background: '#38322e',
+                            color: '#d4d4d8'
                         });
                     } else if (
                         /* Read more about handling dismissals below */
                         result.dismiss === Swal.DismissReason.cancel
                     ) {
                         swalWithBootstrapButtons.fire({
-                            title: "Cancelled",
-                            text: "Your imaginary file is safe :)",
-                            icon: "error"
+                            title: "Cancelado",
+                            text: "Proceso cancelado :)",
+                            icon: "error",
+                            background: '#38322e',
+                            color: '#d4d4d8'
                         });
                     }
                 });
             });
         });
     </script>
-
+    
 @endsection
