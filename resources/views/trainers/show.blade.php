@@ -25,30 +25,36 @@
                 </div>
                 <div class="stats bg-stone-800 rounded-lg shadow-md p-6">
                     <h5 class="text-lg text-red-500 font-semibold mb-4">Títulos</h5>
-                    <div class="flex flex-row">
-                        <td>
-                            <tr>
-                                <a href="#">
-                                    <img class="w-32 h-32 mx-2" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                        alt="titulo">
-                                </a>
-                            </tr>
-                            <tr><a href="#">
-                                    <img class="w-32 h-32 mx-2" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                        alt="titulo">
-                                </a>
-                            </tr>
-                            <tr><a href="#">
-                                    <img class="w-32 h-32 mx-2" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                        alt="titulo">
-                                </a>
-                            </tr>
-                            <tr><a href="#">
-                                    <img class="w-32 h-32 mx-2" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                        alt="titulo">
-                                </a>
-                            </tr>
-                        </td>
+                    <div class="flex overflow-x-auto space-x-1">
+                        <a class="flex-shrink-0" href="#">
+                            <img class="w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}"
+                                alt="titulos">
+                        </a>
+                        <a class="flex-shrink-0" href="#">
+                            <img class="flex-shrink-0 w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}"
+                                alt="titulos">
+                        </a>
+                        <a class="flex-shrink-0" href="#">
+                            <img class="flex-shrink-0 w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}"
+                                alt="titulos">
+                        </a>
+                        <a class="flex-shrink-0" href="#">
+                            <img class="flex-shrink-0 w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}"
+                                alt="titulos">
+                        </a>
+                        <a class="flex-shrink-0" href="#">
+                            <img class="flex-shrink-0 w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}"
+                                alt="titulos">
+                        </a>
+                        <a class="flex-shrink-0" href="#">
+                            <img class="flex-shrink-0 w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}"
+                                alt="titulos">
+                        </a>
+                        <a class="flex-shrink-0" href="#">
+                            <img class="flex-shrink-0 w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}"
+                                alt="titulos">
+                        </a>
+
                     </div>
                 </div>
             </div>
@@ -63,22 +69,22 @@
                     <tr>
                         <a href="#">
                             <img class="w-32 h-32 mx-2" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                alt="titulo">
+                                alt="equipo">
                         </a>
                     </tr>
                     <tr><a href="#">
                             <img class="w-32 h-32 mx-2" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                alt="titulo">
+                                alt="equipo">
                         </a>
                     </tr>
                     <tr><a href="#">
                             <img class="w-32 h-32 mx-2" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                alt="titulo">
+                                alt="equipo">
                         </a>
                     </tr>
                     <tr><a href="#">
                             <img class="w-32 h-32 mx-2" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                alt="titulo">
+                                alt="equipo">
                         </a>
                     </tr>
                 </td>

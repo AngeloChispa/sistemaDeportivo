@@ -28,17 +28,35 @@
                 </div>
                 <div class="stats bg-stone-800 rounded-lg shadow-md p-6">
                     <h5 class="text-lg text-red-500 font-semibold mb-4">Títulos</h5>
-                    <div class="flex flex-row">
-                        <td>
-                            <tr><img class="w-32 h-32 mx-2" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                    alt="titulo"></tr>
-                            <tr><img class="w-32 h-32 mx-2" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                    alt="titulo"></tr>
-                            <tr><img class="w-32 h-32 mx-2" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                    alt="titulo"></tr>
-                            <tr><img class="w-32 h-32 mx-2" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                    alt="titulo"></tr>
-                        </td>
+                    <div class="flex overflow-x-auto space-x-1">
+                        <a class="flex-shrink-0" href="#">
+                            <img class="w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}"
+                                alt="titulo">
+                        </a>
+                        <a class="flex-shrink-0" href="#">
+                            <img class="flex-shrink-0 w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}"
+                                alt="titulo">
+                        </a>
+                    </div>
+                </div>
+                <div class="stats bg-stone-800 rounded-lg shadow-md p-6">
+                    <h5 class="text-lg text-red-500 font-semibold mb-4">Patrocinadores</h5>
+                    <div class="flex overflow-x-auto space-x-1">
+                        <a class="flex-shrink-0" href="#">
+                            <img class="flex-shrink-0 w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}"
+                                alt="patrocinios">
+                            <p class="text-center">nombre</p>
+                        </a>
+                        <a class="flex-shrink-0" href="#">
+                            <img class="flex-shrink-0 w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}"
+                            alt="patrocinios">
+                            <p class="text-center">nombre</p>
+                        </a>
+                        <a class="flex-shrink-0" href="#">
+                            <img class="flex-shrink-0 w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}"
+                            alt="patrocinios">
+                            <p class="text-center">nombre</p>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -98,50 +116,6 @@
                 @empty
                 <h1>No data found</h1>
                 @endforelse
-            @endslot
-        @endcomponent
-    </div>
-    <div class="px-6 gap-6 pt-6">
-        @component('_components.table_export')
-            @slot('title')
-                Patrocinadores
-            @endslot
-            @slot('p_content')
-                Patrocinadores de equipo.
-            @endslot
-            @slot('content_head')
-                <tr>
-                    {{-- @empty($variable)
-                            <th>No hay jugadores asignados</th>
-                        @else
-
-                        @endempty --}}
-                    <th>Nombre</th>
-                    <th>Tipo de patrocinio</th>
-                </tr>
-            @endslot
-            @slot('content_body')
-                {{-- @forelse ($sponsors as $sponsor)
-                        @if ($sponsor->player)
-                            <tr class="border-b border-stone-700 h-16">
-                                <td>{{ $sponsor->name }}</td>
-                                <td>{{ $sponsor->type }}</td>
-                            </tr>
-                        @endif
-                    @empty
-                    @endforelse --}}
-                <tr class="border-b border-stone-700 h-16">
-                    <th>a</th>
-                    <th>a</th>
-                </tr>
-                <tr class="border-b border-stone-700 h-16">
-                    <th>a</th>
-                    <th>a</th>
-                </tr>
-                <tr class="border-b border-stone-700 h-16">
-                    <th>a</th>
-                    <th>a</th>
-                </tr>
             @endslot
         @endcomponent
     </div>

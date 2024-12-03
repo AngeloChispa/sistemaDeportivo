@@ -24,47 +24,46 @@
                 </div>
                 <div class="stats bg-stone-800 rounded-lg shadow-md p-6">
                     <h5 class="text-lg text-red-500 font-semibold mb-4">Equipos</h5>
-                    <div class="flex flex-row">
-                        <table>
-                            <td>
-                                <tr>
-                                    <a href="#">
-                                        <img class="w-32 h-32 mx-2" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                            alt="titulo">
-                                    </a>
-                                </tr>
-                                <tr><a href="#">
-                                        <img class="w-32 h-32 mx-2" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                            alt="titulo">
-                                    </a>
-                                </tr>
-                                <tr><a href="#">
-                                        <img class="w-32 h-32 mx-2" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                            alt="titulo">
-                                    </a>
-                                </tr>
-                                <tr><a href="#">
-                                        <img class="w-32 h-32 mx-2" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                            alt="titulo">
-                                    </a>
-                                </tr>
-                                <tr><a href="#">
-                                        <img class="w-32 h-32 mx-2" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                            alt="titulo">
-                                    </a>
-                                </tr>
-                                <tr><a href="#">
-                                        <img class="w-32 h-32 mx-2" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                            alt="titulo">
-                                    </a>
-                                </tr>
-                                <tr><a href="#">
-                                        <img class="w-32 h-32 mx-2" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                            alt="titulo">
-                                    </a>
-                                </tr>
-                            </td>
-                        </table>
+                    <div class="flex overflow-x-auto space-x-1">
+                        <a class="flex-shrink-0" href="#">
+                            <img class="w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}" alt="equipo">
+                            <p class="text-center">Nombre</p>
+                        </a>
+                        <a class="flex-shrink-0" href="#">
+                            <img class="flex-shrink-0 w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}"
+                                alt="equipo">
+                            <p class="text-center">Nombre</p>
+                        </a>
+                        <a class="flex-shrink-0" href="#">
+                            <img class="flex-shrink-0 w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}"
+                                alt="equipo">
+                            <p class="text-center">Nombre</p>
+                        </a>
+                        <a class="flex-shrink-0" href="#">
+                            <img class="flex-shrink-0 w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}"
+                                alt="equipo">
+                            <p class="text-center">Nombre</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="stats bg-stone-800 rounded-lg shadow-md p-6">
+                    <h5 class="text-lg text-red-500 font-semibold mb-4">Patrocinadores</h5>
+                    <div class="flex overflow-x-auto space-x-1">
+                        <a class="flex-shrink-0" href="#">
+                            <img class="flex-shrink-0 w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}"
+                                alt="patrocinios">
+                            <p class="text-center">Nombre</p>
+                        </a>
+                        <a class="flex-shrink-0" href="#">
+                            <img class="flex-shrink-0 w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}"
+                                alt="patrocinios">
+                            <p class="text-center">Nombre</p>
+                        </a>
+                        <a class="flex-shrink-0" href="#">
+                            <img class="flex-shrink-0 w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}"
+                                alt="patrocinios">
+                            <p class="text-center">Nombre</p>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -73,17 +72,17 @@
 
     <div class="px-6 gap-6">
         @component('_components.table_export')
-        @slot('title')
-            Clasificación
-        @endslot
-        @slot('p_content')
-            Posición en que los equipos se encuentran dentro del torneo.
-        @endslot
-        @slot('reference', 'players.create')
-        @slot('create_something', 'Registrar Jugador')
+            @slot('title')
+                Clasificación
+            @endslot
+            @slot('p_content')
+                Posición en que los equipos se encuentran dentro del torneo.
+            @endslot
+            @slot('reference', 'players.create')
+            @slot('create_something', 'Registrar Jugador')
 
-        @slot('content_head')
-           {{--  @empty($clasifications)
+            @slot('content_head')
+                {{--  @empty($clasifications)
             <tr>
                 <th colspan="2">Equipo</th>
                 <th class="w-24">PJ</th>
@@ -99,22 +98,22 @@
                 <tr>
                     <th>No data</th>
                 </tr>
-            @endempty--}}
+            @endempty --}}
 
-            <tr>
-                <th colspan="2">Equipo</th>
-                <th class="w-24">PJ</th>
-                <th class="w-24">G</th>
-                <th class="w-24">E</th>
-                <th class="w-24">P</th>
-                <th class="w-24">GF</th>
-                <th class="w-24">GC</th>
-                <th class="w-24">DG</th>
-                <th class="w-24 font-bold">Pts</th>
-            </tr>
-        @endslot
-        @slot('content_body')
-            {{-- @forelse ($people as $person)
+                <tr>
+                    <th colspan="2">Equipo</th>
+                    <th class="w-24">PJ</th>
+                    <th class="w-24">G</th>
+                    <th class="w-24">E</th>
+                    <th class="w-24">P</th>
+                    <th class="w-24">GF</th>
+                    <th class="w-24">GC</th>
+                    <th class="w-24">DG</th>
+                    <th class="w-24 font-bold">Pts</th>
+                </tr>
+            @endslot
+            @slot('content_body')
+                {{-- @forelse ($people as $person)
                     <tr class="border-b border-stone-700 h-16">
                        <th></th>
                        <th></th>
@@ -132,20 +131,20 @@
                     <td class="text-center">No hay Jugadores registrados aún.</td>
                 </tr>
             @endforelse --}}
-            <tr class="border-b border-stone-700 h-12 hover:bg-[#333333]">
+                <tr class="border-b border-stone-700 h-12 hover:bg-[#333333]">
 
-                <td style="width: 50px;" class="hover:bg-transparent">1</td>
-                <td class="hover:bg-transparent">Liverpool</td>
-                <td>12</td>
-                <td>10</td>
-                <td>1</td>
-                <td>1</td>
-                <td>24</td>
-                <td>8</td>
-                <td>16</td>
-                <td class=" font-black">31</td>
-            </tr>
-        @endslot
-    @endcomponent
+                    <td style="width: 50px;" class="hover:bg-transparent">1</td>
+                    <td class="hover:bg-transparent">Liverpool</td>
+                    <td>12</td>
+                    <td>10</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>24</td>
+                    <td>8</td>
+                    <td>16</td>
+                    <td class=" font-black">31</td>
+                </tr>
+            @endslot
+        @endcomponent
     </div>
 @endsection
