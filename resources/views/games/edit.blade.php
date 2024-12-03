@@ -1,22 +1,24 @@
 @extends('layouts.admin_view')
 
-@section('title', 'Registrar partido')
+@section('title', 'Editar partido')
 
 @section('content')
     <h1 class="text-4xl text-center">
-        Registrar Partido
+        Editar Partido
     </h1>
     <div class="flex items-center justify-center">
         <form method="POST" action="#"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
+            @method("PUT")
             @csrf
 
-            @component('_components.boxInputCreate')
+            @component('_components.boxInputEdit')
                 @slot('for', 'name')
                 @slot('content', 'Nombre: ')
                 @slot('type', 'text')
                 @slot('name', 'name')
                 @slot('id', 'name')
+                @slot('value', 'Valor ya definido')
             @endcomponent
 
             @component('_components.boxSelectInput')

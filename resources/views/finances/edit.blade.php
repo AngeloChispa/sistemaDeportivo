@@ -1,30 +1,33 @@
 @extends('layouts.admin_view')
 
-@section('title', 'Registrar Operación')
+@section('title', 'Editar Operación')
 
 @section('content')
     <h1 class="text-4xl text-center">
-        Registrar Operación
+        Editar Operación
     </h1>
     <div class="flex items-center justify-center">
         <form method="POST" action="#"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
+            @method('PUT')
             @csrf
 
-            @component('_components.boxInputCreate')
+            @component('_components.boxInputEdit')
                 @slot('for', 'amount')
                 @slot('content', 'Monto: ')
                 @slot('type', 'number')
                 @slot('name', 'amount')
                 @slot('id', 'amount min=1 step=0.01')
+                @slot('value', 'Valor ya definido')
             @endcomponent
 
-            @component('_components.boxInputCreate')
+            @component('_components.boxInputEdit')
                 @slot('for', 'concept')
                 @slot('content', 'Concepto: ')
                 @slot('type', 'text')
                 @slot('name', 'concept')
                 @slot('id', 'concept')
+                @slot('value', 'Valor ya definido')
             @endcomponent
 
             @component('_components.boxSelectInput')
@@ -33,8 +36,8 @@
                 @slot('name', 'transaction_type')
                 @slot('id', 'transaction_type')
                 @slot('more_options')
-                    
-                
+
+
                 @endslot
             @endcomponent
 

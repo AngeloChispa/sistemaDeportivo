@@ -6,7 +6,6 @@
         <ul class="space-y-2 font-medium">
             <li>
                 @component('_components.boxSidebar ')
-                    
                     @slot('icon')
                         <ion-icon name="home" class="h-5 w-5"></ion-icon>
                     @endslot
@@ -14,7 +13,7 @@
                     @slot('name', 'Index')
                 @endcomponent
             </li>
-{{--             <li>
+            {{--             <li>
                 @component('_components.boxSidebar ')
                     @slot('icon')
                         <ion-icon name="key" class="h-5 w-5"></ion-icon>
@@ -45,7 +44,7 @@
                 @component('_components.boxSidebar ')
                     @slot('icon')
                         <ion-icon name="trophy" class="h-5 w-5"></ion-icon>
-                     @endslot
+                    @endslot
                     @slot('reference', 'tournaments.index')
                     @slot('name', 'Torneos')
                 @endcomponent
@@ -57,6 +56,24 @@
                     @endslot
                     @slot('reference', 'players.index')
                     @slot('name', 'Jugadores')
+                @endcomponent
+            </li>
+            <li>
+                @component('_components.boxSidebar ')
+                    @slot('icon')
+                        <ion-icon name="basketball-outline" class="h-5 w-5"></ion-icon>
+                    @endslot
+                    @slot('reference', 'trainers.index')
+                    @slot('name', 'Entrenadores')
+                @endcomponent
+            </li>
+            <li>
+                @component('_components.boxSidebar ')
+                    @slot('icon')
+                        <ion-icon name="people-circle-outline" class="h-5 w-5"></ion-icon>
+                    @endslot
+                    @slot('reference', 'referees.index')
+                    @slot('name', 'Árbitros')
                 @endcomponent
             </li>
             <li>
@@ -133,4 +150,4 @@
             </li>
         </ul>
     </div>
-</aside> 
+</aside>

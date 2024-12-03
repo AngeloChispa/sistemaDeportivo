@@ -1,10 +1,10 @@
 @extends('layouts.admin_view')
 
-@section('title', 'Registrar Entrenador')
+@section('title', 'Registrar Árbitro')
 
 @section('content')
     <h1 class="text-4xl text-center">
-        Registrar Entrenador
+        Registrar Árbitro
     </h1>
     <div class="flex items-center justify-center">
         <form method="POST" action="#"
@@ -41,11 +41,15 @@
                 @slot('name', 'birthplace')
                 @slot('id', 'birthplace')
                 @slot('more_options')
-                    @forelse ($nationalities as $nationality)
-                        <option value="{{ $nationality['id'] }}">{{ $nationality['country'] }}</option>
-                    @empty
-                        <option value="">No disponibles</option>                     
-                    @endforelse
+                    {{-- @forelse ($nationalities as $nationality)
+                                    <option value="{{ $nationality['id'] }}">{{ $nationality['country'] }}</option>
+                                @empty
+                                    <option value="">No disponibles</option>                     
+                                @endforelse --}}
+
+                    <option value="1">México</option>
+                    <option value="2">Estados Unidos</option>
+                    <option value="3">Canadá</option>
                 @endslot
             @endcomponent
 
@@ -54,7 +58,7 @@
                 @slot('content', 'Nacionalidad: ')
                 @slot('type', 'text')
                 @slot('name', 'nationality')
-                @slot('id', 'nationality')  
+                @slot('id', 'nationality')
             @endcomponent
 
             @component('_components.boxInputCreate')
@@ -76,7 +80,7 @@
             <div class="flex">
                 <input type="submit" value="Crear"
                     class="m-2 w-full mt-4 bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600 transition cursor-pointer" />
-                <a href="{{ route('.index') }}"
+                <a href="{{ route('referees.index') }}"
                     class="m-2 text-center w-full mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition cursor-pointer">Cancelar</a>
             </div>
         </form>

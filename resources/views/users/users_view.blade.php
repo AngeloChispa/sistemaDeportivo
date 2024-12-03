@@ -22,7 +22,6 @@
                     <th>Usuario</th>
                     <th>Nombre</th>
                     <th>Apellidos</th>
-                    <th>Usuario</th>
                     <th>Fecha de Nacimiento</th>
                     <th>Lugar de nacimiento</th>
                     <th>Nacionalidad</th>
