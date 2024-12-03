@@ -14,7 +14,7 @@
                     @slot('name', 'Index')
                 @endcomponent
             </li>
-            <li>
+{{--             <li>
                 @component('_components.boxSidebar ')
                     @slot('icon')
                         <ion-icon name="key" class="h-5 w-5"></ion-icon>
@@ -22,7 +22,7 @@
                     @slot('reference', 'index')
                     @slot('name', 'Seguridad & Auditoría')
                 @endcomponent
-            </li>
+            </li> --}}
             <li>
                 @component('_components.boxSidebar ')
                     @slot('icon')

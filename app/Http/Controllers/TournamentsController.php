@@ -39,7 +39,7 @@ class TournamentsController extends Controller
 
     public function show($id){
         $tournament = Tournament::findOrFail($id);
-        return view("tournaments.show",compact("tournaments"));
+        return view("tournaments.show",compact("tournament"));
     }
 
     public function edit($id){

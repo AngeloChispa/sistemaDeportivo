@@ -28,6 +28,7 @@ Route::view('/filtro/admin','reports.filter')->name('reports.index');
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('patrocinadores.index');
 /* Mostrar */
 Route::view('/users/show','users.show')->name('users.show');
+Route::view('/trainers/show','trainers.show')->name('trainers.show');
 Route::view('/games/show','games.show')->name('games.show');
 /* Crear */
 Route::view('/rols/create','rols.create')->name('rols.create');

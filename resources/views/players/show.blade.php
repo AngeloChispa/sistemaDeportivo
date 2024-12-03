@@ -1,6 +1,6 @@
 @extends('layouts.admin_view')
 
-@section('title', 'Admin')
+@section('title', 'Player')
 
 @section('content')
     <div class="flex flex-1">
