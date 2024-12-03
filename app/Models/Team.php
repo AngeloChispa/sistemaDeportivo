@@ -12,6 +12,8 @@ class Team extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'name',
         'state',
@@ -19,7 +21,7 @@ class Team extends Model
         'shield'
     ];
 
-    public function sports():BelongsTo
+    public function sport():BelongsTo
     {
         return $this->belongsTo(Sport::class);
     }
@@ -36,7 +38,12 @@ class Team extends Model
 
     public function players():BelongsToMany
     {
-        return $this->belongsToMany(Player::class);
+        return $this->belongsToMany(Player::class)->withPivot('position','dorsal','assignment_date','departure_date','captain');
+    }
+
+    public function team():BelongsToMany
+    {
+        return $this->belongsToMany(Team::class);
     }
 
 }

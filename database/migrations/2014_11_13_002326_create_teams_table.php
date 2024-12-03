@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('sport_id');
             $table->foreign('sport_id')->references('id')->on('sports');
             //Guarda el path
-            $table->string('shield');
+            $table->string('shield')->nullable();
         });
     }
 

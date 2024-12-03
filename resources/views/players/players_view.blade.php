@@ -48,10 +48,12 @@
                     <td>{{$person->birthdate}}</td>
                     <td>{{$person->birthplace}}</td>
                     <td>{{$person->birthplace}}</td>
+                    <td>{{$person->player->status}}</td>
                     <td>{{$person->player->height}}</td>
                     <td>
                         {{$person->player->bestSide}}
                     </td>
+                    <td></td>
                     <td>
                         <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
                     </td>

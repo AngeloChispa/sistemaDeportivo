@@ -22,11 +22,16 @@ class Player extends Model
 
     public function people ():BelongsTo
     {
-        return $this->belongsTo(Player::class);
+        return $this->belongsTo(People::class);
     }
 
     public function teams():BelongsToMany
     {
-        return $this->belongsToMany(Team::class);
+        return $this->belongsToMany(Team::class)->withPivot('position','dorsal','assignment_date','departure_date','captain');
+    }
+
+    public function game():BelongsToMany
+    {
+        return $this->belongsToMany(Game::class, 'game_events')->withPivot('event', 'minute');
     }
 }

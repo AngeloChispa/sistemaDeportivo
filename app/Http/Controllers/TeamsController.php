@@ -9,8 +9,8 @@ class TeamsController extends Controller
 {
 
     public function index(){
-        $teams = Team::All();
-        return view("teams.teams_view", $teams);
+        $teams = Team::with('sport')->get();
+        return view("teams.teams_view", compact('teams'));
     }
 
     public function create(){
@@ -31,13 +31,10 @@ class TeamsController extends Controller
 
         $team->save();
 
-
-
-
-
     }
 
-
-
+    public function show(Team $team){
+        return view('teams.show', compact('team'));
+    }
 
 }
