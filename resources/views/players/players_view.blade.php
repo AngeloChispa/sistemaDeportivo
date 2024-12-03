@@ -15,7 +15,11 @@
         @slot('create_something', 'Registrar Jugador')
 
         @slot('content_head')
-            @empty($sports)
+            @empty($people)
+                <tr>
+                    <th>No data</th>
+                </tr>
+            @else
                 <tr>
                     <th>id</th>
                     <th>ID del Jugador</th>
@@ -30,16 +34,11 @@
                     <th>Fecha de registro</th>
                     <th colspan="3">Acción</th>
                 </tr>
-            @else
-                <tr>
-                    <th>No data</th>
-                </tr>
             @endempty
 
         @endslot
         @slot('content_body')
             @forelse ($people as $person)
-
                 @if ($person->player)
                     <tr class="border-b border-stone-700 h-16">
                         <td>{{ $person->id }}</td>

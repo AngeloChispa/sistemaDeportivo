@@ -14,7 +14,7 @@
         @slot('create_something', 'Registrar Operación')
 
         @slot('content_head')
-           {{--  @empty($people)
+           {{--  @empty($finances)
                 <th>Tabla vacía</th>
             @else --}}
                 <tr>
@@ -30,7 +30,7 @@
             {{-- @endempty --}}
         @endslot
         @slot('content_body')
-            {{-- @forelse ($tournaments as $tournament)
+            {{-- @forelse ($finances as $finance)
             <tr class="border-b border-stone-700 h-16">
                 <td>{{ $tournament->id }}</td>
                 <td>{{ $tournament->name }}</td>

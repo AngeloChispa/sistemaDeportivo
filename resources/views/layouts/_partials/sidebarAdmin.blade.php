@@ -82,7 +82,7 @@
                     @slot('icon')
                         <ion-icon name="bar-chart" class="h-5 w-5"></ion-icon>
                     @endslot
-                    @slot('reference', 'index')
+                    @slot('reference', 'reports.index')
                     @slot('name', 'Estadísticas & Reportes')
                 @endcomponent
             </li>

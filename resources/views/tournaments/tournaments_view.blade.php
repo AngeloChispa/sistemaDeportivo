@@ -18,6 +18,10 @@
         @slot('content_head')
             @empty($tournaments)
                 <tr>
+                    <th>No data</th>
+                </tr>
+            @else
+                <tr>
                     <th>Id</th>
                     <th>Nombre</th>
                     <th>Logo</th>
@@ -26,10 +30,6 @@
                     <th>Fecha de finalización</th>
                     <th>Descripción</th>
                     <th colspan="3">Acción</th>
-                </tr>
-            @else
-                <tr>
-                    <th>No data</th>
                 </tr>
             @endempty
         @endslot

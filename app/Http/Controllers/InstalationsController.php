@@ -15,7 +15,7 @@ class InstalationsController extends Controller
     }
 
     public function create(){
-
+        return view('instalations.create');
     }
 
 

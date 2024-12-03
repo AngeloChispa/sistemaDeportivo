@@ -14,20 +14,19 @@
         @slot('create_something', 'Registrar Partido')
 
         @slot('content_head')
-            {{-- @empty($games)
-                <tr>
-                <th>ID Partido</th>
-                <th>ID Torneo</th>
-                <th>ID Equipo Local</th>
-                <th>ID Equipo Visitante</th>
-                <th>ID Arbitro</th>
-                <th colspan="3">Acción</th>
-            </tr>
+            {{-- <tr>
+            @empty($games)
+                
+            <th>No data</th>
             @else
-                <tr>
-                    <th>No data</th>
-                </tr>
-            @endempty --}}
+            <th>ID Partido</th>
+            <th>ID Torneo</th>
+            <th>ID Equipo Local</th>
+            <th>ID Equipo Visitante</th>
+            <th>ID Arbitro</th>
+            <th colspan="3">Acción</th>
+            @endempty 
+            </tr> --}}
             <tr>
                 <th>ID Partido</th>
                 <th>ID Torneo</th>
@@ -75,7 +74,7 @@
                     <td>No data found</td>
                 </tr>
             @endforelse --}}
-            <tr>
+            <tr class="border-b border-stone-700 h-16">
                 <td>1</td>
                 <td>1</td>
                 <td>1</td>
@@ -98,7 +97,7 @@
                     </form>
                 </td>
             </tr>
-            <tr>
+            <tr class="border-b border-stone-700 h-16">
                 <td>1</td>
                 <td>1</td>
                 <td>1</td>
