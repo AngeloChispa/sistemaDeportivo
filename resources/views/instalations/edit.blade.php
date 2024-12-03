@@ -12,7 +12,7 @@
             @method("PUT")
             @csrf
 
-            @component('_components.boxInputCreate')
+            @component('_components.boxInputEdit')
                 @slot('for', 'name')
                 @slot('content', 'Nombre: ')
                 @slot('type', 'text')
@@ -33,7 +33,7 @@
                 @endslot
             @endcomponent
 
-            @component('_components.boxInputCreate')
+            @component('_components.boxInputEdit')
                 @slot('for', 'state')
                 @slot('content', 'Estado: ')
                 @slot('type', 'text')
@@ -42,7 +42,7 @@
                 @slot('value', old('state', $instalation->state))
             @endcomponent
 
-            @component('_components.boxInputCreate')
+            @component('_components.boxInputEdit')
                 @slot('for', 'city')
                 @slot('content', 'Ciudad: ')
                 @slot('type', 'text')
@@ -51,7 +51,7 @@
                 @slot('value', old('city', $instalation->city))
             @endcomponent
 
-            @component('_components.boxInputCreate')
+            @component('_components.boxInputEdit')
                 @slot('for', 'capacity')
                 @slot('content', 'Capacidad: ')
                 @slot('type', 'number')
