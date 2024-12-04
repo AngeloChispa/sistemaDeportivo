@@ -11,6 +11,8 @@ class Trainer extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'people_id',
         'description'

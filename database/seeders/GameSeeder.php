@@ -21,5 +21,14 @@ class GameSeeder extends Seeder
                 'referee_id' => 1   
             ]
         );
+
+        DB::table('games')->insert(
+            [
+                'tournament_id' => 1 ,
+                'local_team_id' => 3,
+                'away_team_id' => 4,
+                'referee_id' => 2     
+            ]
+        ); 
     }
 }

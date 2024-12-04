@@ -19,6 +19,7 @@
             @else
                 <tr>
                     <th>ID</th>
+                    <th>ID Usuario</th>
                     <th>Usuario</th>
                     <th>Nombre</th>
                     <th>Apellidos</th>
@@ -36,10 +37,11 @@
             @forelse ($people as $person)
                 @if ($person->user)
                     <tr class="border-b border-stone-700 h-16">
-                        <td>{{ $person->user->id }}</td>
-                        <td>{{ $person->name }}</td>
-                        <td>{{ $person->lastname }}</td>
+                        <td>{{ $person->id }}</td>
+                        <td>{{$person->user->id}}</td>
                         <td>{{ $person->user->username }}</td>
+                        <td>{{ $person->name }}</td>
+                        <td>{{ $person->lastname}}</td>
                         <td>{{ $person->birthdate }}</td>
                         <td>{{ $person->birthplace }}</td>
                         <td></td>
