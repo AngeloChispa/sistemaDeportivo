@@ -12,22 +12,18 @@
 
         @slot('content_head')
             <tr>
-                {{-- TODO:Aplicar esta misma lógica en todas las tablas --}}
                 @empty($filteredPeople)
                     <th>Tabla vacía</th>
                 @else
                     <th>Id</th>
                     <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Fecha de nacimiento</th>
+                    <th>Lugar de nacimiento</th>
+                    <th>id jugador</th>
                     <th>Estado</th>
-                    <th>Ciudad</th>
-                    <th>Deporte</th>
-                    <th>Escudo</th>
-                    <th>Torneos ganados</th>
-                    <th>Torneos jugados</th>
-                    <th>Partidos ganados</th>
-                    <th>Partidos jugados</th>
-                    <th>Puntos</th>
-                    <th>Fecha de registro</th>
+                    <th>Altura</th>
+                    <th>Lado bueno</th>
                 @endempty
             </tr>
         @endslot
