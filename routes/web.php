@@ -1,13 +1,19 @@
 <?php
 
 use App\Http\Controllers\GamesController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PlayersController;
 use App\Http\Controllers\RolsController;
 use App\Http\Controllers\UsersCotroller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TournamentsController;
 use App\Http\Controllers\InstalationsController;
+use App\Http\Controllers\RefereeController;
+use App\Http\Controllers\SportController;
 use App\Http\Controllers\TeamsController;
+use App\Http\Controllers\TrainerController;
+
+Route::get('/', [IndexController::class, 'index']);
 
 Route::resource('/user', controller: UsersCotroller::class);
 Route::resource('/rols', RolsController::class);
@@ -16,6 +22,9 @@ Route::resource("/instalations",InstalationsController::class);//FALTA TERMINAR 
 Route::resource('/players', PlayersController::class);//FALTA CORREGIR RUTA IMAGEN
 Route::resource("/teams",TeamsController::class);
 Route::resource("/games", GamesController::class);
+Route::resource('/referees', RefereeController::class);
+Route::resource('/trainers', TrainerController::class);
+Route::resource('/sport', SportController::class);
 
 
 
@@ -23,29 +32,19 @@ Route::resource("/games", GamesController::class);
 //Borrar esta linea
 Route::view('/prueba/livewire/', 'chuchoLab.pruebaLivewire');
 
-Route::view('/','index')->name('index');
-
 //Julissa
 /* Vistas */
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('sponsors.index');
 Route::view('/finances/admin','finances.finances_view')->name('finances.index');
-Route::view('/referees/admin','referees.referees_view')->name('referees.index');
 Route::view('/filtro/admin','reports.filter')->name('reports.index');
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('patrocinadores.index');
-Route::view('/trainers/admin','trainers.trainers_view')->name('trainers.index');
 /* Mostrar */
 Route::view('/users/show','users.show')->name('users.show');
-Route::view('/trainers/show','trainers.show')->name('trainers.show');
 Route::view('/jugador/show','players.show');
 Route::view('/instalaciones/show','instalations.show');
 /* Crear */
-Route::view('/rols/create','rols.create')->name('rols.create');
 Route::view('/sponsors/create','sponsors.create')->name('patrocinadores.create');
-Route::view('/sports/create','sports.create')->name('sport.create');
-Route::view('/referees/create','referees.create')->name('referees.create');
-Route::view('/trainers/create','trainers.create')->name('trainers.create');
 /* Editar */
-Route::view('/referees/edit','referees.edit')->name('referees.edit');
 
 /*Danna*/
 Route::view('/landing','layouts.landing')->name('landing');

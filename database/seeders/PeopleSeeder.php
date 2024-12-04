@@ -13,15 +13,16 @@ class PeopleSeeder extends Seeder
      */
     public function run(): void
     {
-        People::factory()->count(50)->create();
-        People::create(
-            [
-                'name' => 'Memo',
-                'lastname' => 'Ibarra',
-                'birthdate' => fake()->date(),
-                'birthplace' => 'Uruguay',
-                'nationality_id' => 1, 
-            ]
-        );
+        /*
+            Jugadores: 1 - 50
+
+            Entrenadores: 51 - 100
+
+            Referees: 101 - 150
+
+            Usuarios: 151 - 200
+        */ 
+        People::factory()->count(200)->create();
+        
     }
 }

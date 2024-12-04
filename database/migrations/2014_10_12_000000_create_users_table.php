@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('username', 30);
             $table->string('phone',20)->unique();
             $table->unsignedBigInteger('rol_id')->default(2);
-            $table->string('email',30)->unique();
+            $table->string('email',40)->unique();
             $table->string('password',255);
             $table->datetime('up_date')->default(DB::raw('CURRENT_TIMESTAMP'));
         });

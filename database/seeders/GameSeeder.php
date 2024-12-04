@@ -25,10 +25,10 @@ class GameSeeder extends Seeder
         DB::table('games')->insert(
             [
                 'tournament_id' => 1 ,
-                'local_team_id' => 1,
-                'away_team_id' => 2,
-                'referee_id' => 1     
+                'local_team_id' => 3,
+                'away_team_id' => 4,
+                'referee_id' => 2     
             ]
-        );
+        ); 
     }
 }
