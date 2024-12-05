@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\People;
+use App\Models\Tournament;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class PeopleSeeder extends Seeder
+class TournamentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        People::factory()->count(100)->create();
+        Tournament::factory(50)->create();
     }
 }

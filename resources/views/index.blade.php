@@ -251,8 +251,6 @@
                     @slot('create_something', 'Registrar Usuario')--}}
             
                     @slot('content_head')
-                        <livewire:filtro />
-                         @section('scripts','@livewireScripts')
                         {{-- @empty($people)
                             <th>Tabla vacía</th>
                         @else --}}

@@ -15,7 +15,11 @@ class DatabaseSeeder extends Seeder
             RolSeeder::class,
             PeopleSeeder::class,
             PlayerSeeder::class,
-            NationalitySeeder::class
+            NationalitySeeder::class,
+            SponsorSeeder::class,
+            TournamentSeeder::class,
+            InstalationSeeder::class,
+            //SportSeeder::class
        ]);
     }
 }

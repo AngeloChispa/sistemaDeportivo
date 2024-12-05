@@ -17,7 +17,7 @@ class PlayerFactory extends Factory
     public function definition(): array
     {
         return [
-            'people_id' => fake()->unique()->numberBetween(1,50),
+            'people_id' => fake()->unique()->numberBetween(1,100),
             'status' => fake()->randomElement(['Lesionado','Activo', 'Retirado']),
             'height' => fake()->randomFloat(2, 1.50, 3.00),
             'bestSide' => fake()->randomElement(['Izquierdo','Derecho']),
