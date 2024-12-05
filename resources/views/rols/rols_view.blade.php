@@ -35,7 +35,7 @@
                         <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
                     </td>
                     <td>
-                        <form action="#" method="POST" class="inline formulario-eliminar">
+                        <form action="{{ route('rols.destroy', $rol->id) }}" method="POST" class="inline formulario-eliminar">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
@@ -53,11 +53,10 @@
     <script>
         document.querySelectorAll('.formulario-eliminar').forEach(function(eliminarBtn) {
 
-            eliminarBtn.addEventListener('click', function(event) {
+            eliminarBtn.addEventListener('submit', function(event) {
 
-                event.preventDefault();
+                event.preventDefault(); // Detener el envío del formulario
 
-                // SweetAlert2
                 const swalWithBootstrapButtons = Swal.mixin({
                     customClass: {
                         confirmButton: "bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 mr-5",
@@ -65,32 +64,24 @@
                     },
                     buttonsStyling: true
                 });
+
                 swalWithBootstrapButtons.fire({
                     title: "¿Estás seguro?",
-                    text: "¡No podrás ser capaz de revertir esto!",
+                    text: "¡No podrás revertir esto!",
                     icon: "warning",
                     showCancelButton: true,
-                    confirmButtonText: "¡Si, eliminalo!",
-                    cancelButtonText: "¡No, cancelalo!",
+                    confirmButtonText: "¡Sí, elíminalo!",
+                    cancelButtonText: "Cancelar",
                     reverseButtons: false,
                     background: '#38322e',
                     color: '#d4d4d8'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        swalWithBootstrapButtons.fire({
-                            title: "¡Eliminado!",
-                            text: "El elemento ha sido eliminado.",
-                            icon: "success",
-                            background: '#38322e',
-                            color: '#d4d4d8'
-                        });
-                    } else if (
-                        /* Read more about handling dismissals below */
-                        result.dismiss === Swal.DismissReason.cancel
-                    ) {
+                        event.target.submit();
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
                         swalWithBootstrapButtons.fire({
                             title: "Cancelado",
-                            text: "Proceso cancelado :)",
+                            text: "El proceso ha sido cancelado.",
                             icon: "error",
                             background: '#38322e',
                             color: '#d4d4d8'

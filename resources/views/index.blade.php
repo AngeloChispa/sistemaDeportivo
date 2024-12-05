@@ -130,80 +130,61 @@
                     </div>
                     {{-- cc 2 --}}
 
-                    <div class="mb-5 rounded-lg bg-stone-900"> <!-- Contenedor principal -->
-                        <div class="pl-5 bg-stone-800 p-1 rounded-t-lg font-semibold">
-                            <p class="mt-2 mb-1 text-bold">España - La Liga</p>
+                    @forelse ($tournaments as $tournament)
+                        <div class="mb-5 rounded-lg bg-stone-900"> <!-- Contenedor principal -->
+                            <div class="pl-5 bg-stone-800 p-1 rounded-t-lg font-semibold">
+                                <p class="mt-2 mb-1 text-bold">{{ $tournament->name }}</p>
+                            </div>
+
+                            @foreach ($tournament->games as $game)
+                                <hr class="border-zinc-800 ">
+
+                                <a href="{{ route('games.show', $game->id) }}"
+                                    class="p-5 text-base font-semibold text-center text-zinc-300 bg-stone-900 flex justify-between items-center hover:bg-[#333333]">
+                                    <span class="flex-1 text-right flex items-center justify-end">
+                                        {{ $game->localTeam->name }}
+                                        <img src="{{ asset('assets/img/realmadrid.png') }}" class="h-6 w-6 ml-2"
+                                            alt="Real Madrid">
+                                    </span>
+                                    <span class="w-20 text-center">0 - 0</span>
+                                    <span class="flex-1 text-left flex items-center">
+                                        <img src="{{ asset('assets/img/barca.png') }}" class="h-6 w-6 mr-2"
+                                            alt="Barcelona">
+                                        {{ $game->awayTeam->name }}
+                                    </span>
+                                </a>
+                            @endforeach
                         </div>
+                    @empty
+                        <h1>No data found</h1>
+                    @endforelse
 
-                        <hr class="border-zinc-800 ">
+                    @foreach ($games as $game)
+                        @if (!$game->tournament)
+                            <div class="mb-5 rounded-lg bg-stone-900"> <!-- Contenedor principal -->
+                                <div class="pl-5 bg-stone-800 p-1 rounded-t-lg font-semibold">
+                                    <p class="mt-2 mb-1 text-bold">Partidos Amistosos</p>
+                                </div>
 
-                        <a href="{{ route('user.index') }}"
-                            class="p-5 text-base font-semibold text-center text-zinc-300 bg-stone-900 flex justify-between items-center hover:bg-[#333333]">
-                            <span class="flex-1 text-right flex items-center justify-end">
-                                Real Madrid
-                                <img src="{{ asset('assets/img/realmadrid.png') }}" class="h-6 w-6 ml-2" alt="Real Madrid">
-                            </span>
-                            <span class="w-20 text-center">0 - 0</span>
-                            <span class="flex-1 text-left flex items-center">
-                                <img src="{{ asset('assets/img/barca.png') }}" class="h-6 w-6 mr-2" alt="Barcelona">
-                                Barcelona
-                            </span>
-                        </a>
+                                <hr class="border-zinc-800 ">
 
-                        <hr class="border-zinc-800 ">
-
-                        <a href="{{ route('user.index') }}"
-                            class="p-5 text-base font-semibold text-center text-zinc-300 bg-stone-900 flex justify-between items-center hover:bg-[#333333]">
-                            <span class="flex-1 text-right flex items-center justify-end">
-                                Real Betis
-                                <img src="{{ asset('assets/img/betis.png') }}" class="h-6 w-6 ml-2" alt="Real Betis">
-                            </span>
-                            <span class="w-20 text-center">2 - 3</span>
-                            <span class="flex-1 text-left flex items-center">
-                                <img src="{{ asset('assets/img/girona.png') }}" class="h-6 w-6 mr-2" alt="Girona">
-                                Girona
-                            </span>
-                        </a>
-
-                        <hr class="border-zinc-800 ">
-
-                        <a href="{{ route('user.index') }}"
-                            class="p-5 text-base font-semibold text-center text-zinc-300 bg-stone-900 flex justify-between items-center hover:bg-[#333333]  rounded-b-lg">
-                            <span class="flex-1 text-right flex items-center justify-end">
-                                Villareal
-                                <img src="{{ asset('assets/img/villareal.png') }}" class="h-6 w-6 ml-2" alt="Villareal">
-                            </span>
-                            <span class="w-20 text-center">1 - 5</span>
-                            <span class="flex-1 text-left flex items-center">
-                                <img src="{{ asset('assets/img/getafe.png') }}" class="h-6 w-6 mr-2" alt="Getafe">
-                                Getafe
-                            </span>
-                        </a>
-                    </div>
-
-                    {{-- cc 3 --}}
-                    <div class="mb-5">
-                        <div class="pl-5 bg-stone-800 p-1 rounded-t-lg font-semibold">
-                            <p class="mt-2 mb-1 text-bold">Inglaterra - Premier League</p>
-
-                        </div>
-
-                        <hr class="border-zinc-800 ">
-
-                        <a href="{{ route('user.index') }}"
-                            class="p-5 text-base font-semibold text-center text-zinc-300 bg-stone-900 flex justify-between items-center rounded-b-lg hover:bg-[#333333]">
-                            <span class="flex-1 text-right flex items-center justify-end">
-                                Liverpool
-                                <img src="{{ asset('assets/img/liverpool.png') }}" class="h-6 w-6 ml-2"
-                                    alt="Real Madrid">
-                            </span>
-                            <span class="w-20 text-center">2 - 0</span>
-                            <span class="flex-1 text-left flex items-center">
-                                <img src="{{ asset('assets/img/mancity.png') }}" class="h-6 w-6 mr-2" alt="Barcelona">
-                                Man City
-                            </span>
-                        </a>
-                    </div>
+                                <a href="{{ route('games.show', $game->id) }}"
+                                    class="p-5 text-base font-semibold text-center text-zinc-300 bg-stone-900 flex justify-between items-center hover:bg-[#333333]">
+                                    <span class="flex-1 text-right flex items-center justify-end">
+                                        {{$game->localTeam->name}}
+                                        <img src="{{ asset('assets/img/realmadrid.png') }}" class="h-6 w-6 ml-2"
+                                            alt="Real Madrid">
+                                    </span>
+                                    <span class="w-20 text-center">0 - 0</span>
+                                    <span class="flex-1 text-left flex items-center">
+                                        <img src="{{ asset('assets/img/barca.png') }}" class="h-6 w-6 mr-2"
+                                            alt="Barcelona">
+                                        {{$game->awayTeam->name}}
+                                    </span>
+                                </a>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
 
@@ -343,14 +324,14 @@
                                 <td>No data found</td>
                             </tr>
                         @endforelse --}}
-                                <tr class="border-b border-stone-800 h-12 hover:bg-[#333333] text-base">
-                                    <td style="width: 50px;" class="hover:bg-transparent">1</td>
-                                    <td><img src="{{ asset('assets/img/liverpool.png') }}" class="h-3 w-5"></td>
-                                    <td class="text-left hover:bg-transparent">Liverpool</td>
-                                    <td class="">12</td>
-                                    <td class="">12</td>
-                                    <td class=" font-black">31</td>
-                                </tr>
+                            <tr class="border-b border-stone-800 h-12 hover:bg-[#333333] text-base">
+                                <td style="width: 50px;" class="hover:bg-transparent">1</td>
+                                <td><img src="{{ asset('assets/img/liverpool.png') }}" class="h-3 w-5"></td>
+                                <td class="text-left hover:bg-transparent">Liverpool</td>
+                                <td class="">12</td>
+                                <td class="">12</td>
+                                <td class=" font-black">31</td>
+                            </tr>
 
                             <tr class="border-b border-stone-800 h-12 hover:bg-[#333333] text-base">
                                 <td style="width: 50px;" class="">2</td>

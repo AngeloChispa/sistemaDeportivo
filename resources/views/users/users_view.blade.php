@@ -38,10 +38,10 @@
                 @if ($person->user)
                     <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
                         <td>{{ $person->id }}</td>
-                        <td>{{$person->user->id}}</td>
+                        <td>{{ $person->user->id }}</td>
                         <td>{{ $person->user->username }}</td>
                         <td>{{ $person->name }}</td>
-                        <td>{{ $person->lastname}}</td>
+                        <td>{{ $person->lastname }}</td>
                         <td>{{ $person->birthdate }}</td>
                         <td>{{ $person->birthplace }}</td>
                         <td>{{ $person->birthplace }}</td>
@@ -63,7 +63,7 @@
                             </form>
                         </td>
                         <td>
-                            <a href="{{ route('user.edit', $person->id) }}"
+                            <a href="{{ route('user.show', $person->id) }}"
                                 class="font-medium text-zinc-200 bg-green-500 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
                         </td>
                     </tr>
@@ -76,9 +76,8 @@
         @endslot
     @endcomponent
 
-@section('scripts')
-@component('_components.swal')
-@endcomponent
-
+    @section('scripts')
+        @component('_components.swal')
+        @endcomponent
     @endsection
 @endsection
