@@ -20,8 +20,7 @@ class PeopleFactory extends Factory
             'name' => fake()->name(),
             'lastname' => fake()->lastName(),
             'birthdate' => fake()->date(),
-            /* 'nationality_id'=> fake()->numberBetween(1,50), */
-            'birthplace' => fake()->country(),
+            'birthplace' => fake()->country()            
         ];
     }
 }

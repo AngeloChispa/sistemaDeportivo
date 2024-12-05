@@ -1,10 +1,10 @@
 @extends('layouts.admin_view')
 
-@section('title', 'Registrar Jugador')
+@section('title', 'Registrar Instalación')
 
 @section('content')
     <h1 class="text-4xl text-center">
-        Registrar Jugador
+        Registrar Instalación
     </h1>
     <div class="flex items-center justify-center">
         <form method="POST" action="#"
@@ -47,7 +47,7 @@
             @component('_components.boxInputCreate')
                 @slot('for', 'city')
                 @slot('content', 'Ciudad: ')
-                @slot('type', 'date')
+                @slot('type', 'text')
                 @slot('name', 'city')
                 @slot('id', 'city')
             @endcomponent

@@ -9,6 +9,7 @@
     <div class="flex items-center justify-center">
         <form method="POST" action="#"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
+            @method("PUT")
             @csrf
 
             @component('_components.boxInputEdit')

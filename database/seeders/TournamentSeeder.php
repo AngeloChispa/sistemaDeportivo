@@ -13,6 +13,14 @@ class TournamentSeeder extends Seeder
      */
     public function run(): void
     {
-        Tournament::factory(50)->create();
+        Tournament::create(
+            [
+                   'name' => 'Champions Victoria',
+                   'type'  => '1',
+                   'start_date' => now(),
+                   'end_date' => now(),
+                   'description' => 'Aqui jugo Erick Mata el 10 de la poli'
+            ]
+        );
     }
 }

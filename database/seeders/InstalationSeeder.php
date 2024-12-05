@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Instalation;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class InstalationSeeder extends Seeder
 {
@@ -13,6 +14,13 @@ class InstalationSeeder extends Seeder
      */
     public function run(): void
     {
-            Instalation::factory()->count(30)->create();
+        Instalation::create([
+            'name' => 'Estadio Juan Diego Lumbreras Vega',
+            'country' => 'México',
+            'state' => 'Tamulipas',
+            'city' => 'Padilla',
+            'capacity' => 200
+        ]);
+
     }
 }

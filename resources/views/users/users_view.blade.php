@@ -19,10 +19,10 @@
             @else
                 <tr>
                     <th>ID</th>
+                    <th>ID Usuario</th>
                     <th>Usuario</th>
                     <th>Nombre</th>
                     <th>Apellidos</th>
-                    <th>Usuario</th>
                     <th>Fecha de Nacimiento</th>
                     <th>Lugar de nacimiento</th>
                     <th>Nacionalidad</th>
@@ -37,10 +37,11 @@
             @forelse ($people as $person)
                 @if ($person->user)
                     <tr class="border-b border-stone-700 h-16">
+                        <td>{{ $person->id }}</td>
                         <td>{{ $person->user->id }}</td>
+                        <td>{{ $person->user->username }}</td>
                         <td>{{ $person->name }}</td>
                         <td>{{ $person->lastname }}</td>
-                        <td>{{ $person->user->username }}</td>
                         <td>{{ $person->birthdate }}</td>
                         <td>{{ $person->birthplace }}</td>
                         <td></td>
@@ -49,7 +50,7 @@
                         <td>{{ $person->user->up_date }}</td>
                         <td>
                             <a href="{{ route('user.edit', $person->id) }}"
-                                class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
+                                class="font-medium text-zinc-200 bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                         </td>
                         <td>
                             <form action="{{ route('user.destroy', $person->user->id) }}" method="POST" style="display: inline;">
@@ -61,6 +62,10 @@
                                 </button>
                             </form>
                         </td>
+                        <td>
+                            <a href="{{ route('user.show', $person->id) }}"
+                                class="font-medium text-zinc-200 bg-green-500 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
+                        </td>
                     </tr>
                 @endif
             @empty
@@ -71,9 +76,8 @@
         @endslot
     @endcomponent
 
-@section('scripts')
-@component('_components.swal')
-@endcomponent
-
+    @section('scripts')
+        @component('_components.swal')
+        @endcomponent
     @endsection
 @endsection

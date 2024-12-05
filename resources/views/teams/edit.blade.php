@@ -1,14 +1,15 @@
 @extends('layouts.admin_view')
 
-@section('title', 'Registrar Equipo')
+@section('title', 'Editar Equipo')
 
 @section('content')
     <h1 class="text-4xl text-center">
-        Registrar Equipo
+        Editar Equipo
     </h1>
     <div class="flex items-center justify-center">
         <form method="POST" action="#"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
+            @method("PUT")
             @csrf
 
             @component('_components.boxInputCreate')

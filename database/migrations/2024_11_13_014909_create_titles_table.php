@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('titles', function (Blueprint $table) {
             $table->id('id');
-            $table->unsignedBigInteger('assignment_id')->nullable();
-            $table->foreign('assignment_id')->references('id')->on('player_team_assignments');
+            $table->unsignedBigInteger('player_team_id')->nullable();
+            $table->foreign('player_team_id')->references('id')->on('player_team');
             $table->unsignedBigInteger('trainer_team_id')->nullable();
             $table->foreign('trainer_team_id')->references('id')->on('coach_team_assignments');
             $table->string('name',60);

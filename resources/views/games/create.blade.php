@@ -1,22 +1,90 @@
 @extends('layouts.admin_view')
 
-@section('title', 'Registrar usuario')
+@section('title', 'Registrar partido')
 
 @section('content')
     <h1 class="text-4xl text-center">
         Registrar Partido
     </h1>
     <div class="flex items-center justify-center">
-        <form method="POST" action="{{route('user.store')}}"
+        <form method="POST" action="#"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
             @csrf
 
             @component('_components.boxInputCreate')
-                @slot('for','name')
-                @slot('content','Nombre: ')
-                @slot('type','text')
-                @slot('name','name')
-                @slot('id','name')
+                @slot('for', 'name')
+                @slot('content', 'Nombre: ')
+                @slot('type', 'text')
+                @slot('name', 'name')
+                @slot('id', 'name')
+            @endcomponent
+
+            @component('_components.boxSelectInput')
+                @slot('for', 'tournament')
+                @slot('content', 'Torneo: ')
+                @slot('name', 'tournament')
+                @slot('id', 'tournament')
+                @slot('more_options')
+                    {{-- @forelse ($tournaments as $tournament)
+                        <option value="{{ $tournament['id'] }}">{{ $tournament['name'] }}</option>
+                    @empty
+                        <option value="">No disponibles</option>                     
+                    @endforelse --}}
+                    <option value="1">Super torneo 1</option>
+                    <option value="2">Mega torneo 4!!!</option>
+                    <option value="3">Torneo en contra de la violencia</option>
+                @endslot
+            @endcomponent
+
+            @component('_components.boxSelectInput')
+                @slot('for', 'local_team')
+                @slot('content', 'Equipo local: ')
+                @slot('name', 'local_team')
+                @slot('id', 'local_team')
+                @slot('more_options')
+                    {{-- @forelse ($teams as $team)
+                        <option value="{{ $team['id'] }}">{{ $team['name'] }}</option>
+                    @empty
+                        <option value="">No disponibles</option>                     
+                    @endforelse --}}
+                    <option value="1">Super amigos</option>
+                    <option value="2">Truchas agresivas</option>
+                    <option value="3">Osos melosos</option>
+                @endslot
+            @endcomponent
+
+            @component('_components.boxSelectInput')
+                @slot('for', 'away_team')
+                @slot('content', 'Equipo visitante: ')
+                @slot('name', 'away_team')
+                @slot('id', 'away_team')
+                @slot('more_options')
+                    {{-- @forelse ($teams as $team)
+                        <option value="{{ $team['id'] }}">{{ $team['name'] }}</option>
+                    @empty
+                        <option value="">No disponibles</option>                     
+                    @endforelse --}}
+                    <option value="1">Super amigos</option>
+                    <option value="2">Truchas agresivas</option>
+                    <option value="3">Osos melosos</option>
+                @endslot
+            @endcomponent
+            
+            @component('_components.boxSelectInput')
+                @slot('for', 'referee')
+                @slot('content', 'Arbitro: ')
+                @slot('name', 'referee')
+                @slot('id', 'referee')
+                @slot('more_options')
+                    {{-- @forelse ($referees as $referee)
+                        <option value="{{ $referee['id'] }}">{{ $referee['name'] }}</option>
+                    @empty
+                        <option value="">No disponibles</option>                     
+                    @endforelse --}}
+                    <option value="1">Alan Manuel</option>
+                    <option value="2">Juan Alfaro</option>
+                    <option value="3">Dante Parreño</option>
+                @endslot
             @endcomponent
 
             <div class="flex">
