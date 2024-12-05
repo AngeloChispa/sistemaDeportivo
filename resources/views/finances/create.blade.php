@@ -16,7 +16,7 @@
                 @slot('content', 'Monto: ')
                 @slot('type', 'number')
                 @slot('name', 'amount')
-                @slot('id', 'amount min=1 step=0.01')
+                @slot('id', 'amount min=1 step=0.01 required')
             @endcomponent
 
             @component('_components.boxInputCreate')
@@ -24,14 +24,14 @@
                 @slot('content', 'Concepto: ')
                 @slot('type', 'text')
                 @slot('name', 'concept')
-                @slot('id', 'concept')
+                @slot('id', 'concept required')
             @endcomponent
 
             @component('_components.boxSelectInput')
                 @slot('for', 'transaction_type')
                 @slot('content', 'Tipo Transacción: ')
                 @slot('name', 'transaction_type')
-                @slot('id', 'transaction_type')
+                @slot('id', 'transaction_type required')
                 @slot('more_options')
                     
                 

@@ -15,7 +15,7 @@
 
             <div>
                 <label for="name" class="block text-sm font-semibold text-stone-200">Nombre:</label>
-                <input type="text" name="name" id="name"
+                <input type="text" name="name" id="name" required
                     class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
             </div>
             <div>
