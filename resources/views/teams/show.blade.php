@@ -103,6 +103,9 @@
                             </tr>
                         @endif
                     @empty
+                        <tr>
+                            <td>No data</td>
+                        </tr>
                     @endforelse --}}
                 @forelse ($team->players as $player)
                     <tr class="border-b border-stone-700 h-16">

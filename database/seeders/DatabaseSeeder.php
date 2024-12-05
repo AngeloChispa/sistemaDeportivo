@@ -4,8 +4,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Nationality;
-use App\Models\Team;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,11 +12,18 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             NationalitySeeder::class,
+            InstalationSeeder::class,
             RolSeeder::class,
             PeopleSeeder::class,
             PlayerSeeder::class,
+            TrainerSeeder::class,
+            RefereeSeeder::class,
+            UserSeeder::class,
             SportSeeder::class,
-            TeamSeeder::class
+            TeamSeeder::class,
+            TournamentSeeder::class,
+            GameSeeder::class,
+            ReservationSeeder::class
         ]);
     }
 }

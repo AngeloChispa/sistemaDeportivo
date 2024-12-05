@@ -11,7 +11,8 @@ class TeamsController extends Controller
 {
     public function index(){
         $teams = Team::with('sport')->get();
-        return view("teams.teams_view", compact('teams'));
+        $sports = Sport::all();
+        return view("teams.teams_view", compact('teams', 'sports'));
     }
 
     public function create(){

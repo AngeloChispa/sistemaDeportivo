@@ -1,10 +1,10 @@
 @extends('layouts.admin_view')
 
-@section('title', 'Crear usuario')
+@section('title', 'Editar usuario')
 
 @section('content')
     <h1 class="text-4xl text-center">
-        Registrar Usuario
+        Editar Usuario
     </h1>
     <div class="flex items-center justify-center">
         <form method="POST" action="{{route('user.update', $person->user->id)}}"

@@ -14,14 +14,12 @@
         @slot('reference', 'teams.create')
         @slot('create_something', 'Crear Equipo')
 
-        {{-- @forelse ($players as $player)
-
-        @empty
-
-        @endforelse
-         --}}
         @slot('content_head')
             {{-- @empty($tournaments)
+                <tr>
+                    <th>No data</th>
+                </tr>
+            @else
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
@@ -30,10 +28,6 @@
                     <th>Deporte</th>
                     <th>Escudo</th>
                     <th colspan="3">Acción</th>
-                </tr>
-            @else
-                <tr>
-                    <th>No data</th>
                 </tr>
             @endempty --}}
             <tr>
@@ -82,6 +76,43 @@
         @endslot
     @endcomponent
 
+    {{-- Tabla deportes --}}
+    @component('_components.table')
+        @slot('title')
+            Deportes
+        @endslot
+        @slot('p_content')
+            Tabla que muestra los deportes registrados hasta el momento.
+        @endslot
+        @slot('reference', 'sport.create')
+        @slot('create_something', 'Registrar deporte')
+
+        @slot('content_head')
+            @empty($sports)
+                <tr>
+                    <th>No data</th>
+                </tr>
+            @else
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th colspan="2">Acción</th>
+                </tr>
+            @endempty
+        @endslot
+        @slot('content_body')
+            @forelse ($sports as $sport)
+                <tr>
+                    <th>{{$sport->id}}</th>
+                    <th>{{$sport->name}}</th>
+                    <th>{{$sport->description}}</th>
+                    <th colspan="2">Acción</th>
+                </tr>
+            @empty
+            @endforelse
+        @endslot
+    @endcomponent
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

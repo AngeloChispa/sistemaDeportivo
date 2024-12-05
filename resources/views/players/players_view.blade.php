@@ -4,6 +4,7 @@
 @section('title', 'Players table')
 
 @section('content')
+    {{-- Tabla de ejemplo, con estilos --}}
     @component('_components.table')
         @slot('title')
             Jugadores
@@ -12,10 +13,20 @@
             Tabla que muestra aquellos usuarios que se les ha asignado el rol de jugador.
         @endslot
         @slot('reference', 'players.create')
-        @slot('create_something', 'Registrar Jugador')
+        @slot('create_something', 'Crear Jugador')
 
+        {{-- @forelse ($players as $player)
+
+        @empty
+
+        @endforelse
+         --}}
         @slot('content_head')
-            @empty($sports)
+            @empty($people)
+                <tr>
+                    <th>No data</th>
+                </tr>
+            @else
                 <tr>
                     <th>id</th>
                     <th>ID del Jugador</th>
@@ -30,16 +41,11 @@
                     <th>Fecha de registro</th>
                     <th colspan="3">Acción</th>
                 </tr>
-            @else
-                <tr>
-                    <th>No data</th>
-                </tr>
             @endempty
 
         @endslot
         @slot('content_body')
             @forelse ($people as $person)
-
                 @if ($person->player)
 
                     <tr class="border-b border-stone-700 h-16">
@@ -92,14 +98,9 @@
                     </tr>
                 @endif
             @empty
-                <tr>
-                    <td class="text-center">No hay Jugadores registrados aún.</td>
-                </tr>
             @endforelse
         @endslot
     @endcomponent
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         document.querySelectorAll('.formulario-eliminar').forEach(function(eliminarBtn) {

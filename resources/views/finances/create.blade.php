@@ -1,6 +1,6 @@
 @extends('layouts.admin_view')
 
-@section('title', 'Registrar Registro')
+@section('title', 'Registrar Operación')
 
 @section('content')
     <h1 class="text-4xl text-center">

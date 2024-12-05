@@ -1,6 +1,6 @@
 @extends('layouts.admin_view')
 
-@section('title', 'Users table')
+@section('title', 'Classifications table')
 
 @section('content')
     @component('_components.tableClassifications')

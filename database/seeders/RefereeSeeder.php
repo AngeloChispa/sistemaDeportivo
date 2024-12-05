@@ -13,11 +13,6 @@ class RefereeSeeder extends Seeder
      */
     public function run(): void
     {
-        Referee::create(
-            [
-                'people_id' => 51,
-                'Description' => 'Legendario arbitro italiano.'
-            ]
-        );
+        Referee::factory()->count(50)->create();
     }
 }

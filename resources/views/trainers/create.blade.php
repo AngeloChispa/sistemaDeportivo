@@ -1,10 +1,10 @@
 @extends('layouts.admin_view')
 
-@section('title', 'Registrar Jugador')
+@section('title', 'Registrar Entrenador')
 
 @section('content')
     <h1 class="text-4xl text-center">
-        Registrar Jugador
+        Registrar Entrenador
     </h1>
     <div class="flex items-center justify-center">
         <form method="POST" action="#"
@@ -36,10 +36,10 @@
             @endcomponent
 
             @component('_components.boxSelectInput')
-                @slot('for', 'nationality')
-                @slot('content', 'Nacionalidad: ')
-                @slot('name', 'nationality')
-                @slot('id', 'nationality')
+                @slot('for', 'birthplace')
+                @slot('content', 'Lugar de nacimiento: ')
+                @slot('name', 'birthplace')
+                @slot('id', 'birthplace')
                 @slot('more_options')
                     @forelse ($nationalities as $nationality)
                         <option value="{{ $nationality['id'] }}">{{ $nationality['country'] }}</option>
@@ -47,6 +47,14 @@
                         <option value="">No disponibles</option>                     
                     @endforelse
                 @endslot
+            @endcomponent
+
+            @component('_components.boxInputCreate')
+                @slot('for', 'nationality')
+                @slot('content', 'Nacionalidad: ')
+                @slot('type', 'text')
+                @slot('name', 'nationality')
+                @slot('id', 'nationality')  
             @endcomponent
 
             @component('_components.boxInputCreate')
