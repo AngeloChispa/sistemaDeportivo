@@ -13,7 +13,7 @@ use App\Http\Controllers\SportController;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\TrainerController;
 
-Route::get('/', [IndexController::class, 'index']);
+Route::get('/', [IndexController::class, 'index'])->name('index');
 
 Route::resource('/user', controller: UsersCotroller::class);
 Route::resource('/rols', RolsController::class);

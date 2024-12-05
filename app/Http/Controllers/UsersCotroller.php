@@ -50,9 +50,9 @@ class UsersCotroller extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(People $person)
     {
-        //
+        return view('users.show', compact('person'));
     }
 
     /**
