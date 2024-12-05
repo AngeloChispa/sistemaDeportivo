@@ -10,9 +10,9 @@ use App\Http\Controllers\TeamsController;
 
 Route::resource('/user', controller: UsersCotroller::class);
 Route::resource('/rols', RolsController::class);
-Route::resource('/tournaments', TournamentsController::class);
+Route::resource('/tournaments', TournamentsController::class); //CORREGIR EDIT CON COMPONENTES
 Route::resource("/instalations",InstalationsController::class);//FALTA TERMINAR CONTROLADOR
-Route::resource('/players', PlayersController::class);//FALTA CORREGIR RUTA IMAGEN
+Route::resource('/players', PlayersController::class);//FALTA CORREGIR RUTA IMAGEN Y CORREGIR EDIT CON COMPONENTES
 Route::resource("/teams",TeamsController::class);
 
 

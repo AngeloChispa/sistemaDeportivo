@@ -1,6 +1,8 @@
 @extends('layouts.admin_view')
 
 @section('title', 'Editar Jugador')
+<!--CAMBIAR HTML BASICO POR COMPONENTES-->
+
 
 @section('content')
     <h1 class="text-4xl text-center">

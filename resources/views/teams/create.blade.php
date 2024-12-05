@@ -7,7 +7,7 @@
         Registrar Equipo
     </h1>
     <div class="flex items-center justify-center">
-        <form method="POST" action="#"
+        <form method="POST" action="{{route("teams.store")}}" enctype="multipart/form-data"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
             @csrf
 
@@ -34,7 +34,7 @@
                 @slot('name', 'city')
                 @slot('id', 'city')
             @endcomponent
-            
+
             @component('_components.boxSelectInput')
             @slot('for', 'sport')
             @slot('content', 'Deporte: ')
@@ -46,14 +46,14 @@
             @empty
             <option value="">No hay deportes</option>
             @endforelse --}}
-            
+
             <option value="1">Futbol</option>
             <option value="2">Basebol</option>
             <option value="3">Basketbol</option>
             @endslot
             @endcomponent
             <p class="text-xs">¿Tu deporte no aparece en la lista? <a href="{{route('sport.create')}}" class="text-rose-500 underline">Regístralo</a></p>
-            
+
             @component('_components.boxInputCreate')
                 @slot('for', 'shield')
                 @slot('content', 'Escudo: ')

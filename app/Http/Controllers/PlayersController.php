@@ -121,7 +121,7 @@ class PlayersController extends Controller
         $nationalities = Nationality::all();
         $player = Player::with('people')->findOrFail($id);
         $player->delete();
-        return redirect()->route("players.index");
+        return redirect()->route(route: "players.index");
 
     }
 }

@@ -2,6 +2,8 @@
 
 @section('title', 'Editar Torneo')
 
+<!--CAMBIAR HTML BASICO POR COMPONENTES-->
+
 @section('content')
     <h1 class="text-4xl text-center">
         Editar Torneo
