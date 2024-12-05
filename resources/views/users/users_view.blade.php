@@ -36,7 +36,7 @@
         @slot('content_body')
             @forelse ($people as $person)
                 @if ($person->user)
-                    <tr class="border-b border-stone-700 h-16">
+                    <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
                         <td>{{ $person->id }}</td>
                         <td>{{$person->user->id}}</td>
                         <td>{{ $person->user->username }}</td>
@@ -44,7 +44,7 @@
                         <td>{{ $person->lastname}}</td>
                         <td>{{ $person->birthdate }}</td>
                         <td>{{ $person->birthplace }}</td>
-                        <td></td>
+                        <td>{{ $person->birthplace }}</td>
                         <td>{{ $person->user->phone }}</td>
                         <td>{{ $person->user->email }}</td>
                         <td>{{ $person->user->up_date }}</td>

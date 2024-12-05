@@ -27,18 +27,18 @@
                 <div class="flex flex-col lg:flex-row">
                     <div class="flex-1">
                         <p class="text-xl font-bold">Local</p>
-                        <img src="{{ asset('assets/img/usuario_icon_default.png') }}" alt="Escudo Los jaguares de la UPV"
+                        <img src="{{ asset('assets/img/usuario_icon_default.png') }}" alt="Escudo equipo local"
                             class="w-30 h-30 rounded-full mx-auto mb-4">
-                        <p class="text-xl font-bold">{{$game->localTeam->name}}</p>
+                        <a href="#" class="text-xl font-bold">{{$game->localTeam->name}}</a>
                     </div>
                     <div class="flex-1">
                         <p class="text-7xl font-bold pt-40">0 - 1</p>
                     </div>
                     <div class="flex-1">
                         <p class="text-xl font-bold">Visitante</p>
-                        <img src="{{ asset('assets/img/usuario_icon_default.png') }}" alt="Escudo Los jaguares de la UPV"
+                        <img src="{{ asset('assets/img/usuario_icon_default.png') }}" alt="Escudo equipo visitante"
                             class="w-30 h-30 rounded-full mx-auto mb-4">
-                        <p class="text-xl font-bold">{{$game->awayTeam->name}}</p>
+                        <a href="#" class="text-xl font-bold">{{$game->awayTeam->name}}</a>
                     </div>
                 </div>
             </div>

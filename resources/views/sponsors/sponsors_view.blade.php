@@ -42,7 +42,7 @@
         @endslot
         @slot('content_body')
             {{-- @forelse ($sponsors as $sponsor)
-                <tr>
+                <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
                     <td></td>
                     <td></td>
                     <td></td>
@@ -69,7 +69,7 @@
                 </tr>
             @endforelse --}}
                 
-            <tr class="border-b border-stone-700 h-16">
+            <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
                 <td>1</td>
                 <td>Adidas</td>
                 <td>834 191 1999</td>
@@ -86,7 +86,7 @@
                     <a href="#" class="font-medium bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ver</a>
                 </td>
             </tr>
-            <tr class="border-b border-stone-700 h-16">
+            <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
                 <td>2</td>
                 <td>Adidas</td>
                 <td>834 191 1999</td>
@@ -103,7 +103,7 @@
                     <a href="#" class="font-medium bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ver</a>
                 </td>
             </tr>
-            <tr class="border-b border-stone-700 h-16">
+            <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
                 <td>3</td>
                 <td>Adidas</td>
                 <td>834 191 1999</td>
