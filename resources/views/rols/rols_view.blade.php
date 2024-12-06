@@ -27,7 +27,7 @@
         @endslot
         @slot('content_body')
             @forelse ($rols as $rol)
-                <tr class="border-b border-stone-700 h-16">
+                <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
                     <td>{{ $rol->id }}</td>
                     <td>{{ $rol->name }}</td>
                     <td>{{ $rol->description }}</td>

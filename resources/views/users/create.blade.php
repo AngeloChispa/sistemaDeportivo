@@ -16,7 +16,7 @@
                 @slot('content','Nombre: ')
                 @slot('type','text')
                 @slot('name','name')
-                @slot('id','name')
+                @slot('id','name required')
             @endcomponent
 
             @component('_components.boxInputCreate')
@@ -24,7 +24,7 @@
                 @slot('content','Apellidos: ')
                 @slot('type','text')
                 @slot('name','lastname')
-                @slot('id','lastname')
+                @slot('id','lastname required')
             @endcomponent
 
             @component('_components.boxInputCreate')
@@ -32,7 +32,7 @@
                 @slot('content','Usuario: ')
                 @slot('type','text')
                 @slot('name','username')
-                @slot('id','username')
+                @slot('id','username required')
             @endcomponent
 
             @component('_components.boxInputCreate')
@@ -40,15 +40,15 @@
                 @slot('content','Fecha de nacimiento: ')
                 @slot('type','date')
                 @slot('name','birthdate')
-                @slot('id','date_birth')
+                @slot('id','date_birth required')
             @endcomponent
 
             @component('_components.boxInputCreate')
                 @slot('for','phone')
                 @slot('content','Teléfono: ')
-                @slot('type','number')
+                @slot('type','tel')
                 @slot('name','phone')
-                @slot('id','phone')
+                @slot('id','phone required')
             @endcomponent
 
             @component('_components.boxInputCreate')
@@ -56,7 +56,7 @@
                 @slot('content','Correo: ')
                 @slot('type','email')
                 @slot('name','email')
-                @slot('id','email')
+                @slot('id','email required')
             @endcomponent
 
             @component('_components.boxInputCreate')
@@ -64,7 +64,7 @@
                 @slot('content','Contraseña: ')
                 @slot('type','password')
                 @slot('name','password')
-                @slot('id','password')
+                @slot('id','password required')
             @endcomponent
 
             @component('_components.boxInputCreate')
@@ -72,7 +72,7 @@
                 @slot('content','Confirmar contraseña: ')
                 @slot('type','password')
                 @slot('name','confirmPassword')
-                @slot('id','confirmPassword')
+                @slot('id','confirmPassword required')
             @endcomponent
 
             <div class="flex">

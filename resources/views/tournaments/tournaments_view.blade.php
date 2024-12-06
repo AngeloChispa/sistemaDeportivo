@@ -35,7 +35,7 @@
         @endslot
         @slot('content_body')
             @forelse ($tournaments as $tournament)
-                <tr class="border-b border-stone-700 h-16">
+                <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
                     <td>{{ $tournament->id }}</td>
                     <td>{{ $tournament->name }}</td>
                     <td>
