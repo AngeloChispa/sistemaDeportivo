@@ -43,6 +43,15 @@
             <li>
                 @component('_components.boxSidebar ')
                     @slot('icon')
+                        <ion-icon name="people" class="h-5 w-5"></ion-icon>
+                    @endslot
+                    @slot('reference', 'sport.index')
+                    @slot('name', 'Deportes')
+                @endcomponent
+            </li>
+            <li>
+                @component('_components.boxSidebar ')
+                    @slot('icon')
                         <ion-icon name="trophy" class="h-5 w-5"></ion-icon>
                     @endslot
                     @slot('reference', 'tournaments.index')
