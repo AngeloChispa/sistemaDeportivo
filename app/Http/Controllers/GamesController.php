@@ -21,7 +21,7 @@ class GamesController extends Controller
      */
     public function create()
     {
-        //
+        return view("games.create");
     }
 
     /**
@@ -36,8 +36,8 @@ class GamesController extends Controller
      * Display the specified resource.
      */
     public function show(Game $game)
-    {   
-        
+    {
+
         return view('games.show', compact('game'));
     }
 
