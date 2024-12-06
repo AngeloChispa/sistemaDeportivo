@@ -17,6 +17,7 @@ class PlayersController extends Controller
         $player = Player::all();
         $nationalities = Nationality::all();
         $people = People::with('nationality')->get();
+
         return view('players.players_view', compact('people',"player", "nationalities"));
     }
 
@@ -38,11 +39,13 @@ class PlayersController extends Controller
     public function store(Request $request)
     {
 
+
         $request->validate([
-            "icon" => "required|image|mimes:jpeg,png,jpg,gif,svg|max:2000"
+            "avatar" => "required|image|max:2000"
         ]);
+
         if($request->hasFile("avatar")){
-            $avatarPath = $request->file("avatar")->store("avatar", "public");
+            $avatarPath = $request->file("avatar")->store("avatars", "public");
         }
 
         $people = new People();
@@ -69,9 +72,14 @@ class PlayersController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+
+        $player = Player::with("people")->findOrFail($id);
+        $nationalities = Nationality::all();
+        $people = People::with('nationality')->get();
+
+        return view('players.show', compact('people', "nationalities","player"));
     }
 
     /**
@@ -88,11 +96,18 @@ class PlayersController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Player $player )
+    public function update(Request $request, $id)
     {
-        $avatarPath = null;
+        $people = People::findOrFail($id);
+        $player = Player::findOrFail($id);
+
+        $request->validate([
+            "avatar" => "nullable|image|max:2000"
+        ]);
         if($request->hasFile("avatar")){
             $avatarPath = $request->file("avatar")->store("avatar", "public");
+            $people->avatar = $avatarPath;
+
         }
         // CORREGIR SUBIDA DE IMAGEN PLAYERS
 
@@ -101,7 +116,6 @@ class PlayersController extends Controller
         $people->lastname = $request->lastname;
         $people->birthdate = $request->birthdate;
         $people->birthplace = $request->country;
-        $people->avatar = $avatarPath;
         $people->save();
 
 

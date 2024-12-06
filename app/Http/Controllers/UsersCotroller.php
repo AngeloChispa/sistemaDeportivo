@@ -52,6 +52,8 @@ class UsersCotroller extends Controller
      */
     public function show(People $person)
     {
+
+        $people = People::all();
         return view('users.show', compact('person'));
     }
 
