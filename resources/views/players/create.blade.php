@@ -63,9 +63,9 @@
                 @slot('name', 'status')
                 @slot('id', 'status required')
                 @slot('more_options')
-                    <option value="1">Activo</option>
-                    <option value="2">Lesionado</option>
-                    <option value="3">Juvilado</option>
+                    <option value="activo">Activo</option>
+                    <option value="lesionado">Lesionado</option>
+                    <option value="juvilado">Juvilado</option>
                 @endslot
             @endcomponent
 
