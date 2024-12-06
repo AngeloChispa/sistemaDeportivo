@@ -4,13 +4,13 @@
 
 @section('content')
     <h1 class="text-4xl text-center">
-       Editar Equipo
+        Editar Equipo
     </h1>
     <div class="flex items-center justify-center">
-        <form method="POST" action="{{route("teams.update", $teams->id)}}" enctype="multipart/form-data"
+        <form method="POST" action="{{ route('teams.update', $teams->id) }}" enctype="multipart/form-data"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
-            @method("PUT")
-            @csrf
+            {{ method_field('PUT') }}
+            {{ csrf_field() }}
 
             @component('_components.boxInputEdit')
                 @slot('for', 'name')
@@ -27,7 +27,7 @@
                 @slot('type', 'text')
                 @slot('name', 'state')
                 @slot('id', 'state')
-                @slot("value", old("state",$teams->state ))
+                @slot("value", old("state", $teams->state))
             @endcomponent
 
             @component('_components.boxInputEdit')
@@ -36,43 +36,32 @@
                 @slot('type', 'text')
                 @slot('name', 'city')
                 @slot('id', 'city')
-                @slot("value", old("city",$teams->city))
+                @slot("value", old("city", $teams->city))
             @endcomponent
 
             @component('_components.boxSelectInput')
-            @slot('for', 'sport')
-            @slot('content', 'Deporte: ')
-            @slot('name', 'sport')
-            @slot('id', 'sport')
-            @slot('more_options')
-            {{-- @forelse ($sports as $sport)
-            <option value="{{ $sport['id'] }}">{{ $sport['name'] }}</option>
-            @empty
-            <option value="">No hay deportes</option>
-            @endforelse --}}
-
-            <option value="1" {{ old('sport', $teams->sport->id) == 1 ? 'selected' : '' }}>Futbol</option>
-            <option value="2" {{ old('sport',  $teams->sport->id) == 2 ? 'selected' : '' }}>Basebol</option>
-            <option value="3" {{ old('sport',  $teams->sport->id) == 3 ? 'selected' : '' }}>Basketbol</option>
-            @endslot
+                @slot('for', 'sport')
+                @slot('content', 'Deporte: ')
+                @slot('name', 'sport')
+                @slot('id', 'sport')
+                @slot('more_options')
+                    <option value="1" {{ old('sport', $teams->sport->id) == 1 ? 'selected' : '' }}>Futbol</option>
+                    <option value="2" {{ old('sport', $teams->sport->id) == 2 ? 'selected' : '' }}>Basebol</option>
+                    <option value="3" {{ old('sport', $teams->sport->id) == 3 ? 'selected' : '' }}>Basketbol</option>
+                @endslot
             @endcomponent
-            <p class="text-xs">¿Tu deporte no aparece en la lista? <a href="{{route('sport.create')}}" class="text-rose-500 underline">Regístralo</a></p>
+
+            <p class="text-xs">¿Tu deporte no aparece en la lista? <a href="{{ route('sport.create') }}" class="text-rose-500 underline">Regístralo</a></p>
 
             @component('_components.boxInputEdit')
-            @slot('for', 'shield')
-            @slot('content', 'Escudo: ')
-            @slot('type', 'file')
-            @slot('name', 'shield')
-            @slot('id', 'shield')
-        @endcomponent
-
-        @if(isset($teams->shield) && !old('shield'))
-            <div class="mt-2">
-                <p class="text-sm text-gray-500">Imagen cargada previamente:</p>
-                <img src="{{ asset('storage/' . $teams->shield) }}" alt="Escudo actual" class="h-24">
-            </div>
-        @endif
-
+                @slot('for', 'shield')
+                @slot('content', 'Escudo:')
+                @slot('type', 'file')
+                @slot('name', 'shield')
+                @slot('id', 'shield')
+                @slot('currentfile', $teams->shield ?? null)
+                @slot('alt', 'Escudo del equipo')
+            @endcomponent
 
             <div class="flex">
                 <input type="submit" value="Actualizar"

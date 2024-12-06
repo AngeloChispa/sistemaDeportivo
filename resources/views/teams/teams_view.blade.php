@@ -41,26 +41,26 @@
             </tr>
         @endslot
         @slot('content_body')
-            @forelse ($teams as $team)
+            @forelse ($teams as $teams)
                 <tr class="border-b border-stone-700 h-16">
-                    <td>{{$team->id}}</td>
-                    <td>{{$team->name}}</td>
-                    <td>{{$team->city}}</td>
-                    <td>{{$team->state}}</td>
-                    <td>{{$team->sport->name}}</td>
+                    <td>{{$teams->id}}</td>
+                    <td>{{$teams->name}}</td>
+                    <td>{{$teams->city}}</td>
+                    <td>{{$teams->state}}</td>
+                    <td>{{$teams->sport->name}}</td>
                     <td>
-                        @if ($team->shield)
-                            <img src="{{ asset('storage/' . $team->shield) }}" alt="Logo de {{ $team->shield }}"
+                        @if ($teams->shield)
+                            <img src="{{ asset('storage/' . $teams->shield) }}" alt="Logo de {{ $teams->shield }}"
                                 width="100">
                         @else
                             Sin logo
                         @endif
                     </td>
                     <td>
-                        <a href="{{route("teams.edit",$team->id)}}" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                        <a href="{{route("teams.edit",$teams->id)}}" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                     </td>
                     <td>
-                        <form action="{{route("teams.destroy", $team->id)}}" method="POST" class="inline formulario-eliminar">
+                        <form action="{{route("teams.destroy", $teams->id)}}" method="POST" class="inline formulario-eliminar">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>

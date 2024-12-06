@@ -37,11 +37,13 @@ class PlayersController extends Controller
      */
     public function store(Request $request)
     {
-        $avatarPath = null;
+
+        $request->validate([
+            "icon" => "required|image|mimes:jpeg,png,jpg,gif,svg|max:2000"
+        ]);
         if($request->hasFile("avatar")){
             $avatarPath = $request->file("avatar")->store("avatar", "public");
         }
-        // CORREGIR SUBIDA DE IMAGEN PLAYERS
 
         $people = new People();
         $people->name = $request->name;

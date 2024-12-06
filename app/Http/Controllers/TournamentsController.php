@@ -22,10 +22,10 @@ class TournamentsController extends Controller
 
     public function store(Request $request){
 
-
         $request->validate([
-            'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2000',
+            'icon' => 'required|image|max:2000',
         ]);
+
         if ($request->hasFile("icon")){
             $iconPath = $request->file("icon")->store('icons', 'public');
 
@@ -52,14 +52,12 @@ class TournamentsController extends Controller
 
             $tournament = Tournament::findOrFail($id);
             return view("tournaments.edit", compact("tournament"));
-
-
     }
 
     public function update(Request $request,Tournament $tournament ){
 
         $request->validate([
-            'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2000',
+            'icon' => 'nullable|image|max:2000',
         ]);
         if ($request->hasFile("icon")) {
             $iconPath = $request->file("icon")->store('icons', 'public');

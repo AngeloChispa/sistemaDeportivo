@@ -28,11 +28,6 @@
                 @slot('name', 'icon')
                 @slot('id', 'icon')
             @endcomponent
-            @if ($errors->has('icon'))
-             <div class="text-red-500">
-              Error al subir imagen. Porfavor ingrese una imagen con un peso menor a 2mb
-             </div>
-            @endif
 
             @component('_components.boxSelectInput')
                 @slot('for', 'type')
