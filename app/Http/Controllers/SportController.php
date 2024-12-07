@@ -11,8 +11,9 @@ class SportController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-
+    {   
+        $sports = Sport::all();
+        return view('sports.sports_view',compact('sports'));
     }
 
     /**
