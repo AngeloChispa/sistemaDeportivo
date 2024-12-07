@@ -21,7 +21,7 @@ class RefereeController extends Controller
      */
     public function create()
     {
-        //
+        return view("referees.create");
     }
 
     /**
