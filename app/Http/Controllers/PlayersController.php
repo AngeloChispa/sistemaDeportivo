@@ -14,10 +14,9 @@ class PlayersController extends Controller
      */
     public function index()
     {
-        $player = Player::all();
         $nationalities = Nationality::all();
         $people = People::with('nationality')->get();
-        return view('players.players_view', compact('people',"player", "nationalities"));
+        return view('players.players_view', compact('people', "nationalities"));
     }
 
     /**
@@ -117,11 +116,13 @@ class PlayersController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(string $id)
     {
         $nationalities = Nationality::all();
         $player = Player::with('people')->findOrFail($id);
         $player->delete();
+        $person = $player->people;
+        $person->delete();
         return redirect()->route("players.index");
 
     }
