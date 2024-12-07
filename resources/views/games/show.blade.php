@@ -51,7 +51,7 @@
             </div>
         </div>
     </div>
-    <div class="bg-stone-800 rounded-lg shadow-md  m-6 text-center">
+    <div class="bg-stone-800 rounded-lg shadow-md m-6 text-center">
         <h5 class="text-2xl text-red-500 font-semibold">Eventos</h5>
         <div class="px-72">
             <table class="table-fixed w-full text-sm rtl:text-right text-zinc-300">
@@ -68,6 +68,7 @@
                     </tr>
                 </tbody>
             </table>
+            <a href="#" class="text-sm font-medium text-zinc-200 bg-rose-500 sm:rounded-lg p-2 hover:bg-red-700">+ Agregar un evento</a>
         </div>
     </div>
 @endsection
