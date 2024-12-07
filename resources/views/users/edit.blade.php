@@ -39,7 +39,7 @@
             @component('_components.boxInputEdit')
             @slot('for', 'phone')
             @slot('content', 'Telefono:')
-            @slot('type', 'number')
+            @slot('type', 'tel')
             @slot('name', 'phone')
             @slot('id', 'phone')
             @slot('value', old('phone', $person->user->phone))
