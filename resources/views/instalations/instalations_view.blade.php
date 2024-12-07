@@ -32,16 +32,7 @@
                     <td>{{ $instalation->id }}</td>
                     <td>{{ $instalation->name }}</td>
                     <td>
-                        @switch( $instalation->country )
-                            @case(1) Mexico
-                                @break
-                            @case(2)Estados Unidos
-                            @break
-                            @case(3)Canada
-                            @break
-                            @default Quien sabe
-                        @endswitch
-
+                        {{$instalation->country}}
                     </td>
                     <td>{{ $instalation->state }}</td>
                     <td>{{ $instalation->city }}</td>

@@ -10,12 +10,11 @@
             <div class="stats bg-stone-800 rounded-lg shadow-md p-6">
                 <h5 class="text-lg text-red-500 font-semibold mb-4">Información Personal</h5>
                 <ul class="text-sm space-y-2">
-                    <li><strong>Nombre: </strong>Nombre instalación</li>
-                    <li><strong>País: </strong>México</li>
-                    <li><strong>Estado: </strong>Tamaulipas</li>
-                    <li><strong>Ciudad: </strong>Victoria</li>
-                    <li><strong>Localización: </strong>Av. Las chalupas de cholula #123 en esquina</li>
-                    <li><strong>Capacidad: </strong>40</li>
+                    <li><strong>Nombre: </strong>{{$instalation->name}}</li>
+                    <li><strong>País: </strong>{{$instalation->country}}</li>
+                    <li><strong>Estado: </strong>{{$instalation->state}}</li>
+                    <li><strong>Ciudad: </strong>{{$instalation->city}}</li>
+                    <li><strong>Capacidad: </strong>{{$instalation->capacity}} personas</li>
                 </ul>
             </div>
         </div>
