@@ -43,9 +43,9 @@ class TeamsController extends Controller
         return redirect()->route('teams.index');
     }
 
-    public function show(Team $teams)
+    public function show(Team $team)
     {
-        return view('teams.show', compact('teams'));
+        return view('teams.show', compact('team'));
     }
 
     public function edit($id)

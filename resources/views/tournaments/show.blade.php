@@ -115,7 +115,7 @@
             @endslot
             @slot('content_body')
                 {{-- @forelse ($people as $person)
-                    <tr class="border-b border-stone-700 h-16">
+                    <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
                        <th></th>
                        <th></th>
                        <th></th>
@@ -132,7 +132,7 @@
                     <td class="text-center">No hay Jugadores registrados aún.</td>
                 </tr>
             @endforelse --}}
-                <tr class="border-b border-stone-700 h-12 hover:bg-[#333333]">
+                <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
 
                     <td style="width: 50px;" class="hover:bg-transparent">1</td>
                     <td class="hover:bg-transparent">Liverpool</td>

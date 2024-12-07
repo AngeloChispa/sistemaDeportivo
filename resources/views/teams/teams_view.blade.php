@@ -15,21 +15,6 @@
         @slot('create_something', 'Crear Equipo')
 
         @slot('content_head')
-            {{-- @empty($tournaments)
-                <tr>
-                    <th>No data</th>
-                </tr>
-            @else
-                <tr>
-                    <th>Id</th>
-                    <th>Nombre</th>
-                    <th>Ciudad</th>
-                    <th>Estado</th>
-                    <th>Deporte</th>
-                    <th>Escudo</th>
-                    <th colspan="3">Acción</th>
-                </tr>
-            @endempty --}}
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
@@ -41,33 +26,33 @@
             </tr>
         @endslot
         @slot('content_body')
-            @forelse ($teams as $teams)
+            @forelse ($teams as $team)
                 <tr class="border-b border-stone-700 h-16">
-                    <td>{{$teams->id}}</td>
-                    <td>{{$teams->name}}</td>
-                    <td>{{$teams->city}}</td>
-                    <td>{{$teams->state}}</td>
-                    <td>{{$teams->sport->name}}</td>
+                    <td>{{$team->id}}</td>
+                    <td>{{$team->name}}</td>
+                    <td>{{$team->city}}</td>
+                    <td>{{$team->state}}</td>
+                    <td>{{$team->sport->name}}</td>
                     <td>
-                        @if ($teams->shield)
-                            <img src="{{ asset('storage/' . $teams->shield) }}" alt="Logo de {{ $teams->shield }}"
+                        @if ($team->shield)
+                            <img src="{{ asset('storage/' . $team->shield) }}" alt="Logo de {{ $team->shield }}"
                                 width="100">
                         @else
                             Sin logo
                         @endif
                     </td>
                     <td>
-                        <a href="{{route("teams.edit",$teams->id)}}" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                        <a href="{{route("teams.edit",$team->id)}}" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                     </td>
                     <td>
-                        <form action="{{route("teams.destroy", $teams->id)}}" method="POST" class="inline formulario-eliminar">
+                        <form action="{{route("teams.destroy", $team->id)}}" method="POST" class="inline formulario-eliminar">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
                         </form>
                     </td>
                     <td>
-                        <a href="#" class="font-medium bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ver</a>
+                        <a href="{{route('teams.show', $team->id)}}" class="font-medium bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ver</a>
                     </td>
                 </tr>
             @empty
@@ -103,11 +88,20 @@
         @endslot
         @slot('content_body')
             @forelse ($sports as $sport)
-                <tr>
-                    <th>{{$sport->id}}</th>
-                    <th>{{$sport->name}}</th>
-                    <th>{{$sport->description}}</th>
-                    <th colspan="2">Acción</th>
+                <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
+                    <td>{{$sport->id}}</td>
+                    <td>{{$sport->name}}</td>
+                    <td>{{$sport->description}}</td>
+                    <td>
+                        <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                    </td>
+                    <td>
+                        <form action="#" method="POST" class="inline formulario-eliminar">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
+                        </form>
+                    </td>
                 </tr>
             @empty
             @endforelse

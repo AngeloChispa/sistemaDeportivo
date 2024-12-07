@@ -16,14 +16,14 @@
                 @slot('content', 'Nombre: ')
                 @slot('type', 'text')
                 @slot('name', 'name')
-                @slot('id', 'name')
+                @slot('id', 'name required')
             @endcomponent
 
             @component('_components.boxSelectInput')
                 @slot('for', 'country')
                 @slot('content', 'País: ')
                 @slot('name', 'country')
-                @slot('id', 'country')
+                @slot('id', 'country required')
                 @slot('more_options')
                     {{-- @forelse ($nationalities as $nationality)
                         <option value="{{ $nationality['id'] }}">{{ $nationality['country'] }}</option>
@@ -41,7 +41,7 @@
                 @slot('content', 'Estado: ')
                 @slot('type', 'text')
                 @slot('name', 'state')
-                @slot('id', 'state')
+                @slot('id', 'state required')
             @endcomponent
 
             @component('_components.boxInputCreate')
@@ -49,15 +49,15 @@
                 @slot('content', 'Ciudad: ')
                 @slot('type', 'text')
                 @slot('name', 'city')
-                @slot('id', 'city')
+                @slot('id', 'city required')
             @endcomponent
 
             @component('_components.boxInputCreate')
                 @slot('for', 'capacity')
                 @slot('content', 'Capacidad: ')
-                @slot('name', 'capacity')
-                @slot('id', 'capacity min=0')
                 @slot('type', 'number')
+                @slot('name', 'capacity')
+                @slot('id', 'capacity min=0 required')
             @endcomponent
 
             <div class="flex">

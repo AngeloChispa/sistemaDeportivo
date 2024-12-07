@@ -14,11 +14,9 @@ class PlayersController extends Controller
      */
     public function index()
     {
-        $player = Player::all();
         $nationalities = Nationality::all();
         $people = People::with('nationality')->get();
-
-        return view('players.players_view', compact('people',"player", "nationalities"));
+        return view('players.players_view', compact('people', "nationalities"));
     }
 
     /**
@@ -74,12 +72,8 @@ class PlayersController extends Controller
      */
     public function show($id)
     {
-
-        $player = Player::with("people")->findOrFail($id);
-        $nationalities = Nationality::all();
-        $people = People::with('nationality')->get();
-
-        return view('players.show', compact('people', "nationalities","player"));
+        $person = People::findOrFail($id);
+        return view('players.show', compact('person'));
     }
 
     /**
@@ -132,12 +126,14 @@ class PlayersController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(string $id)
     {
         $nationalities = Nationality::all();
         $player = Player::with('people')->findOrFail($id);
         $player->delete();
-        return redirect()->route(route: "players.index");
+        $person = $player->people;
+        $person->delete();
+        return redirect()->route("players.index");
 
     }
 }

@@ -16,7 +16,7 @@
                 @slot('content', 'Nombre: ')
                 @slot('type', 'text')
                 @slot('name', 'name')
-                @slot('id', 'name')
+                @slot('id', 'name required')
             @endcomponent
 
             @component('_components.boxSelectInput')
@@ -40,7 +40,7 @@
                 @slot('for', 'local_team')
                 @slot('content', 'Equipo local: ')
                 @slot('name', 'local_team')
-                @slot('id', 'local_team')
+                @slot('id', 'local_team required')
                 @slot('more_options')
                     {{-- @forelse ($teams as $team)
                         <option value="{{ $team['id'] }}">{{ $team['name'] }}</option>
@@ -57,7 +57,7 @@
                 @slot('for', 'away_team')
                 @slot('content', 'Equipo visitante: ')
                 @slot('name', 'away_team')
-                @slot('id', 'away_team')
+                @slot('id', 'away_team required')
                 @slot('more_options')
                     {{-- @forelse ($teams as $team)
                         <option value="{{ $team['id'] }}">{{ $team['name'] }}</option>
@@ -74,7 +74,7 @@
                 @slot('for', 'referee')
                 @slot('content', 'Arbitro: ')
                 @slot('name', 'referee')
-                @slot('id', 'referee')
+                @slot('id', 'referee required')
                 @slot('more_options')
                     {{-- @forelse ($referees as $referee)
                         <option value="{{ $referee['id'] }}">{{ $referee['name'] }}</option>

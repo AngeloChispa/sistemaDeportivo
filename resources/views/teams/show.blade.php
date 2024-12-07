@@ -94,7 +94,7 @@
             @slot('content_body')
                 {{-- @forelse ($people as $person)
                         @if ($person->player)
-                            <tr class="border-b border-stone-700 h-16">
+                            <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
                                 <td>{{ $person->name }}</td>
                                 <td>{{ $person->lastname }}</td>
                                 <td>{{ $person->birthdate }}</td>
@@ -108,13 +108,13 @@
                         </tr>
                     @endforelse --}}
                 @forelse ($team->players as $player)
-                    <tr class="border-b border-stone-700 h-16">
-                        <th>{{$player->pivot->dorsal}}</th>
-                        <th>{{$player->people->name}}</th>
-                        <th>{{$player->people->lastname}}</th>
-                        <th>{{$player->people->birthdate}}</th>
-                        <th>{{$player->people->birthplace}}</th>
-                        <th>{{$player->status}}</th>
+                    <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
+                        <td>{{$player->pivot->dorsal}}</td>
+                        <td>{{$player->people->name}}</td>
+                        <td>{{$player->people->lastname}}</td>
+                        <td>{{$player->people->birthdate}}</td>
+                        <td>{{$player->people->birthplace}}</td>
+                        <td>{{$player->status}}</td>
                     </tr>
                 @empty
                 <h1>No data found</h1>
