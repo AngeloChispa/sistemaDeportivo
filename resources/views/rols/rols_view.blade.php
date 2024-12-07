@@ -32,7 +32,7 @@
                     <td>{{ $rol->name }}</td>
                     <td>{{ $rol->description }}</td>
                     <td>
-                        <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
+                        <a href="{{route("rols.edit", $rol->id)}}" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
                     </td>
                     <td>
                         <form action="{{ route('rols.destroy', $rol->id) }}" method="POST" class="inline formulario-eliminar">
