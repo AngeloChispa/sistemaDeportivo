@@ -46,69 +46,49 @@
         @slot('content_body')
             @forelse ($people as $person)
                 @if ($person->player)
-                <tr class="border-b border-stone-700 h-16">
-                    <td>{{$person->id}}</td>
-                    <td>{{$person->player->id}}</td>
-                    <td>{{$person->name}}</td>
-                    <td>{{$person->lastname}}</td>
-                    <td>{{$person->birthdate}}</td>
-                    <td>{{$person->birthplace}}</td>
-                    <td>{{$person->birthplace}}</td>
-                    <td>{{$person->player->status}}</td>
-                    <td>{{$person->player->height}}</td>
-                    <td>
-                        {{$person->player->bestSide}}
-                    </td>
-                    <td></td>
-                    <td>
-                        <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
-                    </td>
-                    <td>
-                        <form action="#" method="POST" style="display: inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit"
-                                class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900 formulario-eliminar">
-                                Borrar
-                            </button>
-                        </form>
-                    </td>
-                    <td>
-                        <a href="{{route('players.show', $person->id)}}" class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
-                    </td>
-                </tr>
+                    <tr class="border-b border-stone-700 h-16">
+                        <td>{{ $person->id }}</td>
+                        <td>{{ $person->player->id }}</td>
+                        <td>{{ $person->name }}</td>
+                        <td>{{ $person->lastname }}</td>
+                        <td>{{ $person->birthdate }}</td>
+                        <td>{{ $person->birthplace }}</td>
+                        <td>{{ $person->birthplace }}</td>
+                        <td>{{ $person->player->status }}</td>
+                        <td>{{ $person->player->height }}</td>
+                        <td>
+                            {{ $person->player->bestSide }}
+                        </td>
+                        <td></td>
+                        <td>
+                            <a href="#"
+                                class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
+                        </td>
+                        <td>
+                            <form action="{{ route('players.destroy', $person->player->id) }}" method="POST"
+                                style="display: inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                    class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900 formulario-eliminar">
+                                    Borrar
+                                </button>
+                            </form>
+                        </td>
+                        <td>
+                            <a href="{{ route('players.show', $person->id) }}"
+                                class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
+                        </td>
+                    </tr>
                 @endif
             @empty
             @endforelse
         @endslot
     @endcomponent
 
-    <script>
-        document.querySelectorAll('.formulario-eliminar').forEach(function(eliminarBtn) {
-            eliminarBtn.addEventListener('click', function(event) {
-
-                event.preventDefault();
-
-                // SweetAlert2
-                Swal.fire({
-                    title: "¿Estás seguro?",
-                    text: "¡No podrás revertir esta acción!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "¡Si, eliminalo!"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            title: "¡Eliminado!",
-                            text: "El jugador ha sido eliminado.",
-                            icon: "success"
-                        });
-                    }
-                });
-            });
-        });
-    </script>
+    @section('scripts')
+        @component('_components.swal')
+        @endcomponent
+    @endsection
 
 @endsection
