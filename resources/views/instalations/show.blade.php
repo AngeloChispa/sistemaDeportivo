@@ -42,39 +42,16 @@
                 </tr>
             @endslot
             @slot('content_body')
-                {{-- @forelse ($people as $person)
-                    @if ($person->player)
-                    <tr class="border-b border-stone-700 h-16">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    @endif
-                    @empty
-                    <tr>
-                        <td>No data found</td>
-                    </tr>
-                    @endforelse --}}
-                <tr class="border-b border-stone-700 h-16">
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-                <tr class="border-b border-stone-700 h-16">
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-                <tr class="border-b border-stone-700 h-16">
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-                <tr class="border-b border-stone-700 h-16">
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
+            {{-- Tal vez es buena idea limitar esta tabla--}}
+            @forelse ($instalation->reservations as $reservation)
+            <tr class="border-b border-stone-700 h-16">
+                <td>{{$reservation->reserve_date}}</td>
+                <td>{{$reservation->start_hour}}</td>
+                <td>{{$reservation->end_hour}}</td>
+            </tr>
+            @empty
+                <h1>No data found</h1>
+            @endforelse
             @endslot
         @endcomponent
     </div>
