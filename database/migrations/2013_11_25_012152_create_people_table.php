@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('birthplace',100)->nullable();
             $table->unsignedBigInteger('nationality_id')->nullable();
             $table->foreign('nationality_id')->references('id')->on('nationalities');
-            $table->string('avatar',30)->nullable();
+            $table->string('avatar')->nullable();
         });
     }
 

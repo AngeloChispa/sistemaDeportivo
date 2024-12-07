@@ -1,13 +1,13 @@
 @extends('layouts.admin_view')
 
-@section('title', 'Registrar Instalación')
+@section('title', 'Registrar Instalacion')
 
 @section('content')
     <h1 class="text-4xl text-center">
         Registrar Instalación
     </h1>
     <div class="flex items-center justify-center">
-        <form method="POST" action="#"
+        <form method="POST" action="{{route("instalations.store")}}"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
             @csrf
 
@@ -28,7 +28,7 @@
                     {{-- @forelse ($nationalities as $nationality)
                         <option value="{{ $nationality['id'] }}">{{ $nationality['country'] }}</option>
                     @empty
-                        <option value="">No disponibles</option>                     
+                        <option value="">No disponibles</option>
                     @endforelse --}}
                     <option value="1">México</option>
                     <option value="2">Estados Unidos</option>

@@ -36,11 +36,15 @@ class PlayersController extends Controller
      */
     public function store(Request $request)
     {
-        $avatarPath = null;
+
+
+        $request->validate([
+            "avatar" => "required|image|max:2000"
+        ]);
+
         if($request->hasFile("avatar")){
-            $avatarPath = $request->file("avatar")->store("avatar", "public");
+            $avatarPath = $request->file("avatar")->store("avatars", "public");
         }
-        // CORREGIR SUBIDA DE IMAGEN PLAYERS
 
         $people = new People();
         $people->name = $request->name;
@@ -66,7 +70,7 @@ class PlayersController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         $person = People::findOrFail($id);
         return view('players.show', compact('person'));
@@ -86,11 +90,18 @@ class PlayersController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Player $player )
+    public function update(Request $request, $id)
     {
-        $avatarPath = null;
+        $people = People::findOrFail($id);
+        $player = Player::findOrFail($id);
+
+        $request->validate([
+            "avatar" => "nullable|image|max:2000"
+        ]);
         if($request->hasFile("avatar")){
             $avatarPath = $request->file("avatar")->store("avatar", "public");
+            $people->avatar = $avatarPath;
+
         }
         // CORREGIR SUBIDA DE IMAGEN PLAYERS
 
@@ -99,7 +110,6 @@ class PlayersController extends Controller
         $people->lastname = $request->lastname;
         $people->birthdate = $request->birthdate;
         $people->birthplace = $request->country;
-        $people->avatar = $avatarPath;
         $people->save();
 
 

@@ -32,6 +32,8 @@
                         <li><strong>Lado dominante: </strong>{{$person->player->bestSide}}</li>
                     </ul>
                 </div>
+            </div>
+
                 <div class="stats bg-stone-800 rounded-lg shadow-md p-6">
                     <h5 class="text-lg text-red-500 font-semibold mb-4">Trayectoria de equipos</h5>
                     <div class="flex overflow-x-auto space-x-1">
@@ -62,7 +64,7 @@
                                 alt="titulos">
                         </a>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
     </div>

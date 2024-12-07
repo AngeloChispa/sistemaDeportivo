@@ -41,19 +41,26 @@
             </tr>
         @endslot
         @slot('content_body')
-            @forelse ($teams as $team)
-                <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
-                    <td>{{ $team->id }}</td>
-                    <td>{{ $team->name }}</td>
-                    <td>{{ $team->city }}</td>
-                    <td>{{ $team->state }}</td>
-                    <td>{{ $team->sport->name }}</td>
-                    <td></td>
+            @forelse ($teams as $teams)
+                <tr class="border-b border-stone-700 h-16">
+                    <td>{{$teams->id}}</td>
+                    <td>{{$teams->name}}</td>
+                    <td>{{$teams->city}}</td>
+                    <td>{{$teams->state}}</td>
+                    <td>{{$teams->sport->name}}</td>
                     <td>
-                        <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                        @if ($teams->shield)
+                            <img src="{{ asset('storage/' . $teams->shield) }}" alt="Logo de {{ $teams->shield }}"
+                                width="100">
+                        @else
+                            Sin logo
+                        @endif
                     </td>
                     <td>
-                        <form action="#" method="POST" class="inline formulario-eliminar">
+                        <a href="{{route("teams.edit",$teams->id)}}" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                    </td>
+                    <td>
+                        <form action="{{route("teams.destroy", $teams->id)}}" method="POST" class="inline formulario-eliminar">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
@@ -121,52 +128,55 @@
     <script>
         document.querySelectorAll('.formulario-eliminar').forEach(function(eliminarBtn) {
 
-            eliminarBtn.addEventListener('click', function(event) {
+eliminarBtn.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevenir envío del formulario inicialmente
 
-                event.preventDefault();
+    const form = this; // Guardar referencia al formulario actual
 
-                // SweetAlert2
-                const swalWithBootstrapButtons = Swal.mixin({
-                    customClass: {
-                        confirmButton: "bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 mr-5",
-                        cancelButton: "bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
-                    },
-                    buttonsStyling: true
-                });
-                swalWithBootstrapButtons.fire({
-                    title: "¿Estás seguro?",
-                    text: "¡No podrás ser capaz de revertir esto!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonText: "¡Si, eliminalo!",
-                    cancelButtonText: "¡No, cancelalo!",
-                    reverseButtons: false,
-                    background: '#38322e',
-                    color: '#d4d4d8'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        swalWithBootstrapButtons.fire({
-                            title: "¡Eliminado!",
-                            text: "El elemento ha sido eliminado.",
-                            icon: "success",
-                            background: '#38322e',
-                            color: '#d4d4d8'
-                        });
-                    } else if (
-                        /* Read more about handling dismissals below */
-                        result.dismiss === Swal.DismissReason.cancel
-                    ) {
-                        swalWithBootstrapButtons.fire({
-                            title: "Cancelado",
-                            text: "Proceso cancelado :)",
-                            icon: "error",
-                            background: '#38322e',
-                            color: '#d4d4d8'
-                        });
-                    }
-                });
+    // SweetAlert2
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: "bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 mr-5",
+            cancelButton: "bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+        },
+        buttonsStyling: true
+    });
+
+    swalWithBootstrapButtons.fire({
+        title: "¿Estás seguro?",
+        text: "¡No podrás revertir esto!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "¡Sí, eliminalo!",
+        cancelButtonText: "¡No, cancelalo!",
+        reverseButtons: false,
+        background: '#38322e',
+        color: '#d4d4d8'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Mostrar animación de éxito y enviar el formulario
+            swalWithBootstrapButtons.fire({
+                title: "¡Eliminado!",
+                text: "El elemento ha sido eliminado.",
+                icon: "success",
+                background: '#38322e',
+                color: '#d4d4d8'
+            }).then(() => {
+                form.submit(); // Enviar el formulario después de cerrar la alerta
             });
-        });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            swalWithBootstrapButtons.fire({
+                title: "Cancelado",
+                text: "Proceso cancelado :)",
+                icon: "error",
+                background: '#38322e',
+                color: '#d4d4d8'
+            });
+        }
+    });
+});
+});
+
     </script>
 
 @endsection

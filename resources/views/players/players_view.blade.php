@@ -1,6 +1,7 @@
 @extends('layouts.admin_view')
 
-@section('title', 'Players Table')
+
+@section('title', 'Players table')
 
 @section('content')
     {{-- Tabla de ejemplo, con estilos --}}
