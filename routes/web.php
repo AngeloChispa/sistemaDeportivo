@@ -28,7 +28,6 @@ Route::resource('/sport', SportController::class);
 
 
 
-
 //Borrar esta linea
 Route::view('/prueba/livewire/', 'chuchoLab.pruebaLivewire');
 

@@ -16,7 +16,7 @@
                 @slot('content', 'Nombre: ')
                 @slot('type', 'text')
                 @slot('name', 'name')
-                @slot('id', 'name')
+                @slot('id', 'name required')
             @endcomponent
 
             @component('_components.boxInputCreate')
@@ -24,7 +24,7 @@
                 @slot('content', 'Estado: ')
                 @slot('type', 'text')
                 @slot('name', 'state')
-                @slot('id', 'state')
+                @slot('id', 'state required')
             @endcomponent
 
             @component('_components.boxInputCreate')
@@ -32,14 +32,14 @@
                 @slot('content', 'Ciudad: ')
                 @slot('type', 'text')
                 @slot('name', 'city')
-                @slot('id', 'city')
+                @slot('id', 'city required')
             @endcomponent
             
             @component('_components.boxSelectInput')
             @slot('for', 'sport')
             @slot('content', 'Deporte: ')
             @slot('name', 'sport')
-            @slot('id', 'sport')
+            @slot('id', 'sport required')
             @slot('more_options')
             {{-- @forelse ($sports as $sport)
             <option value="{{ $sport['id'] }}">{{ $sport['name'] }}</option>

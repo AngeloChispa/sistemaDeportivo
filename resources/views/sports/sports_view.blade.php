@@ -1,41 +1,44 @@
 @extends('layouts.admin_view')
 
-@section('title', 'Rols table')
+@section('title', 'Teams table')
 
 @section('content')
+    {{-- Tabla deportes --}}
     @component('_components.table')
         @slot('title')
-            Roles
+            Deportes
         @endslot
         @slot('p_content')
-            Tabla que muestra los roles que se pueden aplicar a los usuarios.
+            Tabla que muestra los deportes registrados hasta el momento.
         @endslot
-        @slot('reference', 'rols.create')
-        @slot('create_something', 'Registrar Rol')
+        @slot('reference', 'sport.create')
+        @slot('create_something', 'Registrar deporte')
 
         @slot('content_head')
-            <tr>
-                @empty($rols)
+            @empty($sports)
+                <tr>
                     <th>No data</th>
-                @else
+                </tr>
+            @else
+                <tr>
                     <th>Id</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
-                    <th colspan="3">Acción</th>
-                @endempty
-            </tr>
+                    <th colspan="2">Acción</th>
+                </tr>
+            @endempty
         @endslot
         @slot('content_body')
-            @forelse ($rols as $rol)
+            @forelse ($sports as $sport)
                 <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
-                    <td>{{ $rol->id }}</td>
-                    <td>{{ $rol->name }}</td>
-                    <td>{{ $rol->description }}</td>
+                    <td>{{$sport->id}}</td>
+                    <td>{{$sport->name}}</td>
+                    <td>{{$sport->description}}</td>
                     <td>
-                        <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
+                        <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                     </td>
                     <td>
-                        <form action="{{ route('rols.destroy', $rol->id) }}" method="POST" class="inline formulario-eliminar">
+                        <form action="#" method="POST" class="inline formulario-eliminar">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
@@ -43,7 +46,6 @@
                     </td>
                 </tr>
             @empty
-                <p>No existen roles</p>
             @endforelse
         @endslot
     @endcomponent
@@ -53,10 +55,11 @@
     <script>
         document.querySelectorAll('.formulario-eliminar').forEach(function(eliminarBtn) {
 
-            eliminarBtn.addEventListener('submit', function(event) {
+            eliminarBtn.addEventListener('click', function(event) {
 
-                event.preventDefault(); // Detener el envío del formulario
+                event.preventDefault();
 
+                // SweetAlert2
                 const swalWithBootstrapButtons = Swal.mixin({
                     customClass: {
                         confirmButton: "bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 mr-5",
@@ -64,24 +67,32 @@
                     },
                     buttonsStyling: true
                 });
-
                 swalWithBootstrapButtons.fire({
                     title: "¿Estás seguro?",
-                    text: "¡No podrás revertir esto!",
+                    text: "¡No podrás ser capaz de revertir esto!",
                     icon: "warning",
                     showCancelButton: true,
-                    confirmButtonText: "¡Sí, elíminalo!",
-                    cancelButtonText: "Cancelar",
+                    confirmButtonText: "¡Si, eliminalo!",
+                    cancelButtonText: "¡No, cancelalo!",
                     reverseButtons: false,
                     background: '#38322e',
                     color: '#d4d4d8'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        event.target.submit();
-                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        swalWithBootstrapButtons.fire({
+                            title: "¡Eliminado!",
+                            text: "El elemento ha sido eliminado.",
+                            icon: "success",
+                            background: '#38322e',
+                            color: '#d4d4d8'
+                        });
+                    } else if (
+                        /* Read more about handling dismissals below */
+                        result.dismiss === Swal.DismissReason.cancel
+                    ) {
                         swalWithBootstrapButtons.fire({
                             title: "Cancelado",
-                            text: "El proceso ha sido cancelado.",
+                            text: "Proceso cancelado :)",
                             icon: "error",
                             background: '#38322e',
                             color: '#d4d4d8'
@@ -91,4 +102,5 @@
             });
         });
     </script>
+
 @endsection

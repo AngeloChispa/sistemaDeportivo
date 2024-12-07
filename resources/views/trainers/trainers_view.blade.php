@@ -41,7 +41,7 @@
         @endslot
         @slot('content_body')
             @forelse ($trainers as $trainer)
-            <tr>
+            <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
                 <td>{{$trainer->id}}</td>
                 <td>{{$trainer->people->name}}</td>
                 <td>{{$trainer->people->lastname}}</td>

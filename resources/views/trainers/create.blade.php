@@ -16,7 +16,7 @@
                 @slot('content', 'Nombre: ')
                 @slot('type', 'text')
                 @slot('name', 'name')
-                @slot('id', 'name')
+                @slot('id', 'name required')
             @endcomponent
 
             @component('_components.boxInputCreate')
@@ -24,7 +24,7 @@
                 @slot('content', 'Apellidos: ')
                 @slot('type', 'text')
                 @slot('name', 'lastname')
-                @slot('id', 'lastname')
+                @slot('id', 'lastname required')
             @endcomponent
 
             @component('_components.boxInputCreate')
@@ -32,14 +32,14 @@
                 @slot('content', 'Fecha de nacimiento: ')
                 @slot('type', 'date')
                 @slot('name', 'birthdate')
-                @slot('id', 'date_birth')
+                @slot('id', 'date_birth required')
             @endcomponent
 
             @component('_components.boxSelectInput')
                 @slot('for', 'birthplace')
                 @slot('content', 'Lugar de nacimiento: ')
                 @slot('name', 'birthplace')
-                @slot('id', 'birthplace')
+                @slot('id', 'birthplace required')
                 @slot('more_options')
                     @forelse ($nationalities as $nationality)
                         <option value="{{ $nationality['id'] }}">{{ $nationality['country'] }}</option>
@@ -54,7 +54,7 @@
                 @slot('content', 'Nacionalidad: ')
                 @slot('type', 'text')
                 @slot('name', 'nationality')
-                @slot('id', 'nationality')  
+                @slot('id', 'nationality required')  
             @endcomponent
 
             @component('_components.boxInputCreate')

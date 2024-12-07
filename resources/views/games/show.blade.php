@@ -19,34 +19,39 @@
                         <p class="text-lg text-stone-400">Fecha: {{$game->reservation->reserve_date}}</p>
                     </div>
                     <div class="flex-1">
-                        <p class="text-lg text-stone-400">Lugar: {{$game->reservation->instalation->name}}</p>
+                        <p class="text-lg text-stone-400">Lugar: <a href="#"> {{$game->reservation->instalation->name}}</a></p>
                     </div>
                     <div class="flex-1">
-                        <p class="text-lg text-stone-400">Árbitro: {{$game->referee->people->name}} {{$game->referee->people->lastname}}</p>
+                        <p class="text-lg text-stone-400">Árbitro: <a href="#"> {{$game->referee->people->name}} {{$game->referee->people->lastname}}</a></p>
                     </div>
                 </div>
                 <hr class="h-px bg-stone-500 border-0">
                 <div class="flex flex-col lg:flex-row">
                     <div class="flex-1">
                         <p class="text-xl font-bold">Local</p>
-                        <img src="{{ asset('assets/img/usuario_icon_default.png') }}" alt="Escudo Los jaguares de la UPV"
+                        
+                        <a href="#" class="text-xl font-bold">
+                            <img src="{{ asset('assets/img/usuario_icon_default.png') }}" alt="Escudo equipo local"
                             class="w-30 h-30 rounded-full mx-auto mb-4">
-                        <p class="text-xl font-bold">{{$game->localTeam->name}}</p>
+                            {{$game->localTeam->name}}
+                        </a>
                     </div>
                     <div class="flex-1">
                         <p class="text-7xl font-bold pt-40">0 - 1</p>
                     </div>
                     <div class="flex-1">
                         <p class="text-xl font-bold">Visitante</p>
-                        <img src="{{ asset('assets/img/usuario_icon_default.png') }}" alt="Escudo Los jaguares de la UPV"
+                        <a href="#" class="text-xl font-bold">
+                            <img src="{{ asset('assets/img/usuario_icon_default.png') }}" alt="Escudo equipo visitante"
                             class="w-30 h-30 rounded-full mx-auto mb-4">
-                        <p class="text-xl font-bold">{{$game->awayTeam->name}}</p>
+                            {{$game->awayTeam->name}}
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="bg-stone-800 rounded-lg shadow-md  m-6 text-center">
+    <div class="bg-stone-800 rounded-lg shadow-md m-6 text-center">
         <h5 class="text-2xl text-red-500 font-semibold">Eventos</h5>
         <div class="px-72">
             <table class="table-fixed w-full text-sm rtl:text-right text-zinc-300">
@@ -63,6 +68,7 @@
                     </tr>
                 </tbody>
             </table>
+            <a href="#" class="text-sm font-medium text-zinc-200 bg-rose-500 sm:rounded-lg p-2 hover:bg-red-700">+ Agregar un evento</a>
         </div>
     </div>
 @endsection

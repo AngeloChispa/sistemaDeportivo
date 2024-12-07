@@ -16,7 +16,7 @@
                 @slot('content', 'Nombre: ')
                 @slot('type', 'text')
                 @slot('name', 'name')
-                @slot('id', 'name')
+                @slot('id', 'name required')
             @endcomponent
 
             @component('_components.boxInputCreate')
@@ -24,7 +24,7 @@
                 @slot('content', 'Apellidos: ')
                 @slot('type', 'text')
                 @slot('name', 'lastname')
-                @slot('id', 'lastname')
+                @slot('id', 'lastname required')
             @endcomponent
 
             @component('_components.boxInputCreate')
@@ -32,14 +32,14 @@
                 @slot('content', 'Fecha de nacimiento: ')
                 @slot('type', 'date')
                 @slot('name', 'birthdate')
-                @slot('id', 'date_birth')
+                @slot('id', 'date_birth required')
             @endcomponent
 
             @component('_components.boxSelectInput')
                 @slot('for', 'country')
                 @slot('content', 'Nacionalidad: ')
                 @slot('name', 'country')
-                @slot('id', 'country')
+                @slot('id', 'country required')
                 @slot('more_options')
                     @forelse ($nationalities as $nationality )
                         <option value="{{ $nationality->id}}">{{ $nationality->country }}</option>
@@ -61,11 +61,11 @@
                 @slot('for', 'status')
                 @slot('content', 'Estado: ')
                 @slot('name', 'status')
-                @slot('id', 'status')
+                @slot('id', 'status required')
                 @slot('more_options')
-                    <option value="1">Activo</option>
-                    <option value="2">Lesionado</option>
-                    <option value="3">Juvilado</option>
+                    <option value="activo">Activo</option>
+                    <option value="lesionado">Lesionado</option>
+                    <option value="juvilado">Juvilado</option>
                 @endslot
             @endcomponent
 
@@ -73,7 +73,7 @@
                 @slot('for', 'height')
                 @slot('content', 'Altura: ')
                 @slot('name', 'height')
-                @slot('id', 'height step=0.01 min=0')
+                @slot('id', 'height step=0.01 min=0 required')
                 @slot('type', 'number')
             @endcomponent
 
@@ -81,7 +81,7 @@
                 @slot('for', 'bestSide')
                 @slot('content', 'Lado dominante: ')
                 @slot('name', 'bestSide')
-                @slot('id', 'bestSide')
+                @slot('id', 'bestSide required')
                 @slot('more_options')
                     <option value="1">Izquierdo</option>
                     <option value="2">Derecho</option>

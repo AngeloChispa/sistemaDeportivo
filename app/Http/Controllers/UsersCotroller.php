@@ -50,8 +50,9 @@ class UsersCotroller extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(People $person)
+    public function show($id)
     {
+        $person = People::findOrFail($id);
         return view('users.show', compact('person'));
     }
 

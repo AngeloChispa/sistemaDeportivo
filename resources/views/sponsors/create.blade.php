@@ -16,7 +16,7 @@
                 @slot('content', 'Nombre: ')
                 @slot('type', 'text')
                 @slot('name', 'name')
-                @slot('id', 'name')
+                @slot('id', 'name required')
             @endcomponent
 
             @component('_components.boxInputCreate')
@@ -24,7 +24,7 @@
                 @slot('content', 'Teléfono: ')
                 @slot('type', 'phone')
                 @slot('name', 'phone')
-                @slot('id', 'phone')
+                @slot('id', 'phone required')
             @endcomponent
 
             @component('_components.boxInputCreate')
@@ -32,7 +32,7 @@
                 @slot('content', 'Correo: ')
                 @slot('type', 'email')
                 @slot('name', 'email')
-                @slot('id', 'email')
+                @slot('id', 'email required')
             @endcomponent
 
             @component('_components.boxInputCreate')
@@ -40,14 +40,14 @@
                 @slot('content', 'Ubicación: ')
                 @slot('type', 'text')
                 @slot('name', 'location')
-                @slot('id', 'location')
+                @slot('id', 'location required')
             @endcomponent
 
             @component('_components.boxSelectInput')
                 @slot('for', 'type')
                 @slot('content', 'Tipo de patrocinio: ')
                 @slot('name', 'type')
-                @slot('id', 'type')
+                @slot('id', 'type required')
                 @slot('more_options')
                     <option value="1">Por jugador</option>
                     <option value="2">Por equipo</option>

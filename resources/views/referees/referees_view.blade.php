@@ -48,7 +48,7 @@
                 <td>{{$referee->people->birthdate}}</td>
                 <td>{{$referee->people->birthplace}}</td>
                 <td>{{$referee->people->birthplace}}</td>
-                <td>{{$referee->description}}</td>
+                <td class="text-balance">{{$referee->description}}</td>
                 <td>
                     <a href="#" class="font-medium text-zinc-200 bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                 </td>
