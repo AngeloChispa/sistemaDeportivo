@@ -16,10 +16,10 @@ class InstalationSeeder extends Seeder
     {
         Instalation::create([
             'name' => 'Estadio Juan Diego Lumbreras Vega',
-            'country' => 'México',
             'state' => 'Tamulipas',
             'city' => 'Padilla',
-            'capacity' => 200
+            'capacity' => 200,
+            'nationality_id' => 1
         ]);
 
     }

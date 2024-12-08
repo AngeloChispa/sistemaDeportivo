@@ -20,4 +20,9 @@ class Nationality extends Model
     {
         return $this->hasMany(People::class);
     }
+
+    public function instalations():HasMany
+    {
+        return $this->hasMany(Instalation::class);
+    }
 }

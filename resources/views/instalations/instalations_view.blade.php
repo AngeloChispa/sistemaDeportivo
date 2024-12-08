@@ -32,7 +32,7 @@
                     <td>{{ $instalation->id }}</td>
                     <td>{{ $instalation->name }}</td>
                     <td>
-                        {{$instalation->country}}
+                        {{$instalation->nationality->country}}
                     </td>
                     <td>{{ $instalation->state }}</td>
                     <td>{{ $instalation->city }}</td>
