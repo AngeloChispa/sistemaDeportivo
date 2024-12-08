@@ -3,7 +3,6 @@
 @section('title', 'Tournaments table')
 
 @section('content')
-    {{-- Tabla dinámica para mostrar torneos --}}
     @component('_components.table')
         @slot('title')
             Torneos
@@ -85,15 +84,13 @@
                             class="font-medium text-zinc-200 bg-green-500 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
                     </td>
                 </tr>
-                @empty
-                    <tr>
-                        <td class="text-center">No hay torneos registrados aún.</td>
-                    </tr>
-                @endforelse
-            @endslot
-        @endcomponent
+            @empty
+                <h1>No data found</h1>
+            @endforelse
+        @endslot
+    @endcomponent
 
-        @section('scripts')
-            @include('layouts._partials.swal')
-        @endsection
+    @section('scripts')
+        @include('layouts._partials.swal')
     @endsection
+@endsection

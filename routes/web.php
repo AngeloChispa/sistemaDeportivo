@@ -33,6 +33,7 @@ Route::view('/prueba/livewire/', 'chuchoLab.pruebaLivewire');
 
 //Julissa
 /* Vistas */
+Route::view('/search/palabra','search.search_view')->name('search.index');
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('sponsors.index');
 Route::view('/finances/admin','finances.finances_view')->name('finances.index');
 Route::view('/filtro/admin','reports.filter')->name('reports.index');
