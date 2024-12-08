@@ -25,7 +25,6 @@ class PlayersController extends Controller
     public function create()
     {
         $nationalities = Nationality::all();
-        $people = People::all();
         $people = People::with('player')->get();
         return view('players.create',compact("nationalities","people"));
 
@@ -99,11 +98,10 @@ class PlayersController extends Controller
             "avatar" => "nullable|image|max:2000"
         ]);
         if($request->hasFile("avatar")){
-            $avatarPath = $request->file("avatar")->store("avatar", "public");
+            $avatarPath = $request->file("avatar")->store("avatars", "public");
             $people->avatar = $avatarPath;
 
         }
-        // CORREGIR SUBIDA DE IMAGEN PLAYERS
 
         $people = new People();
         $people->name = $request->name;
@@ -126,9 +124,8 @@ class PlayersController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy( $id)
     {
-        $nationalities = Nationality::all();
         $player = Player::with('people')->findOrFail($id);
         $player->delete();
         $person = $player->people;

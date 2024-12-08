@@ -40,20 +40,21 @@
             </tr>
         @endslot
         @slot('content_body')
-            @forelse ($referees as $referee)
+            @forelse ($people as $person)
+            @if ($person->referee)
             <tr>
-                <td>{{$referee->id}}</td>
-                <td>{{$referee->people->name}}</td>
-                <td>{{$referee->people->lastname}}</td>
-                <td>{{$referee->people->birthdate}}</td>
-                <td>{{$referee->people->birthplace}}</td>
-                <td>{{$referee->people->birthplace}}</td>
-                <td class="text-balance">{{$referee->description}}</td>
+            <td>{{ $person->id }}</td>
+            <td>{{ $person->name }}</td>
+            <td>{{ $person->lastname }}</td>
+            <td>{{ $person->birthdate }}</td>
+            <td>{{ $person->birthplace }}</td>
+            <td>{{ $person->birthplace }}</td>
+            <td class="text-balance">{{ $person->referee->description }}</td>
                 <td>
-                    <a href="#" class="font-medium text-zinc-200 bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                    <a href="{{route("referees.edit", $person->referee->id)}}" class="font-medium text-zinc-200 bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                 </td>
                 <td>
-                    <form action="#" method="POST" style="display: inline;">
+                    <form action="{{route("referees.destroy",$person->referee->id)}}" method="POST" style="display: inline;">
                         @csrf
                         @method('DELETE')
                         <button type="submit"
@@ -66,6 +67,7 @@
                     <a href="#" class="font-medium text-zinc-200 bg-green-500 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
                 </td>
             </tr>
+            @endif
             @empty
                 <h1>No data found</h1>
             @endforelse

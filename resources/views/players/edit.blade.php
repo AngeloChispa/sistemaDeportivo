@@ -40,19 +40,20 @@
             @endcomponent
 
             @component('_components.boxSelectInput')
-                @slot('for', 'country')
-                @slot('content', 'Nacionalidad:')
-                @slot('name', 'country')
-                @slot('id', 'country')
-                @slot('more_options')
-                    @foreach ($nationalities as $nationality)
-                        <option value="{{ $nationality->id }}"
-                            {{ old('country', $player->people->birthplace) == $nationality->id ? 'selected' : '' }}>
-                            {{ $nationality->country }}
-                        </option>
-                    @endforeach
-                @endslot
-            @endcomponent
+    @slot('for', 'country')
+    @slot('content', 'Nacionalidad:')
+    @slot('name', 'country')
+    @slot('id', 'country')
+    @slot('more_options')
+        @foreach ($nationalities as $nationality)
+            <option value="{{ $nationality->id }}"
+                {{ old('country', $player->nationality_id) == $nationality->id ? 'selected' : '' }}>
+                {{ $nationality->country }}
+            </option>
+        @endforeach
+    @endslot
+@endcomponent
+
 
             @component('_components.boxInputEdit')
                 @slot('for', 'avatar')

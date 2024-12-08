@@ -42,7 +42,7 @@
                 @slot('id', 'country required')
                 @slot('more_options')
                     @forelse ($nationalities as $nationality )
-                        <option value="{{ $nationality->id}}">{{ $nationality->country }}</option>
+                        <option value="{{ $nationality->country}}">{{ $nationality->country }}</option>
                     @empty
                         <option value="">No disponibles</option>
                     @endforelse
@@ -56,6 +56,8 @@
                 @slot('name', 'avatar')
                 @slot('id', 'avatar')
             @endcomponent
+
+            
 
             @component('_components.boxSelectInput')
                 @slot('for', 'status')

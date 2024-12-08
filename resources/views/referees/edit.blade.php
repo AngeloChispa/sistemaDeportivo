@@ -7,7 +7,7 @@
         Editar Árbitro
     </h1>
     <div class="flex items-center justify-center">
-        <form method="POST" action="#"
+        <form method="POST" action="{{route("referees.update", $referee->id) }}"enctype="multipart/form-data"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
             @method("PUT")
             @csrf
@@ -18,7 +18,7 @@
                 @slot('type', 'text')
                 @slot('name', 'name')
                 @slot('id', 'name')
-                @slot('value','valor ya definido')
+                @slot('value',old('name', $referee->people->name))
             @endcomponent
 
             @component('_components.boxInputEdit')
@@ -27,7 +27,7 @@
                 @slot('type', 'text')
                 @slot('name', 'lastname')
                 @slot('id', 'lastname')
-                @slot('value','valor ya definido')
+                @slot('value',old('lastname', $referee->people->lastname))
             @endcomponent
 
             @component('_components.boxInputEdit')
@@ -36,27 +36,23 @@
                 @slot('type', 'date')
                 @slot('name', 'birthdate')
                 @slot('id', 'date_birth')
-                @slot('value','valor ya definido')
+                @slot('value', old('birthdate', $player->people->birthdate))
             @endcomponent
 
             @component('_components.boxSelectInput')
-                @slot('for', 'birthplace')
-                @slot('content', 'Lugar de nacimiento: ')
-                @slot('name', 'birthplace')
-                @slot('id', 'birthplace')
-                @slot('value','valor ya definido')
-                @slot('more_options')
-                    {{-- @forelse ($nationalities as $nationality)
-                                    <option value="{{ $nationality['id'] }}">{{ $nationality['country'] }}</option>
-                                @empty
-                                    <option value="">No disponibles</option>                     
-                                @endforelse --}}
-
-                    <option value="1">México</option>
-                    <option value="2">Estados Unidos</option>
-                    <option value="3">Canadá</option>
-                @endslot
-            @endcomponent
+            @slot('for', 'country')
+            @slot('content', 'Nacionalidad:')
+            @slot('name', 'country')
+            @slot('id', 'country')
+            @slot('more_options')
+                @foreach ($nationalities as $nationality)
+                    <option value="{{ $nationality->id }}"
+                        {{ old('country', $player->nationality_id) == $nationality->id ? 'selected' : '' }}>
+                        {{ $nationality->country }}
+                    </option>
+                @endforeach
+            @endslot
+        @endcomponent
 
             @component('_components.boxInputEdit')
                 @slot('for', 'nationality')
