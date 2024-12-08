@@ -49,8 +49,6 @@ Route::view('/sponsors/create','sponsors.create')->name('patrocinadores.create')
 /*Danna*/
 Route::view('/landing','layouts.landing')->name('landing');
 Route::view('/landing2','layouts.landing2')->name('landing2');
-//Route::view('/login','users.login')->name('login');
-//Route::view('/register','users.register')->name('register');
 /* Vistas */
 Route::view('/finances/admin','finances.finances_view')->name('finances.index');
 Route::view('/classifications/admin','classifications.classifications_view')->name('classifications.index');

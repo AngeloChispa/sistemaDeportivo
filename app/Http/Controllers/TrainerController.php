@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Nationality;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
 
@@ -37,7 +38,8 @@ class TrainerController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $trainer = Trainer::findOrFail($id);
+        return view('trainers.show', compact('trainer'));
     }
 
     /**
@@ -45,7 +47,9 @@ class TrainerController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $nationalities = Nationality::all();
+        $trainer = Trainer::findOrFail($id);
+        return view('trainers.edit', compact('trainer', 'nationalities'));
     }
 
     /**
@@ -61,6 +65,10 @@ class TrainerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $trainer = Trainer::findOrFail($id);
+        $people = $trainer->people();
+        $trainer->delete();
+        $people->delete();
+        return redirect()->route('trainers.index');   
     }
 }
