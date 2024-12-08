@@ -30,59 +30,53 @@
 
         <div class="max-w-md mx-auto p-6 text-white rounded-lg shadow-md">
             <!-- 2 -->
-            <form method="POST">
-
+            <form method="POST" action="{{route('register')}}">
+                @csrf
                 <!-- Nombre -->
                 <div class="mb-7">
                     <label for="name" class="block text-base font-medium mb-5 ml-2   after:content-['*'] after:ml-0.5 after:text-red-500">Nombre(s)</label>
-                    <input type="text" id="name" class="mt-1 block w-full h-14 border text-slate-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 bg-transparent border-slate-600" placeholder="Introduce tu nombre..">
+                    <input type="text" name="name" id="name" class="mt-1 block w-full h-14 border text-slate-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 bg-transparent border-slate-600" placeholder="Introduce tu nombre..">
                 </div>
 
                 <!-- Apellidos -->
                 <div class="mb-7">
-                    <label for="surname" class="block text-base font-medium mb-5 ml-2   after:content-['*'] after:ml-0.5 after:text-red-500">Apellidos</label>
-                    <input type="text" id="surname" class="mt-1 block w-full h-14 border text-slate-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 bg-transparent border-slate-600" placeholder="Introduce tus apellidos..">
+                    <label for="lastname" class="block text-base font-medium mb-5 ml-2   after:content-['*'] after:ml-0.5 after:text-red-500">Apellidos</label>
+                    <input type="text" name="lastname" id="lastname" class="mt-1 block w-full h-14 border text-slate-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 bg-transparent border-slate-600" placeholder="Introduce tus apellidos..">
+                </div>
+
+                <div class="mb-7">
+                    <label for="username" class="block text-base font-medium mb-5 ml-2   after:content-['*'] after:ml-0.5 after:text-red-500">Usuario</label>
+                    <input type="text" name="username" id="username" class="mt-1 block w-full h-14 border text-slate-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 bg-transparent border-slate-600" placeholder="Introduce tus apellidos..">
                 </div>
 
                 <!-- Fecha de nacimiento -->
                 <div class="mb-7">
                     <label for="fecha-nac" class="block text-base font-medium mb-5 ml-2   after:content-['*'] after:ml-0.5 after:text-red-500">Fecha de nacimiento</label>
-                    <input type="date" id="fecha-nac" class="mt-1 block w-full h-14 border text-slate-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 bg-transparent border-slate-600" placeholder="Introduce tu fecha de nacimiento..">
+                    <input type="date" name="birthdate" id="fecha-nac" class="mt-1 block w-full h-14 border text-slate-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 bg-transparent border-slate-600" placeholder="Introduce tu fecha de nacimiento..">
                 </div>
 
                 <!-- telefono -->
                 <div class="mb-7">
                     <label for="phone" class="block text-base font-medium mb-5 ml-2   after:content-['*'] after:ml-0.5 after:text-red-500">Teléfono</label>
-                    <input type="tel" id="phone" class="mt-1 block w-full h-14 border text-slate-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 bg-transparent border-slate-600" placeholder="Introduce tu número de teléfono..">
-                </div>
-
-                <!-- rol -->
-                <div class="mb-7">
-                    <label for="role" class="block text-base font-medium mb-5 ml-2   after:content-['*'] after:ml-0.5 after:text-red-500">Rol de usuario</label>
-                    <select id="role" class="mt-1 block w-full h-14 border text-slate-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 bg-transparent border-slate-600">
-                        <option class="text-black">Selecciona tu rol..</option>
-                        <option class="text-black">Entrenador</option>
-                        <option class="text-black">Jugador</option>
-                        <option class="text-black">Árbitro</option>
-                    </select>
+                    <input type="tel" name="phone" id="phone" class="mt-1 block w-full h-14 border text-slate-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 bg-transparent border-slate-600" placeholder="Introduce tu número de teléfono..">
                 </div>
 
                 <!-- Email -->
                 <div class="mb-7">
                     <label for="email" class="block text-base font-medium mb-5 ml-2   after:content-['*'] after:ml-0.5 after:text-red-500">Email</label>
-                    <input type="email" id="email" class="mt-1 block w-full h-14 border text-slate-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 bg-transparent border-slate-600" placeholder="Introduce tu correo electrónico..">
+                    <input type="email" name="email" id="email" class="mt-1 block w-full h-14 border text-slate-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 bg-transparent border-slate-600" placeholder="Introduce tu correo electrónico..">
                 </div>
 
                 <!-- contraseña -->
                 <div class="mb-7">
                     <label for="password" class="block text-base font-medium mb-5 ml-2   after:content-['*'] after:ml-0.5 after:text-red-500">Contraseña</label>
-                    <input type="password" id="password" class="mt-1 block w-full h-14 border text-slate-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 bg-transparent border-slate-600" placeholder="Introduce tu contraseña..">
+                    <input type="password" name="password" id="password" class="mt-1 block w-full h-14 border text-slate-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 bg-transparent border-slate-600" placeholder="Introduce tu contraseña..">
                 </div>
 
                 <!-- conf contraseña -->
                 <div class="mb-7">
                     <label for="confirm-password" class="block text-base font-medium mb-5 ml-2   after:content-['*'] after:ml-0.5 after:text-red-500">Confirmar contraseña</label>
-                    <input type="password" id="confirm-password" class="mt-1 block w-full h-14 border text-slate-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 bg-transparent border-slate-600" placeholder="Confirma tu contraseña..">
+                    <input type="password" name="password_confirmation" id="confirm-password" class="mt-1 block w-full h-14 border text-slate-300 rounded-md p-3 focus:outline-none focus:ring focus:ring-blue-500 bg-transparent border-slate-600" placeholder="Confirma tu contraseña..">
                 </div>
 
                 <!-- 3 -->
