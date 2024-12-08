@@ -16,11 +16,11 @@
                 <div class="stats bg-stone-800 rounded-lg shadow-md p-6">
                     <h5 class="text-lg text-red-500 font-semibold mb-4">Información general</h5>
                     <ul class="text-sm space-y-2">
-                        <li><strong>Id: </strong>idUsuario</li>
-                        <li><strong>Nombre: </strong>Nombre completo con apellidos</li>
-                        <li><strong>Fecha de nacimiento: </strong>10/10/2010</li>
-                        <li><strong>Lugar de nacimiento: </strong>usuario lugar nacimiento</li>
-                        <li><strong>Nacionalidad: </strong>usurio nacionalidad</li>
+                        <li><strong>Id: </strong>{{$trainer->people->id}}</li>
+                        <li><strong>Nombre: </strong>{{$trainer->people->name}} {{$trainer->people->lasstname}}</li>
+                        <li><strong>Fecha de nacimiento: </strong>{{$trainer->people->birtdate}}</li>
+                        <li><strong>Lugar de nacimiento: </strong>{{$trainer->people->birthplace}}</li>
+                        <li><strong>Nacionalidad: </strong>{{$trainer->people->birthplace}}</li>
                     </ul>
                 </div>
                 <div class="stats bg-stone-800 rounded-lg shadow-md p-6">

@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->id('id');
             $table->unsignedBigInteger('instalation_id');
-            $table->foreign('instalation_id')->references('id')->on('instalations');
+            $table->foreign('instalation_id')->references('id')->on('instalations')->onDelete('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('game_id');
-            $table->foreign('game_id')->references('id')->on('games');
+            $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade')->onDelete('cascade');
             $table->date('reserve_date');
             $table->time('start_hour');
             $table->time('end_hour');

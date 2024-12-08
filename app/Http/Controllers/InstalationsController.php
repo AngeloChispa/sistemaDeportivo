@@ -4,23 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Instalation;
+use App\Models\Nationality;
 
 class InstalationsController extends Controller
 {
     public function index(){
-        $instalations = Instalation::all();
+        $instalations = Instalation::with('nationality')->get();
         return view("instalations.instalations_view", compact("instalations"));
     }
 
     public function create(){
-        return view('instalations.create');
+        $nationalities = Nationality::all();
+        return view('instalations.create', compact('nationalities'));
     }
 
     public function store(Request $request){
 
         $instalation = new Instalation();
         $instalation->name = $request->name;
-        $instalation->country = $request->country;
+        $instalation->nationality_id = $request->country;
         $instalation->state = $request->state;
         $instalation->city = $request->city;
         $instalation->capacity = $request->capacity;
@@ -53,6 +55,11 @@ class InstalationsController extends Controller
 
     public function destroy($id){
         $instalation = Instalation::findOrFail($id);
+        $reservations = $instalation->reservations;
+        foreach($reservations as $reservation){
+            $game = $reservation->game();
+            $game->delete();
+        }
         $instalation->delete();
         return redirect()->route("instalations.index");
     }

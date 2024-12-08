@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PlayersController;
 use App\Http\Controllers\RolsController;
 use App\Http\Controllers\UsersCotroller;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TournamentsController;
 use App\Http\Controllers\InstalationsController;
 use App\Http\Controllers\RefereeController;
@@ -47,12 +49,23 @@ Route::view('/sponsors/create','sponsors.create')->name('patrocinadores.create')
 /*Danna*/
 Route::view('/landing','layouts.landing')->name('landing');
 Route::view('/landing2','layouts.landing2')->name('landing2');
-Route::view('/login','users.login')->name('login');
-Route::view('/register','users.register')->name('register');
 /* Vistas */
 Route::view('/finances/admin','finances.finances_view')->name('finances.index');
 Route::view('/classifications/admin','classifications.classifications_view')->name('classifications.index');
 /* Crear */
 Route::view('/tournaments/create','tournaments.create')->name('tournaments.create');
 Route::view('/finances/create','finances.create')->name('finances.create');
-/* Mostrar */
+
+
+//Apartir de aqui hay rutas roñosas de breeze
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

@@ -10,12 +10,11 @@
             <div class="stats bg-stone-800 rounded-lg shadow-md p-6">
                 <h5 class="text-lg text-red-500 font-semibold mb-4">Información Personal</h5>
                 <ul class="text-sm space-y-2">
-                    <li><strong>Nombre: </strong>Nombre instalación</li>
-                    <li><strong>País: </strong>México</li>
-                    <li><strong>Estado: </strong>Tamaulipas</li>
-                    <li><strong>Ciudad: </strong>Victoria</li>
-                    <li><strong>Localización: </strong>Av. Las chalupas de cholula #123 en esquina</li>
-                    <li><strong>Capacidad: </strong>40</li>
+                    <li><strong>Nombre: </strong>{{$instalation->name}}</li>
+                    <li><strong>País: </strong>{{$instalation->nationality->country}}</li>
+                    <li><strong>Estado: </strong>{{$instalation->state}}</li>
+                    <li><strong>Ciudad: </strong>{{$instalation->city}}</li>
+                    <li><strong>Capacidad: </strong>{{$instalation->capacity}} personas</li>
                 </ul>
             </div>
         </div>
@@ -43,39 +42,16 @@
                 </tr>
             @endslot
             @slot('content_body')
-                {{-- @forelse ($people as $person)
-                    @if ($person->player)
-                    <tr class="border-b border-stone-700 h-16">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    @endif
-                    @empty
-                    <tr>
-                        <td>No data found</td>
-                    </tr>
-                    @endforelse --}}
-                <tr class="border-b border-stone-700 h-16">
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-                <tr class="border-b border-stone-700 h-16">
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-                <tr class="border-b border-stone-700 h-16">
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-                <tr class="border-b border-stone-700 h-16">
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
+            {{-- Tal vez es buena idea limitar esta tabla--}}
+            @forelse ($instalation->reservations as $reservation)
+            <tr class="border-b border-stone-700 h-16">
+                <td>{{$reservation->reserve_date}}</td>
+                <td>{{$reservation->start_hour}}</td>
+                <td>{{$reservation->end_hour}}</td>
+            </tr>
+            @empty
+                <h1>No data found</h1>
+            @endforelse
             @endslot
         @endcomponent
     </div>

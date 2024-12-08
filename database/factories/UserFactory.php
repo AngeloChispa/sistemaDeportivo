@@ -21,7 +21,7 @@ class UserFactory extends Factory
             'username' => fake()->unique()->userName(),
             'phone' => fake()->unique()->phoneNumber(),
             'email' => fake()->email(),
-            'password' => fake()->password(),
+            'password' => '123Tamarindo',
         ];
     }
 }

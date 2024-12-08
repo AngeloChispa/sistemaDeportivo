@@ -33,7 +33,8 @@
             
             <!-- Formulario -->
             <div>
-                <form method="POST">
+                <form method="POST" action="{{route('login')}}">
+                    @csrf
                     <!-- Email -->
                     <div class="mb-10">
                         <label for="correo" class="block text-base font-medium mb-5 ml-2">Email</label>
