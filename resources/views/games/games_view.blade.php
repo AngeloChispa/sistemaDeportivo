@@ -94,7 +94,7 @@
                         <a href="#" class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
                     </td>
                     <td>
-                        <form action="#" method="POST" style="display: inline;">
+                        <form action="#" method="POST" class="inline formulario-eliminar">
                             @csrf
                             @method('DELETE')
                             <button type="submit"
@@ -108,10 +108,8 @@
             @endforelse
         @endslot
     @endcomponent
-@endsection
-
-@section('scripts')
-    @component('_components.swal')
-    @endcomponent
-
+    
+    @section('scripts')
+        @include('layouts._partials.swal')
+    @endsection
 @endsection

@@ -59,7 +59,7 @@
                 @slot('content', 'Escudo: ')
                 @slot('type', 'file')
                 @slot('name', 'shield')
-                @slot('id', 'shield')
+                @slot('id', 'shield accept=".png, .jpg, .jpeg"')
             @endcomponent
 
             <div class="flex">

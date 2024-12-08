@@ -67,7 +67,7 @@
                         </td>
                         <td>
                             <form action="{{ route('players.destroy', $person->player->id) }}" method="POST"
-                                style="display: inline;">
+                                class="inline formulario-eliminar">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit"
@@ -88,8 +88,7 @@
     @endcomponent
 
     @section('scripts')
-        @component('_components.swal')
-        @endcomponent
+        @include('layouts._partials.swal')
     @endsection
 
 @endsection

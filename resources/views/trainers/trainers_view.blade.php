@@ -53,7 +53,7 @@
                     <a href="#" class="font-medium text-zinc-200 bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                 </td>
                 <td>
-                    <form action="#" method="POST" style="display: inline;">
+                    <form action="#" method="POST" class="inline formulario-eliminar">
                         @csrf
                         @method('DELETE')
                         <button type="submit"
@@ -73,7 +73,6 @@
     @endcomponent
 
     @section('scripts')
-        @component('_components.swal')
-        @endcomponent
+        @include('layouts._partials.swal')
     @endsection
 @endsection
