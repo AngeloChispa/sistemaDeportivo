@@ -23,7 +23,6 @@
             @else
                 <tr>
                     <th>id</th>
-                    <th>ID del Jugador</th>
                     <th>Nombre</th>
                     <th>Apellidos</th>
                     <th>Fecha de Nacimiento</th>
@@ -46,7 +45,6 @@
             @forelse ($people as $person)
                 @if ($person->player)
                     <tr class="border-b border-stone-700 h-16">
-                        <td>{{ $person->id }}</td>
                         <td>{{ $person->player->id }}</td>
                         <td>{{ $person->name }}</td>
                         <td>{{ $person->lastname }}</td>
