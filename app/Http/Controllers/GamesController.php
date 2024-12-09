@@ -67,7 +67,7 @@ class GamesController extends Controller
     }
 
     public function showLive(Game $game){
-        
+
     }
 
     /**

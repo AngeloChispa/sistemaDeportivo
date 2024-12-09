@@ -56,5 +56,5 @@ class Game extends Model
     {
         return $this->hasMany(GameEvent::class, 'game_id');
     }
-    
+
 }
