@@ -15,7 +15,7 @@
         @slot('create_something', 'Crear Equipo')
 
         @slot('content_head')
-            @empty
+            @empty($teams)
                 <tr>
                     <th>No data</th>
                 </tr>
