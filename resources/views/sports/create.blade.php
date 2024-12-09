@@ -7,7 +7,7 @@
         Registrar Deporte
     </h1>
     <div class="flex items-center justify-center">
-        <form method="POST" action="#"
+        <form method="POST" action="{{route('sport.store')}}"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
             @csrf
 

@@ -50,11 +50,14 @@
                 @endslot
             @endcomponent
 
-            <div>
-                <label for="phone" class="block text-sm font-semibold text-stone-200">Teléfono:</label>
-                <input type="number" name="phone" id="phone" value="{{ $person->user->phone }}"
-                    class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
-            </div>
+            @component('_components.boxInputEdit')
+            @slot('for', 'phone')
+            @slot('content', 'Telefono:')
+            @slot('type', 'tel')
+            @slot('name', 'phone')
+            @slot('id', 'phone')
+            @slot('value', old('phone', $person->user->phone))
+            @endcomponent
 
             <div>
                 <label for="email" class="block text-sm font-semibold text-stone-200">Correo:</label>

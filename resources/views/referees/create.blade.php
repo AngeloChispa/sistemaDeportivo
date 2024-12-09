@@ -7,7 +7,7 @@
         Registrar Árbitro
     </h1>
     <div class="flex items-center justify-center">
-        <form method="POST" action="#"
+        <form method="POST" action={{route("referees.store")}} enctype="multipart/form-data"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
             @csrf
 
@@ -36,20 +36,16 @@
             @endcomponent
 
             @component('_components.boxSelectInput')
-                @slot('for', 'birthplace')
+                @slot('for', 'country')
                 @slot('content', 'Lugar de nacimiento: ')
-                @slot('name', 'birthplace')
-                @slot('id', 'birthplace required')
+                @slot('name', 'country')
+                @slot('id', 'country required')
                 @slot('more_options')
-                    {{-- @forelse ($nationalities as $nationality)
-                                    <option value="{{ $nationality['id'] }}">{{ $nationality['country'] }}</option>
+                    @forelse ($nationalities as $nationality)
+                                    <option value="{{ $nationality->country }}">{{ $nationality->country }}</option>
                                 @empty
-                                    <option value="">No disponibles</option>                     
-                                @endforelse --}}
-
-                    <option value="1">México</option>
-                    <option value="2">Estados Unidos</option>
-                    <option value="3">Canadá</option>
+                                    <option value="">No disponibles</option>
+                                @endforelse
                 @endslot
             @endcomponent
 
@@ -58,7 +54,7 @@
                 @slot('content', 'Nacionalidad: ')
                 @slot('type', 'text')
                 @slot('name', 'nationality')
-                @slot('id', 'nationality required')
+                @slot('id', 'nationality')
             @endcomponent
 
             @component('_components.boxInputCreate')

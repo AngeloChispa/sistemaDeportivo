@@ -2,22 +2,22 @@
     <div class="flex flex-1 p-8">
         <div class="container flex flex-col lg:flex-row w-full px-6 pt-6 gap-6">
             <div class="profile-card bg-stone-800 rounded-lg shadow-md p-6 text-center w-full">
-                {{-- @if ($game->tournament_id) --}}
-                <p class="text-3xl text-red-500 font-semibold pb-6">NombreTorneo</p>
-                {{-- @else --}}
-                <p class="text-3xl text-red-500 font-semibold pb-6">Partido Amistoso</p>
-                {{-- @endif --}}
+                 @if ($game['tournament_id'])
+                    <p class="text-3xl text-red-500 font-semibold pb-6">{{$game['tournament']['name']}}</p>
+                @else 
+                    <p class="text-3xl text-red-500 font-semibold pb-6">Partido Amistoso</p>
+                @endif
                 <hr class="h-px bg-stone-500 border-0">
                 <div class="flex flex-col lg:flex-row px-2">
                     <div class="flex-1">
-                        <p class="text-lg text-stone-400">Fecha: FechaDeReservación</p>
+                        <p class="text-lg text-stone-400">Fecha: {{$game['reservation']['reserve_date']}}</p>
                     </div>
                     <div class="flex-1">
                         <p class="text-lg text-stone-400">Lugar: <a href="#">
-                                NombreInstalación</a></p>
+                                {{$game['reservation']['instalation']['name']}}</a></p>
                     </div>
                     <div class="flex-1">
-                        <p class="text-lg text-stone-400">Árbitro: <a href="#"> NombreArbitroCompleto</a></p>
+                        <p class="text-lg text-stone-400">Árbitro: <a href="#"> {{$game['referee']['people']['name']}} {{$game['referee']['people']['lastname']}}</a></p>
                     </div>
                 </div>
                 <hr class="h-px bg-stone-500 border-0">
@@ -28,18 +28,18 @@
                         <a href="#" class="text-xl font-bold">
                             <img src="{{ asset('assets/img/usuario_icon_default.png') }}" alt="Escudo equipo local"
                                 class="w-30 h-30 rounded-full mx-auto mb-4">
-                            NombreEquipoLocal
+                            {{$game['local_team']['name']}}
                         </a>
                     </div>
                     <div class="flex-1">
-                        <p class="text-7xl font-bold pt-40">0 - 1</p>
+                        <p class="text-7xl font-bold pt-40">{{$localTeamGoals}} - {{$awayTeamGoals}}</p>
                     </div>
                     <div class="flex-1">
                         <p class="text-xl font-bold">Visitante</p>
                         <a href="#" class="text-xl font-bold">
                             <img src="{{ asset('assets/img/usuario_icon_default.png') }}" alt="Escudo equipo visitante"
                                 class="w-30 h-30 rounded-full mx-auto mb-4">
-                            NombreEquipoVisitante
+                            {{$game['away_team']['name']}}
                         </a>
                     </div>
                 </div>

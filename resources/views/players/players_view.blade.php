@@ -60,7 +60,7 @@
                         @auth
                             @if (Auth::user()->rol_id === 1)
                                 <td>
-                                    <a href="#"
+                                    <a href="{{route("players.edit",$person->player->id)}}"
                                         class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
                                 </td>
                                 <td>

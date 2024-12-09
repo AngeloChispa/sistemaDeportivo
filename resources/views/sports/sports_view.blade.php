@@ -41,10 +41,10 @@
                     @auth
                         @if (Auth::user()->rol_id === 1)
                             <td>
-                                <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                                <a href="{{route('sport.edit', $sport->id)}}" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                             </td>
                             <td>
-                                <form action="#" method="POST" class="inline formulario-eliminar">
+                                <form action="{{route('sport.destroy', $sport->id)}}" method="POST" class="inline formulario-eliminar">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"

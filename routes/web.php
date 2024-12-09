@@ -14,6 +14,7 @@ use App\Http\Controllers\RefereeController;
 use App\Http\Controllers\SportController;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\TrainerController;
+use App\Livewire\Partido;
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 
@@ -32,7 +33,7 @@ Route::resource('/sport', SportController::class);
 
 //Borrar esta linea
 Route::view('/prueba/livewire/', 'chuchoLab.pruebaLivewire');
-
+Route::get('/game/{game}', Partido::class)->name('games.live');
 //Julissa
 /* Vistas */
 Route::view('/favorites','users.favorites')->name('favorites.index');
@@ -50,7 +51,6 @@ Route::view('/instalaciones/show','instalations.show');
 Route::view('/sponsors/create','sponsors.create')->name('patrocinadores.create');
 Route::view('/event','games.events')->name('events.create');
 /* Editar */
-
 /*Danna*/
 Route::view('/landing','layouts.landing')->name('landing');
 Route::view('/landing2','layouts.landing2')->name('landing2');

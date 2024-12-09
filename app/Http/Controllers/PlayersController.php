@@ -6,6 +6,7 @@ use App\Models\Nationality;
 use App\Models\People;
 use Illuminate\Http\Request;
 use App\Models\Player;
+use Illuminate\Support\Facades\Auth;
 
 class PlayersController extends Controller
 {
@@ -14,9 +15,13 @@ class PlayersController extends Controller
      */
     public function index()
     {
-        $nationalities = Nationality::all();
-        $people = People::with('nationality')->get();
-        return view('players.players_view', compact('people', "nationalities"));
+        if (Auth::user() && Auth::user()->rol_id === 1) {
+            $nationalities = Nationality::all();
+            $people = People::with('nationality')->get();
+            return view('players.players_view', compact('people', "nationalities"));
+        }
+
+        return redirect()->route('index');
     }
 
     /**
@@ -24,11 +29,14 @@ class PlayersController extends Controller
      */
     public function create()
     {
-        $nationalities = Nationality::all();
-        $people = People::all();
-        $people = People::with('player')->get();
-        return view('players.create',compact("nationalities","people"));
+        if (Auth::user() && Auth::user()->rol_id === 1) {
+            $nationalities = Nationality::all();
+            $people = People::all();
+            $people = People::with('player')->get();
+            return view('players.create', compact("nationalities", "people"));
+        }
 
+        return redirect()->route('index');
     }
 
     /**
@@ -56,25 +64,29 @@ class PlayersController extends Controller
             $avatarPath = $request->file("avatar")->store("avatars", "public");
         }
 
-        $people = new People();
-        $people->name = $request->name;
-        $people->lastname = $request->lastname;
-        $people->birthdate = $request->birthdate;
-        $people->birthplace = $request->country;
-        $people->avatar = $avatarPath;
-        $people->save();
+            $people = new People();
+            $people->name = $request->name;
+            $people->lastname = $request->lastname;
+            $people->birthdate = $request->birthdate;
+            $people->birthplace = $request->country;
+            if ($request->hasFile("avatar")) {
+                $avatarPath = $request->file("avatar")->store("avatars", "public");
+                $people->avatar = $avatarPath;
+            }
+            $people->save();
 
 
-        $player = new Player();
-        $player->status = $request->status;
-        $player->height = $request->height;
-        $player->bestSide=$request->bestSide;
-        $player->people_id = $people->id;
-        $player->save();
+            $player = new Player();
+            $player->status = $request->status;
+            $player->height = $request->height;
+            $player->bestSide = $request->bestSide;
+            $player->people_id = $people->id;
+            $player->save();
 
-        return redirect()->route("players.index");
+            return redirect()->route("players.index");
+        }
 
-
+        return redirect()->route('index');
     }
 
     /**
@@ -83,6 +95,7 @@ class PlayersController extends Controller
     public function show($id)
     {
         $person = People::findOrFail($id);
+
         return view('players.show', compact('person'));
     }
 
@@ -91,10 +104,13 @@ class PlayersController extends Controller
      */
     public function edit($id)
     {
-        $nationalities = Nationality::all();
-        $player = Player::with('people')->findOrFail($id);
-        $people = People::all();
-        return view('players.edit', compact('player', 'nationalities',"people"));
+        if (Auth::user() && Auth::user()->rol_id === 1) {
+            return redirect()->route('index');
+            $nationalities = Nationality::all();
+            $player = Player::with('people')->findOrFail($id);
+            $people = People::all();
+            return view('players.edit', compact('player', 'nationalities', "people"));
+        }
     }
 
     /**
@@ -102,48 +118,51 @@ class PlayersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $people = People::findOrFail($id);
-        $player = Player::findOrFail($id);
+        if (Auth::user() && Auth::user()->rol_id === 1) {
+            return redirect()->route('index');
+            $player = Player::with('people')->findOrFail($id);
+            $people = $player->people;
 
-        $request->validate([
-            "avatar" => "nullable|image|max:2000"
-        ]);
-        if($request->hasFile("avatar")){
-            $avatarPath = $request->file("avatar")->store("avatar", "public");
-            $people->avatar = $avatarPath;
+            $request->validate([
+                "avatar" => "nullable|image|max:2000",
+                'status' => 'nullable|string|in:Activo,Lesionado,Jubilado',
+                'bestSide' => 'nullable|string|in:Izquierdo,Derecho'
+            ]);
+            if ($request->hasFile("avatar")) {
+                $avatarPath = $request->file("avatar")->store("avatars", "public");
+                $people->avatar = $avatarPath;
+            }
 
+            $people->name = $request->name;
+            $people->lastname = $request->lastname;
+            $people->birthdate = $request->birthdate;
+            $people->birthplace = $request->birthplace;
+            $people->save();
+
+
+            $player->status = $request->status;
+            $player->height = $request->height;
+            $player->bestSide = $request->bestSide;
+            $player->people_id = $people->id;
+            $player->save();
+
+            return redirect()->route("players.index");
         }
-        // CORREGIR SUBIDA DE IMAGEN PLAYERS
-
-        $people = new People();
-        $people->name = $request->name;
-        $people->lastname = $request->lastname;
-        $people->birthdate = $request->birthdate;
-        $people->birthplace = $request->country;
-        $people->save();
-
-
-        $player->status = $request->status;
-        $player->height = $request->height;
-        $player->bestSide=$request->bestSide;
-        $player->people_id = $people->id;
-        $player->save();
-
-        return redirect()->route("players.index");
-
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        $nationalities = Nationality::all();
-        $player = Player::with('people')->findOrFail($id);
-        $player->delete();
-        $person = $player->people;
-        $person->delete();
-        return redirect()->route("players.index");
-
+        if (Auth::user() && Auth::user()->rol_id === 1) {
+            $nationalities = Nationality::all();
+            $player = Player::with('people')->findOrFail($id);
+            $player->delete();
+            $person = $player->people;
+            $person->delete();
+            return redirect()->route("players.index");
+        }
+        return redirect()->route('index');
     }
 }

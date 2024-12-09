@@ -44,23 +44,24 @@
             </tr>
         @endslot
         @slot('content_body')
-            @forelse ($referees as $referee)
-                <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
-                    <td>{{ $referee->id }}</td>
-                    <td>{{ $referee->people->name }}</td>
-                    <td>{{ $referee->people->lastname }}</td>
-                    <td>{{ $referee->people->birthdate }}</td>
-                    <td>{{ $referee->people->birthplace }}</td>
-                    <td>{{ $referee->people->birthplace }}</td>
-                    <td class="text-balance">{{ $referee->description }}</td>
+            @forelse ($people as $person)
+            @if ($person->referee)
+                <tr>
+                <td>{{  $person->id  }}</td>
+                <td>{{  $person->name  }}</td>
+                <td>{{  $person->lastname  }}</td>
+                <td>{{  $person->birthdate  }}</td>
+                <td>{{  $person->birthplace  }}</td>
+                <td>{{  $person->birthplace  }}</td>
+                <td class="text-balance">{{  $person->referee->description  }}</td>
                     @auth
                         @if (Auth::user()->rol_id === 1)
                             <td>
-                                <a href="#"
+                                <a href="{{route("referees.edit", $person->referee->id)}}"
                                     class="font-medium text-zinc-200 bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                             </td>
                             <td>
-                                <form action="#" method="POST" class="inline formulario-eliminar">
+                                <form action="{{route("referees.destroy",$person->referee->id)}}" method="POST" class="inline formulario-eliminar">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
@@ -70,12 +71,13 @@
                                 </form>
                             </td>
                             <td>
-                                <a href="#"
+                                <a href="{{route("referees.show",$person->referee->id)}}"
                                     class="font-medium text-zinc-200 bg-green-500 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
                             </td>
                         @endif
                     @endauth
                 </tr>
+            @endif
             @empty
                 <h1>No data found</h1>
             @endforelse
