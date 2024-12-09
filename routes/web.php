@@ -32,11 +32,11 @@ Route::resource('/trainers', TrainerController::class);
 Route::resource('/sport', SportController::class);
 
 Route::get('/game/{game}', Partido::class)->name('games.live');
-Route::post('/upgrape/{user}', [UsersCotroller::class, 'upgrapeAdmin'])->name('user.admin');
+Route::post('/upgrade/{user}', [UsersCotroller::class, 'upgradeAdmin'])->name('user.admin');
+Route::get('/search' , [SearchController::class, 'index'])->name('search.index');
 
 Route::get('/ascend', [AscenController::class, 'index'])->name('ascend.index');
 
-Route::get('/search' , [SearchController::class, 'index'])->name('search.index');
 
 //Julissa
 /* Vistas */
