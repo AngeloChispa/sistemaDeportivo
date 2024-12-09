@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\People;
 use App\Models\User;
+use App\Models\Nationality;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -21,7 +22,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('users.register');
+        $nationalities = Nationality::all();
+        return view('users.register', compact('nationalities'));
     }
 
     /**
