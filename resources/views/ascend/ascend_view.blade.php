@@ -80,26 +80,30 @@
                 </tr>
             @endforelse --}}
                 @forelse ($users as $user)
+                @if (!$user->people->player && !$user->people->referee)
                 <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
                     <td>{{$user->id}}</td>
                     <td>{{$user->username}}</td>
                     <td>{{$user->people->name}}</td>
                     <td>{{$user->people->lastname}}</td>
                     <td>
-                        <a href="#" class="font-medium text-zinc-200 bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Ascender a
+                        <a href="{{route('ascend.player', $user->id)}}" class="font-medium text-zinc-200 bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Ascender a
                             Jugador</a>
                     </td>
+                    @if (!$user->people->trainer)
                     <td>
-                        <a href="#" class="font-medium text-zinc-200 bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ascender
+                        <a href="{{route('ascend.trainers', $user->id)}}" class="font-medium text-zinc-200 bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ascender
                             a
                             Entrenador</a>
                     </td>
                     <td>
-                        <a href="#"
+                        <a href="{{route('ascend.referee', $user->id)}}"
                             class="font-medium text-zinc-200 bg-purple-500 sm:rounded-lg p-2 hover:bg-purple-600">Ascender a
                             Árbitro</a>
-                    </td>
+                    </td>   
+                    @endif
                 </tr>
+                @endif
                 @empty
                     <h1>No data found</h1>
                 @endforelse

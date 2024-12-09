@@ -108,28 +108,12 @@ class GamesController extends Controller
      public function destroy($id)
 {
     $game = Game::with('referee', 'localTeam', 'awayTeam', 'tournament', 'reservation')->findOrFail($id);
-
-    if ($game->referee) {
-        $game->referee()->dissociate();
+    $reservation = $game->reservation;
+    $reservation->delete();
+    $events = $game->events;
+    foreach($events as $event){
+        $event->delete();
     }
-
-    if ($game->localTeam) {
-        $game->localTeam()->dissociate();
-    }
-
-    if ($game->awayTeam) {
-        $game->awayTeam()->dissociate();
-    }
-
-    if ($game->tournament) {
-        $game->tournament()->dissociate();
-    }
-
-    if ($game->reservation) {
-        $game->reservation()->dissociate();
-    }
-
-
     $game->delete();
 
     return redirect()->route('games.index');

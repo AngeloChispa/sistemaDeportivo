@@ -52,7 +52,6 @@ class Game extends Model
         return $this->hasOne(Reservation::class);
     }
 
-
     public function events():HasMany
     {
         return $this->hasMany(GameEvent::class, 'game_id');

@@ -14,26 +14,6 @@
         @slot('create_something', 'Registrar Partido')
 
         @slot('content_head')
-            {{-- <tr>
-            @empty($games)
-
-            <th>No data</th>
-            @else
-            <th>ID Partido</th>
-            <th>ID Torneo</th>
-            <th>ID Equipo Local</th>
-            <th>ID Equipo Visitante</th>
-            <th>ID Arbitro</th>
-            <th colspan="3">Acción</th>
-            @endempty
-            </tr> --}}
-            <tr>
-                <th>ID Partido</th>
-                <th>Torneo</th>
-                <th>Equipo Local</th>
-                <th>Equipo Visitante</th>
-                <th>Arbitro</th>
-                <th colspan="3">Acción</th>
             <tr>
                 @empty($games)
                     <th>No data</th>
@@ -68,14 +48,14 @@
                     @auth
                         @if (Auth::user()->rol_id === 1)
                             <td>
-                                <a href="{{route("games.edit", $games->id)}}" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                                <a href="{{route("games.edit", $game->id)}}" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                             </td>
                             <td>
                                 <a href="#"
                                     class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
                             </td>
                             <td>
-                                <form action="{{route("games.destroy", $games->id)}}" method="POST" class="inline formulario-eliminar">
+                                <form action="{{route("games.destroy", $game->id)}}" method="POST" class="inline formulario-eliminar">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
