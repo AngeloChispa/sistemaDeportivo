@@ -17,7 +17,11 @@
 
 <body class="text-white font-sans">
     @include('layouts._partials.navbar')
-    @include('layouts._partials.sidebarAdmin')
+    @auth
+        @if (Auth::user()->rol_id === 1)
+        @include('layouts._partials.sidebarAdmin')
+        @endif
+    @endauth
 
     {{-- Content --}}
     <div class="pt-16 sm:ml-64">
