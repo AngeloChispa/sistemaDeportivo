@@ -13,37 +13,49 @@
                     @slot('name', 'Index')
                 @endcomponent
             </li>
+            @auth
+                @if (Auth::user()->rol_id === 1)
+                    <li>
+                        @component('_components.boxSidebar ')
+                            @slot('icon')
+                                <ion-icon name="key" class="h-5 w-5"></ion-icon>
+                            @endslot
+                            @slot('reference', 'ascend.index')
+                            @slot('name', 'Ascender usuarios')
+                        @endcomponent
+                    </li>
+                @endif
+            @endauth
+            @auth
+                @if (Auth::user()->rol_id === 1)
+                    <li>
+                        @component('_components.boxSidebar ')
+                            @slot('icon')
+                                <ion-icon name="id-card" class="h-5 w-5"></ion-icon>
+                            @endslot
+                            @slot('reference', 'rols.index')
+                            @slot('name', 'Roles')
+                        @endcomponent
+                    </li>
+                @endif
+            @endauth
+            @auth
+                @if (Auth::user()->rol_id === 1)
+                    <li>
+                        @component('_components.boxSidebar ')
+                            @slot('icon')
+                                <ion-icon name="people" class="h-5 w-5"></ion-icon>
+                            @endslot
+                            @slot('reference', 'user.index')
+                            @slot('name', 'Usuarios')
+                        @endcomponent
+                    </li>
+                @endif
+            @endauth
             <li>
                 @component('_components.boxSidebar ')
                     @slot('icon')
-                        <ion-icon name="key" class="h-5 w-5"></ion-icon>
-                    @endslot
-                    @slot('reference', 'ascend.index')
-                    @slot('name', 'Ascender usuarios')
-                @endcomponent
-            </li>
-            <li>
-                @component('_components.boxSidebar ')
-                    @slot('icon')
-                        <ion-icon name="id-card" class="h-5 w-5"></ion-icon>
-                    @endslot
-                    @slot('reference', 'rols.index')
-                    @slot('name', 'Roles')
-                @endcomponent
-            </li>
-            <li>
-                @component('_components.boxSidebar ')
-                    @slot('icon')
-                        <ion-icon name="people" class="h-5 w-5"></ion-icon>
-                    @endslot
-                    @slot('reference', 'user.index')
-                    @slot('name', 'Usuarios')
-                @endcomponent
-            </li>
-            <li>
-                @component('_components.boxSidebar ')
-                    @slot('icon')
-                        <ion-icon name="american-football-outline" class="h-5 w-5"></ion-icon>  
+                        <ion-icon name="american-football-outline" class="h-5 w-5"></ion-icon>
                     @endslot
                     @slot('reference', 'sport.index')
                     @slot('name', 'Deportes')
@@ -148,15 +160,19 @@
                     @slot('name', 'Patrocinadores')
                 @endcomponent
             </li>
-            <li>
-                @component('_components.boxSidebar ')
-                    @slot('icon')
-                        <ion-icon name="wallet" class="h-5 w-5"></ion-icon>
-                    @endslot
-                    @slot('reference', 'finances.index')
-                    @slot('name', 'Finanzas')
-                @endcomponent
-            </li>
+            @auth
+                @if (Auth::user()->rol_id === 1)
+                    <li>
+                        @component('_components.boxSidebar ')
+                            @slot('icon')
+                                <ion-icon name="wallet" class="h-5 w-5"></ion-icon>
+                            @endslot
+                            @slot('reference', 'finances.index')
+                            @slot('name', 'Finanzas')
+                        @endcomponent
+                    </li>
+                @endif
+            @endauth
         </ul>
     </div>
 </aside>

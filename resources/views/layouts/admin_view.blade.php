@@ -18,8 +18,8 @@
 <body class="text-white font-sans">
     @include('layouts._partials.navbar')
     @auth
+        @include('layouts._partials.sidebarAdmin')
         @if (Auth::user()->rol_id === 1)
-            @include('layouts._partials.sidebarAdmin')
             {{-- Content --}}
             <div class="pt-16 sm:ml-64">
                 @yield('content')
@@ -27,7 +27,7 @@
         @endif
         @if (Auth::user()->rol_id === 2)
             {{-- Content --}}
-            <div class="pt-16">
+            <div class="pt-16 sm:ml-64">
                 @yield('content')
             </div>
         @endif

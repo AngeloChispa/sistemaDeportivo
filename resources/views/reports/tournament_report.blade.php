@@ -8,7 +8,7 @@
 <body>
     <h1>Reporte de Torneos</h1>
 
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>ID</th>
