@@ -36,7 +36,7 @@
                     <td>{{ $instalation->id }}</td>
                     <td>{{ $instalation->name }}</td>
                     <td>
-                        {{ $instalation->nationality->country }}
+                        {{ $instalation->country }}
                     </td>
                     <td>{{ $instalation->state }}</td>
                     <td>{{ $instalation->city }}</td>

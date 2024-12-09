@@ -40,7 +40,7 @@ class PlayersController extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::user() && Auth::user()->rol_id === 1) {   
+        if (Auth::user() && Auth::user()->rol_id === 1) {
             $request->validate([
                 //Validacion People
                 "avatar" => "nullable|image|max:2000",
@@ -48,13 +48,13 @@ class PlayersController extends Controller
                 "lastname" => "required|string|max:30",
                 "birthdate" => "required|date|before:tomorrow",
                 "birthplace" => "nullable|string|max:100",
-    
+
                 //Validacion Usuario
                 'status' => "required|string",
-                'height' => "required|float",
+                'height' => "required|numeric",
                 'bestSide' => "required|string",
             ]);
-    
+
             $people = new People();
             $people->name = $request->name;
             $people->lastname = $request->lastname;
@@ -65,15 +65,15 @@ class PlayersController extends Controller
                 $people->avatar = $avatarPath;
             }
             $people->save();
-    
-    
+
+
             $player = new Player();
             $player->status = $request->status;
             $player->height = $request->height;
             $player->bestSide = $request->bestSide;
             $player->people_id = $people->id;
             $player->save();
-    
+
             return redirect()->route("players.index");
         }
 
