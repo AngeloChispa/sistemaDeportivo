@@ -53,7 +53,6 @@
                                 <td>
                                     <form action="#" method="POST">
                                         @csrf
-                                        @method('DELETE')
                                         <button type="submit"
                                             class="font-medium text-zinc-200 bg-purple-500 sm:rounded-lg p-2 hover:bg-purple-900">Hacer
                                             Admin

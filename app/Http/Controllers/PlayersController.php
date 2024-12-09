@@ -110,7 +110,6 @@ class PlayersController extends Controller
     public function update(Request $request, $id)
     {
         if (Auth::user() && Auth::user()->rol_id === 1) {
-            return redirect()->route('index');
             $player = Player::with('people')->findOrFail($id);
             $people = $player->people;
 
