@@ -25,6 +25,12 @@
                 @yield('content')
             </div>
         @endif
+        @if (Auth::user()->rol_id === 2)
+            {{-- Content --}}
+            <div class="pt-16">
+                @yield('content')
+            </div>
+        @endif
     @else
         {{-- Content --}}
         <div class="pt-16">

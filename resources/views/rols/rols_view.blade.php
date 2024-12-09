@@ -22,7 +22,9 @@
                     <th>Nombre</th>
                     <th>Descripción</th>
                     @auth
-                    <th colspan="3">Acción</th>
+                        @if (Auth::user()->rol_id === 1)
+                            <th colspan="3">Acción</th>
+                        @endif
                     @endauth
                 @endempty
             </tr>
@@ -34,16 +36,20 @@
                     <td>{{ $rol->name }}</td>
                     <td>{{ $rol->description }}</td>
                     @auth
-                    <td>
-                        <a href="#" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
-                    </td>
-                    <td>
-                        <form action="{{ route('rols.destroy', $rol->id) }}" method="POST" class="inline formulario-eliminar">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
-                        </form>
-                    </td>
+                        @if (Auth::user()->rol_id === 1)
+                            <td>
+                                <a href="#"
+                                    class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
+                            </td>
+                            <td>
+                                <form action="{{ route('rols.destroy', $rol->id) }}" method="POST" class="inline formulario-eliminar">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
+                                </form>
+                            </td>
+                        @endif
                     @endauth
                 </tr>
             @empty

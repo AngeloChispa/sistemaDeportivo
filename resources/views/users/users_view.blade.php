@@ -28,7 +28,9 @@
                     <th>Correo</th>
                     <th>Fecha de registro</th>
                     @auth
-                        <th colspan="4" class="w-1/3">Acción</th>
+                        @if (Auth::user()->rol_id === 1)
+                            <th colspan="4" class="w-1/3">Acción</th>
+                        @endif
                     @endauth
                 </tr>
             @endempty
@@ -47,29 +49,32 @@
                         <td>{{ $person->user->email }}</td>
                         <td>{{ $person->user->up_date }}</td>
                         @auth
-                            <td>
-                                <a href="{{ route('addTeams') }}"
-                                    class="font-medium text-zinc-200 bg-purple-500 sm:rounded-lg p-2 hover:bg-purple-900">Hacer Admin</a>
-                            </td>
-                            <td>
-                                <a href="{{ route('user.edit', $person->id) }}"
-                                    class="font-medium text-zinc-200 bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
-                            </td>
-                            <td>
-                                <form action="{{ route('user.destroy', $person->user->id) }}" method="POST"
-                                    class="inline formulario-eliminar">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit"
-                                        class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900 formulario-eliminar">
-                                        Borrar
-                                    </button>
-                                </form>
-                            </td>
-                            <td>
-                                <a href="{{ route('user.show', $person->id) }}"
-                                    class="font-medium text-zinc-200 bg-green-500 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
-                            </td>
+                            @if (Auth::user()->rol_id === 1)
+                                <td>
+                                    <a href="{{ route('addTeams') }}"
+                                        class="font-medium text-zinc-200 bg-purple-500 sm:rounded-lg p-2 hover:bg-purple-900">Hacer
+                                        Admin</a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('user.edit', $person->id) }}"
+                                        class="font-medium text-zinc-200 bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                                </td>
+                                <td>
+                                    <form action="{{ route('user.destroy', $person->user->id) }}" method="POST"
+                                        class="inline formulario-eliminar">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900 formulario-eliminar">
+                                            Borrar
+                                        </button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <a href="{{ route('user.show', $person->id) }}"
+                                        class="font-medium text-zinc-200 bg-green-500 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
+                                </td>
+                            @endif
                         @endauth
                     </tr>
                 @endif

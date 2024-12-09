@@ -34,7 +34,9 @@
                     <th>Lado dominante</th>
                     <th>Fecha de registro</th>
                     @auth
-                        <th colspan="3">Acción</th>
+                        @if (Auth::user()->rol_id === 1)
+                            <th colspan="3">Acción</th>
+                        @endif
                     @endauth
                 </tr>
             @endempty
@@ -58,25 +60,27 @@
                         </td>
                         <td></td>
                         @auth
-                            <td>
-                                <a href="#"
-                                    class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
-                            </td>
-                            <td>
-                                <form action="{{ route('players.destroy', $person->player->id) }}" method="POST"
-                                    class="inline formulario-eliminar">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit"
-                                        class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900 formulario-eliminar">
-                                        Borrar
-                                    </button>
-                                </form>
-                            </td>
-                            <td>
-                                <a href="{{ route('players.show', $person->id) }}"
-                                    class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
-                            </td>
+                            @if (Auth::user()->rol_id === 1)
+                                <td>
+                                    <a href="#"
+                                        class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
+                                </td>
+                                <td>
+                                    <form action="{{ route('players.destroy', $person->player->id) }}" method="POST"
+                                        class="inline formulario-eliminar">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900 formulario-eliminar">
+                                            Borrar
+                                        </button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <a href="{{ route('players.show', $person->id) }}"
+                                        class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
+                                </td>
+                            @endif
                         @endauth
                     </tr>
                 @endif

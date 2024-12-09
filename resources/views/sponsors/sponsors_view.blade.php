@@ -28,7 +28,9 @@
                     <th>Localización</th>
                     <th>Tipo de patrocinio</th>
                     @auth
-                    <th colspan="3">Acción</th>
+                        @if (Auth::user()->rol_id === 1)
+                            <th colspan="3">Acción</th>
+                        @endif
                     @endauth
                 </tr>
             @endempty --}}
@@ -52,19 +54,21 @@
                     <td></td>
                     <td></td>
                     @auth
-                    <td>
-                        <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
-                    </td>
-                    <td>
-                        <form action="#" method="POST" class="inline formulario-eliminar">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
-                        </form>
-                    </td>
-                    <td>
-                        <a href="#" class="font-medium bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ver</a>
-                    </td>
+                        @if (Auth::user()->rol_id === 1)
+                            <td>
+                                <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                            </td>
+                            <td>
+                                <form action="#" method="POST" class="inline formulario-eliminar">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
+                                </form>
+                            </td>
+                            <td>
+                                <a href="#" class="font-medium bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ver</a>
+                            </td>
+                        @endif
                     @endauth
                 </tr>
             @empty
