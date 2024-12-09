@@ -47,7 +47,6 @@ Route::view('/instalaciones/show','instalations.show');
 /* Crear */
 Route::view('/sponsors/create','sponsors.create')->name('patrocinadores.create');
 /* Editar */
-
 /*Danna*/
 Route::view('/landing','layouts.landing')->name('landing');
 Route::view('/landing2','layouts.landing2')->name('landing2');
