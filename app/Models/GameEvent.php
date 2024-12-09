@@ -8,17 +8,20 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class GameEvent extends Model
 {
-
     public $table = 'game_events';
+
+    public $timestamps = false;
 
     use HasFactory;
 
     protected $fillable = [
+        'player_team_id',
+        'game_id',
         'event',
         'minute'
     ];
 
-    public function PlayerTeam():BelongsTo
+    public function playerTeam():BelongsTo
     {
         return $this->belongsTo(PlayerTeam::class, 'player_team_id');
     }

@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <livewire:partido />
+    <livewire:partido :id="$game->id"/>
     @section('scripts', '@livewireScripts')
 
 @endsection
