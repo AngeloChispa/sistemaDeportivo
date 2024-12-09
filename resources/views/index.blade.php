@@ -81,7 +81,7 @@
                                         <img src="{{ asset('assets/img/realmadrid.png') }}" class="h-6 w-6 ml-2"
                                             alt="Real Madrid">
                                     </span>
-                                    <span class="w-20 text-center">0 - 0</span>
+                                    <span class="w-20 text-center"> - </span>
                                     <span class="flex-1 text-left flex items-center">
                                         <img src="{{ asset('assets/img/barca.png') }}" class="h-6 w-6 mr-2"
                                             alt="Barcelona">
