@@ -13,15 +13,15 @@
                     @slot('name', 'Index')
                 @endcomponent
             </li>
-            {{--             <li>
+            <li>
                 @component('_components.boxSidebar ')
                     @slot('icon')
                         <ion-icon name="key" class="h-5 w-5"></ion-icon>
                     @endslot
-                    @slot('reference', 'index')
-                    @slot('name', 'Seguridad & Auditoría')
+                    @slot('reference', 'ascend.index')
+                    @slot('name', 'Ascender usuarios')
                 @endcomponent
-            </li> --}}
+            </li>
             <li>
                 @component('_components.boxSidebar ')
                     @slot('icon')

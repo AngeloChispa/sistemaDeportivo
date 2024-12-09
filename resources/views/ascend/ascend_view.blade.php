@@ -1,20 +1,22 @@
 @extends('layouts.admin_view')
 
-@section('title', 'Users table')
+@section('title', 'Ascender')
 
 @section('content')
-    @component('_components.table')
-        @slot('title')
-            Usuarios
-        @endslot
-        @slot('p_content')
-            Tabla que muestra los usuarios registrados hasta el momento.
-        @endslot
-        @slot('reference', 'user.create')
-        @slot('create_something', 'Registrar Usuario')
+    <div class="p-5">
+        @component('_components.table_export')
+            @slot('title')
+                Usuarios
+            @endslot
+            @slot('p_content')
+                Tabla que muestra los usuarios a los cuales se pueden registrar dentro de otras tablas como lo
+                son árbitros, jugadores y entrenadores.
+            @endslot
+            @slot('reference', 'user.create')
+            @slot('create_something', 'Registrar Usuario')
 
-        @slot('content_head')
-            @empty($people)
+            @slot('content_head')
+                {{-- @empty($people)
                 <th>Tabla vacía</th>
             @else
                 <tr>
@@ -22,17 +24,21 @@
                     <th>Usuario</th>
                     <th>Nombre</th>
                     <th>Apellidos</th>
-                    <th>Fecha de Nacimiento</th>
-                    <th>Lugar de nacimiento</th>
-                    <th>Teléfono</th>
-                    <th>Correo</th>
-                    <th>Fecha de registro</th>
-                    <th colspan="4" class="w-1/3">Acción</th>
+                    <th>Jugador</th>
+                    <th>Entrenador</th>
+                    <th>Árbitro</th>
                 </tr>
-            @endempty
-        @endslot
-        @slot('content_body')
-            @forelse ($people as $person)
+                @endempty --}}
+                <tr>
+                    <th>ID</th>
+                    <th>Usuario</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th colspan="3">Acción</th>
+                </tr>
+            @endslot
+            @slot('content_body')
+                {{-- @forelse ($people as $person)
                 @if ($person->user)
                     <tr class="border-b border-stone-700 h-16 hover:bg-stone-800 text-xs">
                         <td>{{ $person->user->id }}</td>
@@ -72,11 +78,28 @@
                 <tr>
                     <td>No data found</td>
                 </tr>
-            @endforelse
-        @endslot
-    @endcomponent
-
-    @section('scripts')
-        @include('layouts._partials.swal')
-    @endsection
+            @endforelse --}}
+                <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
+                    <td>id</td>
+                    <td>usuario</td>
+                    <td>nombre</td>
+                    <td>apellidos</td>
+                    <td>
+                        <a href="#" class="font-medium text-zinc-200 bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Ascender a
+                            Jugador</a>
+                    </td>
+                    <td>
+                        <a href="#" class="font-medium text-zinc-200 bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ascender
+                            a
+                            Entrenador</a>
+                    </td>
+                    <td>
+                        <a href="#"
+                            class="font-medium text-zinc-200 bg-purple-500 sm:rounded-lg p-2 hover:bg-purple-600">Ascender a
+                            Árbitro</a>
+                    </td>
+                </tr>
+            @endslot
+        @endcomponent
+    </div>
 @endsection
