@@ -35,6 +35,12 @@ Route::get('/game/{game}', Partido::class)->name('games.live');
 Route::post('/upgrape/{user}', [UsersCotroller::class, 'upgrapeAdmin'])->name('user.admin');
 
 Route::get('/ascend', [AscenController::class, 'index'])->name('ascend.index');
+Route::get('/ascend/player/{user}', [AscenController::class, 'upgradePlayer'])->name('ascend.player');
+Route::post('/ascend/player/{user}', [AscenController::class, 'storePlayer'])->name('ascend.storePlayer');
+Route::get('ascend/trainer/{user}', [AscenController::class, 'upgradeTrainer'])->name('ascend.trainers');
+Route::post('ascend/trainer/{user}', [AscenController::class, 'storeTrainer']);
+Route::get('/ascend/referee/{user}', [AscenController::class, 'upgradeReferee'])->name('ascend.referee');
+Route::post('/ascend/referee/{user}', [AscenController::class, 'storeReferee']);
 
 Route::get('/search' , [SearchController::class, 'index'])->name('search.index');
 
