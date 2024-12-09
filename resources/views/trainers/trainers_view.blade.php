@@ -73,7 +73,6 @@
     @endcomponent
 
     @section('scripts')
-        @component('_components.swal')
-        @endcomponent
+        @include('layouts._partials.swal')
     @endsection
 @endsection

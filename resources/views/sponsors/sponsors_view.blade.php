@@ -80,11 +80,11 @@
                     <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                 </td>
                 <td>
-                    <form action="#" method="POST" style="display: inline;">
+                    <form action="#" method="POST" class="inline formulario-eliminar">
                         @csrf
                         @method('DELETE')
                         <button type="submit"
-                            class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900 formulario-eliminar">
+                            class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900">
                             Borrar
                         </button>
                     </form>
