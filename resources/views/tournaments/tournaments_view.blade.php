@@ -28,7 +28,7 @@
                     <th>Fecha de inicio</th>
                     <th>Fecha de finalización</th>
                     <th>Descripción</th>
-                    <th colspan="3">Acción</th>
+                    <th colspan="4" class="w-1/3">Acción</th>
                 </tr>
             @endempty
         @endslot
@@ -66,6 +66,10 @@
                     <td>{{ $tournament->start_date }}</td>
                     <td>{{ $tournament->end_date }}</td>
                     <td>{{ $tournament->description }}</td>
+                    <td>
+                        <a href="{{ route('addTeams') }}"
+                            class="font-medium text-zinc-200 bg-purple-500 sm:rounded-lg p-2 hover:bg-purple-900">Añadir equipos</a>
+                    </td>
                     <td>
                         <a href="{{ route('tournaments.edit', $tournament->id) }}"
                             class="font-medium text-zinc-200 bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
