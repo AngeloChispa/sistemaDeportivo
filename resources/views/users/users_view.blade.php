@@ -51,9 +51,8 @@
                         @auth
                             @if (Auth::user()->rol_id === 1)
                                 <td>
-                                    <form action="#" method="POST">
+                                    <form action="{{route('user.admin', $person->user->id)}}" method="POST">
                                         @csrf
-                                        @method('DELETE')
                                         <button type="submit"
                                             class="font-medium text-zinc-200 bg-purple-500 sm:rounded-lg p-2 hover:bg-purple-900">Hacer
                                             Admin
