@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
         User::create(
             [
                 'people_id' => 202,
-                'username' => 'duckworth',
+                'username' => 'joseduck',
                 'phone' => 83456789,
                 'rol_id' => 2,
                 'email' => 'jose@memo.com',
