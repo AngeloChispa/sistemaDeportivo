@@ -50,7 +50,7 @@ class RefereeController extends Controller
         $people->name = $request->name;
         $people->lastname = $request->lastname;
         $people->birthdate = $request->birthdate;
-        $people->birthplace = $request->country; // Este es STRING
+        $people->birthplace = $request->birthplace; // Este es STRING
         if ($request->hasFile("avatar")) {
             $avatarPath = $request->file("avatar")->store("avatars", "public");
             $people->avatar = $avatarPath;
@@ -106,7 +106,7 @@ class RefereeController extends Controller
         $person->name = $request->name;
         $person->lastname = $request->lastname;
         $person->birthdate = $request->birthdate;
-        $person->birthplace = $request->country;
+        $person->birthplace = $request->birthplace;
         if ($request->hasFile("avatar")) {
             $avatarPath = $request->file("avatar")->store("avatars", "public");
             $person->avatar = $avatarPath;

@@ -38,7 +38,9 @@ class PlayersController extends Controller
 
 
         $request->validate([
-            "avatar" => "required|image|max:2000"
+            "avatar" => "required|image|max:2000",
+            'status' => 'required|string|in:Activo,Lesionado,Jubilado',
+            'bestSide' => 'required|string|in:Izquierdo,Derecho'
         ]);
 
 
@@ -50,7 +52,7 @@ class PlayersController extends Controller
         $people->name = $request->name;
         $people->lastname = $request->lastname;
         $people->birthdate = $request->birthdate;
-        $people->birthplace = $request->country;
+        $people->birthplace = $request->birthplace;
         $people->avatar = $avatarPath;
         $people->save();
 
@@ -84,7 +86,6 @@ class PlayersController extends Controller
     {
         $nationalities = Nationality::all();
         $player = Player::with('people')->findOrFail($id);
-
         return view('players.edit', compact('player', 'nationalities'));
     }
 
@@ -93,11 +94,13 @@ class PlayersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $people = People::findOrFail($id);
-        $player = Player::findOrFail($id);
+        $player = Player::with('people')->findOrFail($id);
+        $people = $player->people;
 
         $request->validate([
-            "avatar" => "nullable|image|max:2000"
+            "avatar" => "nullable|image|max:2000",
+            'status' => 'nullable|string|in:Activo,Lesionado,Jubilado',
+            'bestSide' => 'nullable|string|in:Izquierdo,Derecho'
         ]);
         if($request->hasFile("avatar")){
             $avatarPath = $request->file("avatar")->store("avatars", "public");
@@ -105,11 +108,10 @@ class PlayersController extends Controller
 
         }
 
-        $people = new People();
         $people->name = $request->name;
         $people->lastname = $request->lastname;
         $people->birthdate = $request->birthdate;
-        $people->birthplace = $request->country;
+        $people->birthplace = $request->birthplace;
         $people->save();
 
 

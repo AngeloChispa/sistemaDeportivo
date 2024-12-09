@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Nationality;
 use App\Models\Trainer;
+use App\Models\People;
+use App\Models\Nationality;
 use Illuminate\Http\Request;
 
 class TrainerController extends Controller
@@ -13,7 +14,7 @@ class TrainerController extends Controller
      */
     public function index()
     {
-        $trainers = Trainer::all();
+        $trainers = Trainer::with('people')->get();
         return view('trainers.trainers_view', compact('trainers'));
     }
 
@@ -22,7 +23,8 @@ class TrainerController extends Controller
      */
     public function create()
     {
-        //
+        $nationalities = Nationality::all();
+        return view('trainers.create', compact('nationalities'));
     }
 
     /**
@@ -30,7 +32,32 @@ class TrainerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:40',
+            'lastname' => 'required|string|max:30',
+            'birthdate' => 'required|date',
+            'birthplace' => 'nullable|string|max:100',
+            'description' => 'nullable|string|max:355',
+            'avatar' => 'nullable|image|max:2000',
+        ]);
+
+        $person = new People();
+        $person->name = $request->name;
+        $person->lastname = $request->lastname;
+        $person->birthdate = $request->birthdate;
+        $person->birthplace = $request->birthplace;
+        if ($request->hasFile('avatar')) {
+            $avatarPath = $request->file('avatar')->store('avatars', 'public');
+            $person->avatar = $avatarPath;
+        }
+        $person->save();
+
+        $trainer = new Trainer();
+        $trainer->description = $request->description;
+        $trainer->people_id = $person->id;
+        $trainer->save();
+
+        return redirect()->route('trainers.index');
     }
 
     /**
@@ -38,7 +65,7 @@ class TrainerController extends Controller
      */
     public function show(string $id)
     {
-        $trainer = Trainer::findOrFail($id);
+        $trainer = Trainer::with('people')->findOrFail($id);
         return view('trainers.show', compact('trainer'));
     }
 
@@ -47,8 +74,8 @@ class TrainerController extends Controller
      */
     public function edit(string $id)
     {
+        $trainer = Trainer::with('people')->findOrFail($id);
         $nationalities = Nationality::all();
-        $trainer = Trainer::findOrFail($id);
         return view('trainers.edit', compact('trainer', 'nationalities'));
     }
 
@@ -57,7 +84,32 @@ class TrainerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:40',
+            'lastname' => 'required|string|max:30',
+            'birthdate' => 'required|date',
+            'birthplace' => 'nullable|string|max:100',
+            'description' => 'nullable|string|max:355',
+            'avatar' => 'nullable|image|max:2000',
+        ]);
+
+        $trainer = Trainer::findOrFail($id);
+        $person = $trainer->people;
+
+        $person->name = $request->name;
+        $person->lastname = $request->lastname;
+        $person->birthdate = $request->birthdate;
+        $person->birthplace = $request->birthplace;
+        if ($request->hasFile('avatar')) {
+            $avatarPath = $request->file('avatar')->store('avatars', 'public');
+            $person->avatar = $avatarPath;
+        }
+        $person->save();
+
+        $trainer->description = $request->description;
+        $trainer->save();
+
+        return redirect()->route('trainers.index');
     }
 
     /**
@@ -65,10 +117,10 @@ class TrainerController extends Controller
      */
     public function destroy(string $id)
     {
-        $trainer = Trainer::findOrFail($id);
-        $people = $trainer->people();
+        $trainer = Trainer::with('people')->findOrFail($id);
         $trainer->delete();
-        $people->delete();
-        return redirect()->route('trainers.index');   
+        $trainer->people->delete();
+
+        return redirect()->route('trainers.index');
     }
 }
