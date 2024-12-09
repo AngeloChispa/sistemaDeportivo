@@ -25,7 +25,10 @@ class TeamsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'shield' => 'required|image|max:2000',
+            "name" => "required|string|max:30",
+            "state" => "required|string|max:30",
+            "city" => "required|string|max:30",
+            "shield" => "nullable|image|max:2000",
         ]);
 
         if ($request->hasFile('shield')) {

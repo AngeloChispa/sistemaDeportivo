@@ -39,7 +39,17 @@ class PlayersController extends Controller
 
 
         $request->validate([
-            "avatar" => "required|image|max:2000"
+            //Validacion People
+            "avatar" => "nullable|image|max:2000",
+            "name" =>  "required|string|max:40",
+            "lastname" => "required|string|max:30",
+            "birthdate" => "required|date|before:tomorrow",
+            "birthplace" => "nullable|string|max:100",
+
+            //Validacion Usuario
+            'status' => "required|string",
+            'height' => "required|float",
+            'bestSide' => "required|string",
         ]);
 
         if($request->hasFile("avatar")){

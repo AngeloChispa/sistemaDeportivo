@@ -9,24 +9,31 @@ use Intervention\Image\Facades\Image;
 
 class TournamentsController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $tournaments = Tournament::all();
-        return view("tournaments.tournaments_view",compact("tournaments"));
+        return view("tournaments.tournaments_view", compact("tournaments"));
 
     }
 
-    public function create(){
+    public function create()
+    {
         return view("tournaments.create");
 
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $request->validate([
-            'icon' => 'required|image|max:2000',
+            "name" => "required|string|max:30",
+            "icon" => "nullable|image|max:2000",
+            "start_date" => "required|date|before:tomorrow",
+            "end_date" => "required|date|after:start_date",
+            "description" => "nullable|string|max:255",
         ]);
 
-        if ($request->hasFile("icon")){
+        if ($request->hasFile("icon")) {
             $iconPath = $request->file("icon")->store('icons', 'public');
 
         }
@@ -43,18 +50,21 @@ class TournamentsController extends Controller
         return redirect()->route("tournaments.index");
     }
 
-    public function show($id){
+    public function show($id)
+    {
         $tournament = Tournament::findOrFail($id);
-        return view("tournaments.show",compact("tournament"));
+        return view("tournaments.show", compact("tournament"));
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
 
-            $tournament = Tournament::findOrFail($id);
-            return view("tournaments.edit", compact("tournament"));
+        $tournament = Tournament::findOrFail($id);
+        return view("tournaments.edit", compact("tournament"));
     }
 
-    public function update(Request $request,Tournament $tournament ){
+    public function update(Request $request, Tournament $tournament)
+    {
 
         $request->validate([
             'icon' => 'nullable|image|max:2000',
@@ -75,7 +85,8 @@ class TournamentsController extends Controller
     }
 
 
-    public function destroy($id){
+    public function destroy($id)
+    {
 
         $tournament = Tournament::findOrFail($id);
         $tournament->delete();
