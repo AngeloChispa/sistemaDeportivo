@@ -51,9 +51,14 @@
                         @auth
                             @if (Auth::user()->rol_id === 1)
                                 <td>
-                                    <a href="{{ route('addTeams') }}"
-                                        class="font-medium text-zinc-200 bg-purple-500 sm:rounded-lg p-2 hover:bg-purple-900">Hacer
-                                        Admin</a>
+                                    <form action="#" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="font-medium text-zinc-200 bg-purple-500 sm:rounded-lg p-2 hover:bg-purple-900">Hacer
+                                            Admin
+                                        </button>
+                                    </form>
                                 </td>
                                 <td>
                                     <a href="{{ route('user.edit', $person->id) }}"

@@ -151,15 +151,19 @@
                     @slot('name', 'Instalaciones')
                 @endcomponent
             </li>
-            <li>
-                @component('_components.boxSidebar ')
-                    @slot('icon')
-                        <ion-icon name="card" class="h-5 w-5"></ion-icon>
-                    @endslot
-                    @slot('reference', 'patrocinadores.index')
-                    @slot('name', 'Patrocinadores')
-                @endcomponent
-            </li>
+            @auth
+                @if (Auth::user()->rol_id === 1)
+                    <li>
+                        @component('_components.boxSidebar ')
+                            @slot('icon')
+                                <ion-icon name="card" class="h-5 w-5"></ion-icon>
+                            @endslot
+                            @slot('reference', 'patrocinadores.index')
+                            @slot('name', 'Patrocinadores')
+                        @endcomponent
+                    </li>
+                @endif
+            @endauth
             @auth
                 @if (Auth::user()->rol_id === 1)
                     <li>

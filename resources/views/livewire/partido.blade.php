@@ -46,25 +46,67 @@
             </div>
         </div>
     </div>
-    <div class="bg-stone-800 rounded-lg shadow-md m-6 text-center">
-        <h5 class="text-2xl text-red-500 font-semibold">Eventos</h5>
-        <div class="px-72">
-            <table class="table-fixed w-full text-sm rtl:text-right text-zinc-300">
-                <tbody>
-                    <tr class="h-16">
-                        <td>Evento</td>
-                        <td>Hora</td>
-                        <td>Jugador</td>
-                    </tr>
-                    <tr class="h-16">
-                        <td>Evento</td>
-                        <td>Hora</td>
-                        <td>Jugador</td>
-                    </tr>
-                </tbody>
-            </table>
-            <a href="#" class="text-sm font-medium text-zinc-200 bg-rose-500 sm:rounded-lg p-2 hover:bg-red-700">+
-                Agregar un evento</a>
+    <div class="px-10">
+        <div class="bg-stone-800 rounded-lg shadow-md m-2 text-center">
+            <h5 class="text-2xl text-red-500 font-semibold">Eventos</h5>
+            <div class="px-72">
+                <table class="table-fixed w-full text-sm rtl:text-right text-zinc-300">
+                    <tbody>
+                        {{-- Caso de gol (1) --}}
+                        <tr class="h-16">
+                            <td>Evento</td>
+                            <td></td>
+                            <td>Hora</td>
+                            <td><img class="h-7 w-7 rounded" src="{{ asset('assets/img/soccer_ball.png') }}"
+                                alt="tarjeta roja"></td>
+                            <td>Jugador</td>
+                        </tr>
+                        {{-- Caso de tarjeta roja (2) --}}
+                        <tr class="h-16">
+                            <td>Evento</td>
+                            <td></td>
+                            <td>Hora</td>
+                            <td><img class="h-7 w-5 rounded" src="{{ asset('assets/img/red_card.png') }}"
+                                    alt="tarjeta roja"></td>
+                            <td>Jugador</td>
+                        </tr>
+                        {{-- Caso de tarjeta amarilla (3) --}}
+                        <tr class="h-16">
+                            <td>Evento</td>
+                            <td class="grid place-content-end"><img class="h-7 w-5 rounded grid"
+                                    src="{{ asset('assets/img/yellow_card.jpg') }}" alt="tarjeta amarilla"></td>
+                            <td>Hora</td>
+                            <td></td>
+                            <td>Jugador</td>
+                        </tr>
+                        {{-- Caso de falta (4) --}}
+                        <tr class="h-16">
+                            <td>Evento</td>
+                            <td class="grid place-content-end"><img class="h-7 w-7 rounded grid"
+                                    src="{{ asset('assets/img/whistle.png') }}" alt="falta"></td>
+                            <td>Hora</td>
+                            <td></td>
+                            <td>Jugador</td>
+                        </tr>
+                        {{-- Caso de asistencia (5) --}}
+                        <tr class="h-16">
+                            <td>Evento</td>
+                            <td></td>
+                            <td>Hora</td>
+                            <td><img class="h-7 w-5 rounded" src="{{ asset('assets/img/assist.png') }}"
+                                    alt="asistencia"></td>
+                            <td>Jugador</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">
+                                <a href="#"
+                                    class="text-sm font-medium text-zinc-200 bg-rose-500 sm:rounded-lg p-2 hover:bg-red-700">+
+                                    Agregar un evento</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
