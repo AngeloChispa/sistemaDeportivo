@@ -50,34 +50,6 @@
             </div>
         @endif
 
-        @if ($games->isNotEmpty())
-            <div>
-                <h2 class="bg-red-500 py-0.5 rounded text-lg font-medium">Partidos</h2>
-                @foreach ($games as $game)
-                    <!-- Recorremos los partidos -->
-                    <a href="#"
-                        class="p-5 m-2 rounded text-base font-semibold text-center text-zinc-300 bg-stone-900 flex justify-between items-center hover:bg-[#333333]">
-                        <span class="flex-1 text-right flex items-center justify-end">
-                            <!-- Nombre y logo del equipo local -->
-                            {{ $game->local_team->name }}
-                            <img src="{{ asset('assets/img/' . strtolower($game->local_team->name) . '.png') }}"
-                                class="h-6 w-6 ml-2" alt="Escudo del equipo local {{ $game->local_team->name }}">
-                        </span>
-                        <span class="w-20 text-center">
-                            <!-- Marcador -->
-                            {{ $game->home_score }} - {{ $game->away_score }}
-                        </span>
-                        <span class="flex-1 text-left flex items-center">
-                            <!-- Nombre y logo del equipo visitante -->
-                            <img src="{{ asset('assets/img/' . strtolower($game->away_team->name) . '.png') }}"
-                                class="h-6 w-6 mr-2" alt="Escudo del equipo visitante {{ $game->away_team->name }}">
-                            {{ $game->away_team->name }}
-                        </span>
-                    </a>
-                @endforeach
-            </div>
-        @endif
-
         @if ($teams->isNotEmpty())
             <div>
                 <h2 class="bg-red-500 py-0.5 rounded text-lg font-medium">Equipos</h2>

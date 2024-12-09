@@ -15,16 +15,15 @@ class SearchController extends Controller
     public function index(Request $request)
     {
         $searchTerm = $request->input('search');
-    
-        $people = People::where('name', 'LIKE', '%' . $searchTerm . '%')->get();
-        $teams = Team::where('name', 'LIKE', '%' . $searchTerm . '%')->get();
-        $games = Game::where('local_team_id', 'LIKE', '%' . $searchTerm . '%')
-                     ->orWhere('away_team_id', 'LIKE', '%' . $searchTerm . '%')
-                     ->get();
-        $tournaments = Tournament::where('name', 'LIKE', '%' . $searchTerm . '%')->get();
-        $instalations = Instalation::where('name', 'LIKE', '%' . $searchTerm . '%')->get();
-        $sponsors = Sponsor::where('name', 'LIKE', '%' . $searchTerm . '%')->get();
-        return view('search.search_view', compact('people', 'teams', 'games', 'tournaments', 'instalations', 'sponsors','searchTerm'));
+        $searchTerm = strtolower($searchTerm);
+
+        $people = People::whereRaw('LOWER(name) LIKE ?', ['%' . $searchTerm . '%'])->get();
+        $teams = Team::whereRaw('LOWER(name) LIKE ?', ['%' . $searchTerm . '%'])->get();
+        $tournaments = Tournament::whereRaw('LOWER(name) LIKE ?', ['%' . $searchTerm . '%'])->get();
+        $instalations = Instalation::whereRaw('LOWER(name) LIKE ?', ['%' . $searchTerm . '%'])->get();
+        $sponsors = Sponsor::whereRaw('LOWER(name) LIKE ?', ['%' . $searchTerm . '%'])->get();
+
+        return view('search.search_view', compact('people', 'teams', 'tournaments', 'instalations', 'sponsors', 'searchTerm'));
     }
-    
+
 }
