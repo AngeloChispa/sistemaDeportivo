@@ -3,7 +3,7 @@
 @section('title', 'Instalación')
 
 @section('content')
-    <h1 class="pt-4 text-center text-3xl font-bold">Nombre Instalación</h1>
+    <h1 class="pt-4 text-center text-3xl font-bold">{{$instalation->name}}</h1>
     <div class="p-6">
 
         <div class="info-container flex-1 flex flex-col gap-6">

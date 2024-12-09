@@ -29,6 +29,11 @@ class RolsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            "name" => "required|string|max:20",
+            "description" => "nullable|string|max:255",
+        ]);
+
         Rol::create($request->all());
         return redirect()->route('rols.index');
     }

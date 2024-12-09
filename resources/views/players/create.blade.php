@@ -42,7 +42,7 @@
                 @slot('id', 'country')
                 @slot('more_options')
                     @forelse ($nationalities as $nationality )
-                        <option value="{{ $nationality->country}}">{{ $nationality->country }}</option>
+                        <option value="{{$nationality->country}}">{{ $nationality->country }}</option>
                     @empty
                         <option value="">No disponibles</option>
                     @endforelse

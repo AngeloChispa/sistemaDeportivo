@@ -14,14 +14,15 @@ use App\Http\Controllers\RefereeController;
 use App\Http\Controllers\SportController;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\TrainerController;
+use App\Livewire\Partido;
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 
 Route::resource('/user', controller: UsersCotroller::class);
 Route::resource('/rols', RolsController::class);
-Route::resource('/tournaments', TournamentsController::class); //CORREGIR EDIT CON COMPONENTES
-Route::resource("/instalations",InstalationsController::class);//FALTA TERMINAR CONTROLADOR
-Route::resource('/players', PlayersController::class);//FALTA CORREGIR RUTA IMAGEN Y CORREGIR EDIT CON COMPONENTES
+Route::resource('/tournaments', TournamentsController::class);
+Route::resource("/instalations",InstalationsController::class);
+Route::resource('/players', PlayersController::class);
 Route::resource("/teams",TeamsController::class);
 Route::resource("/games", GamesController::class);
 Route::resource('/referees', RefereeController::class);
@@ -32,9 +33,13 @@ Route::resource('/sport', SportController::class);
 
 //Borrar esta linea
 Route::view('/prueba/livewire/', 'chuchoLab.pruebaLivewire');
-
+Route::get('/game/{game}', Partido::class)->name('games.live');
 //Julissa
 /* Vistas */
+Route::view('/favorites','users.favorites')->name('favorites.index');
+Route::view('/search/palabra','search.search_view')->name('search.index');
+Route::view('/ascender/usuario','ascend.ascend_view')->name('ascend.index');
+Route::view('/agrega/nombreEquipo','tournaments.add_teams')->name('addTeams');
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('sponsors.index');
 Route::view('/finances/admin','finances.finances_view')->name('finances.index');
 Route::view('/filtro/admin','reports.filter')->name('reports.index');
@@ -44,8 +49,8 @@ Route::view('/users/show','users.show')->name('users.show');
 Route::view('/instalaciones/show','instalations.show');
 /* Crear */
 Route::view('/sponsors/create','sponsors.create')->name('patrocinadores.create');
+Route::view('/event','games.events')->name('events.create');
 /* Editar */
-
 /*Danna*/
 Route::view('/landing','layouts.landing')->name('landing');
 Route::view('/landing2','layouts.landing2')->name('landing2');

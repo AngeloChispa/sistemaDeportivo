@@ -66,6 +66,10 @@ class GamesController extends Controller
         return view('games.show', compact('game'));
     }
 
+    public function showLive(Game $game){
+
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

@@ -21,7 +21,11 @@
                     <th>Id</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
-                    <th colspan="3">Acción</th>
+                    @auth
+                        @if (Auth::user()->rol_id === 1)
+                            <th colspan="3">Acción</th>
+                        @endif
+                    @endauth
                 @endempty
             </tr>
         @endslot
@@ -31,16 +35,22 @@
                     <td>{{ $rol->id }}</td>
                     <td>{{ $rol->name }}</td>
                     <td>{{ $rol->description }}</td>
-                    <td>
-                        <a href="{{route("rols.edit", $rol->id)}}" class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
-                    </td>
-                    <td>
-                        <form action="{{ route('rols.destroy', $rol->id) }}" method="POST" class="inline formulario-eliminar">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
-                        </form>
-                    </td>
+                    @auth
+                        @if (Auth::user()->rol_id === 1)
+                            <td>
+                                <a href="{{route("rols.edit", $rol->id)}}"
+                                    class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
+                            </td>
+                            <td>
+                                <form action="{{ route('rols.destroy', $rol->id) }}" method="POST" class="inline formulario-eliminar">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
+                                </form>
+                            </td>
+                        @endif
+                    @endauth
                 </tr>
             @empty
                 <p>No existen roles</p>
@@ -48,47 +58,7 @@
         @endslot
     @endcomponent
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script>
-        document.querySelectorAll('.formulario-eliminar').forEach(function(eliminarBtn) {
-
-            eliminarBtn.addEventListener('submit', function(event) {
-
-                event.preventDefault(); // Detener el envío del formulario
-
-                const swalWithBootstrapButtons = Swal.mixin({
-                    customClass: {
-                        confirmButton: "bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 mr-5",
-                        cancelButton: "bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
-                    },
-                    buttonsStyling: true
-                });
-
-                swalWithBootstrapButtons.fire({
-                    title: "¿Estás seguro?",
-                    text: "¡No podrás revertir esto!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonText: "¡Sí, elíminalo!",
-                    cancelButtonText: "Cancelar",
-                    reverseButtons: false,
-                    background: '#38322e',
-                    color: '#d4d4d8'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        event.target.submit();
-                    } else if (result.dismiss === Swal.DismissReason.cancel) {
-                        swalWithBootstrapButtons.fire({
-                            title: "Cancelado",
-                            text: "El proceso ha sido cancelado.",
-                            icon: "error",
-                            background: '#38322e',
-                            color: '#d4d4d8'
-                        });
-                    }
-                });
-            });
-        });
-    </script>
+    @section('scripts')
+        @include('layouts._partials.swal')
+    @endsection
 @endsection

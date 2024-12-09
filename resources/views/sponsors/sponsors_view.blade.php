@@ -27,7 +27,11 @@
                     <th>Correo</th>
                     <th>Localización</th>
                     <th>Tipo de patrocinio</th>
-                    <th colspan="3">Acción</th>
+                    @auth
+                        @if (Auth::user()->rol_id === 1)
+                            <th colspan="3">Acción</th>
+                        @endif
+                    @endauth
                 </tr>
             @endempty --}}
             <tr>
@@ -49,19 +53,23 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>
-                        <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
-                    </td>
-                    <td>
-                        <form action="#" method="POST" class="inline formulario-eliminar">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
-                        </form>
-                    </td>
-                    <td>
-                        <a href="#" class="font-medium bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ver</a>
-                    </td>
+                    @auth
+                        @if (Auth::user()->rol_id === 1)
+                            <td>
+                                <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                            </td>
+                            <td>
+                                <form action="#" method="POST" class="inline formulario-eliminar">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
+                                </form>
+                            </td>
+                            <td>
+                                <a href="#" class="font-medium bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ver</a>
+                            </td>
+                        @endif
+                    @endauth
                 </tr>
             @empty
                 <tr>
@@ -80,11 +88,11 @@
                     <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                 </td>
                 <td>
-                    <form action="#" method="POST" style="display: inline;">
+                    <form action="#" method="POST" class="inline formulario-eliminar">
                         @csrf
                         @method('DELETE')
                         <button type="submit"
-                            class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900 formulario-eliminar">
+                            class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900">
                             Borrar
                         </button>
                     </form>

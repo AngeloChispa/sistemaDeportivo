@@ -18,4 +18,9 @@ class PlayerTeam extends Model
     {
         return $this->hasMany(Title::class, 'player_team_id');
     }
+
+    public function events():HasMany
+    {
+        return $this->hasMany(GameEvent::class, 'player_team_id');
+    }
 }

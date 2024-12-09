@@ -7,7 +7,7 @@
         Editar Deporte
     </h1>
     <div class="flex items-center justify-center">
-        <form method="POST" action="#"
+        <form method="POST" action="{{route('sport.update', $sport->id)}}"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
             @method("PUT")
             @csrf
@@ -18,7 +18,9 @@
                 @slot('type', 'text')
                 @slot('name', 'name')
                 @slot('id', 'name')
-                @slot('value','valor ya definido')
+                @slot('value')
+                    {{$sport->name}}
+                @endslot
             @endcomponent
 
             @component('_components.boxInputEdit')
@@ -27,7 +29,9 @@
                 @slot('type', 'text')
                 @slot('name', 'description')
                 @slot('id', 'description')
-                @slot('value','valor ya definido')
+                @slot('value')
+                    {{$sport->description}}
+                @endslot
             @endcomponent
 
             <div class="flex">

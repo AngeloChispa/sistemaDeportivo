@@ -19,6 +19,12 @@ class InstalationsController extends Controller
     }
 
     public function store(Request $request){
+        $request->validate([
+            "name" => "required|string|max:50",
+            "state" => "required|string|max:30",
+            "city" => "required|string|max:30",
+            "capacity" => "required|integer",
+        ]);
 
         $instalation = new Instalation();
         $instalation->name = $request->name;

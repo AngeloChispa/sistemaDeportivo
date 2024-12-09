@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
             TeamSeeder::class,
             TournamentSeeder::class,
             GameSeeder::class,
-            ReservationSeeder::class
+            ReservationSeeder::class,
+            EventsSeeder::class
         ]);
     }
 }
