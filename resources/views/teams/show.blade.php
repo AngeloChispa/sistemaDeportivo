@@ -1,7 +1,7 @@
 @extends('layouts.admin_view')
 
 @section('title')
-    {{$team->name}}
+    {{ $team->name }}
 @endsection
 
 @section('content')
@@ -12,6 +12,21 @@
                     class="w-30 h-30 rounded-full mx-auto mb-4">
                 <p class="name text-xl text-red-500 font-bold uppercase mb-2">{{ $team->name }}</p>
                 <p class="text-sm">{{ $team->state }}, {{ $team->city }}</p>
+                <div class="p-4">
+                    @auth
+                        <form action="#" method="POST" class="w-full">
+                            @csrf
+
+                            <div class="grid place-content-center">
+                                <button type="submit"
+                                    class="font-medium flex text-zinc-200 bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">
+                                    <ion-icon class="pt-0.5 h-5 w-5" name="heart-circle-outline"></ion-icon>
+                                    Añadir a favoritos
+                                </button>
+                            </div>
+                        </form>
+                    @endauth
+                </div>
             </div>
 
             <div class="info-container flex-1 flex flex-col gap-6">
@@ -30,8 +45,7 @@
                     <h5 class="text-lg text-red-500 font-semibold mb-4">Títulos</h5>
                     <div class="flex overflow-x-auto space-x-1">
                         <a class="flex-shrink-0" href="#">
-                            <img class="w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                alt="titulo">
+                            <img class="w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}" alt="titulo">
                         </a>
                         <a class="flex-shrink-0" href="#">
                             <img class="flex-shrink-0 w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}"
@@ -49,12 +63,12 @@
                         </a>
                         <a class="flex-shrink-0" href="#">
                             <img class="flex-shrink-0 w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                            alt="patrocinios">
+                                alt="patrocinios">
                             <p class="text-center">nombre</p>
                         </a>
                         <a class="flex-shrink-0" href="#">
                             <img class="flex-shrink-0 w-32 h-32" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                            alt="patrocinios">
+                                alt="patrocinios">
                             <p class="text-center">nombre</p>
                         </a>
                     </div>
@@ -109,15 +123,15 @@
                     @endforelse --}}
                 @forelse ($team->players as $player)
                     <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
-                        <td>{{$player->pivot->dorsal}}</td>
-                        <td>{{$player->people->name}}</td>
-                        <td>{{$player->people->lastname}}</td>
-                        <td>{{$player->people->birthdate}}</td>
-                        <td>{{$player->people->birthplace}}</td>
-                        <td>{{$player->status}}</td>
+                        <td>{{ $player->pivot->dorsal }}</td>
+                        <td>{{ $player->people->name }}</td>
+                        <td>{{ $player->people->lastname }}</td>
+                        <td>{{ $player->people->birthdate }}</td>
+                        <td>{{ $player->people->birthplace }}</td>
+                        <td>{{ $player->status }}</td>
                     </tr>
                 @empty
-                <h1>No data found</h1>
+                    <h1>No data found</h1>
                 @endforelse
             @endslot
         @endcomponent

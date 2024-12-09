@@ -45,13 +45,24 @@ class PlayersController extends Controller
     public function store(Request $request)
     {
 
-        if (Auth::user() && Auth::user()->rol_id === 1) {
-           /*  $request->validate([
-                "avatar" => "required|image|max:2000",
-                'status' => 'required|string|in:Activo,Lesionado,Jubilado',
-                'bestSide' => 'required|string|in:Izquierdo,Derecho'
-            ]); 
-             */
+
+        $request->validate([
+            //Validacion People
+            "avatar" => "nullable|image|max:2000",
+            "name" =>  "required|string|max:40",
+            "lastname" => "required|string|max:30",
+            "birthdate" => "required|date|before:tomorrow",
+            "birthplace" => "nullable|string|max:100",
+
+            //Validacion Usuario
+            'status' => "required|string",
+            'height' => "required|float",
+            'bestSide' => "required|string",
+        ]);
+
+        if($request->hasFile("avatar")){
+            $avatarPath = $request->file("avatar")->store("avatars", "public");
+        }
 
             $people = new People();
             $people->name = $request->name;
