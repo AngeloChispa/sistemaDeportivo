@@ -21,7 +21,7 @@ class SportController extends Controller
      */
     public function create()
     {
-        //
+        return view('sports.create');
     }
 
     /**
@@ -29,7 +29,14 @@ class SportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Sport::create(
+            [
+                'name' => $request->name,
+                'description' => $request->description,
+            ]
+        );
+
+        return redirect()->route('sport.index');
     }
 
     /**
@@ -45,7 +52,8 @@ class SportController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $sport = Sport::findOrFail($id);
+        return view('sports.edit', compact('sport')); 
     }
 
     /**
@@ -53,7 +61,12 @@ class SportController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $sport = Sport::findOrFail($id);
+        $sport->name = $request->name;
+        $sport->description = $request->description;
+        $sport->save();
+
+        return redirect()->route('sport.index');
     }
 
     /**
@@ -61,6 +74,8 @@ class SportController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $sport = Sport::findOrFail($id);
+        $sport->delete();
+        return redirect()->route('sport.index');
     }
 }

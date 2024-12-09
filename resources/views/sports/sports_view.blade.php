@@ -35,10 +35,10 @@
                     <td>{{$sport->name}}</td>
                     <td>{{$sport->description}}</td>
                     <td>
-                        <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                        <a href="{{route('sport.edit', $sport->id)}}" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                     </td>
                     <td>
-                        <form action="#" method="POST" class="inline formulario-eliminar">
+                        <form action="{{route('sport.destroy', $sport->id)}}" method="POST" class="inline formulario-eliminar">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>

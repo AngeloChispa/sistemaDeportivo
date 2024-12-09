@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Game extends Model
@@ -46,6 +47,11 @@ class Game extends Model
     public function reservation():HasOne
     {
         return $this->hasOne(Reservation::class);
+    }
+
+    public function events():HasMany
+    {
+        return $this->hasMany(GameEvent::class, 'game_id');
     }
     
 }
