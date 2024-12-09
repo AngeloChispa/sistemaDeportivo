@@ -16,7 +16,10 @@ class Game extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        
+        'tournament_id',
+        'local_team_id',
+        'away_team_id',
+        'referee_id'
     ];
 
     public function localTeam():BelongsTo
@@ -43,7 +46,7 @@ class Game extends Model
     {
         return $this->belongsToMany(Player::class, 'game_events')->withPivot('event', 'minute');
     }
-    
+
     public function reservation():HasOne
     {
         return $this->hasOne(Reservation::class);
