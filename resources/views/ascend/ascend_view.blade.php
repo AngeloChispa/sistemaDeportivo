@@ -79,11 +79,12 @@
                     <td>No data found</td>
                 </tr>
             @endforelse --}}
+                @forelse ($users as $user)
                 <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
-                    <td>id</td>
-                    <td>usuario</td>
-                    <td>nombre</td>
-                    <td>apellidos</td>
+                    <td>{{$user->id}}</td>
+                    <td>{{$user->username}}</td>
+                    <td>{{$user->people->name}}</td>
+                    <td>{{$user->people->lastname}}</td>
                     <td>
                         <a href="#" class="font-medium text-zinc-200 bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Ascender a
                             Jugador</a>
@@ -99,6 +100,9 @@
                             Árbitro</a>
                     </td>
                 </tr>
+                @empty
+                    <h1>No data found</h1>
+                @endforelse
             @endslot
         @endcomponent
     </div>

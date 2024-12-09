@@ -19,50 +19,19 @@
                         </div>
                         <hr class="border-zinc-800 ">
 
+                        @forelse ($tournaments as $tournament)
                         <ul class="text-base">
-                            <a href="{{ route('user.index') }}">
+                            <a href="{{ route('tournaments.show', $tournament->id) }}">
                                 <li class="p-3 px-8 pt-4 hover:bg-[#333333] flex items-center">
                                     <span><img src="{{ asset('assets/img/ligamx2.png') }}" class="h-3 w-5"></span>
                                     <span class="w-4"></span>
-                                    <span class="text-left">Liga MX</span>
-                                </li>
-                            </a>
-                            <a href="{{ route('user.index') }}">
-                                <li class="p-3 px-8 hover:bg-[#333333] flex items-center">
-                                    <span><img src="{{ asset('assets/img/seriea2.png') }}" class="h-3 w-5"></span>
-                                    <span class="w-4"></span>
-                                    Serie A
-                                </li>
-                            </a>
-                            <a href="{{ route('user.index') }}">
-                                <li class="p-3 px-8 hover:bg-[#333333] flex items-center">
-                                    <span><img src="{{ asset('assets/img/laliga2.png') }}" class="h-3 w-5"></span>
-                                    <span class="w-4"></span>
-                                    La Liga
-                                </li>
-                            </a>
-                            <a href="{{ route('user.index') }}">
-                                <li class="p-3 px-8 hover:bg-[#333333] flex items-center">
-                                    <span><img src="{{ asset('assets/img/champions2.png') }}" class="h-3 w-5"></span>
-                                    <span class="w-4"></span>
-                                    Champions League
-                                </li>
-                            </a>
-                            <a href="{{ route('user.index') }}">
-                                <li class="p-3 px-8 hover:bg-[#333333] flex items-center">
-                                    <span><img src="{{ asset('assets/img/premierleague2.png') }}" class="h-3 w-5"></span>
-                                    <span class="w-4"></span>
-                                    Premier League
-                                </li>
-                            </a>
-                            <a href="{{ route('user.index') }}">
-                                <li class="p-3 px-8 hover:bg-[#333333] hover:rounded-b-lg flex items-center">
-                                    <span><img src="{{ asset('assets/img/bundesliga2.png') }}" class="h-3 w-5"></span>
-                                    <span class="w-4"></span>
-                                    Bundesliga
+                                    <span class="text-left">{{$tournament->name}}</span>
                                 </li>
                             </a>
                         </ul>
+                        @empty
+                            <h1>No data found</h1>
+                        @endforelse
                     </div>
 
                     {{-- cl 2 --}}
@@ -200,50 +169,18 @@
                     </div>
 
                     <hr class="border-zinc-800 ">
-
                     <ul class="text-base">
-                        <a href="{{ route('user.index') }}">
+                        @forelse ($players as $player)
+                        <a href="{{ route('players.show', $player->people->id) }}">
                             <li class="p-3 px-8 pt-4 hover:bg-[#333333] flex items-center">
                                 <span><img src="{{ asset('assets/img/ligamx2.png') }}" class="h-3 w-5"></span>
                                 <span class="w-4"></span>
-                                <span class="text-left">pizza</span>
+                                <span class="text-left">{{$player->people->name}}</span>
                             </li>
                         </a>
-                        <a href="{{ route('user.index') }}">
-                            <li class="p-3 px-8 hover:bg-[#333333] flex items-center">
-                                <span><img src="{{ asset('assets/img/seriea2.png') }}" class="h-3 w-5"></span>
-                                <span class="w-4"></span>
-                                chuponcito
-                            </li>
-                        </a>
-                        <a href="{{ route('user.index') }}">
-                            <li class="p-3 px-8 hover:bg-[#333333] flex items-center">
-                                <span><img src="{{ asset('assets/img/laliga2.png') }}" class="h-3 w-5"></span>
-                                <span class="w-4"></span>
-                                skibidi chicarito
-                            </li>
-                        </a>
-                        <a href="{{ route('user.index') }}">
-                            <li class="p-3 px-8 hover:bg-[#333333] flex items-center">
-                                <span><img src="{{ asset('assets/img/champions2.png') }}" class="h-3 w-5"></span>
-                                <span class="w-4"></span>
-                                ronaldiño
-                            </li>
-                        </a>
-                        <a href="{{ route('user.index') }}">
-                            <li class="p-3 px-8 hover:bg-[#333333] flex items-center">
-                                <span><img src="{{ asset('assets/img/premierleague2.png') }}" class="h-3 w-5"></span>
-                                <span class="w-4"></span>
-                                bob patiño
-                            </li>
-                        </a>
-                        <a href="{{ route('user.index') }}">
-                            <li class="p-3 px-8 hover:bg-[#333333] hover:rounded-b-lg flex items-center">
-                                <span><img src="{{ asset('assets/img/bundesliga2.png') }}" class="h-3 w-5"></span>
-                                <span class="w-4"></span>
-                                skibidi niño
-                            </li>
-                        </a>
+                        @empty
+                            <h1>No data found</h1>
+                        @endforelse
                     </ul>
                 </div>
 

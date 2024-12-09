@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AscenController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,6 +12,7 @@ use App\Http\Controllers\UsersCotroller;
 use App\Http\Controllers\TournamentsController;
 use App\Http\Controllers\InstalationsController;
 use App\Http\Controllers\RefereeController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SportController;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\TrainerController;
@@ -29,16 +31,16 @@ Route::resource('/referees', RefereeController::class);
 Route::resource('/trainers', TrainerController::class);
 Route::resource('/sport', SportController::class);
 
-
-
-//Borrar esta linea
-Route::view('/prueba/livewire/', 'chuchoLab.pruebaLivewire');
 Route::get('/game/{game}', Partido::class)->name('games.live');
+Route::post('/upgrape/{user}', [UsersCotroller::class, 'upgrapeAdmin'])->name('user.admin');
+
+Route::get('/ascend', [AscenController::class, 'index'])->name('ascend.index');
+
+Route::get('/search' , [SearchController::class, 'index'])->name('search.index');
+
 //Julissa
 /* Vistas */
 Route::view('/favorites','users.favorites')->name('favorites.index');
-Route::view('/search/palabra','search.search_view')->name('search.index');
-Route::view('/ascender/usuario','ascend.ascend_view')->name('ascend.index');
 Route::view('/agrega/nombreEquipo','tournaments.add_teams')->name('addTeams');
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('sponsors.index');
 Route::view('/finances/admin','finances.finances_view')->name('finances.index');

@@ -21,7 +21,18 @@ class UserSeeder extends Seeder
                 'phone' => 83456,
                 'rol_id' => 1,
                 'email' => 'memo@memo.com',
-                'password' => 'memo1234',
+                'password' => '123Tamarindo',
+            ]
+        );
+
+        User::create(
+            [
+                'people_id' => 202,
+                'username' => 'joseduck',
+                'phone' => 83456789,
+                'rol_id' => 2,
+                'email' => 'jose@memo.com',
+                'password' => '123Tamarindo',
             ]
         );
     }

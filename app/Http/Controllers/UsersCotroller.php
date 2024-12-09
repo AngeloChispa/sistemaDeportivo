@@ -94,4 +94,11 @@ class UsersCotroller extends Controller
         $person->delete();
         return redirect()->route('user.index')->with('success', 'Torneo eliminado correctamente.');
     }
+
+    public function upgrapeAdmin($id){ 
+        $user = User::findOrFail($id);
+        $user->rol_id = 1;
+        $user->save();
+        return redirect()->route('user.index');
+    }
 }
