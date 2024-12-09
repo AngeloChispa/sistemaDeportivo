@@ -7,19 +7,10 @@
         Editar Partido
     </h1>
     <div class="flex items-center justify-center">
-        <form method="POST" action="#"
+        <form method="POST" action="{{ route('games.update', $game->id) }}"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
             @method("PUT")
             @csrf
-
-            @component('_components.boxInputEdit')
-                @slot('for', 'name')
-                @slot('content', 'Nombre: ')
-                @slot('type', 'text')
-                @slot('name', 'name')
-                @slot('id', 'name')
-                @slot('value', 'Valor ya definido')
-            @endcomponent
 
             @component('_components.boxSelectInput')
                 @slot('for', 'tournament')
@@ -27,14 +18,12 @@
                 @slot('name', 'tournament')
                 @slot('id', 'tournament')
                 @slot('more_options')
-                    {{-- @forelse ($tournaments as $tournament)
-                        <option value="{{ $tournament['id'] }}">{{ $tournament['name'] }}</option>
-                    @empty
-                        <option value="">No disponibles</option>                     
-                    @endforelse --}}
-                    <option value="1">Super torneo 1</option>
-                    <option value="2">Mega torneo 4!!!</option>
-                    <option value="3">Torneo en contra de la violencia</option>
+                    @foreach ($tournaments as $tournament)
+                        <option value="{{ $tournament->id }}"
+                            {{ old('tournament', $game->tournament_id) == $tournament->id ? 'selected' : '' }}>
+                            {{ $tournament->name }}
+                        </option>
+                    @endforeach
                 @endslot
             @endcomponent
 
@@ -44,14 +33,12 @@
                 @slot('name', 'local_team')
                 @slot('id', 'local_team')
                 @slot('more_options')
-                    {{-- @forelse ($teams as $team)
-                        <option value="{{ $team['id'] }}">{{ $team['name'] }}</option>
-                    @empty
-                        <option value="">No disponibles</option>                     
-                    @endforelse --}}
-                    <option value="1">Super amigos</option>
-                    <option value="2">Truchas agresivas</option>
-                    <option value="3">Osos melosos</option>
+                    @foreach ($teams as $team)
+                        <option value="{{ $team->id }}"
+                            {{ old('local_team', $game->local_team_id) == $team->id ? 'selected' : '' }}>
+                            {{ $team->name }}
+                        </option>
+                    @endforeach
                 @endslot
             @endcomponent
 
@@ -61,36 +48,32 @@
                 @slot('name', 'away_team')
                 @slot('id', 'away_team')
                 @slot('more_options')
-                    {{-- @forelse ($teams as $team)
-                        <option value="{{ $team['id'] }}">{{ $team['name'] }}</option>
-                    @empty
-                        <option value="">No disponibles</option>                     
-                    @endforelse --}}
-                    <option value="1">Super amigos</option>
-                    <option value="2">Truchas agresivas</option>
-                    <option value="3">Osos melosos</option>
-                @endslot
-            @endcomponent
-            
-            @component('_components.boxSelectInput')
-                @slot('for', 'referee')
-                @slot('content', 'Arbitro: ')
-                @slot('name', 'referee')
-                @slot('id', 'referee')
-                @slot('more_options')
-                    {{-- @forelse ($referees as $referee)
-                        <option value="{{ $referee['id'] }}">{{ $referee['name'] }}</option>
-                    @empty
-                        <option value="">No disponibles</option>                     
-                    @endforelse --}}
-                    <option value="1">Alan Manuel</option>
-                    <option value="2">Juan Alfaro</option>
-                    <option value="3">Dante Parreño</option>
+                    @foreach ($teams as $team)
+                        <option value="{{ $team->id }}"
+                            {{ old('away_team', $game->away_team_id) == $team->id ? 'selected' : '' }}>
+                            {{ $team->name }}
+                        </option>
+                    @endforeach
                 @endslot
             @endcomponent
 
+            @component('_components.boxSelectInput')
+            @slot('for', 'referee')
+            @slot('content', 'Arbitro: ')
+            @slot('name', 'referee_id') 
+            @slot('id', 'referee')
+            @slot('more_options')
+                @foreach ($referees as $referee)
+                    <option value="{{ $referee->id }}"
+                        {{ old('referee_id', $game->referee_id) == $referee->id ? 'selected' : '' }}>
+                        {{ $referee->people->name }}
+                    </option>
+                @endforeach
+            @endslot
+        @endcomponent
+
             <div class="flex">
-                <input type="submit" value="Crear"
+                <input type="submit" value="Actualizar"
                     class="m-2 w-full mt-4 bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600 transition cursor-pointer" />
                 <a href="{{ route('games.index') }}"
                     class="m-2 text-center w-full mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition cursor-pointer">Cancelar</a>

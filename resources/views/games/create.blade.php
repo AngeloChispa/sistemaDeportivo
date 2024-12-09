@@ -7,85 +7,65 @@
         Registrar Partido
     </h1>
     <div class="flex items-center justify-center">
-        <form method="POST" action="#"
+        <form method="POST" action="{{ route('games.store') }}"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
             @csrf
-
-            @component('_components.boxInputCreate')
-                @slot('for', 'name')
-                @slot('content', 'Nombre: ')
-                @slot('type', 'text')
-                @slot('name', 'name')
-                @slot('id', 'name required')
-            @endcomponent
 
             @component('_components.boxSelectInput')
                 @slot('for', 'tournament')
                 @slot('content', 'Torneo: ')
-                @slot('name', 'tournament')
-                @slot('id', 'tournament')
+                @slot('name', 'tournament_id')
+                @slot('id', 'tournament_id')
                 @slot('more_options')
-                    {{-- @forelse ($tournaments as $tournament)
-                        <option value="{{ $tournament['id'] }}">{{ $tournament['name'] }}</option>
+                    @forelse ($tournaments as $tournament)
+                        <option value="{{ $tournament->id }}">{{ $tournament->name }}</option>
                     @empty
-                        <option value="">No disponibles</option>                     
-                    @endforelse --}}
-                    <option value="1">Super torneo 1</option>
-                    <option value="2">Mega torneo 4!!!</option>
-                    <option value="3">Torneo en contra de la violencia</option>
+                        <option value="">No disponibles</option>
+                    @endforelse
                 @endslot
             @endcomponent
 
             @component('_components.boxSelectInput')
                 @slot('for', 'local_team')
                 @slot('content', 'Equipo local: ')
-                @slot('name', 'local_team')
-                @slot('id', 'local_team required')
+                @slot('name', 'local_team_id')
+                @slot('id', 'local_team_id')
                 @slot('more_options')
-                    {{-- @forelse ($teams as $team)
-                        <option value="{{ $team['id'] }}">{{ $team['name'] }}</option>
+                    @forelse ($teams as $team)
+                        <option value="{{ $team->id }}">{{ $team->name }}</option>
                     @empty
-                        <option value="">No disponibles</option>                     
-                    @endforelse --}}
-                    <option value="1">Super amigos</option>
-                    <option value="2">Truchas agresivas</option>
-                    <option value="3">Osos melosos</option>
+                        <option value="">No disponibles</option>
+                    @endforelse
                 @endslot
             @endcomponent
 
             @component('_components.boxSelectInput')
                 @slot('for', 'away_team')
                 @slot('content', 'Equipo visitante: ')
-                @slot('name', 'away_team')
-                @slot('id', 'away_team required')
+                @slot('name', 'away_team_id')
+                @slot('id', 'away_team_id')
                 @slot('more_options')
-                    {{-- @forelse ($teams as $team)
-                        <option value="{{ $team['id'] }}">{{ $team['name'] }}</option>
+                    @forelse ($teams as $team)
+                        <option value="{{ $team->id }}">{{ $team->name }}</option>
                     @empty
-                        <option value="">No disponibles</option>                     
-                    @endforelse --}}
-                    <option value="1">Super amigos</option>
-                    <option value="2">Truchas agresivas</option>
-                    <option value="3">Osos melosos</option>
+                        <option value="">No disponibles</option>
+                    @endforelse
                 @endslot
             @endcomponent
-            
+
             @component('_components.boxSelectInput')
-                @slot('for', 'referee')
-                @slot('content', 'Arbitro: ')
-                @slot('name', 'referee')
-                @slot('id', 'referee required')
-                @slot('more_options')
-                    {{-- @forelse ($referees as $referee)
-                        <option value="{{ $referee['id'] }}">{{ $referee['name'] }}</option>
-                    @empty
-                        <option value="">No disponibles</option>                     
-                    @endforelse --}}
-                    <option value="1">Alan Manuel</option>
-                    <option value="2">Juan Alfaro</option>
-                    <option value="3">Dante Parreño</option>
-                @endslot
-            @endcomponent
+            @slot('for', 'referee')
+            @slot('content', 'Árbitro: ')
+            @slot('name', 'referee_id')
+            @slot('id', 'referee')
+            @slot('more_options')
+                @forelse ($referees as $referee)
+                    <option value="{{ $referee->id }}">{{ $referee->people->name }}</option>
+                @empty
+                    <option value="">No disponibles</option>
+                @endforelse
+            @endslot
+        @endcomponent
 
             <div class="flex">
                 <input type="submit" value="Crear"
