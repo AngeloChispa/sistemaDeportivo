@@ -36,7 +36,9 @@
                 <th>Lugar de nacimiento</th>
                 <th>Nacionalidad</th>
                 <th>Descripción</th>
+                @auth
                 <th colspan="3">Acción</th>
+                @endauth
             </tr>
         @endslot
         @slot('content_body')
@@ -49,6 +51,7 @@
                 <td>{{$referee->people->birthplace}}</td>
                 <td>{{$referee->people->birthplace}}</td>
                 <td class="text-balance">{{$referee->description}}</td>
+                @auth
                 <td>
                     <a href="#" class="font-medium text-zinc-200 bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                 </td>
@@ -65,6 +68,7 @@
                 <td>
                     <a href="#" class="font-medium text-zinc-200 bg-green-500 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
                 </td>
+                @endauth
             </tr>
             @empty
                 <h1>No data found</h1>

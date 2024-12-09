@@ -22,7 +22,9 @@
                 <th>Estado</th>
                 <th>Ciudad</th>
                 <th>Capacidad</th>
-                <th colspan="3">Acción</th>
+                @auth
+                    <th colspan="3">Acción</th>
+                @endauth
             </tr>
         @endslot
 
@@ -32,27 +34,29 @@
                     <td>{{ $instalation->id }}</td>
                     <td>{{ $instalation->name }}</td>
                     <td>
-                        {{$instalation->nationality->country}}
+                        {{ $instalation->nationality->country }}
                     </td>
                     <td>{{ $instalation->state }}</td>
                     <td>{{ $instalation->city }}</td>
                     <td>{{ $instalation->capacity }}</td>
-                    <td>
-                        <a href="{{ route('instalations.edit', $instalation) }}"
-                            class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
-                    </td>
-                    <td>
-                        <form action="{{ route('instalations.destroy', $instalation) }}" method="POST"
-                            class="inline formulario-eliminar">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
-                        </form>
-                    </td>
-                    <td>
-                        <a href="{{ route('instalations.show', $instalation) }}"
-                            class="font-medium bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ver</a>
-                    </td>
+                    @auth
+                        <td>
+                            <a href="{{ route('instalations.edit', $instalation) }}"
+                                class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                        </td>
+                        <td>
+                            <form action="{{ route('instalations.destroy', $instalation) }}" method="POST"
+                                class="inline formulario-eliminar">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
+                            </form>
+                        </td>
+                        <td>
+                            <a href="{{ route('instalations.show', $instalation) }}"
+                                class="font-medium bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ver</a>
+                        </td>
+                    @endauth
                 </tr>
             @empty
                 <tr>

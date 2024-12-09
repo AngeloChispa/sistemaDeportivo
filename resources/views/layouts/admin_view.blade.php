@@ -19,14 +19,19 @@
     @include('layouts._partials.navbar')
     @auth
         @if (Auth::user()->rol_id === 1)
-        @include('layouts._partials.sidebarAdmin')
+            @include('layouts._partials.sidebarAdmin')
+            {{-- Content --}}
+            <div class="pt-16 sm:ml-64">
+                @yield('content')
+            </div>
         @endif
+    @else
+        {{-- Content --}}
+        <div class="pt-16">
+            @yield('content')
+        </div>
     @endauth
 
-    {{-- Content --}}
-    <div class="pt-16 sm:ml-64">
-        @yield('content')
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

@@ -24,7 +24,9 @@
             <th>ID Equipo Local</th>
             <th>ID Equipo Visitante</th>
             <th>ID Arbitro</th>
+            @auth
             <th colspan="3">Acción</th>
+            @endauth
             @endempty 
             </tr> --}}
             <tr>
@@ -50,6 +52,7 @@
                         <td>{{ $person->user->phone }}</td>
                         <td>{{ $person->user->email }}</td>
                         <td>{{ $person->user->up_date }}</td>
+                        @auth
                         <td>
                             <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                         </td>
@@ -67,6 +70,7 @@
                             <a href="{{ route('user.edit', $person->id) }}"
                                 class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
                         </td>
+                        @endauth
                     </tr>
                 @endif
             @empty

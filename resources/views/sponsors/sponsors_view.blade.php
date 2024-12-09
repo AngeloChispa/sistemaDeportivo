@@ -27,7 +27,9 @@
                     <th>Correo</th>
                     <th>Localización</th>
                     <th>Tipo de patrocinio</th>
+                    @auth
                     <th colspan="3">Acción</th>
+                    @endauth
                 </tr>
             @endempty --}}
             <tr>
@@ -49,6 +51,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
+                    @auth
                     <td>
                         <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                     </td>
@@ -62,6 +65,7 @@
                     <td>
                         <a href="#" class="font-medium bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ver</a>
                     </td>
+                    @endauth
                 </tr>
             @empty
                 <tr>

@@ -15,12 +15,6 @@
         @slot('reference', 'players.create')
         @slot('create_something', 'Crear Jugador')
 
-        {{-- @forelse ($players as $player)
-
-        @empty
-
-        @endforelse
-         --}}
         @slot('content_head')
             @empty($people)
                 <tr>
@@ -39,7 +33,9 @@
                     <th>Altura</th>
                     <th>Lado dominante</th>
                     <th>Fecha de registro</th>
-                    <th colspan="3">Acción</th>
+                    @auth
+                        <th colspan="3">Acción</th>
+                    @endauth
                 </tr>
             @endempty
 
@@ -61,25 +57,27 @@
                             {{ $person->player->bestSide }}
                         </td>
                         <td></td>
-                        <td>
-                            <a href="#"
-                                class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
-                        </td>
-                        <td>
-                            <form action="{{ route('players.destroy', $person->player->id) }}" method="POST"
-                                class="inline formulario-eliminar">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit"
-                                    class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900 formulario-eliminar">
-                                    Borrar
-                                </button>
-                            </form>
-                        </td>
-                        <td>
-                            <a href="{{ route('players.show', $person->id) }}"
-                                class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
-                        </td>
+                        @auth
+                            <td>
+                                <a href="#"
+                                    class="font-medium text-zinc-200 bg-blue-700 sm:rounded-lg p-2 hover:bg-blue-900">Editar</a>
+                            </td>
+                            <td>
+                                <form action="{{ route('players.destroy', $person->player->id) }}" method="POST"
+                                    class="inline formulario-eliminar">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="font-medium text-zinc-200 bg-rose-600 sm:rounded-lg p-2 hover:bg-red-900 formulario-eliminar">
+                                        Borrar
+                                    </button>
+                                </form>
+                            </td>
+                            <td>
+                                <a href="{{ route('players.show', $person->id) }}"
+                                    class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
+                            </td>
+                        @endauth
                     </tr>
                 @endif
             @empty

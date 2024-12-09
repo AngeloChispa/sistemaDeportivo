@@ -36,6 +36,7 @@
                         </div>
                     @else
                         <a href="{{ route('login') }}">Log in</a>
+                        <p class="px-2">|</p>
                         <a href="{{ route('register') }}">Registrarse</a>
                     @endauth
                 </div>
