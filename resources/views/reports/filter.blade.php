@@ -4,7 +4,5 @@
 @section('styles', '@livewireStyles')
 
 @section('content')
-    <livewire:filtro />
-    @section('scripts','@livewireScripts')
-
+@section('styles', '@livewireStyles')
 @endsection

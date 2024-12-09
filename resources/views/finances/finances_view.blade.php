@@ -14,19 +14,23 @@
         @slot('create_something', 'Registrar Operación')
 
         @slot('content_head')
-           {{--  @empty($finances)
+            {{--  @empty($finances)
                 <th>Tabla vacía</th>
             @else --}}
-                <tr>
-                    <th>Id Transacción</th>
-                    <th>Id Patrocinador</th>
-                    <th>Id Usuario</th>
-                    <th>Monto</th>
-                    <th>Fecha/Hora</th>
-                    <th>Concepto</th>
-                    <th>Tipo de Transacción</th>
-                    <th colspan="3">Acción</th>
-                </tr>
+            <tr>
+                <th>Id Transacción</th>
+                <th>Id Patrocinador</th>
+                <th>Id Usuario</th>
+                <th>Monto</th>
+                <th>Fecha/Hora</th>
+                <th>Concepto</th>
+                <th>Tipo de Transacción</th>
+                @auth
+                    @if (Auth::user()->rol_id === 1)
+                        <th colspan="3">Acción</th>
+                    @endif
+                @endauth
+            </tr>
             {{-- @endempty --}}
         @endslot
         @slot('content_body')
@@ -61,22 +65,26 @@
                 <td>{{ $tournament->start_date }}</td>
                 <td>{{ $tournament->end_date }}</td>
                 <td>{{ $tournament->description }}</td>
-                <td>
-                    <a href="{{ route('tournaments.edit', $tournament->id) }}" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
-                </td>
-                <td>
-                    <form action="{{ route('tournaments.destroy', $tournament->id) }}" method="POST" class="inline formulario-eliminar">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
-                    </form>
-                </td>
-                <td>
-                    <a href="{{ route('tournaments.show', $tournament->id) }}" class="font-medium bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ver</a>
-                </td>
+                @auth
+                    @if (Auth::user()->rol_id === 1)
+                        <td>
+                            <a href="{{ route('tournaments.edit', $tournament->id) }}" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                        </td>
+                        <td>
+                            <a href="#" class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
+                        </td>
+                        <td>
+                            <form action="{{ route('tournaments.destroy', $tournament->id) }}" method="POST" class="inline formulario-eliminar">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
+                            </form>
+                        </td>
+                        <td>
+                            <a href="{{ route('tournaments.show', $tournament->id) }}" class="font-medium bg-green-500 sm:rounded-lg p-2 hover:bg-green-600">Ver</a>
+                        </td>
+                    @endif
+                @endauth
             </tr>
         @empty
             <tr>
@@ -113,5 +121,5 @@
     @section('scripts')
         @include('layouts._partials.swal')
     @endsection
-    
+
 @endsection

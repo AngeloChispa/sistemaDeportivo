@@ -24,26 +24,35 @@
                     <th>Id</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
-                    <th colspan="2">Acción</th>
+                    @auth
+                        @if (Auth::user()->rol_id === 1)
+                            <th colspan="2">Acción</th>
+                        @endif
+                    @endauth
                 </tr>
             @endempty
         @endslot
         @slot('content_body')
             @forelse ($sports as $sport)
                 <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
-                    <td>{{$sport->id}}</td>
-                    <td>{{$sport->name}}</td>
-                    <td>{{$sport->description}}</td>
-                    <td>
-                        <a href="{{route('sport.edit', $sport->id)}}" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
-                    </td>
-                    <td>
-                        <form action="{{route('sport.destroy', $sport->id)}}" method="POST" class="inline formulario-eliminar">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
-                        </form>
-                    </td>
+                    <td>{{ $sport->id }}</td>
+                    <td>{{ $sport->name }}</td>
+                    <td>{{ $sport->description }}</td>
+                    @auth
+                        @if (Auth::user()->rol_id === 1)
+                            <td>
+                                <a href="{{route('sport.edit', $sport->id)}}" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                            </td>
+                            <td>
+                                <form action="{{route('sport.destroy', $sport->id)}}" method="POST" class="inline formulario-eliminar">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="font-medium bg-red-500 sm:rounded-lg p-2 hover:bg-red-600">Borrar</button>
+                                </form>
+                            </td>
+                        @endif
+                    @endauth
                 </tr>
             @empty
             @endforelse
