@@ -15,13 +15,9 @@ class PlayersController extends Controller
      */
     public function index()
     {
-        if (Auth::user() && Auth::user()->rol_id === 1) {
-            $nationalities = Nationality::all();
-            $people = People::with('nationality')->get();
-            return view('players.players_view', compact('people', "nationalities"));
-        }
-
-        return redirect()->route('index');
+        $nationalities = Nationality::all();
+        $people = People::with('nationality')->get();
+        return view('players.players_view', compact('people', "nationalities"));
     }
 
     /**
@@ -44,40 +40,45 @@ class PlayersController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            //Validacion People
-            "avatar" => "nullable|image|max:2000",
-            "name" => "required|string|max:40",
-            "lastname" => "required|string|max:30",
-            "birthdate" => "required|date|before:tomorrow",
-            "birthplace" => "nullable|string|max:100",
-
-            //Validacion Usuario
-            'status' => "required|string",
-            'height' => "required|float",
-            'bestSide' => "required|string",
-        ]);
-
-        $people = new People();
-        $people->name = $request->name;
-        $people->lastname = $request->lastname;
-        $people->birthdate = $request->birthdate;
-        $people->birthplace = $request->country;
-        if ($request->hasFile("avatar")) {
-            $avatarPath = $request->file("avatar")->store("avatars", "public");
-            $people->avatar = $avatarPath;
+        if (Auth::user() && Auth::user()->rol_id === 1) {   
+            $request->validate([
+                //Validacion People
+                "avatar" => "nullable|image|max:2000",
+                "name" =>  "required|string|max:40",
+                "lastname" => "required|string|max:30",
+                "birthdate" => "required|date|before:tomorrow",
+                "birthplace" => "nullable|string|max:100",
+    
+                //Validacion Usuario
+                'status' => "required|string",
+                'height' => "required|float",
+                'bestSide' => "required|string",
+            ]);
+    
+            $people = new People();
+            $people->name = $request->name;
+            $people->lastname = $request->lastname;
+            $people->birthdate = $request->birthdate;
+            $people->birthplace = $request->country;
+            if ($request->hasFile("avatar")) {
+                $avatarPath = $request->file("avatar")->store("avatars", "public");
+                $people->avatar = $avatarPath;
+            }
+            $people->save();
+    
+    
+            $player = new Player();
+            $player->status = $request->status;
+            $player->height = $request->height;
+            $player->bestSide = $request->bestSide;
+            $player->people_id = $people->id;
+            $player->save();
+    
+            return redirect()->route("players.index");
         }
-        $people->save();
 
 
-        $player = new Player();
-        $player->status = $request->status;
-        $player->height = $request->height;
-        $player->bestSide = $request->bestSide;
-        $player->people_id = $people->id;
-        $player->save();
-
-        return redirect()->route("players.index");
+        return redirect()->route('index');
     }
 
     /**

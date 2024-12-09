@@ -32,5 +32,14 @@ class PeopleSeeder extends Seeder
                 'birthplace' => 'Mexico',
             ]
         );
+
+        People::create(
+            [
+                'name' => 'Jose',
+                'lastname' => 'Ibarra',
+                'birthdate' => fake()->date(),
+                'birthplace' => 'Mexico',
+            ]
+        );
     }
 }

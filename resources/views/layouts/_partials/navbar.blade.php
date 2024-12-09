@@ -20,6 +20,7 @@
                 {{-- TODO: Cambiar esto por una petición POST o como gusten --}}
                 <form method="GET" action="../">
                     <input
+                        name="search"
                         class="flex-1 h-6 border-0 text-zinc-400 bg-transparent rounded-md p-2 focus:outline-none placeholder:text-zinc-500 hover:placeholder:text-zinc-400"
                         placeholder="Buscar...">
                 </form>
