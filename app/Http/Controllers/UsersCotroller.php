@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\People;
 use App\Models\User;
+use App\Models\Nationality;
 use Illuminate\Http\Request;
 
 class UsersCotroller extends Controller
@@ -16,13 +17,14 @@ class UsersCotroller extends Controller
         $people = People::all();
         return view('users.users_view', compact('people'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('users.create');
+        $nationalities = Nationality::all();
+        return view('users.create', compact('nationalities'));
     }
 
     /**
@@ -61,8 +63,9 @@ class UsersCotroller extends Controller
      */
     public function edit($id)
     {
+        $nationalities = Nationality::all();
         $person = People::with('user')->findOrFail($id);
-        return view('users.edit', compact('person'));
+        return view('users.edit', compact('person', 'nationalities'));
     }
 
     /**

@@ -29,9 +29,9 @@
             <div class="profile-card bg-stone-800 rounded-lg shadow-md p-6 text-center w-full lg:w-1/3">
                 <img src="{{ asset('assets/img/usuario_icon_default.png') }}" alt="Foto de Juan Pérez"
                     class="w-30 h-30 rounded-full mx-auto mb-2">
-                <p class="nombreUsuario text-xl text-red-500 font-bold uppercase">{{$person->user->username}}</p>
-                <button action="{{route('user.edit', $person->id)}}" class="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2 rounded-md mt-4">Editar
-                    Perfil</button>
+                <p class="nombreUsuario text-xl pb-2 text-red-500 font-bold uppercase">{{$person->user->username}}</p>
+                <a href="{{route('user.edit', $person->id)}}" class="w-full bg-red-600 hover:bg-red-700 text-white font-medium p-2 rounded-md mt-4">Editar
+                    Perfil</a>
             </div>
 
         </div>

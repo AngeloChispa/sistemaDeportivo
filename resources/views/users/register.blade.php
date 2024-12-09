@@ -16,7 +16,7 @@
     <!-- contenedor gris -->
     <div>
         <!-- Contenidor general-->
-        <div >
+        <div>
             <!-- 1 -->
             <div class="flex flex-col justify-center items-center text-white">
                 <h1 class="text-4xl mb-6 mt-4">¡CREA TU CUENTA Y ÚNETE A NOSOTROS!</h1>
@@ -64,17 +64,19 @@
                     </div>
 
                     {{-- Lugar de nacimiento --}}
-                    <div class="mb-7">
-                        <label for='birthplace'
-                            class="block text-sm font-semibold text-stone-200 after:content-['*'] after:ml-0.5 after:text-red-500">Lugar de nacimiento</label>
-                        <select name='birthplace' id='birthplace'
-                            class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500">
-                            <option value="">-</option>
-                            <option value="1">Estados Unidos</option>
-                            <option value="2">Canadá</option>
-                            <option value="3">México</option>
-                        </select>
-                    </div>
+                    @component('_components.boxSelectInput')
+                        @slot('for', 'country')
+                        @slot('content', 'Nacionalidad:')
+                        @slot('name', 'country')
+                        @slot('id', 'country')
+                        @slot('more_options')
+                            @foreach ($nationalities as $nationality)
+                                <option value="{{ $nationality->id }}">
+                                    {{ $nationality->country }}
+                                </option>
+                            @endforeach
+                        @endslot
+                    @endcomponent
 
                     <!-- telefono -->
                     <div class="mb-7">

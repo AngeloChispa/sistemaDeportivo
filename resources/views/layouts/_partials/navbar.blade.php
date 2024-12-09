@@ -18,9 +18,8 @@
                 </ion-icon>
 
                 {{-- TODO: Cambiar esto por una petición POST o como gusten --}}
-                <form method="GET" action="../">
-                    <input
-                        name="search"
+                <form action="{{ route('search.index') }}" method="GET">
+                    <input type="text" name="search" value="{{ request('search') }}"
                         class="flex-1 h-6 border-0 text-zinc-400 bg-transparent rounded-md p-2 focus:outline-none placeholder:text-zinc-500 hover:placeholder:text-zinc-400"
                         placeholder="Buscar...">
                 </form>
@@ -37,10 +36,9 @@
                             </button>
 
                             <!-- Menú desplegable -->
-                            <div x-show="open"
-                                class="absolute right-0 z-50 mt-2 w-40 bg-stone-700 rounded-md shadow-lg"
+                            <div x-show="open" class="absolute right-0 z-50 mt-2 w-40 bg-stone-700 rounded-md shadow-lg"
                                 x-transition>
-                                <a href="{{ route('user.index')}}"
+                                <a href="{{ route('user.show', Auth::user()->people->id) }}"
                                     class="block px-4 py-2 text-sm text-zinc-300 rounded-md hover:bg-stone-800">
                                     Perfil
                                 </a>
@@ -53,14 +51,6 @@
                                 </form>
                             </div>
                         </div>
-
-                        {{-- <div class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                            aria-expanded="false" data-dropdown-toggle="dropdown-user">
-                            <a href="#">
-                                <img class="w-10 h-10 rounded-full" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                    alt="user photo">
-                            </a>
-                        </div> --}}
                     @else
                         <a href="{{ route('login') }}">Log in</a>
                         <p class="px-2">|</p>

@@ -7,34 +7,48 @@
         Editar Usuario
     </h1>
     <div class="flex items-center justify-center">
-        <form method="POST" action="{{route('user.update', $person->user->id)}}"
+        <form method="POST" action="{{ route('user.update', $person->user->id) }}"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
             @method('PUT')
             @csrf
 
             <div>
                 <label for="name" class="block text-sm font-semibold text-stone-200">Nombre:</label>
-                <input type="text" name="name" id="name"  value="{{$person->name}}"
+                <input type="text" name="name" id="name" value="{{ $person->name }}"
                     class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
             </div>
 
             <div>
                 <label for="lastname" class="block text-sm font-semibold text-stone-200">Apellidos:</label>
-                <input type="text" name="lastname" id="lastname" value="{{$person->lastname}}"
+                <input type="text" name="lastname" id="lastname" value="{{ $person->lastname }}"
                     class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
             </div>
 
             <div>
                 <label for="username" class="block text-sm font-semibold text-stone-200">Usuario:</label>
-                <input type="text" name="username" id="username" value="{{$person->user->username}}"
+                <input type="text" name="username" id="username" value="{{ $person->user->username }}"
                     class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
             </div>
 
             <div>
                 <label for="date_birth" class="block text-sm font-semibold text-stone-200">Fecha de nacimiento:</label>
-                <input type="date" name="date_birth" id="date_birth" value="{{$person->birthdate}}"
+                <input type="date" name="date_birth" id="date_birth" value="{{ $person->birthdate }}"
                     class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
             </div>
+
+            @component('_components.boxSelectInput')
+                @slot('for', 'country')
+                @slot('content', 'Nacionalidad:')
+                @slot('name', 'country')
+                @slot('id', 'country')
+                @slot('more_options')
+                    @foreach ($nationalities as $nationality)
+                        <option value="{{ $nationality->id }}">
+                            {{ $nationality->country }}
+                        </option>
+                    @endforeach
+                @endslot
+            @endcomponent
 
             @component('_components.boxInputEdit')
             @slot('for', 'phone')
@@ -47,13 +61,13 @@
 
             <div>
                 <label for="email" class="block text-sm font-semibold text-stone-200">Correo:</label>
-                <input type="email" name="email" id="email" value="{{$person->user->email}}"
+                <input type="email" name="email" id="email" value="{{ $person->user->email }}"
                     class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
             </div>
 
             <div>
                 <label for="password" class="block text-sm font-semibold text-stone-200">Contraseña:</label>
-                <input type="password" name="password" id="password" value="{{$person->user->password}}"
+                <input type="password" name="password" id="password" value="{{ $person->user->password }}"
                     class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
             </div>
 

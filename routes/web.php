@@ -32,7 +32,8 @@ Route::resource('/trainers', TrainerController::class);
 Route::resource('/sport', SportController::class);
 
 Route::get('/game/{game}', Partido::class)->name('games.live');
-Route::post('/upgrape/{user}', [UsersCotroller::class, 'upgrapeAdmin'])->name('user.admin');
+Route::post('/upgrade/{user}', [UsersCotroller::class, 'upgradeAdmin'])->name('user.admin');
+Route::get('/search' , [SearchController::class, 'index'])->name('search.index');
 
 Route::get('/ascend', [AscenController::class, 'index'])->name('ascend.index');
 Route::get('/ascend/player/{user}', [AscenController::class, 'upgradePlayer'])->name('ascend.player');
@@ -42,7 +43,6 @@ Route::post('ascend/trainer/{user}', [AscenController::class, 'storeTrainer']);
 Route::get('/ascend/referee/{user}', [AscenController::class, 'upgradeReferee'])->name('ascend.referee');
 Route::post('/ascend/referee/{user}', [AscenController::class, 'storeReferee']);
 
-Route::get('/search' , [SearchController::class, 'index'])->name('search.index');
 
 //Julissa
 /* Vistas */

@@ -23,19 +23,23 @@
                     @slot('name', 'teams[]')
                     @slot('id')
                         team-{{ $i }}
-                         class="team-select w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500"
+                        class="team-select w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500"
                     @endslot
                     @slot('more_options')
-                        <option value="1">Ejemplo equipo 1</option>
-                        <option value="2">Ejemplo equipo 2</option>
-                        <option value="3">Ejemplo equipo 3</option>
+                        @forelse ($teams as $team)
+                            <option value="{{ $team->id }}">{{ $team->name }}</option>
+                        @empty
+                            <option value="">No disponibles</option>
+                        @endforelse
                     @endslot
                 @endcomponent
             @endforeach
 
             <div class="flex">
-                <input type="submit" value="Agregar equipos"
-                    class="m-2 w-full mt-4 bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600 transition cursor-pointer" />
+                <button action="#"
+                    class="m-2 w-full mt-4 bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600 transition cursor-pointer">
+                    Agregar equipos
+                </button>
                 <a href="{{ route('tournaments.index') }}"
                     class="m-2 text-center w-full mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition cursor-pointer">Cancelar</a>
             </div>

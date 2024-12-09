@@ -49,15 +49,11 @@
                 @slot('name', 'birthplace')
                 @slot('id', 'birthplace required')
                 @slot('more_options')
-                    {{-- @forelse ($nationalities as $nationality)
-                        <option value="{{ $nationality['id'] }}">{{ $nationality['country'] }}</option>
+                    @forelse ($nationalities as $nationality)
+                        <option value="{{ $nationality->id }}">{{ $nationality->country }}</option>
                     @empty
-                        <option value="">No disponibles</option>                     
-                    @endforelse --}}
-
-                    <option value="1">México</option>
-                    <option value="2">Estados Unidos</option>
-                    <option value="3">Canadá</option>
+                        <option value="">No disponibles</option>
+                    @endforelse
                 @endslot
             @endcomponent
 

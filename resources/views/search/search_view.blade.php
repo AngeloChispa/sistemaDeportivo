@@ -1,511 +1,293 @@
 @extends('layouts.admin_view')
 
 @section('title')
-    Palabra que se busca
+    {{$searchTerm}}
 @endSection
 
 @section('content')
     <div class="text-zinc-200 p-5">
         <div class="pb-5">
-            <h1 class="text-2xl font-semibold">Palabra buscada</h1>
-            <p>Resultados encontrados para la búsqueda de 'palabra buscada'</p>
+            <h1 class="text-2xl font-semibold">{{$searchTerm}}</h1>
+            <p>Resultados encontrados para la búsqueda de {{$searchTerm}}</p>
             <hr class="h-px bg-stone-500 border-0">
         </div>
 
-        <div>
-            <h2 class="bg-red-500 py-0.5 rounded text-lg font-medium">Torneos</h2>
-            @component('_components.tableClassificationsIndex')
-                @slot('content_head')
-                    <tr class="text-sm font-normal">
-                        <th>id</th>
-                        <th class="w-1/6">nombre</th>
-                        <th>tipo</th>
-                        <th>descripción</th>
-                        <th class="w-1/6">Fecha de inicio</th>
-                        <th class="w-1/6">Fecha de finalización</th>
-                    </tr>
-                @endslot
-                @slot('content_body')
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>1</td>
-                        <td class="flex justify-center">
-                            <a href="#">
-                                <div class="flex place-items-center">
-                                    <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                        alt="Escudo del torneo NombreTorneo">
-                                    <p class="px-2">Nombre</p>
-                                </div>
-                            </a>
-                        </td>
-                        <td>Tipo</td>
-                        <td>Descripción</td>
-                        <td>inicio</td>
-                        <td>fin</td>
-                    </tr>
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>2</td>
-                        <td class="flex justify-center">
-                            <a href="#">
-                                <div class="flex place-items-center">
-                                    <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                        alt="Escudo del torneo NombreTorneo">
-                                    <p class="px-2">Nombre</p>
-                                </div>
-                            </a>
-                        </td>
-                        <td>Tipo</td>
-                        <td>Descripción</td>
-                        <td>inicio</td>
-                        <td>fin</td>
-                    </tr>
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>3</td>
-                        <td class="flex justify-center">
-                            <a href="#">
-                                <div class="flex place-items-center">
-                                    <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                        alt="Escudo del torneo NombreTorneo">
-                                    <p class="px-2">Nombre</p>
-                                </div>
-                            </a>
-                        </td>
-                        <td>Tipo</td>
-                        <td>Descripción</td>
-                        <td>inicio</td>
-                        <td>fin</td>
-                    </tr>
-                @endslot
-            @endComponent
-        </div>
-        <div>
-            <h2 class="bg-red-500 py-0.5 rounded text-lg font-medium">Partidos</h2>
-            <a href="#"
-                class="p-5 m-2 rounded text-base font-semibold text-center text-zinc-300 bg-stone-900 flex justify-between items-center hover:bg-[#333333]">
-                <span class="flex-1 text-right flex items-center justify-end">
-                    NombreLocal
-                    <img src="{{ asset('assets/img/realmadrid.png') }}" class="h-6 w-6 ml-2" alt="InserteNombreDelEquipoLocal">
-                </span>
-                <span class="w-20 text-center">0 - 0</span>
-                <span class="flex-1 text-left flex items-center">
-                    <img src="{{ asset('assets/img/barca.png') }}" class="h-6 w-6 mr-2" alt="InserteNombreDelEquipoVisitante">
-                    NombreVisitante
-                </span>
-            </a>
-        </div>
-        <div>
-            <h2 class="bg-red-500 py-0.5 rounded text-lg font-medium">Equipos</h2>
-            @component('_components.tableClassificationsIndex')
-                @slot('content_head')
-                    <tr class="text-sm font-normal">
-                        <th>id</th>
-                        <th class="w-1/6">nombre</th>
-                        <th>Deporte</th>
-                        <th>Ciudad</th>
-                        <th>Estado</th>
-                    </tr>
-                @endslot
-                @slot('content_body')
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>1</td>
-                        <td class="flex justify-center">
-                            <a href="#">
-                                <div class="flex place-items-center">
-                                    <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                        alt="Escudo del equipo InserteNombreEquipo">
-                                    <p class="px-2">Nombre</p>
-                                </div>
-                            </a>
-                        </td>
-                        <td>Deporte</td>
-                        <td>Ciudad</td>
-                        <td>Estado</td>
-                    </tr>
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>2</td>
-                        <td class="flex justify-center">
-                            <a href="#">
-                                <div class="flex place-items-center">
-                                    <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                        alt="Escudo del equipo InserteNombreEquipo">
-                                    <p class="px-2">Nombre</p>
-                                </div>
-                            </a>
-                        </td>
-                        <td>Deporte</td>
-                        <td>Ciudad</td>
-                        <td>Estado</td>
-                    </tr>
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>3</td>
-                        <td class="flex justify-center">
-                            <a href="#">
-                                <div class="flex place-items-center">
-                                    <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                        alt="Escudo del equipo InserteNombreEquipo">
-                                    <p class="px-2">Nombre</p>
-                                </div>
-                            </a>
-                        </td>
-                        <td>Deporte</td>
-                        <td>Ciudad</td>
-                        <td>Estado</td>
-                    </tr>
-                @endslot
-            @endComponent
-        </div>
-        <div>
-            <h2 class="bg-red-500 py-0.5 rounded text-lg font-medium">Jugadores</h2>
-            @component('_components.tableClassificationsIndex')
-                @slot('content_head')
-                    <tr class="text-sm font-normal">
-                        <th>id</th>
-                        <th class="w-1/6">nombre</th>
-                        <th>Lugar de nacimiento</th>
-                        <th>Nacionalidad</th>
-                        <th>Fecha de nacimiento</th>
-                        <th>Altura</th>
-                    </tr>
-                @endslot
-                @slot('content_body')
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>1</td>
-                        <td class="flex justify-center">
-                            <a href="#">
-                                <div class="flex place-items-center">
-                                    <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                        alt="Foto de perfil de InserteNombre">
-                                    <p class="px-2">Nombre</p>
-                                </div>
-                            </a>
-                        </td>
-                        <td>Lugar de nacimiento</td>
-                        <td>Nacionalidad</td>
-                        <td>nacimiento</td>
-                        <td>altura</td>
-                    </tr>
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>2</td>
-                        <td class="flex justify-center">
-                            <a href="#">
-                                <div class="flex place-items-center">
-                                    <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                        alt="Foto de perfil de InserteNombre">
-                                    <p class="px-2">Nombre</p>
-                                </div>
-                            </a>
-                        </td>
-                        <td>Lugar de nacimiento</td>
-                        <td>Nacionalidad</td>
-                        <td>nacimiento</td>
-                        <td>altura</td>
-                    </tr>
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>3</td>
-                        <td class="flex justify-center">
-                            <a href="#">
-                                <div class="flex place-items-center">
-                                    <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                        alt="Foto de perfil de InserteNombre">
-                                    <p class="px-2">Nombre</p>
-                                </div>
-                            </a>
-                        </td>
-                        <td>Lugar de nacimiento</td>
-                        <td>Nacionalidad</td>
-                        <td>nacimiento</td>
-                        <td>altura</td>
-                    </tr>
-                @endslot
-            @endComponent
-        </div>
-        <div>
-            <h2 class="bg-red-500 py-0.5 rounded text-lg font-medium">Entrenadores</h2>
-            @component('_components.tableClassificationsIndex')
-                @slot('content_head')
-                    <tr class="text-sm font-normal">
-                        <th>id</th>
-                        <th class="w-1/6">nombre</th>
-                        <th>Lugar de nacimiento</th>
-                        <th>Nacionalidad</th>
-                        <th>Fecha de nacimiento</th>
-                        <th>descripción</th>
-                    </tr>
-                @endslot
-                @slot('content_body')
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>1</td>
-                        <td class="flex justify-center">
-                            <a href="#">
-                                <div class="flex place-items-center">
-                                    <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                        alt="Foto de perfil de InserteNombre">
-                                    <p class="px-2">Nombre</p>
-                                </div>
-                            </a>
-                        </td>
-                        <td>Lugar de nacimiento</td>
-                        <td>Nacionalidad</td>
-                        <td>nacimiento</td>
-                        <td>descripción</td>
-                    </tr>
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>2</td>
-                        <td class="flex justify-center">
-                            <a href="#">
-                                <div class="flex place-items-center">
-                                    <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                        alt="Foto de perfil de InserteNombre">
-                                    <p class="px-2">Nombre</p>
-                                </div>
-                            </a>
-                        </td>
-                        <td>Lugar de nacimiento</td>
-                        <td>Nacionalidad</td>
-                        <td>nacimiento</td>
-                        <td>descripción</td>
-                    </tr>
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>3</td>
-                        <td class="flex justify-center">
-                            <a href="#">
-                                <div class="flex place-items-center">
-                                    <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                        alt="Foto de perfil de InserteNombre">
-                                    <p class="px-2">Nombre</p>
-                                </div>
-                            </a>
-                        </td>
-                        <td>Lugar de nacimiento</td>
-                        <td>Nacionalidad</td>
-                        <td>nacimiento</td>
-                        <td>descripción</td>
-                    </tr>
-                @endslot
-            @endComponent
-        </div>
-        <div>
-            <h2 class="bg-red-500 py-0.5 rounded text-lg font-medium">Árbitros</h2>
-            @component('_components.tableClassificationsIndex')
-                @slot('content_head')
-                    <tr class="text-sm font-normal">
-                        <th>id</th>
-                        <th class="w-1/6">nombre</th>
-                        <th>Lugar de nacimiento</th>
-                        <th>Nacionalidad</th>
-                        <th>Fecha de nacimiento</th>
-                        <th>Descripción</th>
-                    </tr>
-                @endslot
-                @slot('content_body')
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>1</td>
-                        <td class="flex justify-center">
-                            <a href="#">
-                                <div class="flex place-items-center">
-                                    <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                        alt="Foto de perfil de InserteNombre">
-                                    <p class="px-2">Nombre</p>
-                                </div>
-                            </a>
-                        </td>
-                        <td>Lugar de nacimiento</td>
-                        <td>Nacionalidad</td>
-                        <td>nacimiento</td>
-                        <td>Descripción</td>
-                    </tr>
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>2</td>
-                        <td class="flex justify-center">
-                            <a href="#">
-                                <div class="flex place-items-center">
-                                    <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                        alt="Foto de perfil de InserteNombre">
-                                    <p class="px-2">Nombre</p>
-                                </div>
-                            </a>
-                        </td>
-                        <td>Lugar de nacimiento</td>
-                        <td>Nacionalidad</td>
-                        <td>nacimiento</td>
-                        <td>Descripción</td>
-                    </tr>
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>3</td>
-                        <td class="flex justify-center">
-                            <a href="#">
-                                <div class="flex place-items-center">
-                                    <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                        alt="Foto de perfil de InserteNombre">
-                                    <p class="px-2">Nombre</p>
-                                </div>
-                            </a>
-                        </td>
-                        <td>Lugar de nacimiento</td>
-                        <td>Nacionalidad</td>
-                        <td>nacimiento</td>
-                        <td>Descripción</td>
-                    </tr>
-                @endslot
-            @endComponent
-        </div>
-        <div>
-            <h2 class="bg-red-500 py-0.5 rounded text-lg font-medium">Instalaciones</h2>
-            @component('_components.tableClassificationsIndex')
-                @slot('content_head')
-                    <tr class="text-sm font-normal">
-                        <th>id</th>
-                        <th>nombre</th>
-                        <th>País</th>
-                        <th>Estado</th>
-                        <th>Ciudad</th>
-                        <th class="w-1/6">Capacidad</th>
-                    </tr>
-                @endslot
-                @slot('content_body')
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>1</td>
-                        <td>
-                            <a href="#">Nombre</a>
-                        </td>
-                        <td>País</td>
-                        <td>Estado</td>
-                        <td>Ciudad</td>
-                        <td>Capacidad</td>
-                    </tr>
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>2</td>
-                        <td>
-                            <a href="#">Nombre</a>
-                        </td>
-                        <td>País</td>
-                        <td>Estado</td>
-                        <td>Ciudad</td>
-                        <td>Capacidad</td>
-                    </tr>
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>3</td>
-                        <td>
-                            <a href="#">Nombre</a>
-                        </td>
-                        <td>País</td>
-                        <td>Estado</td>
-                        <td>Ciudad</td>
-                        <td>Capacidad</td>
-                    </tr>
-                @endslot
-            @endComponent
-        </div>
-        <div>
-            <h2 class="bg-red-500 py-0.5 rounded text-lg font-medium">Patrocinadores</h2>
-            @component('_components.tableClassificationsIndex')
-                @slot('content_head')
-                    <tr class="text-sm font-normal">
-                        <th>id</th>
-                        <th>nombre</th>
-                        <th>Teléfono</th>
-                        <th>Correo</th>
-                        <th>Localización</th>
-                        <th class="w-1/6">Tipo de patrocinio</th>
-                    </tr>
-                @endslot
-                @slot('content_body')
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>1</td>
-                        <td>
-                            <a href="#">Nombre</a>
-                        </td>
-                        <td>Teléfono</td>
-                        <td>Correo</td>
-                        <td>Localización</td>
-                        <td>Tipo de patrocinio</td>
-                    </tr>
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>2</td>
-                        <td>
-                            <a href="#">Nombre</a>
-                        </td>
-                        <td>Teléfono</td>
-                        <td>Correo</td>
-                        <td>Localización</td>
-                        <td>Tipo de patrocinio</td>
-                    </tr>
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>3</td>
-                        <td>
-                            <a href="#">Nombre</a>
-                        </td>
-                        <td>Teléfono</td>
-                        <td>Correo</td>
-                        <td>Localización</td>
-                        <td>Tipo de patrocinio</td>
-                    </tr>
-                @endslot
-            @endComponent
-        </div>
-        <div>
-            <h2 class="bg-red-500 py-0.5 rounded text-lg font-medium">Usuarios</h2>
-            @component('_components.tableClassificationsIndex')
-                @slot('content_head')
-                    <tr class="text-sm font-normal">
-                        <th>id</th>
-                        <th class="w-1/6">Username</th>
-                        <th>nombre</th>
-                        <th>apellidos</th>
-                        <th>correo</th>
-                        <th class="w-1/6">fecha de registro</th>
-                    </tr>
-                @endslot
-                @slot('content_body')
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>1</td>
-                        <td class="flex justify-center">
-                            <a href="#">
-                                <div class="flex place-items-center">
-                                    <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                        alt="foto de perfil de InsertarNombreDeUsuario">
-                                    <p class="px-2">Username</p>
-                                </div>
-                            </a>
-                        </td>
-                        <td>nombre</td>
-                        <td>apellidos</td>
-                        <td>correo</td>
-                        <td>fecha de registro</td>
-                    </tr>
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>2</td>
-                        <td class="flex justify-center">
-                            <a href="#">
-                                <div class="flex place-items-center">
-                                    <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                        alt="foto de perfil de InsertarNombreDeUsuario">
-                                    <p class="px-2">Username</p>
-                                </div>
-                            </a>
-                        </td>
-                        <td>nombre</td>
-                        <td>apellidos</td>
-                        <td>correo</td>
-                        <td>fecha de registro</td>
-                    </tr>
-                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                        <td>3</td>
-                        <td class="flex justify-center">
-                            <a href="#">
-                                <div class="flex place-items-center">
-                                    <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
-                                        alt="foto de perfil de InsertarNombreDeUsuario">
-                                    <p class="px-2">Username</p>
-                                </div>
-                            </a>
-                        </td>
-                        <td>nombre</td>
-                        <td>apellidos</td>
-                        <td>correo</td>
-                        <td>fecha de registro</td>
-                    </tr>
-                @endslot
-            @endComponent
-        </div>
+        @if ($tournaments->isNotEmpty())
+            <div>
+                <h2 class="bg-red-500 py-0.5 rounded text-lg font-medium">Torneos</h2>
+                @component('_components.tableClassificationsIndex')
+                    @slot('content_head')
+                        <tr class="text-sm font-normal">
+                            <th>id</th>
+                            <th class="w-1/6">nombre</th>
+                            <th>tipo</th>
+                            <th>descripción</th>
+                            <th class="w-1/6">Fecha de inicio</th>
+                            <th class="w-1/6">Fecha de finalización</th>
+                        </tr>
+                    @endslot
+                    @slot('content_body')
+                        @foreach ($tournaments as $tournament)
+                            <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
+                                <td>{{ $tournament->id }}</td>
+                                <td class="flex justify-center">
+                                    <a href="#">
+                                        <div class="flex place-items-center">
+                                            <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
+                                                alt="Escudo del torneo {{ $tournament->name }}">
+                                            <p class="px-2">{{ $tournament->name }}</p>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td>{{ $tournament->type }}</td>
+                                <td>{{ $tournament->description }}</td>
+                                <td>{{ $tournament->start_date }}</td>
+                                <td>{{ $tournament->end_date }}</td>
+                            </tr>
+                        @endforeach
+                    @endslot
+                @endComponent
+            </div>
+        @endif
+
+        @if ($teams->isNotEmpty())
+            <div>
+                <h2 class="bg-red-500 py-0.5 rounded text-lg font-medium">Equipos</h2>
+                @component('_components.tableClassificationsIndex')
+                    @slot('content_head')
+                        <tr class="text-sm font-normal">
+                            <th>id</th>
+                            <th class="w-1/6">nombre</th>
+                            <th>Deporte</th>
+                            <th>Ciudad</th>
+                            <th>Estado</th>
+                        </tr>
+                    @endslot
+                    @slot('content_body')
+                        @foreach ($teams as $team)
+                            <!-- Recorremos los equipos -->
+                            <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
+                                <td>{{ $team->id }}</td> <!-- Muestra el ID del equipo -->
+                                <td class="flex justify-center">
+                                    <a href="#">
+                                        <div class="flex place-items-center">
+                                            <!-- Imagen y nombre del equipo -->
+                                            <img class="w-12 h-12"
+                                                src="{{ asset('assets/img/' . strtolower($team->name) . '.png') }}"
+                                                alt="Escudo del equipo {{ $team->name }}">
+                                            <p class="px-2">{{ $team->name }}</p>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td>{{ $team->sport->name }}</td> <!-- Deporte del equipo -->
+                                <td>{{ $team->city }}</td> <!-- Ciudad del equipo -->
+                                <td>{{ $team->state }}</td> <!-- Estado del equipo -->
+                            </tr>
+                        @endforeach
+                    @endslot
+                @endComponent
+            </div>
+        @endif
+
+        @if ($people->isNotEmpty())
+            @if ($people->where('player', '!=', null)->isNotEmpty())
+                <div>
+                    <h2 class="bg-red-500 py-0.5 rounded text-lg font-medium">Jugadores</h2>
+                    @component('_components.tableClassificationsIndex')
+                        @slot('content_head')
+                            <tr class="text-sm font-normal">
+                                <th>id</th>
+                                <th class="w-1/6">nombre</th>
+                                <th>Lugar de nacimiento</th>
+                                <th>Nacionalidad</th>
+                                <th>Fecha de nacimiento</th>
+                                <th>Altura</th>
+                            </tr>
+                        @endslot
+                        @slot('content_body')
+                            @forelse ($people as $person)
+                                @if ($person->player)
+                                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
+                                        <td>{{ $person->player->id }}</td>
+                                        <td class="flex justify-center">
+                                            <a href="#">
+                                                <div class="flex place-items-center">
+                                                    <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
+                                                        alt="Foto de perfil de InserteNombre">
+                                                    <p class="px-2">{{ $person->name }}</p>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>{{ $person->birthplace }}</td>
+                                        <td>{{ $person->birthplace }}</td>
+                                        <td>{{ $person->birthdate }}</td>
+                                        <td>{{ $person->player->height }}</td>
+                                    </tr>
+                                @endif
+                            @empty
+                            @endforelse
+                        @endslot
+                    @endComponent
+                </div>
+            @endif
+        @endif
+
+        @if ($people->isNotEmpty())
+            @if ($people->where('trainers', '!=', null)->isNotEmpty())
+                <div>
+                    <h2 class="bg-red-500 py-0.5 rounded text-lg font-medium">Entrenadores</h2>
+                    @component('_components.tableClassificationsIndex')
+                        @slot('content_head')
+                            <tr class="text-sm font-normal">
+                                <th>id</th>
+                                <th class="w-1/6">nombre</th>
+                                <th>Lugar de nacimiento</th>
+                                <th>Nacionalidad</th>
+                                <th>Fecha de nacimiento</th>
+                                <th>descripción</th>
+                            </tr>
+                        @endslot
+                        @slot('content_body')
+                            @foreach ($people->whereNotNull('trainers') as $person)
+                                <!-- Recorre solo las personas que tienen un entrenador -->
+                                <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
+                                    <td>{{ $person->id }}</td> <!-- ID de la persona -->
+                                    <td class="flex justify-center">
+                                        <a href="#">
+                                            <div class="flex place-items-center">
+                                                <!-- Foto de perfil de la persona -->
+                                                <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
+                                                    alt="Foto de perfil de {{ $person->name }}">
+                                                <p class="px-2">{{ $person->name }}</p>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>{{ $person->birthplace }}</td> <!-- Lugar de nacimiento -->
+                                    <td>{{ $person->nationality }}</td> <!-- Nacionalidad -->
+                                    <td>{{ $person->birthdate }}</td> <!-- Fecha de nacimiento -->
+                                    <td>{{ $person->trainers->description }}</td> <!-- Descripción del entrenador -->
+                                </tr>
+                            @endforeach
+                        @endslot
+                    @endComponent
+                </div>
+            @endif
+        @endif
+
+        @if ($people->isNotEmpty())
+            @if ($people->where('referees', '!=', null)->isNotEmpty())
+                <div>
+                    <h2 class="bg-red-500 py-0.5 rounded text-lg font-medium">Árbitros</h2>
+                    @component('_components.tableClassificationsIndex')
+                        @slot('content_head')
+                            <tr class="text-sm font-normal">
+                                <th>id</th>
+                                <th class="w-1/6">nombre</th>
+                                <th>Lugar de nacimiento</th>
+                                <th>Nacionalidad</th>
+                                <th>Fecha de nacimiento</th>
+                                <th>Descripción</th>
+                            </tr>
+                        @endslot
+                        @slot('content_body')
+                            @foreach ($people->whereNotNull('referees') as $person)
+                                <!-- Recorre solo las personas que tienen árbitros -->
+                                <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
+                                    <td>{{ $person->id }}</td> <!-- ID de la persona -->
+                                    <td class="flex justify-center">
+                                        <a href="#">
+                                            <div class="flex place-items-center">
+                                                <!-- Foto de perfil de la persona -->
+                                                <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
+                                                    alt="Foto de perfil de {{ $person->name }}">
+                                                <p class="px-2">{{ $person->name }}</p>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>{{ $person->birthplace }}</td> <!-- Lugar de nacimiento -->
+                                    <td>{{ $person->nationality }}</td> <!-- Nacionalidad -->
+                                    <td>{{ $person->birthdate }}</td> <!-- Fecha de nacimiento -->
+                                    <td>{{ $person->referees->description }}</td> <!-- Descripción del árbitro -->
+                                </tr>
+                            @endforeach
+                        @endslot
+                    @endComponent
+                </div>
+            @endif
+        @endif
+
+        @if ($instalations->isNotEmpty())
+            <div>
+                <h2 class="bg-red-500 py-0.5 rounded text-lg font-medium">Instalaciones</h2>
+                @component('_components.tableClassificationsIndex')
+                    @slot('content_head')
+                        <tr class="text-sm font-normal">
+                            <th>id</th>
+                            <th>nombre</th>
+                            <th>País</th>
+                            <th>Estado</th>
+                            <th>Ciudad</th>
+                            <th class="w-1/6">Capacidad</th>
+                        </tr>
+                    @endslot
+                    @slot('content_body')
+                        @foreach ($instalations as $instalation)
+                            <!-- Recorre cada instalación -->
+                            <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
+                                <td>{{ $instalation->id }}</td> <!-- ID de la instalación -->
+                                <td>
+                                    <a href="#">
+                                        {{ $instalation->name }} <!-- Nombre de la instalación -->
+                                    </a>
+                                </td>
+                                <td>{{ $instalation->country }}</td> <!-- País de la instalación -->
+                                <td>{{ $instalation->state }}</td> <!-- Estado de la instalación -->
+                                <td>{{ $instalation->city }}</td> <!-- Ciudad de la instalación -->
+                                <td>{{ $instalation->capacity }}</td> <!-- Capacidad de la instalación -->
+                            </tr>
+                        @endforeach
+                    @endslot
+                @endComponent
+            </div>
+        @endif
+
+        @auth
+            @if (Auth::user()->rol_id === 1)
+                @if ($sponsors->isNotEmpty())
+                    <div>
+                        <h2 class="bg-red-500 py-0.5 rounded text-lg font-medium">Patrocinadores</h2>
+                        @component('_components.tableClassificationsIndex')
+                            @slot('content_head')
+                                <tr class="text-sm font-normal">
+                                    <th>id</th>
+                                    <th>nombre</th>
+                                    <th>Teléfono</th>
+                                    <th>Correo</th>
+                                    <th>Localización</th>
+                                    <th class="w-1/6">Tipo de patrocinio</th>
+                                </tr>
+                            @endslot
+                            @slot('content_body')
+                                @foreach ($sponsors as $sponsor)
+                                    <!-- Recorre cada patrocinador -->
+                                    <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
+                                        <td>{{ $sponsor->id }}</td> <!-- ID del patrocinador -->
+                                        <td>
+                                            <a href="#">
+                                                {{ $sponsor->name }} <!-- Nombre del patrocinador -->
+                                            </a>
+                                        </td>
+                                        <td>{{ $sponsor->phone }}</td> <!-- Teléfono del patrocinador -->
+                                        <td>{{ $sponsor->email }}</td> <!-- Correo del patrocinador -->
+                                        <td>{{ $sponsor->location }}</td> <!-- Localización del patrocinador -->
+                                        <td>{{ $sponsor->sponsorship_type }}</td> <!-- Tipo de patrocinio -->
+                                    </tr>
+                                @endforeach
+                            @endslot
+                        @endComponent
+                    </div>
+                @endif
+            @endif
+        @endauth
     </div>
 @endSection

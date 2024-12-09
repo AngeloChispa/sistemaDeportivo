@@ -13,11 +13,11 @@
                         <p class="text-lg text-stone-400">Fecha: {{$game['reservation']['reserve_date']}}</p>
                     </div>
                     <div class="flex-1">
-                        <p class="text-lg text-stone-400">Lugar: <a href="#">
+                        <p class="text-lg text-stone-400">Lugar: <a href="{{route('instalations.show', $game['reservation']['instalation']['id'])}}">
                                 {{$game['reservation']['instalation']['name']}}</a></p>
                     </div>
                     <div class="flex-1">
-                        <p class="text-lg text-stone-400">Árbitro: <a href="#"> {{$game['referee']['people']['name']}} {{$game['referee']['people']['lastname']}}</a></p>
+                        <p class="text-lg text-stone-400">Árbitro: <a href="{{route('referees.show', $game['referee']['id'])}}"> {{$game['referee']['people']['name']}} {{$game['referee']['people']['lastname']}}</a></p>
                     </div>
                 </div>
                 <hr class="h-px bg-stone-500 border-0">
@@ -25,7 +25,7 @@
                     <div class="flex-1">
                         <p class="text-xl font-bold">Local</p>
 
-                        <a href="#" class="text-xl font-bold">
+                        <a href="{{route('teams.show', $game['local_team']['id'])}}" class="text-xl font-bold">
                             <img src="{{ asset('assets/img/usuario_icon_default.png') }}" alt="Escudo equipo local"
                                 class="w-30 h-30 rounded-full mx-auto mb-4">
                             {{$game['local_team']['name']}}
@@ -36,7 +36,7 @@
                     </div>
                     <div class="flex-1">
                         <p class="text-xl font-bold">Visitante</p>
-                        <a href="#" class="text-xl font-bold">
+                        <a href="{{route('teams.show', $game['away_team']['id'])}}" class="text-xl font-bold">
                             <img src="{{ asset('assets/img/usuario_icon_default.png') }}" alt="Escudo equipo visitante"
                                 class="w-30 h-30 rounded-full mx-auto mb-4">
                             {{$game['away_team']['name']}}
