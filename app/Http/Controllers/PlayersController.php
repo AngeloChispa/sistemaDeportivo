@@ -41,6 +41,7 @@ class PlayersController extends Controller
             "avatar" => "required|image|max:2000"
         ]);
 
+
         if($request->hasFile("avatar")){
             $avatarPath = $request->file("avatar")->store("avatars", "public");
         }
@@ -72,6 +73,7 @@ class PlayersController extends Controller
     public function show($id)
     {
         $person = People::findOrFail($id);
+
         return view('players.show', compact('person'));
     }
 

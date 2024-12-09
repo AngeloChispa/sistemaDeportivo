@@ -98,8 +98,10 @@ class RefereeController extends Controller
             "description" => "nullable|string|max:355",
         ]);
 
-        $person = People::findOrFail($id);
         $referee = Referee::findOrFail($id);
+
+        $referee = Referee::with('people')->findOrFail($id);
+        $person = $referee->people;
 
         $person->name = $request->name;
         $person->lastname = $request->lastname;
@@ -111,7 +113,6 @@ class RefereeController extends Controller
         }
         $person->save();
 
-        $referee = new Referee();
         $referee->description = $request->description;
         $referee->people_id = $person->id;
         $referee->save();

@@ -54,14 +54,13 @@
     @endslot
 @endcomponent
 
-
             @component('_components.boxInputEdit')
                 @slot('for', 'avatar')
                 @slot('content', 'Foto:')
                 @slot('type', 'file')
                 @slot('name', 'avatar')
                 @slot('id', 'avatar')
-                @slot('currentfile', $player->avatar ?? null)
+                @slot('currentfile', $player->people->avatar ?? null)
                 @slot('alt', 'Foto del Jugador')
             @endcomponent
 

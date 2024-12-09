@@ -64,7 +64,7 @@
                     </form>
                 </td>
                 <td>
-                    <a href="#" class="font-medium text-zinc-200 bg-green-500 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
+                    <a href="{{route("referees.show",$person->referee->id)}}" class="font-medium text-zinc-200 bg-green-500 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
                 </td>
             </tr>
             @endif

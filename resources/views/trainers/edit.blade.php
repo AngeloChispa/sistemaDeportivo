@@ -49,7 +49,7 @@
                     @forelse ($nationalities as $nationality)
                         <option value="{{ $nationality['id'] }}">{{ $nationality['country'] }}</option>
                     @empty
-                        <option value="">No disponibles</option>                     
+                        <option value="">No disponibles</option>
                     @endforelse
                 @endslot
             @endcomponent
@@ -62,7 +62,7 @@
                     @forelse ($nationalities as $nationality)
                         <option value="{{ $nationality['id'] }}" {{ old('id', $tournament->id) == 1 ? 'selected' : '' }}>{{ $nationality['country'] }}</option>
                     @empty
-                        <option value="">No disponibles</option>                     
+                        <option value="">No disponibles</option>
                     @endforelse
                 </select>
             </div> --}}
@@ -73,17 +73,18 @@
                 @slot('type', 'text')
                 @slot('name', 'nationality')
                 @slot('id', 'nationality')
-                @slot('value', 'valor ya definido')  
+                @slot('value', 'valor ya definido')
             @endcomponent
 
             @component('_components.boxInputEdit')
-                @slot('for', 'avatar')
-                @slot('content', 'Foto: ')
-                @slot('type', 'file')
-                @slot('name', 'avatar')
-                @slot('id', 'avatar')
-                @slot('value', 'valor ya definido')
-            @endcomponent
+            @slot('for', 'avatar')
+            @slot('content', 'Foto:')
+            @slot('type', 'file')
+            @slot('name', 'avatar')
+            @slot('id', 'avatar')
+            @slot('currentfile', $trainer->people->avatar ?? null)
+            @slot('alt', 'Foto del Jugador')
+        @endcomponent
 
             @component('_components.boxInputEdit')
                 @slot('for', 'description')

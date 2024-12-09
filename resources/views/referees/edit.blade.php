@@ -36,23 +36,23 @@
                 @slot('type', 'date')
                 @slot('name', 'birthdate')
                 @slot('id', 'date_birth')
-                @slot('value', old('birthdate', $player->people->birthdate))
+                @slot('value', old('birthdate', $referee->people->birthdate))
             @endcomponent
 
             @component('_components.boxSelectInput')
-            @slot('for', 'country')
-            @slot('content', 'Nacionalidad:')
-            @slot('name', 'country')
-            @slot('id', 'country')
-            @slot('more_options')
-                @foreach ($nationalities as $nationality)
-                    <option value="{{ $nationality->id }}"
-                        {{ old('country', $player->nationality_id) == $nationality->id ? 'selected' : '' }}>
-                        {{ $nationality->country }}
-                    </option>
-                @endforeach
-            @endslot
-        @endcomponent
+    @slot('for', 'country')
+    @slot('content', 'Nacionalidad:')
+    @slot('name', 'country')
+    @slot('id', 'country')
+    @slot('more_options')
+        @foreach ($nationalities as $nationality)
+            <option value="{{ $nationality->country }}"
+                {{ old('country', $nationality->country ) == $nationality->country ? 'selected' : 'country' }}>
+                {{ $nationality->country }}
+            </option>
+        @endforeach
+    @endslot
+@endcomponent
 
             @component('_components.boxInputEdit')
                 @slot('for', 'nationality')
@@ -60,17 +60,18 @@
                 @slot('type', 'text')
                 @slot('name', 'nationality')
                 @slot('id', 'nationality')
-                @slot('value','valor ya definido')
+                @slot('value', old('birthdate', $referee->people->birthplace))
             @endcomponent
 
             @component('_components.boxInputEdit')
-                @slot('for', 'avatar')
-                @slot('content', 'Foto: ')
-                @slot('type', 'file')
-                @slot('name', 'avatar')
-                @slot('id', 'avatar')
-                @slot('value','valor ya definido')
-            @endcomponent
+            @slot('for', 'avatar')
+            @slot('content', 'Foto:')
+            @slot('type', 'file')
+            @slot('name', 'avatar')
+            @slot('id', 'avatar')
+            @slot('currentfile', $referee->people->avatar ?? null)
+            @slot('alt', 'Foto del Jugador')
+        @endcomponent
 
             @component('_components.boxInputEdit')
                 @slot('for', 'description')
@@ -78,11 +79,11 @@
                 @slot('type', 'text')
                 @slot('name', 'description')
                 @slot('id', 'description')
-                @slot('value','valor ya definido')
+                @slot('value', old('description', $referee->description))
             @endcomponent
 
             <div class="flex">
-                <input type="submit" value="Crear"
+                <input type="submit" value="Actualizar"
                     class="m-2 w-full mt-4 bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600 transition cursor-pointer" />
                 <a href="{{ route('referees.index') }}"
                     class="m-2 text-center w-full mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition cursor-pointer">Cancelar</a>
