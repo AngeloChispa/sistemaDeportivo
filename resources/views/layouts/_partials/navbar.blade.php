@@ -39,7 +39,7 @@
                             <div x-show="open"
                                 class="absolute right-0 z-50 mt-2 w-40 bg-stone-700 rounded-md shadow-lg"
                                 x-transition>
-                                <a href="{{ route('user.index')}}"
+                                <a href="{{ route('user.show', Auth::user()->people->id)}}"
                                     class="block px-4 py-2 text-sm text-zinc-300 rounded-md hover:bg-stone-800">
                                     Perfil
                                 </a>
