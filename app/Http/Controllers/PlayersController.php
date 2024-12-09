@@ -82,8 +82,8 @@ class PlayersController extends Controller
     {
         $nationalities = Nationality::all();
         $player = Player::with('people')->findOrFail($id);
-        $people = People::all();
-        return view('players.edit', compact('player', 'nationalities',"people"));
+
+        return view('players.edit', compact('player', 'nationalities'));
     }
 
     /**

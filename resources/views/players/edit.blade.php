@@ -46,8 +46,8 @@
     @slot('id', 'country')
     @slot('more_options')
         @foreach ($nationalities as $nationality)
-            <option value="{{ $nationality->id }}"
-                {{ old('country', $player->nationality_id) == $nationality->id ? 'selected' : '' }}>
+            <option value="{{ $nationality->country }}"
+                {{ old('country', $nationality->country ) == $nationality->country ? 'selected' : 'country' }}>
                 {{ $nationality->country }}
             </option>
         @endforeach

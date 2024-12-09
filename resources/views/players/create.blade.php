@@ -57,7 +57,7 @@
                 @slot('id', 'avatar')
             @endcomponent
 
-            
+
 
             @component('_components.boxSelectInput')
                 @slot('for', 'status')
@@ -65,9 +65,9 @@
                 @slot('name', 'status')
                 @slot('id', 'status required')
                 @slot('more_options')
-                    <option value="activo">Activo</option>
-                    <option value="lesionado">Lesionado</option>
-                    <option value="juvilado">Juvilado</option>
+                    <option value="1">Activo</option>
+                    <option value="2">Lesionado</option>
+                    <option value="3">Juvilado</option>
                 @endslot
             @endcomponent
 
