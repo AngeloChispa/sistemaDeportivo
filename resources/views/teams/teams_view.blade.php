@@ -15,19 +15,25 @@
         @slot('create_something', 'Crear Equipo')
 
         @slot('content_head')
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Ciudad</th>
-                <th>Estado</th>
-                <th>Deporte</th>
-                <th>Escudo</th>
-                @auth
-                    @if (Auth::user()->rol_id === 1)
-                        <th colspan="3">Acción</th>
-                    @endif
-                @endauth
-            </tr>
+            @empty
+                <tr>
+                    <th>No data</th>
+                </tr>
+            @else
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Ciudad</th>
+                    <th>Estado</th>
+                    <th>Deporte</th>
+                    <th>Escudo</th>
+                    @auth
+                        @if (Auth::user()->rol_id === 1)
+                            <th colspan="3">Acción</th>
+                        @endif
+                    @endauth
+                </tr>
+            @endempty
         @endslot
         @slot('content_body')
             @forelse ($teams as $team)

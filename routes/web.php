@@ -35,6 +35,7 @@ Route::view('/prueba/livewire/', 'chuchoLab.pruebaLivewire');
 
 //Julissa
 /* Vistas */
+Route::view('/favorites','users.favorites')->name('favorites.index');
 Route::view('/search/palabra','search.search_view')->name('search.index');
 Route::view('/ascender/usuario','ascend.ascend_view')->name('ascend.index');
 Route::view('/agrega/nombreEquipo','tournaments.add_teams')->name('addTeams');
