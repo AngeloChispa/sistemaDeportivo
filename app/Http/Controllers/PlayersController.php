@@ -46,20 +46,22 @@ class PlayersController extends Controller
     {
 
         if (Auth::user() && Auth::user()->rol_id === 1) {
-            $request->validate([
-                "avatar" => "required|image|max:2000"
-            ]);
-
-            if ($request->hasFile("avatar")) {
-                $avatarPath = $request->file("avatar")->store("avatars", "public");
-            }
+           /*  $request->validate([
+                "avatar" => "required|image|max:2000",
+                'status' => 'required|string|in:Activo,Lesionado,Jubilado',
+                'bestSide' => 'required|string|in:Izquierdo,Derecho'
+            ]); 
+             */
 
             $people = new People();
             $people->name = $request->name;
             $people->lastname = $request->lastname;
             $people->birthdate = $request->birthdate;
             $people->birthplace = $request->country;
-            $people->avatar = $avatarPath;
+            if ($request->hasFile("avatar")) {
+                $avatarPath = $request->file("avatar")->store("avatars", "public");
+                $people->avatar = $avatarPath;
+            }
             $people->save();
 
 
@@ -82,6 +84,7 @@ class PlayersController extends Controller
     public function show($id)
     {
         $person = People::findOrFail($id);
+
         return view('players.show', compact('person'));
     }
 
@@ -106,23 +109,23 @@ class PlayersController extends Controller
     {
         if (Auth::user() && Auth::user()->rol_id === 1) {
             return redirect()->route('index');
-            $people = People::findOrFail($id);
-            $player = Player::findOrFail($id);
+            $player = Player::with('people')->findOrFail($id);
+            $people = $player->people;
 
             $request->validate([
-                "avatar" => "nullable|image|max:2000"
+                "avatar" => "nullable|image|max:2000",
+                'status' => 'nullable|string|in:Activo,Lesionado,Jubilado',
+                'bestSide' => 'nullable|string|in:Izquierdo,Derecho'
             ]);
             if ($request->hasFile("avatar")) {
-                $avatarPath = $request->file("avatar")->store("avatar", "public");
+                $avatarPath = $request->file("avatar")->store("avatars", "public");
                 $people->avatar = $avatarPath;
             }
-            // CORREGIR SUBIDA DE IMAGEN PLAYERS
 
-            $people = new People();
             $people->name = $request->name;
             $people->lastname = $request->lastname;
             $people->birthdate = $request->birthdate;
-            $people->birthplace = $request->country;
+            $people->birthplace = $request->birthplace;
             $people->save();
 
 
@@ -139,10 +142,9 @@ class PlayersController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         if (Auth::user() && Auth::user()->rol_id === 1) {
-            return redirect()->route('index');
             $nationalities = Nationality::all();
             $player = Player::with('people')->findOrFail($id);
             $player->delete();
@@ -150,5 +152,6 @@ class PlayersController extends Controller
             $person->delete();
             return redirect()->route("players.index");
         }
+        return redirect()->route('index');
     }
 }

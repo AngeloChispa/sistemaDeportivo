@@ -40,19 +40,22 @@
             @endcomponent
 
             @component('_components.boxSelectInput')
-                @slot('for', 'country')
-                @slot('content', 'Nacionalidad:')
-                @slot('name', 'country')
-                @slot('id', 'country')
-                @slot('more_options')
-                    @foreach ($nationalities as $nationality)
-                        <option value="{{ $nationality->id }}"
-                            {{ old('country', $player->people->birthplace) == $nationality->id ? 'selected' : '' }}>
-                            {{ $nationality->country }}
-                        </option>
-                    @endforeach
-                @endslot
-            @endcomponent
+            @slot('for', 'birthplace')
+            @slot('content', 'Lugar de nacimiento: ')
+            @slot('name', 'birthplace')
+            @slot('id', 'birthplace')
+            @slot('value', $player->people->birthplace)
+            @slot('more_options')
+                @forelse ($nationalities as $nationality)
+                    <option value="{{ $nationality->country }}"
+                        {{ $player->people->birthplace == $nationality->country ? 'selected' : '' }}>
+                        {{ $nationality->country }}
+                    </option>
+                @empty
+                    <option value="">No disponibles</option>
+                @endforelse
+            @endslot
+        @endcomponent
 
             @component('_components.boxInputEdit')
                 @slot('for', 'avatar')
@@ -60,21 +63,20 @@
                 @slot('type', 'file')
                 @slot('name', 'avatar')
                 @slot('id', 'avatar')
-                @slot('currentfile', $player->avatar ?? null)
+                @slot('currentfile', $player->people->avatar ?? null)
                 @slot('alt', 'Foto del Jugador')
             @endcomponent
 
-            @component('_components.boxSelectInput')
-                @slot('for', 'status')
-                @slot('content', 'Estado:')
-                @slot('name', 'status')
-                @slot('id', 'status')
-                @slot('more_options')
-                    <option value="1" {{ old('status', $player->status) == 1 ? 'selected' : '' }}>Activo</option>
-                    <option value="2" {{ old('status', $player->status) == 2 ? 'selected' : '' }}>Lesionado</option>
-                    <option value="3" {{ old('status', $player->status) == 3 ? 'selected' : '' }}>Jubilado</option>
-                @endslot
-            @endcomponent
+            <div>
+                <label for="status" class="block text-sm font-semibold text-stone-200">Estado:</label>
+                <select name="status" id="status" class="w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500">
+                    <option value="">-</option>
+                    <option value="Activo" {{ old('status', $player->status) == 'Activo' ? 'selected' : '' }}>Activo</option>
+                    <option value="Lesionado" {{ old('status', $player->status) == 'Lesionado' ? 'selected' : '' }}>Lesionado</option>
+                    <option value="Jubilado" {{ old('status', $player->status) == 'Jubilado' ? 'selected' : '' }}>Jubilado</option>
+                </select>
+            </div>
+
 
             @component('_components.boxInputEdit')
                 @slot('for', 'height')
@@ -91,8 +93,8 @@
                 @slot('name', 'bestSide')
                 @slot('id', 'bestSide')
                 @slot('more_options')
-                    <option value="1" {{ old('bestSide', $player->bestSide) == 1 ? 'selected' : '' }}>Izquierdo</option>
-                    <option value="2" {{ old('bestSide', $player->bestSide) == 2 ? 'selected' : '' }}>Derecho</option>
+                <option value="Izquierdo" {{ old('bestSide', $player->bestSide) == 'Izquierdo' ? 'selected' : '' }}>Izquierdo</option>
+                <option value="Derecho" {{ old('bestSide', $player->bestSide) == 'Derecho' ? 'selected' : '' }}>Derecho</option>
                 @endslot
             @endcomponent
 

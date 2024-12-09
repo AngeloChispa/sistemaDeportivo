@@ -52,7 +52,6 @@ class TeamsController extends Controller
     {
         $teams = Team::findOrFail($id);
         $sports = Sport::all();
-
         return view("teams.edit", compact("teams", "sports"));
     }
 
