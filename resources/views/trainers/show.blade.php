@@ -8,7 +8,7 @@
             <div class="profile-card bg-stone-800 rounded-lg shadow-md p-6 text-center w-full lg:w-1/3">
                 <img src="{{ asset('storage/' . $trainer->people->avatar) }}" alt="Foto de perfil de {{$trainer->people->name}}"
                     class="w-30 h-30 rounded-full mx-auto mb-4">
-                <p class="name text-xl text-red-500 font-bold uppercase mb-2">{{$trainer->people->name}} {{$trainer->people->lasstname}}</p>
+                <p class="name text-xl text-red-500 font-bold uppercase mb-2">{{$trainer->people->name}} {{$trainer->people->lastname}}</p>
                 <p class="text-sm">{{$trainer->description}}</p>
             </div>
 
@@ -17,8 +17,8 @@
                     <h5 class="text-lg text-red-500 font-semibold mb-4">Información general</h5>
                     <ul class="text-sm space-y-2">
                         <li><strong>Id: </strong>{{$trainer->people->id}}</li>
-                        <li><strong>Nombre: </strong>{{$trainer->people->name}} {{$trainer->people->lasstname}}</li>
-                        <li><strong>Fecha de nacimiento: </strong>{{$trainer->people->birtdate}}</li>
+                        <li><strong>Nombre: </strong>{{$trainer->people->name}} {{$trainer->people->lastname}}</li>
+                        <li><strong>Fecha de nacimiento: </strong>{{$trainer->people->birthdate}}</li>
                         <li><strong>Lugar de nacimiento: </strong>{{$trainer->people->birthplace}}</li>
                         <li><strong>Nacionalidad: </strong>{{$trainer->people->birthplace}}</li>
                     </ul>
