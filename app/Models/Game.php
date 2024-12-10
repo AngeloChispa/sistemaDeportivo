@@ -42,11 +42,6 @@ class Game extends Model
         return $this->belongsTo(Tournament::class);
     }
 
-    public function player():BelongsToMany
-    {
-        return $this->belongsToMany(Player::class, 'game_events')->withPivot('event', 'minute');
-    }
-
     public function reservation():HasOne
     {
         return $this->hasOne(Reservation::class);

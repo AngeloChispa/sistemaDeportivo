@@ -62,7 +62,7 @@ class GamesController extends Controller
      */
     public function show(string $id)
     {
-        $game = Game::with('tournament', 'localTeam', 'awayTeam', 'referee')->findOrFail($id);
+        $game = Game::with('tournament', 'localTeam.players', 'awayTeam.players', 'referee')->findOrFail($id);
         return view('games.show', compact('game'));
     }
 
