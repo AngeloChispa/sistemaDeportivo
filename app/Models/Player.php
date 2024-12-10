@@ -30,8 +30,9 @@ class Player extends Model
         return $this->belongsToMany(Team::class)->withPivot('position','dorsal','assignment_date','departure_date','captain');
     }
 
-    public function game():BelongsToMany
+    //Esta cosas ni jala no se por que existe
+    /* public function game():BelongsToMany
     {
         return $this->belongsToMany(Game::class, 'game_events')->withPivot('event', 'minute');
-    }
+    } */
 }

@@ -7,7 +7,7 @@
         Añadir equipos
     </h1>
     <div class="flex items-center justify-center">
-        <form method="POST" action="#" enctype="multipart/form-data"
+        <form method="POST" action="{{route('tournaments.add', $tournament->id)}}" enctype="multipart/form-data"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
             @csrf
 
@@ -27,10 +27,11 @@
                             class="team-select w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500"
                         @endslot
                         @slot('more_options')
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
+                            @forelse ($teams as $team)
+                                <option value="{{$team->id}}">{{$team->name}}</option>
+                            @empty
+                                
+                            @endforelse
                         @endslot
                     @endcomponent
                 </div>
@@ -107,10 +108,11 @@
                         class="team-select w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500"
                     @endslot
                     @slot('more_options')
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
+                       @forelse ($teams as $team)
+                                <option value="{{$team->id}}">{{$team->name}}</option>
+                            @empty
+                                
+                            @endforelse
                     @endslot
                 @endcomponent
             `;
