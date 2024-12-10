@@ -86,52 +86,32 @@
             @endslot
             @slot('content_head')
                 <tr>
-                    {{-- @empty($variable)
-                            <th>No hay jugadores asignados</th>
-                        @else
-                            <th>Nombre</th>
-                            <th>Apellidos</th>
-                            <th>Fecha de Nacimiento</th>
-                            <th>Nacionalidad</th>
-                            <th>Estado</th>
-                            <th>Altura</th>
-                            <th>Fecha de registro</th>
-                        @endempty --}}
-                    <th>Dorsal</th>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Fecha de Nacimiento</th>
-                    <th>Lugar de nacimiento</th>
-                    <th>Estado</th>
+                    @empty($team->players)
+                        <th>No data</th>
+                    @else
+                        <th>Dorsal</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Estado</th>
+                        <th>Posición</th>
+                        <th>Fecha de integración</th>
+                    @endempty
                 </tr>
             @endslot
             @slot('content_body')
-                {{-- @forelse ($people as $person)
-                        @if ($person->player)
-                            <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
-                                <td>{{ $person->name }}</td>
-                                <td>{{ $person->lastname }}</td>
-                                <td>{{ $person->birthdate }}</td>
-                                <td>{{ $person->nationality }}</td>
-                                <td>{{ $person->nationality }}</td>
-                            </tr>
-                        @endif
-                    @empty
-                        <tr>
-                            <td>No data</td>
-                        </tr>
-                    @endforelse --}}
                 @forelse ($team->players as $player)
                     <tr class="border-b border-stone-700 h-16 hover:bg-stone-800">
                         <td>{{ $player->pivot->dorsal }}</td>
                         <td>{{ $player->people->name }}</td>
                         <td>{{ $player->people->lastname }}</td>
-                        <td>{{ $player->people->birthdate }}</td>
-                        <td>{{ $player->people->birthplace }}</td>
                         <td>{{ $player->status }}</td>
+                        <td>{{ $player->pivot->position }}</td>
+                        <td>{{ $player->pivot->assignment_date }}</td>
                     </tr>
                 @empty
-                    <h1>No data found</h1>
+                    <tr>
+                        <td colspan="6">No data found</td>
+                    </tr>
                 @endforelse
             @endslot
         @endcomponent

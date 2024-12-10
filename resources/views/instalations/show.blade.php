@@ -8,7 +8,7 @@
 
         <div class="info-container flex-1 flex flex-col gap-6">
             <div class="stats bg-stone-800 rounded-lg shadow-md p-6">
-                <h5 class="text-lg text-red-500 font-semibold mb-4">Información Personal</h5>
+                <h5 class="text-lg text-red-500 font-semibold mb-4">Información General</h5>
                 <ul class="text-sm space-y-2">
                     <li><strong>Nombre: </strong>{{$instalation->name}}</li>
                     <li><strong>País: </strong>{{$instalation->nationality->country}}</li>
