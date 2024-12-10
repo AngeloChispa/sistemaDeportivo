@@ -32,12 +32,12 @@ class Partido extends Component
                     case 'goal':
                         if($event['player_team']['team_id'] == $this->game['local_team']['id']){
                             $this->localTeamGoals ++;
-                            $thing['image'] = 'img/soccer_ball.png';
+                            $thing['image'] = 'assets/img/soccer_ball.png';
                             $thing['time'] = $event['minute'];
                             $thing['name'] = $this->game['local_team']['name'];
                         }else{
                             $this->awayTeamGoals++;
-                            $thing['image'] = 'img/soccer_ball.png';
+                            $thing['image'] = 'assets/img/soccer_ball.png';
                             $thing['time'] = $event['minute'];
                             $thing['name'] = $this->game['away_team']['name'];
                         }
