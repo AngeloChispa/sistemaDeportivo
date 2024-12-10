@@ -26,19 +26,19 @@
                         <p class="text-xl font-bold">Local</p>
 
                         <a href="{{route('teams.show', $game['local_team']['id'])}}" class="text-xl font-bold">
-                            <img src="{{ asset('assets/img/usuario_icon_default.png') }}" alt="Escudo equipo local"
-                                class="w-30 h-30 rounded-full mx-auto mb-4">
+                            <img src="{{ asset($game['local_team']['shield']) }}" alt="Escudo equipo local"
+                                class="w-40 h-40 rounded-full mx-auto mb-4">
                             {{$game['local_team']['name']}}
                         </a>
                     </div>
                     <div class="flex-1">
-                        <p class="text-7xl font-bold pt-40">{{$localTeamGoals}} - {{$awayTeamGoals}}</p>
+                        <p class="text-7xl font-bold">{{$localTeamGoals}} - {{$awayTeamGoals}}</p>
                     </div>
                     <div class="flex-1">
                         <p class="text-xl font-bold">Visitante</p>
                         <a href="{{route('teams.show', $game['away_team']['id'])}}" class="text-xl font-bold">
-                            <img src="{{ asset('assets/img/usuario_icon_default.png') }}" alt="Escudo equipo visitante"
-                                class="w-30 h-30 rounded-full mx-auto mb-4">
+                            <img src="{{ asset($game['away_team']['shield']) }}" alt="Escudo equipo visitante"
+                                class="w-40 h-40 rounded-full mx-auto mb-4">
                             {{$game['away_team']['name']}}
                         </a>
                     </div>
