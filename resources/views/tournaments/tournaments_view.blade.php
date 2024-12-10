@@ -73,7 +73,7 @@
                     @auth
                         @if (Auth::user()->rol_id === 1)
                             <td>
-                                <a href="#"
+                                <a href="{{route('tournaments.add', $tournament->id)}}"
                                     class="font-medium text-zinc-200 bg-purple-500 sm:rounded-lg p-2 hover:bg-purple-900">Añadir
                                     equipos</a>
                             </td>

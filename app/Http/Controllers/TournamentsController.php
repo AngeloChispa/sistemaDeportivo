@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Team;
+use App\Models\TeamTournament;
 use Illuminate\Http\Request;
 use App\Models\Tournament;
 use Intervention\Image\Facades\Image;
@@ -13,13 +15,11 @@ class TournamentsController extends Controller
     {
         $tournaments = Tournament::all();
         return view("tournaments.tournaments_view", compact("tournaments"));
-
     }
 
     public function create()
     {
         return view("tournaments.create");
-
     }
 
     public function store(Request $request)
@@ -35,7 +35,6 @@ class TournamentsController extends Controller
 
         if ($request->hasFile("icon")) {
             $iconPath = $request->file("icon")->store('icons', 'public');
-
         }
 
         $tournament = new Tournament();
@@ -93,5 +92,30 @@ class TournamentsController extends Controller
         return redirect()->route("tournaments.index");
     }
 
+    public function addTeams(Tournament $tournament)
+    {
+        $teams = Team::all();
+        return view('tournaments.add_teams', compact('tournament', 'teams'));
+    }
 
+    public function storeTeams(Request $request, Tournament $tournament)
+    {
+        foreach ($request->teams as $id) {
+            /* $team = Team::findOrFail($id);
+            if($team->sport_id === $tournament->sport_id){ */
+            if ($id) {
+                $exists = TeamTournament::where('tournament_id', $tournament->id)
+                    ->where('team_id', $id)
+                    ->exists();
+                if (!$exists) {
+                    TeamTournament::create([
+                        'tournament_id' => $tournament->id,
+                        'team_id' => $id,
+                    ]);
+                }
+            }
+            /* }*/
+        }
+        return redirect()->route('tournaments.index');
+    }
 }

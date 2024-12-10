@@ -36,4 +36,9 @@ class Tournament extends Model
     {
         return $this->belongsTo(Sport::class);
     }
+
+    public function teams():BelongsToMany
+    {
+        return $this->belongsToMany(Team::class)->withPivot('wins','draws','losses','points');
+    }
 }

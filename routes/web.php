@@ -31,6 +31,9 @@ Route::resource('/referees', RefereeController::class);
 Route::resource('/trainers', TrainerController::class);
 Route::resource('/sport', SportController::class);
 
+Route::get('/tournaments/add/{tournament}', [TournamentsController::class, 'addTeams'])->name('tournaments.add');
+Route::post('tournaments/add/{tournament}', [TournamentsController::class, 'storeTeams']);
+
 Route::get('/game/{game}', Partido::class)->name('games.live');
 Route::post('/upgrade/{user}', [UsersCotroller::class, 'upgradeAdmin'])->name('user.admin');
 Route::get('/search' , [SearchController::class, 'index'])->name('search.index');
@@ -59,9 +62,8 @@ Route::view('/instalaciones/show','instalations.show');
 Route::view('/sponsors/create','sponsors.create')->name('patrocinadores.create');
 Route::view('/event','games.events')->name('events.create');
 /* Editar */
+
 /*Danna*/
-Route::view('/landing','layouts.landing')->name('landing');
-Route::view('/landing2','layouts.landing2')->name('landing2');
 /* Vistas */
 Route::view('/finances/admin','finances.finances_view')->name('finances.index');
 Route::view('/classifications/admin','classifications.classifications_view')->name('classifications.index');

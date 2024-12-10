@@ -41,9 +41,15 @@ class Team extends Model
         return $this->belongsToMany(Player::class)->withPivot('position','dorsal','assignment_date','departure_date','captain');
     }
 
-    public function team():BelongsToMany
+    public function tournament():BelongsToMany
+    {
+        return $this->belongsToMany(Tournament::class)->withPivot('wins','draws','losses','points');
+    }
+
+   /*  public function team():BelongsToMany
     {
         return $this->belongsToMany(Team::class);
-    }
+    } */
+
 
 }
