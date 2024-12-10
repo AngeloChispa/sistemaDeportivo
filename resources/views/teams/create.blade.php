@@ -7,7 +7,7 @@
         Registrar Equipo
     </h1>
     <div class="flex items-center justify-center">
-        <form method="POST" action="{{route("teams.store")}}" enctype="multipart/form-data"
+        <form method="POST" action="{{ route('teams.store') }}" enctype="multipart/form-data"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
             @csrf
 
@@ -36,23 +36,20 @@
             @endcomponent
 
             @component('_components.boxSelectInput')
-            @slot('for', 'sport')
-            @slot('content', 'Deporte: ')
-            @slot('name', 'sport')
-            @slot('id', 'sport required')
-            @slot('more_options')
-            {{-- @forelse ($sports as $sport)
-            <option value="{{ $sport['id'] }}">{{ $sport['name'] }}</option>
-            @empty
-            <option value="">No hay deportes</option>
-            @endforelse --}}
-
-            <option value="1">Futbol</option>
-            <option value="2">Basebol</option>
-            <option value="3">Basketbol</option>
-            @endslot
+                @slot('for', 'sport')
+                @slot('content', 'Deporte: ')
+                @slot('name', 'sport')
+                @slot('id', 'sport required')
+                @slot('more_options')
+                    @forelse ($sports as $sport)
+                        <option value="{{ $sport->id }}">{{ $sport->name }}</option>
+                    @empty
+                        <option value="">No disponibles</option>
+                    @endforelse
+                @endslot
             @endcomponent
-            <p class="text-xs">¿Tu deporte no aparece en la lista? <a href="{{route('sport.create')}}" class="text-rose-500 underline">Regístralo</a></p>
+            <p class="text-xs">¿Tu deporte no aparece en la lista? <a href="{{ route('sport.create') }}"
+                    class="text-rose-500 underline">Regístralo</a></p>
 
             @component('_components.boxInputCreate')
                 @slot('for', 'shield')

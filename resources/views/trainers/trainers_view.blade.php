@@ -11,7 +11,7 @@
             Tabla que muestra los entrenadores registrados hasta el momento.
         @endslot
         @slot('reference', 'trainers.create')
-        @slot('create_something', 'Registrar Árbitro')
+        @slot('create_something', 'Registrar Entrenador')
 
         @slot('content_head')
             {{-- @empty($trainers)
