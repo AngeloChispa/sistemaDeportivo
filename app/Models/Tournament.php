@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -29,5 +30,10 @@ class Tournament extends Model
     public function team():BelongsToMany
     {
         return $this->belongsToMany(Team::class);
+    }
+
+    public function sport():BelongsTo
+    {
+        return $this->belongsTo(Sport::class);
     }
 }
