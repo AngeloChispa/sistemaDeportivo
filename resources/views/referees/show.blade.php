@@ -8,7 +8,7 @@
             <div class="profile-card bg-stone-800 rounded-lg shadow-md p-6 text-center w-full lg:w-1/3">
                 <img src="{{ asset('storage/' . $referee->people->avatar) }}" alt="Foto de perfil de {{$referee->people->name}}"
                     class="w-30 h-30 rounded-full mx-auto mb-4">
-                <p class="name text-xl text-red-500 font-bold uppercase mb-2">{{$referee->people->name}} {{$referee->people->lasstname}}</p>
+                <p class="name text-xl text-red-500 font-bold uppercase mb-2">{{$referee->people->name}} {{$referee->people->lastname}}</p>
                 <p class="text-sm">{{$referee->description}}</p>
             </div>
 
@@ -17,8 +17,8 @@
                     <h5 class="text-lg text-red-500 font-semibold mb-4">Información general</h5>
                     <ul class="text-sm space-y-2">
                         <li><strong>Id: </strong>{{$referee->people->id}}</li>
-                        <li><strong>Nombre: </strong>{{$referee->people->name}} {{$referee->people->lasstname}}</li>
-                        <li><strong>Fecha de nacimiento: </strong>{{$referee->people->birtdate}}</li>
+                        <li><strong>Nombre: </strong>{{$referee->people->name}} {{$referee->people->lastname}}</li>
+                        <li><strong>Fecha de nacimiento: </strong>{{$referee->people->birthdate}}</li>
                         <li><strong>Lugar de nacimiento: </strong>{{$referee->people->birthplace}}</li>
                         <li><strong>Nacionalidad: </strong>{{$referee->people->birthplace}}</li>
                     </ul>
