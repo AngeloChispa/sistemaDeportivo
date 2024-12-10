@@ -48,14 +48,14 @@
                     @auth
                         @if (Auth::user()->rol_id === 1)
                             <td>
-                                <a href="#" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
+                                <a href="{{route("games.edit", $game->id)}}" class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>
                             </td>
                             <td>
                                 <a href="#"
                                     class="font-medium text-zinc-200 bg-green-700 sm:rounded-lg p-2 hover:bg-green-900">Ver</a>
                             </td>
                             <td>
-                                <form action="#" method="POST" class="inline formulario-eliminar">
+                                <form action="{{route("games.destroy", $game->id)}}" method="POST" class="inline formulario-eliminar">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"

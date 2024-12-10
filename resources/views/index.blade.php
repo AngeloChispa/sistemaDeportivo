@@ -62,41 +62,7 @@
             <div class="mr-5 w-1/2 text-base text-left rtl:text-right text-zinc-300">
                 <div class="flex-col">
 
-                    <div class="mb-5">
-                        <div class="bg-stone-800 p-1 font-semibold rounded-t-lg">
-                            <p class="mt-2 mb-1 text-bold text-center text-lg">Hoy</p>
-                        </div>
-
-                        <hr class="border-zinc-800 ">
-
-                        <div
-                            class="p-3 text-base font-semibold text-center text-zinc-300 bg-stone-900 flex justify-start items-start  rounded-b-lg">
-
-                            <a href="{{ route('user.index') }}"
-                                class="bg-stone-800 rounded-full p-1.5 hover:bg-[#333333] mr-2">
-                                <!-- Margen a la derecha -->
-                                <button class="w-20">hola</button>
-                            </a>
-
-                            <a href="{{ route('user.index') }}"
-                                class="bg-stone-800 rounded-full p-1.5 hover:bg-[#333333] mr-2">
-                                <!-- Margen a la derecha -->
-                                <button class="w-24">mucho</button>
-                            </a>
-
-                            <a href="{{ route('user.index') }}"
-                                class="bg-stone-800 rounded-full p-1.5 hover:bg-[#333333] mr-2">
-                                <!-- Margen a la derecha -->
-                                <button class="w-24">gusto</button>
-                            </a>
-
-                            <a href="{{ route('user.index') }}"
-                                class="bg-stone-800 rounded-full p-1.5 hover:bg-[#333333] mr-2">
-                                <!-- Margen a la derecha -->
-                                <button class="w-28">bienvenido..</button>
-                            </a>
-                        </div>
-                    </div>
+                    
                     {{-- cc 2 --}}
 
                     @forelse ($tournaments as $tournament)
@@ -115,7 +81,7 @@
                                         <img src="{{ asset('assets/img/realmadrid.png') }}" class="h-6 w-6 ml-2"
                                             alt="Real Madrid">
                                     </span>
-                                    <span class="w-20 text-center">0 - 0</span>
+                                    <span class="w-20 text-center"> - </span>
                                     <span class="flex-1 text-left flex items-center">
                                         <img src="{{ asset('assets/img/barca.png') }}" class="h-6 w-6 mr-2"
                                             alt="Barcelona">

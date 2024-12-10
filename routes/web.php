@@ -36,6 +36,12 @@ Route::post('/upgrade/{user}', [UsersCotroller::class, 'upgradeAdmin'])->name('u
 Route::get('/search' , [SearchController::class, 'index'])->name('search.index');
 
 Route::get('/ascend', [AscenController::class, 'index'])->name('ascend.index');
+Route::get('/ascend/player/{user}', [AscenController::class, 'upgradePlayer'])->name('ascend.player');
+Route::post('/ascend/player/{user}', [AscenController::class, 'storePlayer'])->name('ascend.storePlayer');
+Route::get('ascend/trainer/{user}', [AscenController::class, 'upgradeTrainer'])->name('ascend.trainers');
+Route::post('ascend/trainer/{user}', [AscenController::class, 'storeTrainer']);
+Route::get('/ascend/referee/{user}', [AscenController::class, 'upgradeReferee'])->name('ascend.referee');
+Route::post('/ascend/referee/{user}', [AscenController::class, 'storeReferee']);
 
 
 //Julissa
