@@ -6,10 +6,10 @@
     <div class="flex flex-1">
         <div class="container flex flex-col lg:flex-row w-full px-6 py-6 gap-6">
             <div class="profile-card bg-stone-800 rounded-lg shadow-md p-6 text-center w-full lg:w-1/3">
-                <img src="{{ asset('assets/img/usuario_icon_default.png') }}" alt="Escudo Los jaguares de la UPV"
+                <img src="{{ asset('storage/' . $trainer->people->avatar) }}" alt="Foto de perfil de {{$trainer->people->name}}"
                     class="w-30 h-30 rounded-full mx-auto mb-4">
-                <p class="name text-xl text-red-500 font-bold uppercase mb-2">Nombre entrenador completo</p>
-                <p class="text-sm">descripción</p>
+                <p class="name text-xl text-red-500 font-bold uppercase mb-2">{{$trainer->people->name}} {{$trainer->people->lasstname}}</p>
+                <p class="text-sm">{{$trainer->description}}</p>
             </div>
 
             <div class="info-container flex-1 flex flex-col gap-6">

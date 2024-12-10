@@ -27,7 +27,7 @@
                 @slot('type', 'text')
                 @slot('name', 'state')
                 @slot('id', 'state')
-                @slot("value", old("state", $teams->state))
+                @slot('value', old('state', $teams->state))
             @endcomponent
 
             @component('_components.boxInputEdit')
@@ -36,7 +36,7 @@
                 @slot('type', 'text')
                 @slot('name', 'city')
                 @slot('id', 'city')
-                @slot("value", old("city", $teams->city))
+                @slot('value', old('city', $teams->city))
             @endcomponent
 
             @component('_components.boxSelectInput')
@@ -45,13 +45,18 @@
                 @slot('name', 'sport')
                 @slot('id', 'sport')
                 @slot('more_options')
-                    <option value="1" {{ old('sport', $teams->sport->id) == 1 ? 'selected' : '' }}>Futbol</option>
-                    <option value="2" {{ old('sport', $teams->sport->id) == 2 ? 'selected' : '' }}>Basebol</option>
-                    <option value="3" {{ old('sport', $teams->sport->id) == 3 ? 'selected' : '' }}>Basketbol</option>
+                    @forelse ($sports as $sport)
+                        <option value="{{ $sport->id }}" {{ $teams->sport_id == $sport->id ? 'selected' : '' }}>
+                            {{ $sport->name }}
+                        </option>
+                    @empty
+                        <option value="">No disponibles</option>
+                    @endforelse
                 @endslot
             @endcomponent
 
-            <p class="text-xs">¿Tu deporte no aparece en la lista? <a href="{{ route('sport.create') }}" class="text-rose-500 underline">Regístralo</a></p>
+            <p class="text-xs">¿Tu deporte no aparece en la lista? <a href="{{ route('sport.create') }}"
+                    class="text-rose-500 underline">Regístralo</a></p>
 
             @component('_components.boxInputEdit')
                 @slot('for', 'shield')

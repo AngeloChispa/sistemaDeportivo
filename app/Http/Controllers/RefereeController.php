@@ -71,7 +71,8 @@ class RefereeController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $referee = Referee::with('people')->findOrFail($id);
+        return view('referees.show', compact('referee'));
     }
 
     /**
