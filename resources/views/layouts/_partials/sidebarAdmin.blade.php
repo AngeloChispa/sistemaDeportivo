@@ -124,7 +124,7 @@
                     @slot('name', 'Estadísticas & Reportes')
                 @endcomponent
             </li>
-            <li>
+            {{-- <li>
                 @component('_components.boxSidebar ')
                     @slot('icon')
                         <ion-icon name="podium" class="h-5 w-5"></ion-icon>
@@ -132,7 +132,7 @@
                     @slot('reference', 'classifications.index')
                     @slot('name', 'Clasificación')
                 @endcomponent
-            </li>
+            </li> --}}
             {{-- <li>
                 @component('_components.boxSidebar ')
                     @slot('icon')
@@ -151,7 +151,7 @@
                     @slot('name', 'Instalaciones')
                 @endcomponent
             </li>
-            @auth
+            {{-- @auth
                 @if (Auth::user()->rol_id === 1)
                     <li>
                         @component('_components.boxSidebar ')
@@ -176,7 +176,7 @@
                         @endcomponent
                     </li>
                 @endif
-            @endauth
+            @endauth --}}
         </ul>
     </div>
 </aside>

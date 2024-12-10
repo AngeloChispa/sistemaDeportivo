@@ -9,7 +9,7 @@
     <div class="flex items-center justify-center">
         <form method="POST" action="{{ route('games.update', $game->id) }}"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
-            @method("PUT")
+            @method('PUT')
             @csrf
 
             @component('_components.boxSelectInput')
@@ -58,19 +58,19 @@
             @endcomponent
 
             @component('_components.boxSelectInput')
-            @slot('for', 'referee')
-            @slot('content', 'Arbitro: ')
-            @slot('name', 'referee_id') 
-            @slot('id', 'referee')
-            @slot('more_options')
-                @foreach ($referees as $referee)
-                    <option value="{{ $referee->id }}"
-                        {{ old('referee_id', $game->referee_id) == $referee->id ? 'selected' : '' }}>
-                        {{ $referee->people->name }}
-                    </option>
-                @endforeach
-            @endslot
-        @endcomponent
+                @slot('for', 'referee')
+                @slot('content', 'Árbitro: ')
+                @slot('name', 'referee_id')
+                @slot('id', 'referee')
+                @slot('more_options')
+                    @foreach ($referees as $referee)
+                        <option value="{{ $referee->id }}"
+                            {{ old('referee_id', $game->referee_id) == $referee->id ? 'selected' : '' }}>
+                            {{ $referee->people->name }}
+                        </option>
+                    @endforeach
+                @endslot
+            @endcomponent
 
             <div class="flex">
                 <input type="submit" value="Actualizar"
@@ -80,4 +80,42 @@
             </div>
         </form>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const localTeamSelect = document.getElementById('local_team');
+            const awayTeamSelect = document.getElementById('away_team');
+            
+            function updateTeamSelection() {
+                const localTeam = localTeamSelect.value;
+                const awayTeam = awayTeamSelect.value;
+
+                // Bloquear a visitante
+                for (let option of awayTeamSelect.options) {
+                    if (option.value === localTeam && localTeam !== '') {
+                        option.disabled = true;
+                    } else {
+                        option.disabled = false;
+                    }
+                }
+
+                // Bloquear a local
+                for (let option of localTeamSelect.options) {
+                    if (option.value === awayTeam && awayTeam !== '') {
+                        option.disabled = true;
+                    } else {
+                        option.disabled = false;
+                    }
+                }
+            }
+
+            //Bloqueo al entrar
+            updateTeamSelection();
+
+            localTeamSelect.addEventListener('change', updateTeamSelection);
+            awayTeamSelect.addEventListener('change', updateTeamSelection);
+        });
+    </script>
 @endsection

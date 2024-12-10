@@ -78,13 +78,13 @@
                                     class="p-5 text-base font-semibold text-center text-zinc-300 bg-stone-900 flex justify-between items-center hover:bg-[#333333]">
                                     <span class="flex-1 text-right flex items-center justify-end">
                                         {{ $game->localTeam->name }}
-                                        <img src="{{ asset('assets/img/realmadrid.png') }}" class="h-6 w-6 ml-2"
-                                            alt="Real Madrid">
+                                        <img src="{{ asset($game->localTeam->shield) }}" class="h-6 w-6 ml-2"
+                                            alt="{{ $game->localTeam->name }}">
                                     </span>
                                     <span class="w-20 text-center"> - </span>
                                     <span class="flex-1 text-left flex items-center">
-                                        <img src="{{ asset('assets/img/barca.png') }}" class="h-6 w-6 mr-2"
-                                            alt="Barcelona">
+                                        <img src="{{ asset($game->awayTeam->shield) }}" class="h-6 w-6 ml-2"
+                                            alt="{{ $game->awayTeam->name }}">
                                         {{ $game->awayTeam->name }}
                                     </span>
                                 </a>

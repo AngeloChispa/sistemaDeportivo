@@ -31,7 +31,7 @@
                             <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
                                 <td>{{ $tournament->id }}</td>
                                 <td class="flex justify-center">
-                                    <a href="#">
+                                    <a href="{{ route('tournaments.show', $tournament->id) }}">
                                         <div class="flex place-items-center">
                                             <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
                                                 alt="Escudo del torneo {{ $tournament->name }}">
@@ -69,7 +69,7 @@
                             <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
                                 <td>{{ $team->id }}</td> <!-- Muestra el ID del equipo -->
                                 <td class="flex justify-center">
-                                    <a href="#">
+                                    <a href="{{ route('teams.show', $team->id) }}">
                                         <div class="flex place-items-center">
                                             <!-- Imagen y nombre del equipo -->
                                             <img class="w-12 h-12"
@@ -110,7 +110,7 @@
                                     <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
                                         <td>{{ $person->player->id }}</td>
                                         <td class="flex justify-center">
-                                            <a href="#">
+                                            <a href="{{ route('players.show', $person->player->id) }}">
                                                 <div class="flex place-items-center">
                                                     <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
                                                         alt="Foto de perfil de InserteNombre">
@@ -151,9 +151,9 @@
                             @foreach ($people->whereNotNull('trainers') as $person)
                                 <!-- Recorre solo las personas que tienen un entrenador -->
                                 <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                                    <td>{{ $person->id }}</td> <!-- ID de la persona -->
+                                    <td>{{ $person->trainers->id }}</td> <!-- ID de la persona -->
                                     <td class="flex justify-center">
-                                        <a href="#">
+                                        <a href="{{ route('trainer.show', $tournament->trainers->id) }}">
                                             <div class="flex place-items-center">
                                                 <!-- Foto de perfil de la persona -->
                                                 <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
@@ -193,9 +193,9 @@
                             @foreach ($people->whereNotNull('referees') as $person)
                                 <!-- Recorre solo las personas que tienen árbitros -->
                                 <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
-                                    <td>{{ $person->id }}</td> <!-- ID de la persona -->
+                                    <td>{{ $person->referees->id }}</td> <!-- ID de la persona -->
                                     <td class="flex justify-center">
-                                        <a href="#">
+                                        <a href="{{ route('referees.show', $tournament->referees->id) }}">
                                             <div class="flex place-items-center">
                                                 <!-- Foto de perfil de la persona -->
                                                 <img class="w-12 h-12" src="{{ asset('assets/img/usuario_icon_default.png') }}"
@@ -236,7 +236,7 @@
                             <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
                                 <td>{{ $instalation->id }}</td> <!-- ID de la instalación -->
                                 <td>
-                                    <a href="#">
+                                    <a href="{{ route('instalations.show', $instalation->id) }}">
                                         {{ $instalation->name }} <!-- Nombre de la instalación -->
                                     </a>
                                 </td>
@@ -273,7 +273,7 @@
                                     <tr class="border-b border-stone-700 h-9 hover:bg-stone-800">
                                         <td>{{ $sponsor->id }}</td> <!-- ID del patrocinador -->
                                         <td>
-                                            <a href="#">
+                                            <a href="{{ route('sponsors.show', $sponsor->id) }}">
                                                 {{ $sponsor->name }} <!-- Nombre del patrocinador -->
                                             </a>
                                         </td>
