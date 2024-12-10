@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Team;
 use App\Models\Sport;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Player;
+use App\Models\PlayerTeam;
 
 class TeamsController extends Controller
 {
@@ -46,8 +48,9 @@ class TeamsController extends Controller
         return redirect()->route('teams.index');
     }
 
-    public function show(Team $team)
+    public function show($id)
     {
+        $team = Team::with('players.people')->find($id);
         return view('teams.show', compact('team'));
     }
 
@@ -94,4 +97,62 @@ class TeamsController extends Controller
         $teams->delete();
         return redirect()->route('teams.index');
     }
+
+    public function addPlayers($id)
+{
+    $team = Team::findOrFail($id);
+
+
+    $players = Player::with('people')->get();
+
+    return view('teams.add_players', compact('team', 'players'));
+}
+
+
+
+public function storePlayers(Request $request, $teamId)
+{
+    $team = Team::findOrFail($teamId);
+
+    foreach ($request->input('players') as $key => $playerId) {
+        $dorsal = $request->input("dorsal.$key");
+        $position = $request->input("position.$key");
+        $isCaptain = $request->input("captain.$key") == '1';
+        $assignmentDate = $request->input("assignment_date.$key");
+        $departureDate = $request->input("departure_date.$key");
+
+        $team->players()->attach($playerId, [
+            'dorsal' => $dorsal,
+            'position' => $position,
+            'captain' => $isCaptain,
+            'assignment_date' => $assignmentDate,
+        ]);
+    }
+
+    return redirect()->route('teams.show', $teamId);
+}
+
+
+    public function removePlayers($teamId)
+    {
+        $team = Team::findOrFail($teamId);
+        $players = $team->players()->get();
+
+        return view('teams.remove_players', compact('team', 'players'));
+    }
+
+    public function destroyPlayer(Request $request, $teamId, $playerId)
+    {
+        $team = Team::findOrFail($teamId);
+        $team->players()->detach($playerId);
+
+        return redirect()->route('teams.show', $teamId);
+    }
+
+
+
+
+
+
+
 }

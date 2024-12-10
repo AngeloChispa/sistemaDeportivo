@@ -53,12 +53,12 @@
                     @auth
                         @if (Auth::user()->rol_id === 1)
                             <td>
-                                <a href="#"
+                                <a href="{{ route('teams.addPlayers', $team->id) }}"
                                     class="font-medium text-zinc-200 bg-purple-500 sm:rounded-lg p-2 hover:bg-purple-900">Añadir
                                     jugadores</a>
                             </td>
                             <td>
-                                <a href="#"
+                                <a href="{{ route('teams.removePlayers', $team->id) }}"
                                     class="font-medium text-zinc-200 bg-rose-500 sm:rounded-lg p-2 hover:bg-rose-700">Retirar
                                     jugadores</a>
                             </td>

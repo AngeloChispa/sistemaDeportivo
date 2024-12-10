@@ -7,11 +7,12 @@
         Añadir Jugadores
     </h1>
     <div class="flex items-center justify-center">
-        <form method="POST" action="#" enctype="multipart/form-data"
+        <form method="POST" action="{{ route('teams.storePlayers', $team->id) }}" enctype="multipart/form-data"
             class="flex flex-col bg-stone-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 mt-6">
             @csrf
 
             <div id="inputs-container">
+                <!-- Este es el primer formulario (jugador 1) -->
                 <div class="input-wrapper flex justify-between">
                     @component('_components.boxSelectInput')
                         @slot('for')
@@ -23,29 +24,51 @@
                         @slot('name', 'players[]')
                         @slot('id')
                             player-1
-                            required
-                            class="player-select w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500"
                         @endslot
+                        @slot('required', 'required')
+                        @slot('class', 'player-select w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500')
                         @slot('more_options')
-                            <option value="1">jugador 1</option>
-                            <option value="2">jugador 2</option>
-                            <option value="3">jugador 3</option>
-                            <option value="4">jugador 4</option>
+                            @foreach($players as $player)
+                                <option value="{{ $player->id }}">{{ $player->people->name }}</option>
+                            @endforeach
                         @endslot
                     @endcomponent
 
                     <div class="w-1/6">
                         @component('_components.boxInputCreate')
-                        @slot('for', 'dorsal')
-                        @slot('content', 'Dorsal: ')
-                        @slot('name', 'dorsal')
-                        @slot('id', 'dorsal min=1 required')
-                        @slot('type', 'number')
-                    @endcomponent
+                            @slot('for', 'dorsal')
+                            @slot('content', 'Dorsal: ')
+                            @slot('name', 'dorsal[]')
+                            @slot('id', 'dorsal-1')
+                            @slot('type', 'number')
+                            @slot('min', 1)
+                            @slot('required', 'required')
+                        @endcomponent
+                    </div>
+
+                    <div class="w-1/6">
+                        @component('_components.boxInputCreate')
+                            @slot('for', 'position')
+                            @slot('content', 'Posición: ')
+                            @slot('name', 'position[]')
+                            @slot('id', 'position-1')
+                            @slot('type', 'text')
+                            @slot('required', 'required')
+                        @endcomponent
+                    </div>
+
+                    <div class="w-1/6">
+                        @component('_components.boxInputCreate')
+                            @slot('for', 'assignment_date')
+                            @slot('content', 'Fecha de entrada: ')
+                            @slot('name', 'assignment_date[]')
+                            @slot('id', 'assignment_date-${inputCount}')
+                            @slot('type', 'date')
+                        @endcomponent
                     </div>
 
                     <label for="captain" class="self-center">Es capitán: </label>
-                    <input type="radio" name="captain" id="captain">
+                    <input type="radio" name="captain" value="player-1" id="captain-1">
                 </div>
             </div>
 
@@ -63,7 +86,7 @@
             <div class="flex">
                 <button type="submit"
                     class="m-2 w-full mt-4 bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600 transition cursor-pointer">
-                    Agregar jugadoress
+                    Agregar jugadores
                 </button>
                 <a href="{{ route('tournaments.index') }}"
                     class="m-2 text-center w-full mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition cursor-pointer">Cancelar</a>
@@ -82,7 +105,6 @@
                 const updateSelectOptions = () => {
                     const selects = document.querySelectorAll('.player-select');
 
-                    //Tiene todos los select
                     const selectedValues = Array.from(selects)
                         .map(select => select.value)
                         .filter(value => value !== "");
@@ -92,62 +114,81 @@
 
                         options.forEach(option => {
                             option.disabled = false;
-                            if (selectedValues.includes(option.value) && select.value !== option
-                                .value) {
+                            if (selectedValues.includes(option.value) && select.value !== option.value) {
                                 option.disabled = true;
                             }
                         });
                     });
                 };
 
-                //Nuevo select
                 const addNewInput = () => {
                     inputCount++;
 
                     const newInput = document.createElement('div');
                     newInput.classList.add('input-wrapper');
                     newInput.innerHTML = `
-                <div class="flex justify-between">
-                @component('_components.boxSelectInput')
-                    @slot('for')
-                        player-${inputCount}
-                    @endslot
-                    @slot('content')
-                        Jugador ${inputCount}:
-                    @endslot
-                    @slot('name', 'players[]')
-                    @slot('id')
-                        player-${inputCount}
-                        class="player-select w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500"
-                    @endslot
-                    @slot('more_options')
-                        <option value="1">jugador 1</option>
-                        <option value="2">jugador 2</option>
-                        <option value="3">jugador 3</option>
-                        <option value="4">jugador 4</option>
-                    @endslot
-                    @endcomponent
-                    
-                    <div class="w-1/6">
-                        @component('_components.boxInputCreate')
-                        @slot('for', 'dorsal')
-                        @slot('content', 'Dorsal: ')
-                        @slot('name', 'dorsal')
-                        @slot('id', 'dorsal min=1')
-                        @slot('type', 'number')
-                    @endcomponent
-                    </div>
+                        <div class="flex justify-between">
+                            @component('_components.boxSelectInput')
+                                @slot('for')
+                                    player-${inputCount}
+                                @endslot
+                                @slot('content')
+                                    Jugador ${inputCount}:
+                                @endslot
+                                @slot('name', 'players[]')
+                                @slot('id')
+                                    player-${inputCount}
+                                @endslot
+                                @slot('class', 'player-select w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500')
+                                @slot('more_options')
+                                    @foreach($players as $player)
+                                        <option value="{{ $player->id }}">{{ $player->people->name }}</option>
+                                    @endforeach
+                                @endslot
+                            @endcomponent
 
-                    <label for="captain" class="self-center">Es capitán: </label>
-                    <input type="radio" name="captain" id="captain">
-                </div>
-            `;
+                            <div class="w-1/6">
+                                @component('_components.boxInputCreate')
+                                    @slot('for', 'dorsal')
+                                    @slot('content', 'Dorsal: ')
+                                    @slot('name', 'dorsal[]')
+                                    @slot('id', 'dorsal-${inputCount}')
+                                    @slot('type', 'number')
+                                    @slot('min', 1)
+                                    @slot('required', 'required')
+                                @endcomponent
+                            </div>
+
+                            <div class="w-1/6">
+                                @component('_components.boxInputCreate')
+                                    @slot('for', 'position')
+                                    @slot('content', 'Posición: ')
+                                    @slot('name', 'position[]')
+                                    @slot('id', 'position-${inputCount}')
+                                    @slot('type', 'text')
+                                    @slot('required', 'required')
+                                @endcomponent
+                            </div>
+
+                            <div class="w-1/6">
+                                @component('_components.boxInputCreate')
+                                    @slot('for', 'assignment_date')
+                                    @slot('content', 'Fecha de entrada: ')
+                                    @slot('name', 'assignment_date[]')
+                                    @slot('id', 'assignment_date-${inputCount}')
+                                    @slot('type', 'date')
+                                @endcomponent
+                            </div>
+
+                            <label for="captain" class="self-center">Es capitán: </label>
+                            <input type="radio" name="captain" value="player-${inputCount}" id="captain-${inputCount}">
+                        </div>
+                    `;
 
                     inputsContainer.appendChild(newInput);
                     updateSelectOptions();
                 };
 
-                //ELiminar selects
                 const removeLastInput = () => {
                     const inputs = inputsContainer.querySelectorAll('.input-wrapper');
                     if (inputs.length > 1) {
@@ -160,19 +201,16 @@
                     }
                 };
 
-                // guarda los nuevos seleccionados
                 inputsContainer.addEventListener('change', (event) => {
                     if (event.target.classList.contains('player-select')) {
                         updateSelectOptions();
                     }
                 });
 
-                //Eliminar último select picando botón
                 removeInputButton.addEventListener('click', () => {
                     removeLastInput();
                 });
 
-                // Nuevo select picando botón
                 addInputButton.addEventListener('click', () => {
                     addNewInput();
                 });

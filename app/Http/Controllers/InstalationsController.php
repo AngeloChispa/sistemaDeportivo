@@ -26,6 +26,8 @@ class InstalationsController extends Controller
             "capacity" => "required|integer",
         ]);
 
+        dd();
+
         $instalation = new Instalation();
         $instalation->name = $request->name;
         $instalation->nationality_id = $request->country;
@@ -43,14 +45,15 @@ class InstalationsController extends Controller
     }
 
     public function edit($id){
-        $instalation = Instalation::findOrFail($id);
-        return view("instalations.edit", compact("instalation"));
+        $instalation = Instalation::with('nationality')->findOrFail($id);
+        $nationalities = Nationality::all();
+        return view("instalations.edit", compact("instalation","nationalities"));
     }
 
     public function update(Request $request, Instalation $instalation){
 
         $instalation->name = $request->name;
-        $instalation->country = $request->country;
+        $instalation->nationality_id = $request->country;
         $instalation->state = $request->state;
         $instalation->city = $request->city;
         $instalation->capacity = $request->capacity;

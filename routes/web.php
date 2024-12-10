@@ -46,6 +46,10 @@ Route::post('ascend/trainer/{user}', [AscenController::class, 'storeTrainer']);
 Route::get('/ascend/referee/{user}', [AscenController::class, 'upgradeReferee'])->name('ascend.referee');
 Route::post('/ascend/referee/{user}', [AscenController::class, 'storeReferee']);
 
+Route::get('teams/{team}/add-players', [TeamsController::class, 'addPlayers'])->name('teams.addPlayers');
+Route::post('/teams/{team}/store-players', [TeamsController::class, 'storePlayers'])->name('teams.storePlayers');
+Route::get('/teams/{team}/remove-players', [TeamsController::class, 'removePlayers'])->name('teams.removePlayers');
+Route::delete('/teams/{team}/remove-player/{player}', [TeamsController::class, 'destroyPlayer'])->name('teams.destroyPlayer');
 
 //Julissa
 /* Vistas */

@@ -22,16 +22,22 @@
             @endcomponent
 
             @component('_components.boxSelectInput')
-                @slot('for', 'country')
-                @slot('content', 'País: ')
-                @slot('name', 'country')
-                @slot('id', 'country')
-                @slot('more_options')
-                    <option value="1" {{ old('country', $instalation->country) == 1 ? 'selected' : '' }}>México</option>
-                    <option value="2" {{ old('country', $instalation->country) == 2 ? 'selected' : '' }}>Estados Unidos</option>
-                    <option value="3" {{ old('country', $instalation->country) == 3 ? 'selected' : '' }}>Canadá</option>
-                @endslot
-            @endcomponent
+            @slot('for', 'country')
+            @slot('content', 'Pais: ')
+            @slot('name', 'country')
+            @slot('id', 'country')
+            @slot('value', $instalation->nationality->id)
+            @slot('more_options')
+                @forelse ($nationalities as $nationality)
+                    <option value="{{ $nationality->country }}"
+                        {{ $instalation->nationality->country == $nationality->country ? 'selected' : '' }}>
+                        {{ $nationality->country }}
+                    </option>
+                @empty
+                    <option value="">No disponibles</option>
+                @endforelse
+            @endslot
+        @endcomponent
 
             @component('_components.boxInputEdit')
                 @slot('for', 'state')
