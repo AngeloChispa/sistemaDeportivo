@@ -42,21 +42,24 @@
                 @slot('name', 'country')
                 @slot('id', 'country')
                 @slot('more_options')
-                    @foreach ($nationalities as $nationality)
-                        <option value="{{ $nationality->id }}">
+                    @forelse ($nationalities as $nationality)
+                        <option value="{{ $nationality->country }}"
+                            {{ $person->birthplace == $nationality->country ? 'selected' : '' }}>
                             {{ $nationality->country }}
                         </option>
-                    @endforeach
+                    @empty
+                        <option value="">No disponibles</option>
+                    @endforelse
                 @endslot
             @endcomponent
 
             @component('_components.boxInputEdit')
-            @slot('for', 'phone')
-            @slot('content', 'Telefono:')
-            @slot('type', 'tel')
-            @slot('name', 'phone')
-            @slot('id', 'phone')
-            @slot('value', old('phone', $person->user->phone))
+                @slot('for', 'phone')
+                @slot('content', 'Telefono:')
+                @slot('type', 'tel')
+                @slot('name', 'phone')
+                @slot('id', 'phone')
+                @slot('value', old('phone', $person->user->phone))
             @endcomponent
 
             <div>
