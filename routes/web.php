@@ -47,7 +47,9 @@ Route::post('/ascend/referee/{user}', [AscenController::class, 'storeReferee']);
 //Julissa
 /* Vistas */
 Route::view('/favorites','users.favorites')->name('favorites.index');
-Route::view('/agrega','tournaments.add_teams')->name('addTeams');
+Route::view('/agrega/nombreTorneo','tournaments.add_teams')->name('addTeams');
+Route::view('/agrega/nombreEquipo','teams.add_players')->name('addPlayers');
+Route::view('/quitar/nombreEquipo','teams.remove_players')->name('removePlayers');
 Route::view('/sponsors/admin','sponsors.sponsors_view')->name('sponsors.index');
 Route::view('/finances/admin','finances.finances_view')->name('finances.index');
 Route::view('/filtro/admin','reports.filter')->name('reports.index');

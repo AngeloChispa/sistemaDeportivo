@@ -29,7 +29,7 @@
                     <th>Escudo</th>
                     @auth
                         @if (Auth::user()->rol_id === 1)
-                            <th colspan="3">Acción</th>
+                            <th colspan="5">Acción</th>
                         @endif
                     @endauth
                 </tr>
@@ -52,6 +52,16 @@
                     </td>
                     @auth
                         @if (Auth::user()->rol_id === 1)
+                            <td>
+                                <a href="#"
+                                    class="font-medium text-zinc-200 bg-purple-500 sm:rounded-lg p-2 hover:bg-purple-900">Añadir
+                                    jugadores</a>
+                            </td>
+                            <td>
+                                <a href="#"
+                                    class="font-medium text-zinc-200 bg-rose-500 sm:rounded-lg p-2 hover:bg-rose-700">Retirar
+                                    jugadores</a>
+                            </td>
                             <td>
                                 <a href="{{ route('teams.edit', $team->id) }}"
                                     class="font-medium bg-blue-500 sm:rounded-lg p-2 hover:bg-blue-600">Editar</a>

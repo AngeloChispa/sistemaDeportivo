@@ -1,10 +1,10 @@
 @extends('layouts.admin_view')
 
-@section('title', 'Añadir Equipos')
+@section('title', 'Añadir Jugadores')
 
 @section('content')
     <h1 class="text-4xl text-center">
-        Añadir equipos
+        Añadir Jugadores
     </h1>
     <div class="flex items-center justify-center">
         <form method="POST" action="#" enctype="multipart/form-data"
@@ -12,27 +12,40 @@
             @csrf
 
             <div id="inputs-container">
-                <div class="input-wrapper">
+                <div class="input-wrapper flex justify-between">
                     @component('_components.boxSelectInput')
                         @slot('for')
-                            team-1
+                            player-1
                         @endslot
                         @slot('content')
-                            Equipo 1:
+                            Jugador 1:
                         @endslot
-                        @slot('name', 'teams[]')
+                        @slot('name', 'players[]')
                         @slot('id')
-                            team-1
+                            player-1
                             required
-                            class="team-select w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500"
+                            class="player-select w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500"
                         @endslot
                         @slot('more_options')
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
+                            <option value="1">jugador 1</option>
+                            <option value="2">jugador 2</option>
+                            <option value="3">jugador 3</option>
+                            <option value="4">jugador 4</option>
                         @endslot
                     @endcomponent
+
+                    <div class="w-1/6">
+                        @component('_components.boxInputCreate')
+                        @slot('for', 'dorsal')
+                        @slot('content', 'Dorsal: ')
+                        @slot('name', 'dorsal')
+                        @slot('id', 'dorsal min=1 required')
+                        @slot('type', 'number')
+                    @endcomponent
+                    </div>
+
+                    <label for="captain" class="self-center">Es capitán: </label>
+                    <input type="radio" name="captain" id="captain">
                 </div>
             </div>
 
@@ -50,7 +63,7 @@
             <div class="flex">
                 <button type="submit"
                     class="m-2 w-full mt-4 bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600 transition cursor-pointer">
-                    Agregar equipos
+                    Agregar jugadoress
                 </button>
                 <a href="{{ route('tournaments.index') }}"
                     class="m-2 text-center w-full mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition cursor-pointer">Cancelar</a>
@@ -67,7 +80,7 @@
                 let inputCount = 1;
 
                 const updateSelectOptions = () => {
-                    const selects = document.querySelectorAll('.team-select');
+                    const selects = document.querySelectorAll('.player-select');
 
                     //Tiene todos los select
                     const selectedValues = Array.from(selects)
@@ -94,25 +107,40 @@
                     const newInput = document.createElement('div');
                     newInput.classList.add('input-wrapper');
                     newInput.innerHTML = `
+                <div class="flex justify-between">
                 @component('_components.boxSelectInput')
                     @slot('for')
-                        team-${inputCount}
+                        player-${inputCount}
                     @endslot
                     @slot('content')
-                        Equipo ${inputCount}:
+                        Jugador ${inputCount}:
                     @endslot
-                    @slot('name', 'teams[]')
+                    @slot('name', 'players[]')
                     @slot('id')
-                        team-${inputCount}
-                        class="team-select w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500"
+                        player-${inputCount}
+                        class="player-select w-full mt-1 p-2 bg-stone-800 text-white rounded border border-stone-700 focus:outline-none focus:ring-2 focus:ring-red-500"
                     @endslot
                     @slot('more_options')
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
+                        <option value="1">jugador 1</option>
+                        <option value="2">jugador 2</option>
+                        <option value="3">jugador 3</option>
+                        <option value="4">jugador 4</option>
                     @endslot
-                @endcomponent
+                    @endcomponent
+                    
+                    <div class="w-1/6">
+                        @component('_components.boxInputCreate')
+                        @slot('for', 'dorsal')
+                        @slot('content', 'Dorsal: ')
+                        @slot('name', 'dorsal')
+                        @slot('id', 'dorsal min=1')
+                        @slot('type', 'number')
+                    @endcomponent
+                    </div>
+
+                    <label for="captain" class="self-center">Es capitán: </label>
+                    <input type="radio" name="captain" id="captain">
+                </div>
             `;
 
                     inputsContainer.appendChild(newInput);
@@ -128,13 +156,13 @@
                         updateSelectOptions();
                         inputCount--;
                     } else {
-                        alert('No se puede eliminar el primer equipo.');
+                        alert('No se puede eliminar el primer jugador.');
                     }
                 };
 
                 // guarda los nuevos seleccionados
                 inputsContainer.addEventListener('change', (event) => {
-                    if (event.target.classList.contains('team-select')) {
+                    if (event.target.classList.contains('player-select')) {
                         updateSelectOptions();
                     }
                 });
